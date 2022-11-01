@@ -1,0 +1,208 @@
+% #############################################################################
+% This is Chapter 7
+% !TEX root = main.tex
+% #############################################################################
+% Change the Name of the Chapter i the following line
+\fancychapter{Discussion}
+\clearpage
+% The following line allows to ref this chapter
+\label{chap:chap007}
+
+In this thesis proposal, a study is presented of how highlighting and explaining breast cancer diagnosis by intelligent agents can aid medical experts in their decision-making for clinical cases.
+A within-subject study was conducted to investigate the use of \ac{AI} assistants by medical experts.
+Results are shown that \ac{AI} can alter clinicians' workflow in a positive manner by providing descriptive explanations (\ac{XAI}) while maintaining overall clinicians' performance.
+While clinicians' overall time performance, perceived \ac{UX}, and workload were not affected (Chapter~\ref{chap:chap005}), a significant improvement of final diagnostic results was observed (Chapter~\ref{chap:chap006}) on clinicians' \ac{FP} and \ac{FN} rates.
+This promising insight motivates future research into the development and validation of \ac{XAI} techniques capable of providing highly relevant explanations to clinicians.
+
+Clinicians' overall preferences and perceived levels of trust for intelligent agents were polarized.
+Results suggested higher perceived \ac{UX}, as well as a trend towards higher accuracy and acceptance are increasing clinicians confidence (Chapter~\ref{chap:chap006}) in \ac{AI}-assistance compared to the conventional variant (Chapter~\ref{chap:chap005}).
+In this chapter, design implications (Section~\ref{sec:sec007004}) are discussed as a consequence of the achieved main findings (Section~\ref{sec:sec007003}) and conclude with the limitations (Section~\ref{sec:sec007005}) of the study.
+
+\section{Summarizing Discussions}
+\label{sec:sec007001}
+
+The progress of \ac{AI} techniques in {\it radiomics} will have a profound impact in the workflow and tools used for medical imaging diagnosis.  
+Achieved results are showing that clinicians are receptive to the integration of these new techniques and tools into the clinical workflow.
+Resulted main findings (Section~\ref{sec:sec007003}) show that \ac{AI}-assistive techniques, like the proposed assistant, enabled clinicians to improve the performance and accuracy of the patient diagnostic.
+Moreover, not only it is reported findings but also share the thesis discussion and reflections.
+
+While it was demonstrated, efficiency (Figure~\ref{fig:fig037}) and efficacy (Figure~\ref{fig:fig038}) in medical imaging diagnosis, the techniques used are not specific to the breast screening domain.
+For instance, the work developed under this thesis hope to apply the same approach to other pathologies which rely on the proper diagnosis of solid masses.
+This gives desire that the developed techniques can be applied to other domains where the goal is to make a critical decision using multi-modal medical images.
+
+The optimal use of the assistant within clinical workflows remains to be determined.
+The specificity advantage exhibited by the assistant suggests ({\bf RQ5.1} and {\bf RQ6.1}) that it could help to reduce diagnostic accuracy and, therefore, unnecessary biopsies.
+The integration of such assistants into the clinical workflow, shows that \ac{AI} may be capable of detecting cancer earlier than the standard of care.
+Results are suggesting that \ac{AI} holds early promise for flagging suspicious cases for review by experts.
+Moreover, as presented in the results section (Section~\ref{sec:sec005006} and Section~\ref{sec:sec006006}), the introduction of \ac{AI} was well received by clinicians ({\bf RQ5.2}, {\bf RQ5.3} and {\bf RQ6.2}), while the assistant is above their expectations.
+
+Finally, supported by the achieved results (Section~\ref{sec:sec005006}), the document shows that clinicians' satisfaction and acceptance ({\bf RQ5.3}) were achieved.
+Across the various groups of experts ({\bf RQ6.3}), the \ac{AI} assistance successfully impacted the intended aspects of expectations.
+The next sections will describe and discuss this document contributions and impact in terms of clinical expectations and \ac{AI} assistance.
+
+\section{Contributions and Impact}
+\label{sec:sec007002}
+
+In this thesis, an intelligent agent was implemented and studied as a tool to classify, segment, and explain medical imaging diagnosis in the breast cancer domain.
+Indeed, the results are showing that \ac{AI} can positively impact the medical workflow at a cost of providing clinician control over the proposed \ac{BI-RADS} classification.
+Specifically, intelligent agents are contributing to an increase of clinicians' perception of trust.
+The proposed investigations focus on three different contexts.
+As follows, each of the three different contexts will be detailed.
+
+First, it was presented {\it BreastScreening} core (Chapter~\ref{chap:chap004}), the first framework enabling remote and distributed labeling tools for annotating lesions in the context of breast cancer.
+Evidence was presented~\cite{10.1145/3399715.3399744}, suggesting that the tool can not only provide a labelling functionality to clinicians and researchers, but also produce data that will be consumed by \ac{ML} algorithms.
+Due to the development of a distributed, as well as remote accessible framework, clinicians can share and have a collaborative evaluation of their patients.
+While generating a standardized dataset for the \ac{ML} community, these tools are also representing an important asset for promoting \ac{AI} projects on the medical imaging domain.
+
+Second, developments were applied as a second reader to the expert domain of breast cancer interpretation and classification.
+{\it BreastScreening-AI} was developed on the top of {\it BreastScreening} core to study the impact of intelligent agents on the medical imaging workflow.
+Insights from an experiment with 45 clinicians showed that a medical assistant can make itself more understandable by providing some type of explanation ({\it i.e.}, {\it heatmaps}) without comprising its reliability.
+Moreover, satisfaction and acceptance were significantly improved by the assistant with this strategy.
+
+Third, a study was promoted to understand how intelligent agents are (positively) affecting the medical workflow.
+Clinicians' accuracy was compared with and without \ac{AI}, while studying the impact of several design techniques in terms of clinicians' expectations and satisfaction.
+Consistent with expectations, the results are showing clinicians' accuracy and acceptance of an \ac{AI} system optimized for high {\it Precision} can be significant higher than a system optimized for higher {\it Recall} values.
+Furthermore, by measuring \ac{FP}/\ac{FN} and relating to time performance, results are suggesting that the proposed adjustment techniques successfully impact the intended aspects of expectations.
+Finally, results are showing that these techniques are successful in reducing both inter-variability and intra-variability among the clinical groups of experts on an \ac{AI} system.
+
+To conclude, it was demonstrated how an \ac{AI} system focus on the communication of model performance ({\it e.g.}, {\it Precision} and {\it Recall}) can lead to much higher perceptions of accuracy.
+Due to a model performance communication, intelligent agents are increasing acceptance of medical professionals by showing the visual representations for classification performance and segmentation of lesions.
+With these visual representations, model ambiguity can be adjudicated by clinicians with control of the final diagnostic.
+Thus, clinicians are increasing their \ac{AI} confidence with higher values of {\it trust}.
+
+Results demonstrated that this form of control can significantly improve the ability of clinicians to triage and {\it trust} \ac{AI}-provided outputs.
+Evidence was also provided suggesting, not only that clinicians paid attention to \ac{AI}-provided explanations, but also that relevance of these explanations to the specific domain at hand was crucial for clinical experts to accurately classify difficult and ambiguous cases.
+Towards the implementation of intelligent agents, the combination of several techniques of \ac{iML}, \ac{HITL} and model explainability to develop \ac{AI} assistants are capable of recognizing and explaining medical data.
+Such claims are being addressed as future work (Chapter~\ref{chap:chap008}) of this thesis proposal document.
+
+\section{Main Findings}
+\label{sec:sec007003}
+
+Intelligent agents are representing a type of system that is passive ({\it i.e.}, assistive as a second reader) and casual.
+Clinicians can {\it accept}, {\it reject} and ask the system to {\it explain}, or even {\it ignore} the assistant result.
+While this is only one class of \ac{CDSSe}, it is believed that this class represents many current efforts of integrating \ac{HAII} into other clinical domains ({\it e.g.}, systems for clinical drug development, epidemiology, dementia treatment, etc)~\cite{Savage2019, shah2019artificial, topol2019high}.
+
+\hfill
+
+\noindent
+Findings should be generalized to other clinical systems and tasks according to the following claims:
+
+\begin{enumerate}
+\item Evaluations are task agnostic as they are informed by the high-level workflow actions and autonomous diagnostic mechanisms in which clinicians make decisions, while a workflow understanding is crucial to recognize clinicians' needs;
+\item Intelligent agents should provide concrete empirical evidence and insights by detailing the benefits of avoiding the different types of \ac{AI} errors and diagnostic mistakes to address model ambiguity in various steps of the \ac{AI} pipeline;
+\item An \ac{AI} system based on {\it Precision} and {\it Recall} optimization will improve higher values of \acp{FP} and \acp{FN} as model uncertainty and explanations are provided to clinicians so that they can be aware of model misunderstandings;
+\end{enumerate}
+
+\hfill
+
+The importance of avoiding different types of errors depends on the information available from a specific clinical domain.
+Indeed, this is a complex issue.
+While it could be argued that for the breast cancer diagnosis \acp{FN} are always better to avoid, such results can not always suggest that they are independently to the clinical domain.
+In this thesis, avoiding \acp{FN} might be better.
+Actually, avoiding \acp{FN} can be better as a result of escaping from saying there is no cancer, when surely there is.
+However, in other clinical domains an \ac{FP} might be more important to avoid.
+For instance, in drug development, the domain wants to prefer avoiding the \acp{FP} rates.
+By doing that, applications of \ac{AI} systems are optimizing the number of chemicals and drugs identified incorrectly by the system~\cite{raja2017machine}.
+
+Having that said, it is believed that the achieved main findings are generalized to a clinical class of passive systems ({\it i.e.}, clinicians are making the final decisions) in which the end ratio of workload regarding both \acp{FP} and \acp{FN} is lower.
+In critical systems, as the one developed under this thesis, it is more important to analyze the severity of consequences.
+However, the severity of consequences shall be applied to different clinical errors rather than medical imaging workload improvements.
+
+\section{Design Implications}
+\label{sec:sec007004}
+
+The main findings have implications for different stages into the design of an intelligent agent for \acp{CDSSe}.
+From data collection across model training, to the design of \acp{UI} for \ac{AI} systems, implications of design are influencing the final proposed solution of this thesis.
+In this section, the document is describing several design implications and recommendations applied until now, as well as the ones that will be applied in the future.
+
+\subsection{Data Collection}
+\label{sec:sec007004001}
+
+In this work, an \ac{AI} assistant was developed with the capability of classifying the patient's severity (\ac{BI-RADS}) and of providing the segmentation ({\it heatmaps}) of potential lesions.
+To this end, the document relies on discussion of medical data from previous study (Chapter~\ref{chap:chap004}) on the collection of images and generation of a standardized datasets from manual annotations ({\it e.g.}, masses and microcalcifications) in medical imaging.
+
+Procedures for annotating data should aim to identify and differentiate between instances of important patient cases to train a model, and instances from varied types of lesions.
+On one hand, the instances of important patient cases to train a model should contain heterogeneous and balanced classified patients divided by $BIRADS~\in~\{1, 2, 3, 4, 5\}$ values of severity.
+On the other hand, instances from varied types of lesions should be collected in terms of providing a dataset with a complete set of masses (Figure~\ref{fig:fig021}) and microcalcifications (Figure~\ref{fig:fig022}) characteristics.
+These design implications should be applied for the breast cancer domain, but can be generalized for other medical imaging domains.
+
+Developing an \ac{AI} system of providing explanations for patient cases would require that structured information is given in the training data.
+On the one hand, several approaches are addressing the problem of collecting unstructured medical data~\cite{10.1145/3308560.3317085, SchaekermannMike2020} with open-ended arguments for classification cases.
+On the other hand, recent works are demonstrating that imposing structure in the data collection process can facilitate a deeper understanding of clinician disagreement with \ac{AI}~\cite{10.1145/3308560.3317085} and accelerate consensus formation~\cite{10.1145/3313831.3376506}.
+Thus, a data collection procedure is recommended for \ac{AI}-based systems by being equipped with structured procedures to benefit from these findings and facilitate the development of intelligent agents for medical imaging.
+
+\subsection{Model Training}
+\label{sec:sec007004002}
+
+This study suggests that medical workflows and trust can be positively affected by the introduction of intelligent agents which are endowing \ac{AI}-based \acp{CDSSe} with the ability to not only make \ac{BI-RADS} classification suggestions, but also to identify potential lesions.
+Implementation of such \ac{AI} systems would require that supervised \ac{ML} models are equipped with additional prediction targets ({\it e.g.}, automatic segmentation and classification of patient co-variables) beyond severity classification (\ac{BI-RADS}) alone.
+These additional targets could include automatic classification of breast density (Figure~\ref{fig:fig005}), while warning clinicians the model accuracy for being in the presence of these cases.
+Another additional target is showing information concerning the weights of each co-variable for the achieved classification.
+
+Additional targets could be integrated either into one joint training process or by developing several separate models, one for each target.
+Mehta et al.~\cite{10.1007/978-3-030-00934-2_99} describes how to bring a multi-target approach into the classification and segmentation of medical images in one joint training process.
+These design implications were brought from the focus groups (Section~\ref{sec:sec005006002002}), but were not yet addressed under this thesis proposal.
+However, they will be addressed as future work (Chapter~\ref{chap:chap008}) below.
+
+\subsection{User Interface Considerations}
+\label{sec:sec007004003}
+
+In this thesis, several ways of displaying and explaining breast cancer diagnosis were evaluated by visually showing explainable (\ac{XAI}).
+These explainable (\ac{XAI}) techniques are coming from the trained models and are informing clinicians in several ways.
+While the achieved results may suggest that this representations should be effective, it is recommended further future work.
+Indeed, further directions could explore more complex techniques for proper information visualization and design considerations.
+For instance, it is important to understand if heatmaps are effective and final ways for the representation of lesion contours with respect (colors) to the severity classification, or if there are other techniques ({\it e.g.}, bounding-boxes) to better inform clinicians.
+Moreover, it could be important to study whereas the design for information visualization of model performance would support a better patient diagnostic.
+
+\ac{UI} design considerations are facilitating and constraining the communication between human users and \ac{AI} models (\ac{HAII}).
+The design should be carefully decided whether and how the information is exposed to the end-users, so that the end-users can strike the right balance for a trusted, efficient and effective interaction.
+Clinicians' trust can be promoted by highlighting and explaining instances ({\it i.e.}, co-variables) of important patient information as predicted by an \ac{AI} model.
+However, factors like domain-specific tolerance may affect whether exposing wrong patient information contributes to the establishment or erosion of clinicians' trust.
+
+A predicted likelihood of showing \ac{AI} accuracy for a given case can be useful criterion for clinicians.
+In fact, by choosing which \ac{AI}-suggestions to review first, the \ac{UI} design is saving clinicians' time and cognitive resources ({\it e.g.}, not showing the heatmaps immediately) while diagnosing each patient.
+As a matter of fact, the given model explanations should be human-interpretable, case-specific and accurate.
+An inaccurate or irrelevant explanation may significantly harm a clinician's ability to diagnose a patient case correctly.
+As a consideration, if accurate explanations cannot be reliably produced they should not be exposed to the end-user.
+
+Impact of explanations is a factor that should determine whether clinicians are exposed to explainable (\ac{XAI}) information.
+For an efficient interaction, it is recommended that clinicians should not be exposed to explainable information for patient cases where accuracy interpretations cannot yield straight decision-making outcomes.
+As an example, if the model accuracy is low for a specific co-variable classification the intelligent agent should should omit that co-variable, since it was not properly classified.
+Thus, it will be of chief importance to study at what levels of accuracy are clinicians accepting each co-variable to be less accurately classified.
+
+\subsection{Medical Imaging Perspectives}
+\label{sec:sec007004004}
+
+Due to its multi-view and multi-modal nature, the assistant uses large amounts of data to inform clinicians.
+The very first step in both quantitative and qualitative studies was to extract from our study information a set of analysis~\textendash~a human-centered design methodology~\textendash~which was crucial to answer our design choices.
+Specifically, data clustering resulted in the following clusters:
+(i) \ac{MG} images (both \ac{CC} and \ac{MLO} views);
+(ii) \ac{US} images; and
+(iii) \ac{MRI} volumes.
+
+Note that in (i) a large number of views are available, {\it e.g.}, ML, LM, LMO, late ML, among others.
+Concerning (iii), radiologists acquire a large set of \ac{MRI} ({\it e.g.}, T1, T2, Diffusion, \acl{DCE}) volumes~\cite{seifabadi2019correlation}.
+This initial design choices resulted in a consensus that allowed the selection of \ac{CC} and \ac{MLO} views, in the case of \ac{MG} images, and \ac{MRI} volumes.
+
+\subsection{Summarizing Implications}
+\label{sec:sec007004005}
+
+The promoted evaluations and analysis (Chapter~\ref{chap:chap005} and Chapter~\ref{chap:chap006}) validated design choices and revealed clinician strategies for using the \ac{AI} assistant.
+The learned design lessons should generalize to other healthcare \ac{AI}-assisted systems.
+Finally, {\it BreastScreening-AI} demonstrates the value of the iterative, participatory design process that fueled its design.
+However, several limitations are still constraining this thesis proposal achievements and will be following (Section~\ref{sec:sec007005}) addressed.
+
+\section{Limitations}
+\label{sec:sec007005}
+
+Unfortunately, due to time constrains of clinicians, it was not possible to investigate the impact of other \ac{AI}-assistance techniques.
+Furthermore, the assistant represents a type of system that is passive and casual~\cite{Kocielnik:2019:YAI:3290605.3300641}, where the impact of \ac{AI} imperfections in the clinical workflow is arguably critical.
+Breast cancer screening may only be effective if clinicians accept the new diagnostic paradigm with the introduction of useful, yet imperfect, \ac{AI} techniques.
+Despite of this limitation, the achieved results are indicating that the proposed assistant may successfully introduce behavioral changes into the clinical workflow.
+
+Another important point to follow are the limitations of \ac{DL} systems.
+These methods are typically seen as black-boxes \cite{litjens2017survey} and, therefore, difficult to ``explain'' without more varied data.
+In this work, it was only addressed the \ac{BI-RADS} classification problem and {\it heatmap} segmentation features.
+However, clinical co-variables are also important to better inform and explain clinicians the \ac{DL} results.
+Additionally, it is important to understand the best communication strategies to inform clinicians about the importance of each co-variable in the final \ac{DL} result.
+Thus, such concerns are addressed (Chapter~\ref{chap:chap008}) in the future work.
