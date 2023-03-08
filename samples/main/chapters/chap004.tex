@@ -3,625 +3,829 @@
 % !TEX root = main.tex
 % #############################################################################
 % Change the Name of the Chapter i the following line
-\fancychapter{Annotating Lesion Contours}
+\fancychapter{Acceptance \& Adoption}
 \clearpage
 % The following line allows to ref this chapter
 \label{chap:chap004}
 
-\ac{DL} algorithms (Section~\ref{sec:sec003007}) have increased the quality of automatic medical diagnosis at the cost of building datasets~\cite{10.1145/3313831.3376219} to train and test (Section~\ref{sec:sec003008}) such supervised \ac{ML} methods~\cite{10.1145/3206505.3206555}.
-In the \ac{RRR} (Section~\ref{sec:sec002005}), medical imaging annotations~\cite{10.1145/3132272.3134111, calisto2019itmedex} are one of the main activities of radiologists and the quality of annotation depends on the clinician experience, as well as on the number of studied cases~\cite{doi:10.1148/radiol.2016150409}.
-Manual annotations~\cite{10.1145/3399715.3399744} are very useful to extract features (Section~\ref{sec:sec002006}) like contours, intersections, margins, and shapes (Section~\ref{sec:sec002004}) that can be used in the processes of lesion segmentation (Section~\ref{sec:sec003007001}), {\it i.e.}, masses (Section~\ref{sec:sec002004001}) and microcalcifications (Section~\ref{sec:sec002004002}), as well as classification (Section~\ref{sec:sec003007002}), {\it i.e.}, \ac{BI-RADS}, made by intelligent agents~\cite{10.1145/3290605.3300468}.
-In this chapter (Chapter~\ref{chap:chap004}), the document proposes~\cite{10.1145/3399715.3399744, https://doi.org/10.13140/rg.2.2.14792.55049, https://doi.org/10.13140/rg.2.2.16086.88649} a new framework that generate a standardized~\cite{lencastre2020mvf, calisto2015aqmgasa} dataset of medical imaging annotations, across the domain of breast cancer, adopting a multimodality strategy ({\it i.e.}, \ac{MG}, \ac{US} and \ac{MRI}) in order to provide clinicians a tool for the production of qualified datasets.
-Also, this chapter will foster clinicians' sharing and collaborative (Section~\ref{sec:sec004002003}) evaluation by developing a distributed, remote accessible (Section~\ref{sec:sec004002004}) framework.
-
 \section{Introduction}
-\label{sec:sec004001}
+\label{sec:chap004001}
 
-In the context of breast cancer, the requirements for multimodality have a significant impact on the clinical workflow.
-Although \ac{MG} is the primary imaging modality for breast screening, it may be insufficient to reach a correct and complete dataset generation for the intelligent agents and autonomous diagnostic purposes.
-Therefore, support for visualization of multi-modal images and with associated dataset of annotations can provide improvements and insights in the breast screening radiology workflow.
+The maturity of Artificial Intelligence (AI) research is opening enormous possibilities for innovation in many application domains, and one prominent example is the medical sector.
+Modern assistant technologies, such as Deep Learning (DL) methods, opens new possibilities in the clinical domain~\cite{topol2019high}, including:
+(i) genome interpretation~\cite{sundaram2018predicting};
+(ii) medical coaching via a smart speaker ({\it e.g.}, Alexa)~\cite{bickmore2018patient};
+(iii) assistive scan readings~\cite{madani2018deep};
+(iv) cancer diagnosis and identification of mutations~\cite{coudray2018classification}; and
+(v) mortality prediction~\cite{ahmad2018death}.
+An AI-based system may be a helpful tool as an adjunct for clinicians or, in the common case that radiologic expertise is not available, for other medical teams~\cite{doi:10.1148/radiol.2020201874, doi:10.1148/radiol.2020190283}.
+However, most clinicians do not expect their clinical systems to behave inconsistently and imperfectly~\cite{hoff2015trust, Kocielnik:2019:YAI:3290605.3300641}, which can lead to mistrust and potential abandonment of these technologies within real-world clinical setups~\cite{benrimoh2018aifred, CALISTO2021102607, CALISTO2022102285}.
 
-With this document, the goal of this chapter is to propose a novel framework for the medical annotation of these lesion masses (Section~\ref{sec:sec002004001}) and microcalcifications (Section~\ref{sec:sec002004002}).
-From the interaction between clinicians and this framework, a standardized dataset is generated.
-Latter, this dataset will be consumed by the \ac{AI} algorithms.
-On a multimodality visualization of medical images, the clinicians just need to delineate the contours of each lesion, in the presence of a mass.
-Or just need to mark, by pointing, where the calcifications on the image are.
-In the end, by consuming this data, the \ac{AI} algorithms can take into advantage the future integration of intelligent agents.
-Thereafter, the intelligent agents are serving clinicians as a second reader opinion.
+Despite the potential benefits of AI systems~\cite{10.1145/3290605.3300233}, their successful implementation depends on a significant degree of technology acceptance~\cite{calisto2019midaaiarfuv, https://doi.org/10.13140/rg.2.2.25412.68486}.
+Therefore, understanding the factors that affect the acceptance of AI systems should drive their design and implementation.
+In this research, we used the unprecedented opportunity motivated by the need to introduce novel AI systems into a clinical workflow to understand the factors affecting their adoption.
+Specifically, we aim to understand better the factors affecting the adoption and use of intelligent agents~\cite{JUNGMANN2021834, doi:10.1200/CCI.20.00148, info:doi/10.2196/12422}.
+We were particularly interested in investigating the role of risk, privacy, and trust in the context of the adoption of AI systems that support clinicians during patient diagnosis via medical imaging~\cite{CALISTO2021102607, Kocielnik:2019:YAI:3290605.3300641}.
+We also want to understand the effect of moderator variables ({\it e.g.}, gender, age, medical experience, training levels and areas of expertise) in the adoption of AI across this clinical workflow~\cite{Fan2020}.
 
-In order to annotate the medical images, the \ac{UI} comprises two lesion tools:
-(1) a freehand polygon tool for annotating the masses of breast cancer lesions; and
-(2) a bullet probe on the image for annotating the calcifications of breast cancer lesions.
-These tools generate a dataset of manual annotations, which will be able to extract features ({\it e.g.}, lesion contours, intersections, and shapes) that can be used in the lesion segmentation and classification made by intelligent agents.
-Such agents can have the integration of algorithms from \ac{AI}, \ac{ML} or \ac{DL} literature.
+Performance improvements may not be enough for intelligent agents to be successfully used in daily work.
+Therefore, it is essential to explore the critical factors that influence clinicians’ behavior adoption regarding the use and interaction with intelligent agents.
+This could have significant implications not only for promoting the integration of intelligent agents, but also for improving the healthcare sector.
+Compared to the industry hype of AI systems, there is a lack of research on the acceptance and adoption intention of intelligent agents by healthcare practitioners, which has caused a gap between the rapid development of intelligent agents and small-scale usage by clinicians in their daily work.
 
-\section{Related Work}
-\label{sec:sec004002}
+Venkatesh et al.~\cite{venkatesh2016unified} proposed a new acceptance and adoption model, namely the Unified Theory of Acceptance and Use of Technology (UTAUT), which aims to unify eight prominent acceptance and adoption models.
+The authors claim that the new model successfully integrates all constructs in previous models and explain variance in behavioral intention to use a technology better than the previous models.
+Specifically, the UTAUT model was able to explain 69\% of intention to use the technology, while other previous models explained approximately 40\% of technology acceptance~\cite{10.2307/30036540}.
+In addition, the UTAUT model was developed in a business context, such as accounting, banking, telecommunication or entertainment services~\cite{KIJSANAYOTIN2009404}.
+Applying the model to a healthcare study of acceptance and adoption, will expand understanding for the introduction of AI in specific healthcare domains.
 
-Relevant for the current research, in this section the document identifies the literature related works and explain the advantages and disadvantages of each work.
-Under this thesis, the document approach covers the limitations of the works following described.
-More specifically, how the thesis is able to deal with non-homogeneous data, which is comprising multi-modal images, classification ({\it i.e.}, \ac{BI-RADS} score) and annotations ({\it i.e.}, delineation of the lesion contours).
-To ascertain the usefulness of such non-homogeneous and multi-modal source of data, we aim to provide a novel solution for the lesion delineation.
+The basic UTAUT model consists of various components or constructs that are hypothesized, relating to the intention to use a technology.
+Indeed, as an intent to use the technology, it predicts the technology adoption itself~\cite{DEANGELI2020102412, HART201993, Zhang2022}.
+Since the inception of the UTAUT model, several works in the healthcare domain have employed and modified the model to study adoption and usage for new technological paradigms~\cite{KALAVANI2018287}.
+These studies show that the UTAUT model and its modified model are applicable in explaining technological adoption in healthcare settings.
 
-\subsection{Raised Labeling Problems}
-\label{sec:sec004002001}
+This paper examines clinicians' perceptions and attitudes towards AI applications in the medical imaging workflow.
+Through a case study addressing an international perspective of healthcare practitioners, the research purposes of this work are:
+(1) to investigate the effects of intelligent agents on technology adoption and especially security, risk, and trust;
+(2) to increase our understanding of differences in the determinants of trust and acceptance in technology use; and
+(3) to improve the explanatory power and predictive accuracy of a parsimonious questionnaire based on the well known UTAUT constructs for broader application in Human-Computer Interaction (HCI) and AI research communities.
+To this end, we used the UTAUT model as reported in several works~\cite{BOOTSMAN201999, DEANGELI2020102412, HART201993, HOEHLE201635, LOOIJE2010386, MCGLYNN201733, MOORE2022102784} to analyze clinicians' intention to use an AI system.
+However, the novelty of this paper is to reach a sustainable model built from UTAUT in a specific healthcare domain, such as the medical imaging workflow.
 
-\ac{AI}-assisted interfaces already showed breakthroughs in the clinical domain (or in this case, the breast cancer diagnosis), through high quality data ({\it i.e.}, the \ac{BI-RADS} classification provided by \ac{DL} methods) with annotations~\cite{https://doi.org/10.13140/rg.2.2.25412.68486}.
-In part, the goal behind the thesis work is to integrate a \ac{CNN} for each modality ({\it i.e.}, \ac{CNN} channel), and then to perform a ``deep fusion'' over the different channels~\cite{liu2019sdfn, wei2019medical}.
-This will allow the work to implement, integrate and use the learned high-level features of all channels.
-Such channels are finding patterns on lesion masses and microcalcifications.
-The training is  supervised, or semi-supervised~\cite{philbrick2019ril, zhao2019data, zhou2019collaborative}, meaning that the deep architecture will need the ground-truth (annotations and \ac{BI-RADS} classification) obtained via the support of a multimodality strategy~\cite{huang2019diagnosis, soffer2019convolutional}.
-Therefore, the support for multi-modal \acp{UI}~\cite{gotz2019mitk, wels2019general} is a fundamental step in the development of such contributions.
-This will also enable radiologists to intervene in the workflow, whenever a new image is added to the network.
-In addition, the concept of  ``{\it aging the net}''~\cite{smailagic2019medal} is also reachable, meaning that a \ac{CNN} architecture can be fully supervised, trained as more examples are ready to be provided into the network.
+The rest of this article is organized as follows.
+First, we start by providing an overview of the current literature (Section~\ref{sec:chap004002}).
+Then we describe the research questions, the hypotheses, and methods adopted for this study, as well as the results (Sections \ref{sec:chap004003}, \ref{sec:chap004004}, and \ref{sec:chap004005}).
+The work outcomes are analyzed, discussed, and the limitations of the research are presented, also considering the particular context of the research, the medical imaging workflow (Sections \ref{sec:chap004006}, \ref{sec:chap004006002} and \ref{sec:chap004006003}).
+At the end of the paper, we present the future directions and conclusion (Sections \ref{sec:chap004006004} and \ref{sec:chap004010}).
 
-\subsection{Cancer Detection and Diagnosis}
-\label{sec:sec004002002}
+\section{Background}
+\label{sec:chap004002}
 
-Frequently used in cancer detection and diagnosis, \ac{ML} has been recently applied for cancer prognosis and prediction~\cite{KOUROU20158}.
-In fact, the ability of \ac{ML} tools to detect key features from complex datasets reveals their importance.
-This latter approach is particularly interesting as it is part of a growing trend towards personalized and predictive medicine.
-At a more fundamental level, it is also evident that these tools are also helping to improve a basic understanding of cancer development and progression.
-Several works are assembling this review~\cite{https://doi.org/10.1111/cen.12731, antonanzas2015some, hood2011predictive}, conducting a broad research for different types of used tools~\cite{Huang_2017_CVPR, 8515234, 10.1007/978-3-030-00934-2_99}, types of data being compared~\cite{MOREIRA2012236, 7813261, shen2019deep} and the characteristics of these tools in cancer predictions and prognosis~\cite{KOUROU20158, hood2011predictive}.
-However, a number of studies~\cite{Cai:2019:HTC:3290605.3300234, 10.1167/tvst.8.6.40} are also appearing to lack on appropriate level of features to support the proposed tool for a standardized generation of a datasets with medical imaging annotations.
-Making the contribution of this chapter so important.
+This section presents the background regarding the main topics addressed in this paper.
+The first part (Section~\ref{sec:chap004002001}) provides an overview of Clinical Decision Support Systems (CDSS) and the impact of AI systems on the healthcare sector.
+The second part (Section~\ref{sec:chap004002002}) deals with the technology measures and respective challenges involved within the medical imaging workflow on a clinical engagement perspective.
+Finally, the last part (Section~\ref{sec:chap004002003}) surveys the technology adoption scales and methodology, which we used and extended in our study.
 
-Some contributions~\cite{10.1001/jamainternmed.2015.5231, jiang2018interpretation, 10.1145/3373017.3373051} are showing how the use of their \ac{CADe} systems can output different lesion displays.
-Addressed in this chapter, the authors' ideas are followed for providing accurate representations of areas in subsequent exams.
-Since the \ac{CADe} output is not used during the initial reading, the radiologist does not mark it until a final determination is reached.
-Furthermore, \acp{ROI} are indicated in the context of a particular anatomical detail.
-The work developed by Jalalian et al.~\cite{JALALIAN2013420} assists the technologist, other physicians and patients in more efficiently and accurately way, locating the exact area for subsequent exams.
-The work presents several advantages and disadvantages in comparison to the proposed framework under this chapter.
-First of all, the work is related and ready for both medical imaging technologies and is applied for the breast cancer domain.
-Moreover, this work is ready for a multimodality strategy with lesion annotations on a remote fashion.
-Despite the completeness of their solution, it does not provide a standardized generation of a dataset with medical imaging annotations.
+\subsection{Impact of AI in Medical Imaging}
+\label{sec:chap004002001}
 
-\subsection{User Sharing and Collaboration}
-\label{sec:sec004002003}
+Medical imaging systems allow the end-user to diagnose several imaging modalities, such as Computed Tomography (CT), UltraSound (US) or Magnetic Resonance Imaging (MRI), from the retrieval of medical imaging data~\cite{WO2022071818A1, faraji2019radiologic, seifabadi2019correlation}.
+Bringing those modalities together offers new possibilities for quantitative and qualitative imaging and diagnosis, but also requires specialized data handling, post-processing and novel visualization methods~\cite{Igarashi:2016:IVS:2984511.2984537, Ocegueda-Hernandez:2016:CMN:2876456.2879485, Sousa:2017:VVR:3025453.3025566}.
+In the clinical domain, medical imaging tools can help experts make better decisions~\cite{Lopes:2017:UHC:3143820.3144118}, {\it e.g.}, by identifying cancer prognostics among the available multi-modal data~\cite{calisto2017mimbcdui, lopes2018interaction}.
 
-Nowadays, technology may miss significant and relevant cross information between clinicians~\cite{10.1145/3313831.3376710}.
-Even though, when leading clinicians diagnose to their patients through several data recordings.
-Concerning the above raised set of problems, during the literature review it was observed a lack of system features for sharing and collaborative tools that should be addressed.
+AI has a lot of potential in medicine, especially, in the domain of image processing specialties, such as pathology, radiology, and dermatology, among others~\cite{EVANS2022281, MULLER202267}.
+The domain of possible applications is growing exponentially.
+Categorically, to assist clinicians in diagnostic and treatment planning.
+In fact, AI is currently thriving largely due to tremendous advances in the domain of statistical machine learning, as well as the availability of large amounts of training data and increasing computational power~\cite{10.1145/3399715.3399744}.
+Unfortunately, the most powerful methods suffer from both difficulty in explaining why a particular result was obtained and a lack of robustness~\cite{make4020026}.
 
-Sargent et al.~\cite{10.1007/978-3-030-59725-2_21} are presenting a diagnosis support system providing automated guidance to a user by automated retrieval of similar disease images and user feedback.
-High resolution standardized labeled and unlabeled, annotated and non-annotated images of diseased tissue in a database are clustered, preferably with expert feedback.
-Similarly, several other contributions~\cite{10.3389/fphy.2018.00051, DALILA2017749} are offering the feature of lesion annotations on a clinical environment using medical imaging technologies.
-However, these contributions are limited in other ways.
-Most importantly, the contributions do not provide a sharing and collaborative tool between clinicians, as well as institutions.
-Moreover, all of these contributions are not ready for a multimodality strategy of a breast cancer diagnosis.
+The most powerful machine learning models are very sensitive to even small changes.
+In fact, such perturbations in the input data can have a dramatic impact on the output, leading to completely different results.
+Therefore, for trust and trustworthy AI systems, two concepts are necessary: explainability/traceability and robustness.
 
-\subsection{Distributed and Remote Accessible}
-\label{sec:sec004002004}
+There has been a corresponding representation of trust and trustworthy AI systems in the literature, such as the work developed by Holzinger et al.~\cite{10.1007/978-3-030-93736-2_33}.
+To this end, Muller et al.~\cite{9473208} concluded that the most important issues are transparency, accountability, and trust, as well as values of fairness, justice, and equity because these are prerequisites to integrating AI systems, such as CDSS tools, into daily practice.
 
-In this section, the thesis takes into consideration a set of contributions.
-Regarding the available literature of remote and diagnostic systems in medical imaging, several works are addressed.
-Here, the document addresses the several contributions, while demonstrating what are the advantages and disadvantages in comparison to the proposed framework in this chapter.
-For instance, the work developed by Schaekermann et al.~\cite{10.1167/tvst.8.6.40} is presenting and evaluating a remote, tool-based system and structured grading rubric for adjudicating (Section~\ref{sec:sec003005}) image-based diabetic retinopathy grades~\cite{10.1145/3359178}.
-However, their tool is not prepared trivially for breast cancer diagnostic.
+There is a wide range of CDSS representing a paradigm shift in healthcare~\cite{Cai:2019:HTC:3290605.3300234, edge2019clinical}.
+These systems can provide clinicians with the knowledge to enhance the clinical workflow.
+Specifically, the application of CDSS into the healthcare workflows can range from systems that supply information for medical decision-making to systems that make autonomous diagnostic decisions~\cite{hwang2019artificial}.
+Although several studies have shown that a CDSS can reduce medical error and improve outcomes~\cite{Cai:2019:EEE:3301275.3302289, Cai:2019:HTC:3290605.3300234}, one traditional difficulty is to understand how user trust and acceptance is perceived during the patient diagnostic.
 
-In the work developed by Sirintrapun et al.~\cite{10.1200EDBK200141}, the authors have studied telemedicine uses of telecommunications technology as a tool to deliver better patient care in populations with limited access to care.
-Simirlarly, works like Li et al.~\cite{10.1007/978-3-319-59050-9_28} and Gibson et al.~\cite{GIBSON2018113} contributed for the development of the \href{https://github.com/NifTK/NiftyNet}{NiftyNet}\footnotemark[11] platform, an open-source platform for \ac{DL} in medical imaging.
-The authors did a great work, developing a solid and useful tool for the community.
-However, the tool relies on segmentation methods of multiple abdominal organs, brain \ac{MRI} volumes, and \ac{US} images for specified anatomical poses, not much prepared for the breast typical use cases.
-Moreover, the tool does not provide any classification functionality, which make it impossible to properly classify the image and each type of potential lesions.
-Making it unsuitable for breast cancer purposes ({\it e.g.}, a functionality for lesion annotations of masses or microcalcifications is missing) and, therefore, the main motivation to the development of a new framework such as the one presented in this chapter.
+Clinicians may resist using a system if it does not capture the degree of their mental models or provides relevant context~\cite{khairat2018reasons, kohli2018cad, yang2016investigating}.
+On the other hand, clinicians are known to resist changes and new tools~\cite{calisto2017mimbcdui, 10.1145/3132272.3134111, gagnon2014electronic}, an issue that has an impact in their workflow.
+There have been numerous literature examples~\cite{eslami2012effects, jia2016effects} in the past of CDSS success stories, but notable setbacks are also showing us that CDSS are not efficiently integrated without user trust and acceptance~\cite{Sutton2020}.
+Thus, studying these systems' adoption is fundamental to understanding the determinants of trust and acceptance in AI use across the healthcare sector, or more specifically, in the medical imaging workflow.
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\footnotetext[11]{\href{https://github.com/NifTK/NiftyNet}{NiftyNet} (\href{https://niftynet.io/}{niftynet.io}) is a \href{https://www.tensorflow.org/}{TensorFlow}-based open-source \ac{CNN} platform for research in medical image analysis and image-guided therapy. The platform modular structure is designed for sharing networks and pre-trained models. The links were assessed in November 2020.}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Challenges in Adoption of AI Systems}
+\label{sec:chap004002002}
 
-\section{Framework Details}
-\label{sec:sec004003}
+AI systems potentially change clinicians' workflow within the healthcare sector~\cite{wallis2019artificial}.
+In the past, clinical research has focused on tasks where AI can effectively demonstrate its performance with a human doctor~\cite{Buch143}.
+However, the levels of adoption and acceptance regarding a real-world integration of AI systems into the medical imaging workflow remains scarce~\cite{Fan2020}.
 
-In conjunction with the following figures and diagrams, it will be better understood the specific embodiment of the presented framework.
-In this section, the document describe a more complete understanding of the available functionalities and advantages for the proposed tool.
-In this thesis, a tool called {\it BreastScreening} was designed under the following framework technical specifications.
-While making and using various embodiment items, the framework characteristics and tool design are discussed in detail below.
-As appreciation, the presented contribution provides many applicable concepts that can be embodied in a wide variety of medical imaging contexts.
-The specific embodiment items are discussed herein and are merely illustrative of specific ways to make and use the framework, not limited to the scope of the breast domain.
+Several AI systems have been developed and proposed to support the healthcare sector.
+McKinney et al.~\cite{McKinney2020} developed an AI system that is capable of surpassing human experts in breast cancer prediction.
+The work developed by Cai et al.~\cite{Cai:2019:HTC:3290605.3300234} identify the needs of clinicians when searching for similar images using a DL algorithm.
+Their work demonstrates how a CDSS can directly address the issues of user acceptance and trust during a medical image search.
+Finally, the work investigated by Yang et al.~\cite{10.1145/3290605.3300468} describes the design and field evaluation of a radically new CDSS.
+The authors developed a system that automatically generates information for clinicians' decision-making with subtly embedded machine prognostics in this work.
 
-\subsection{User Interface}
-\label{sec:sec004003001}
+Many surveys have been performed to classify and discuss AI systems in the clinical healthcare sector~\cite{CORONATO2020101964, LANGER2021106878, PELAU2021106855, STADIN2021106486}.
+AI has been promptly identified as a powerful tool to extend and augment human creativity, thinking, as well as decision-making ability~\cite{CORONATO2020101964}.
+To deal with some remaining challenges, many authors have examined the ethical dimension of AI-based tools~\cite{10.1145/3311957.3361858, LANGER2021106878, PARK2021106795}.
+Bennett et al.~\cite{10.1145/3311957.3361858} explores the ethical and social impact of several AI specialists, examining and providing insight into the various interactions impacting ethical decision-making in AI-based system development.
+Similarly, Langer et al. review the literature investigating reactions to automated and augmented decision-making by automated/augmented decisions and the parties who observe the effects of such decisions.
+In terms of language usage, Park et al.~\cite{PARK2021106795} examined the concepts of ethical ideology, social competence, and perceived humanlikeness of AI chatbots.
+Examples of these challenges are the validity and necessity of the research, privacy requirements, the autonomy of the users, possible discrimination risks, and the risk of re-purposing retrieved data for other aims~\cite{DEANGELI2020102412}.
+These issues are closely connected with several ethical principles, such as autonomy, privacy, solidarity, justice, are fundamental to recommendations for AI-based digital tools.
 
-For this framework and consequent design of a tool within the purpose of annotating breast cancer lesions and patient classification, the \ac{UI} consists of two main components:
-{\it 4. List of Patient Views}; and
-{\it 5. Medical Imaging Diagnosis Views}.
-These two main components (Figure \ref{fig:fig003} and Figure \ref{fig:fig028}) are also divided into several sections:
-{\it 4.1. List of Patients};
-{\it 4.2. Header};
-{\it 4.3. Help};
-{\it 4.4. About};
-{\it 4.5. Study List Tabs};
-{\it 5.1. Viewports};
-{\it 5.2. Toolbars}; and
-{\it 5.3. Modality Selection}.
-The first tool view is the {\it 4. List of Patients Views}.
-With this view, clinicians can quickly choose the respective {\it 4.1. List of Patients}.
-Using the \ac{BI-RADS} functionality ({\it 6.3.1.~Physician Severity}), clinicians can now classify (Figure \ref{fig:fig003}) the severity of the breast lesion for each patient.
+Despite the plethora of AI tools proposed for the healthcare sector~\cite{kohli2018cad, madani2018deep, McKinney2020, sundaram2018predicting}, many are still debated due to ethical challenges and critical issues regarding user perceptions and preferences~\cite{Fan2020, Sutton2020}.
+The development and importance of AI applications, based on clinician engagement and participation into the design of such applications, have been proposed as an alternative~\cite{Cai:2019:HTC:3290605.3300234, CALISTO2021102607, Oh:2018:ILY:3173574.3174223, Sousa:2017:VVR:3025453.3025566}.
+Through a human-centred approach, Calisto et al.~\cite{CALISTO2021102607} revealed that a participatory design could help understand the medical workflow to address clinicians' needs adequately.
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{figure}[ht]
-\centering
-\includegraphics[width=\textwidth]{images/fig003}
-\caption{{\it BreastScreening} provides clinician support to easily access and switch between the patient views. When accessing the assistant, the first screen shows the list of patients. Each row of the table, represents a patient. Each patient has a {\bf Patient ID}, {\bf Study Date}, {\bf Modality} (one or more), {\bf Study Description} and number of {\bf Images}.}
-\label{fig:fig003}
-\end{figure}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Models of Technology Adoption}
+\label{sec:chap004002003}
 
-\subsubsection{List of Patients}
-\label{sec:sec004003001001}
+Models of technology adoption are among the most used for studying individual intentions to adopt technology~\cite{HOEHLE201635, MOORE2022102784}.
+The Technology Acceptance Model (TAM)~\cite{RePEc:inm:ormnsc:v:35:y:1989:i:8:p:982-1003} and UTAUT~\cite{10.2307/30036540} is designed to measure people’s attitude towards technology.
+TAM was adapted from the Theory of Reasoned Action (TRA)~\cite{AJZEN1991179}, a framework that explains human behavior.
+Although the TAM is a useful theory, it has some shortcomings, such as the lack of social and organizational dynamics~\cite{LEGRIS2003191}.
 
-The first information (Figure~\ref{fig:fig003}) pointed by clinician (Chapter~\ref{chap:chap005}) is the {\it 4. List of Patient Views} so that the clinician can quickly choose the respective {\it 4.1. List of Patients} for the task for classifying ({\it i.e.}, providing the \ac{BI-RADS}) the breast severity of each patient.
-This {\it 4.1. List of Patients} contains the most important and needed information avoiding the excess of information typically presented on these systems.
+To solve some of these issues~\cite{772658}, UTAUT has been proposed by bringing together several user acceptance models, including TAM and TRA.
+According to the UTAUT, the following indicators are connected with the use of an information system:
+(i) performance expectancy,
+(ii) effort expectancy,
+(iii) social influence, and
+(iv) facilitating conditions, these influence behavioral intention and use behavior.
+These are the main predictors of behavioral intention, {\it i.e.}, that a person’s performance of a specified action is determined by his or her way intention to perform the task.
 
-Compared to early developments~\cite{10.1145/3132272.3134111, calisto2017mimbcdui}, the tool potentially improved the temporal awareness (Chapter~\ref{chap:chap005}) of the \ac{RRR} with the introduction of these functionalities.
-The {\it 4.2. Header} represents a shortcut to the {\it 4.1. List of Patients}.
-Also, if a clinician needs some support ({\it e.g.}, domain questions), providing both {\it 4.3. Help} and {\it 4.4. About} components on the \ac{UI} is giving clinicians' the information of how to proceed.
-For instance, these components were used mainly by Intern\footnotemark[12] clinicians, where they took advantage of this information gaining time over diagnostic.
-The {\it 4.5. Study List Tabs} gives the clinicians' opportunity to switch between the patient who is being diagnosed and the next patient to be open.
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\footnotetext[12]{The medical professional experience of clinicians was divided across the following categories: (1) Seniors - more than 10 years of medical practical experience; (2) Middles - more than 5 years but less than 10 years of medical experience; (3) Juniors - after taking the exam, up to 5 years of medical experience; and (4) Interns - limited medical experience.}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-During the patient diagnosis (Section~\ref{sec:sec002005002}) stage, each clinician selects one patient to perform the diagnostic.
-Then, a window will open the respective patient and the clinician can start manipulating the image according to a specific criteria.
-At this point the clinician can make two choices: (1) opens the image by dragging to the view-port; or (2) select the provided tools before opening the image.
-
-Given this set of tools, the developed framework is now equalizing the actual hospitals system in terms of functionalities.
-Moreover, the tool is improving the temporal awareness of clinicians in many clinical use cases.
-With this designed tool, not only the framework is giving the same number of needed functionalities to clinicians, but also providing researchers the opportunity to query clinicians' annotations and classifications remotely.
-Although, several functionalities were studied and are already being develop leading space for more workflow improvements.
-By providing future functionalities (Chapter~\ref{chap:chap008}), clinicians be able to do more in less time, which will influence the quality of the final annotations and classifications.
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{figure}[ht]
-\centering
-\includegraphics[width=\textwidth]{images/fig028}
-\caption{The multimodality view of the framework and designed tool. The UI components are as follows: {\it 4. List of Patient Views}; and {\it 4.5. Study List Tabs}; as well as {\it 5. Medical Imaging Diagnosis Views}; {\it 5.1. Viewports}; {\it 5.2. Toolbars}; and {\it 5.3. Modality Selection}.}
-\label{fig:fig028}
-\end{figure}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\subsubsection{Medical Imaging Diagnosis}
-\label{sec:sec004003001002}
-
-In the last section, the document introduced the concept of {\it 4.1. List of Patients} for the patient diagnostic task.
-In this section, the document is introducing the concept of {\it 5. Medical Imaging Diagnosis Views} (Figure~\ref{fig:fig028}) from the designed tool.
-As follows, more details are describing each functionality.
-
-Concerning the point {\it 5. Medical Imaging Diagnosis Views}, the component is mainly supported by the management of viewports, set of toolbars and modality selection.
-As already said, this component is contributing for the temporal awareness\footnotemark[13] of each clinician by providing other functionalities.
-More specifically, the clinician can probe for lesion patterns via the {\it 5.1. Viewports} functionality and processing the image by using the {\it 5.2. Toolbars} (Figure~\ref{fig:fig008}) functionalities.
-
-Each time the {\it 5.2. Toolbars} functionalities are activated, the clinician needs to perform a simple and easy interaction with the medical image to configure it as desired.
-Using the {\it 5.2. Toolbars} (Figure~\ref{fig:fig008}) on the {\it 5.1. Viewports}, the clinician can locate the lesions and classify the lesions severity (\ac{BI-RADS}).
-Furthermore, {\it 5.2. Toolbars} (Figure \ref{fig:fig028}) were positioned so as to correspond the clinician's expectations, an outcome of the observations and interviews phases.
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\footnotetext[13]{A statistical analysis was published regarding those values. For that, internet connection is needed to have access to it. The statistical data page (\href{https://mimbcd-ui.github.io/statistical-analysis/mm_measures_time_vs_clicks.html}{mimbcd-ui.github.io/statistical-analysis}) was accessed on the 30th of November, 2020.}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\subsubsection{Toolbars}
-\label{sec:sec004003001003}
-
-Current functionalities (Figure~\ref{fig:fig008}) for image processing are including:
-{\it 5.2.1. WW/WC} (Window Width/Window Contrast);
-{\it 5.2.2. Invert};
-{\it 5.2.3. Zoom};
-{\it 5.2.4. Pan};
-{\it 5.2.5. Stack-Scroll};
-{\it 5.2.6. Windows};
-{\it 5.2.7. Freehand};
-{\it 5.2.8. Probe}; and
-{\it 5.2.9. Save}.
-These functionalities are included on the multimodality views (Figure~\ref{fig:fig028}) of developed framework.
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{figure}[ht]
-\centering
-\includegraphics[width=\textwidth]{images/fig008}
-\caption{The {\it 5.2. Toolbars} of the developed framework and designed tool. Currently, the available features are: {\it 5.2.1. WW/WC}; {\it 5.2.2. Invert}; {\it 5.2.3. Zoom}; {\it 5.2.4. Pan}; {\it 5.2.5. Stack-Scroll}; {\it 5.2.6. Windows}; {\it 5.2.7. Freehand}; {\it 5.2.8. Probe}; and {\it 5.2.9. Save}.}
-\label{fig:fig008}
-\end{figure}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-The contrast and brightness can be adjusted by selecting the {5.2.1. WW/WC} option on the {\it 5.2. Toolbars} and then left-clicking over the image configuring it by moving the mouse at the same time.
-The same interaction technique is applied for {\it 5.2.3. Zoom}, {\it 5.2.4. Pan} and  {\it 5.2.5. Stack-Scroll}.
-To invert the pixels of the image, user just needs to select the (2) {\it 5.2.2. Invert} on the {\it 5.2. Toolbars}.
-The {\it 5.2.6. Windows} will open a drop-down list of possible viewport designs ({\it i.e.}, $1\times 1$, $2\times 1$, $1\times 2$ and $2\times 2$).
-
-In this chapter, the document focus on the delineation of lesion contours (Section~\ref{sec:sec004003002001}) and respective generation of the annotations (Section~\ref{sec:sec004003002002}).
-Notwithstanding, the lesion contours are concerning the masses and microcalcifications regarding the breast cancer disease.
-On the same hand, the generation of annotations process is creating a standardized dataset and storing this information on a remote server.
-That said, despite highly useful for the patient diagnostic and for the image segmentation (Section~\ref{sec:sec004003002002}), this chapter focus does not rely on the latter ({\it e.g.}, {\it 5.2.1. WW/WC}, {\it 5.2.2. Invert}, {\it 5.2.3. Zoom}, {\it 5.2.4. Pan}, {\it 5.2.5. Stack-Scroll} or {\it 5.2.6. Windows}) features.
-Instead, we are focusing this document on two main features:
-{\it 5.2.7. Freehand}; and
-{\it 5.2.8. Probe}. With a third feature being fundamental to {\it 5.2.9. Save} these two features ({\it i.e.}, {\it 5.2.7. Freehand} and {\it 5.2.8. Probe}) on a remote server.
-
-\subsection{Image Segmentation}
-\label{sec:sec004003002}
-
-With respective functionalities (Figure~\ref{fig:fig028}), the framework {\it 5.2. Toolbars} are supporting the lesion segmentation (Figure~\ref{fig:fig004}) ordered by user preference.
-The {\it 5.1. Viewports} are displayed right after the {\it 5.2. Toolbars}, designing around and for medical images, what improves the temporal awareness of the task and, in the same time, contributes for supporting the way how to interact with several modalities on a multimodality strategy.
-This tool is now providing clinicians the opportunity to manually delineate (Section~\ref{sec:sec004003002001}) the lesion contours.
-The manual segmentation is provided towards their estimation of the ground-truth while manually adding bullet points between the red polygon and the dashed gray square.
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{figure}[ht]
-\centering
-\includegraphics[width=\textwidth]{images/fig004}
-\caption{In this work, medical image segmentation is defined as the process of manually draw for boundaries within various modalities of images. The goal of the clinician is to annotate the lesion between the red polygon and the dashed gray square.}
-\label{fig:fig004}
-\end{figure}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\subsubsection{Lesion Delineation}
-\label{sec:sec004003002001}
-
-Manual annotations (Figure~\ref{fig:fig007}) are very useful to extract features like contours, intersections, shapes (Figure~\ref{fig:fig021}) and image patterns (Figure~\ref{fig:fig022}).
-For a proper classification to be integrated into intelligent agents, the tool can be used in the process of lesion delineation and segmentation.
-The \ac{AI} algorithm then utilizes this closed contour line information to infer the labels for remaining image elements.
-In comparison to early developed work~\cite{calisto2017mimbcdui}, this tool functionality is now reducing the overall annotating process of one lesion to take less user interaction time~\cite{10.1145/3132272.3134111, 10.1145/3399715.3399744}.
-However, reaching an appropriate or even perfect segmentation leads space for improvements, which are addressed as future work (Chapter~\ref{chap:chap008}) under this thesis.
-In fact, the proposed interactive approach aims at a fast and exact segmentation with knowledge about estimates of the true lesion extent.
-During this process, clinicians are providing and generating new information transformed into an important dataset for the \ac{AI} community.
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{figure}[ht]
-\centering
-\includegraphics[width=\textwidth]{images/fig007}
-\caption{Labels of the Lesions~\cite{nadia2020maivell} - the grey area is the lesion, the yellow represents the annotations taken by the radiologist, the green area represents the shape volume. The image on the right aims to explain how the coordinates are represented. The image on the left aims to explain how the annotations are visually appearing on the screen.}
-\label{fig:fig007}
-\end{figure}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-In this section, the document explains how the chapter is contributing for the delineation and annotation (Section~\ref{sec:sec004003002002}) of medical images.
-Here, the document refers to lesion delineation as the \ac{ROI} area of the lesion which is delineated by a clinician, such as a radiologist.
-Further explained (Figure~\ref{fig:fig007}), the document will visually provide the relations between lesion and delineation process.
-
-\subsubsection{Lesion Annotations}
-\label{sec:sec004003002002}
-
-In this framework, the user interact with the \ac{UI} making bullet points (Figure~\ref{fig:fig007}), which can be connected ({\it i.e.}, by selecting the {\it 5.2.7. Freehand} functionality for masses) or not ({\it i.e.}, by selecting the {\it 5.2.8. Probe} functionality for microcalcifications), among the contours of the lesion.
-Each bullet point is referenced to an \texttt{x} and \texttt{y} pair of coordinates.
-The \texttt{x} and \texttt{y} coordinates (Section~\ref{sec:sec004004}) are the position on the image.
-With this, it can be measured the ground-truth of the lesion, {\it i.e.}, {\bf Shape Volume} (Figure~\ref{fig:fig007}), and give this information to the \ac{ML} algorithms.
-Also, it is now possible to autonomously classify the margins and shapes of masses (Figure~\ref{fig:fig021}), as well as the distribution patterns of calcifications (Figure~\ref{fig:fig022}).
-
-\section{Framework Description}
-\label{sec:sec004004}
-
-The goal of this section is to describe the properties and environment characteristics of the framework, having a basic architecture already implemented~\cite{calisto2017mimbcdui}.
-As explained before, the purpose of this tool is to work on the \ac{RRR}.
-This means that it must be adjusted to a traditional environment (\textit{e.g.}, computer desktop, keyboard and mouse in a dark room), and reliable due to the personal and medical stored information.
-Given this situation, a secure but easily accessed framework for clinicians to work with is a requirement.
-The herein tool is a distributed system that allows a secure and easy access to information and the manipulation of medical images.
-With this kind of image manipulation, in the annotation of the images case, the community can train the \ac{ML} algorithms under control, where the generated data is supervised by both clinicians and researchers in a human-in-the-loop~\cite{10.1145/3306618.3314293} setting.
-
-\subsection{Technologies}
-\label{sec:sec004004001}
-
-Concerning the selected technologies, the development decision relies on the available and powerful technologies from the open-source\footnotemark[14] community.
-Technological selection criteria was based on robust technologies which will mitigate the limitations of this framework.
-For this reason, all the decisions must be balanced.
-Thankfully, many selected technologies are heavily used by the open-source community, making it strong and robust for the purpose.
-Nevertheless, it must be underlined the following.
-Although developments under this work are using open-source technologies for this framework, they will \underline{serve as a {\it proof-of-concept} only} and are serving in this thesis research work.
-The purpose of this framework is to suggest new tools to be integrated with several intelligent agents.
-The technologies can be changed according to the needs of both domain and environment.
-Therefore, a conflict between open-source technologies and this thesis contribution does not exist.
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\footnotetext[14]{The advantage of using an open-source setup is that users can tailor it to their requirements, while proprietary setups are a set configuration of functionalities that cannot be changed. Even when the initial tool does not address a specific need, the community will guide researchers and help them to develop a new tool. In this thesis, an open-source setup was used to enable collaboration of individuals and groups promoting the development of intelligent agents that meet user needs.}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\subsubsection{Source Code}
-\label{sec:sec004004001001}
-
-To maintain the framework, the proposed source code must remain simple and secure.
-Moreover, the source must provide functionalities such as storing medical exams, use browsers to run the solution and must be a remote distributed system-prepared.
-By choosing where to present the deployed tool, namely in a browser, choosing to use \href{https://www.sciencedirect.com/topics/computer-science/javascript-code}{JavaScript} as the programming language to run and manipulate the medical images made the best option.
-With this programming language it is possible to manipulate those \ac{DICOM}~\cite{Trivedi2019} files.
-Thereafter, the developed work used a library focused on medical imaging manipulation, \href{https://cornerstonejs.org/}{CornerstoneJS}\footnotemark[15], which be will be explain in detail later.
-We will also need to have image visualization for what we use \href{http://vanilla-js.com/}{VanillaJS}\footnotemark[16], which we will also explain in detail later.
-In terms of source code, the web application uses \href{https://www.sciencedirect.com/topics/computer-science/javascript-code}{JavaScript}, which is an \href{https://www.sciencedirect.com/topics/computer-science/object-oriented-programming}{\ac{OO}} language, \href{https://www.sciencedirect.com/topics/earth-and-planetary-sciences/document-markup-languages}{\ac{HTML}} and \href{https://www.w3schools.com/css/}{\ac{CSS}} technologies.
-This source is powerful and flexible.
-Based on this, we are going to use all three of them in this invention as a {\it proof-of-concept}.
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\footnotetext[15]{Comparing to other libraries in the same field, the advantaged point of \href{https://cornerstonejs.org/}{CornerstoneJS} (\href{https://cornerstonejs.org/}{cornerstonejs.org}) is a collection of clear instructions and examples which are available in an intuitive \href{https://docs.cornerstonejs.org/}{library documentation}. Therefore, it can help developers and researchers saving time for developing process of their applications. These links were accessed on the 1st of December, 2020.}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\footnotetext[16]{\href{http://vanilla-js.com/}{VanillaJS} is a name that refers to the using plain \href{https://www.sciencedirect.com/topics/computer-science/javascript-code}{JavaScript} without any additional libraries ({\it e.g.}, \href{https://reactjs.org/}{ReactJS}, \href{https://angularjs.org/}{AngularJS}, etc). In this thesis, \href{http://vanilla-js.com/}{VanillaJS} was used to implement the main functionality and handlers for the tool requirements. Again, all of these links were accessed on the 1st of December, 2020.}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\hfill
+\vspace{2.00mm}
 
 \noindent
-The JavaScript allows multi-paradigm approaches, such as:
+The next items describe the meanings of the above constructs from~\cite{10.2307/30036540}:
+
+\vspace{0.00mm}
+
+\begin{itemize}
+\item Performance Expectancy: it is the ``[...] the degree to which an individual believes that using the system will help him or her to attain gains in job performance.'' (\cite{10.2307/30036540} p. 447);
+\item Effort expectancy: it is the ``[...] degree of ease associated with the use of the system.'' (\cite{10.2307/30036540} p. 450);
+\item Social Influence: it is the ``[...] the degree to which an individual perceives that important others believe he or she should use the new system.'' (\cite{10.2307/30036540} p. 451);
+\item Facilitating Conditions: it is the ``[...] the degree to which an individual believes that an organizational and technical infrastructure exists to support use of the system.'' (\cite{10.2307/30036540} p. 453).
+\end{itemize}
+
+\vspace{0.00mm}
+
+Technology adoption models ({\it e.g.}, TAM and UTAUT) are applied successfully in many different applications and domains, as reviewed by Venkatesh et al.~\cite{venkatesh2016unified}.
+The model is widely accepted and was also subject to several extensions emerging from specific contexts ({\it e.g.}, security, privacy, etc.)~\cite{MCGLYNN201733}.
+However, these models are subject to criticism for promoting a deterministic approach without much consideration for users’ characteristics~\cite{https://doi.org/10.1002/mar.20823}.
+
+The works of Khalilzadeh et al.~\cite{KHALILZADEH2017460} and Shin et al.~\cite{SHIN20091343} investigates security-related factors in the field of e-commerce by integrating UTAUT and TAM and extending them with security constructs, such as perceived security, perceived risk, and trust.
+By generalizing the definitions found in~\cite{KHALILZADEH2017460, mandrik2005exploring, SHIN20091343}, (i) perceived security is described as the degree to which a user believes that using a particular information system procedure will be secure; (ii) perceived risk is uncertainty or anxiety related to the (possible negative) final result of an action, behavior, or a situation; and finally, (iii) trust is defined as the belief that will perform some activity following users’ expectations.
+
+The literature shows that many new solutions are considered inherently risky, then perceived risk has been a common extension of UTAUT~\cite{KHALILZADEH2017460, https://doi.org/10.1002/mar.20823, williams2011utaut}.
+Moreover, Thakur et al.~\cite{Thakur2014} measured perceived risk as a second-order factor consisting of security risk and privacy risk; their findings supported their hypothesis that risk negatively affects adoption intention.
+Because trust is a component of expectation, it is possible to infer an effect of trust on performance and effort expectancy~\cite{Lee:2013:0301-2212:587}.
+Trust is a subjective belief that a party will fulfill their obligations, and it plays an important role in specific domains ({\it e.g.}, healthcare), where users are vulnerable to greater risks of uncertainty and a sense of loss of control~\cite{LU2011393, ZHOU20131085}.
+
+As shown in~\cite{6038874}, in the e-health domain, privacy and security are essential topics that influence the use and acceptance of technology.
+In the study conducted by Schnall et al.~\cite{Schnall2015} in the context of mobile health technologies, similar findings revealed that privacy ({\it e.g.}, access to information), security, and trust concerns do exist among users of such applications~\cite{10.1145/3132272.3134111}.
+
+The UTAUT model, including its extensions, has also been used in the context of AI-based technologies across the healthcare sector.
+For instance, Huang et al.~\cite{huang2010cultural} investigated the moderating roles of cultural differences of healthcare practitioners on the relationships between the constructs in the UTAUT.
+Sohn et al.~\cite{SOHN2020101324} confirm that acceptance of highly innovative products with minimal practical value, such as intelligent agents, is more influenced by an interest in technology than in utilitarian aspects.
+Finally, the research carried out by Ye et al.~\cite{info:doi/10.2196/14316} centered on the public acceptance of ophthalmic AI-based systems, regarding those already used in China, and the interrelated influencing factors that shape people’s intention to use these systems.
+We build on these efforts to extend the UTAUT scale to measure users’ attitudes toward adopting novel AI systems into the medical imaging workflow.
+
+\section{Research Questions \& Hypotheses}
+\label{sec:chap004003}
+
+This study proposes a questionnaire adopted from the UTAUT model, incorporating variables such as trust, perceived usefulness (performance expectancy) and ease of use (effort expectancy).
+More specifically, the purpose of this work is: (i) to investigate the effects of AI on technology adoption, and especially, in terms of risk, privacy, and trust; (ii) to increase understanding of differences in the determinants of risk in technology use; and (iii) to improve the explanatory power and predictive accuracy of parsimony questionnaire based on known UTAUT constructs for broader research application across both AI and HCI communities.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{enumerate}
-\item {\bf Client-Side} Scripting Language - runs on the computer browser;
-\item {\bf \ac{OO}} Language - each ``object'' has its attributes and methods;
-\item {\bf Interpreted Language} - doesn't need to be compiled;
-\item {\bf Imperative} and \textbf{Declarative} - can change the state and show what it's doing but not how it is doing, respectively;
-\item {\bf Functional} Language - has mathematical based functions.
-\end{enumerate}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-Under this thesis, the current and future developed tools are basing the above list of approaches with respect to JavaScript technologies.
-The JavaScript technologies are implemented along with the \href{https://jquery.com/}{JQuery} library for \ac{HTML} manipulation, event handling, and \href{https://github.com/cornerstonejs/dicomParser}{\texttt{dicomParser}}\footnotemark[17] library, because it simplifies the coding.
-However, these technologies do not add functionality.
-Instead, these technologies are simplifying the code and minimizing it.
-What is great for framework maintainability purposes.
-The above mentioned approaches are used to develop all tool functionalities.
-Such technologies, are giving this work the ability to make visual representations on an easily way.
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\footnotetext[17]{The \href{https://github.com/cornerstonejs/dicomParser}{\texttt{dicomParser}} (\href{https://github.com/cornerstonejs/dicomParser}{github.com/cornerstonejs/dicomParser}) is a lightweight library for parsing \href{http://dicom.nema.org/medical/dicom/current/output/html/part10.html}{DICOM P10} byte streams in modern \href{https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5}{HTML5} based web browsers. The library is fast, easy to use and has no required external dependencies. These links were accessed on the 1st of December, 2020.}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-According to the current state of the developed framework, a tool was implemented using \href{https://cornerstonejs.org/}{CornerstoneJS}~\cite{urban2017lesiontracker} with a \href{https://nodejs.org}{NodeJS} server.
-To populate the framework tool, the user can upload sets of patients' images (Section~\ref{sec:sec002007}) into an \href{https://www.orthanc-server.com}{Orthanc Server}~\cite{Jodogne2018}.
-Each patient has three modalities (\ac{MG}, \ac{US}, and \ac{MRI}).
-The images can be pre-processed and anonymized (Section~\ref{sec:sec002008}) on the \href{https://www.orthanc-server.com}{Orthanc Server} and then consumed by the developed tool.
-This framework is designed as a set of modules that can be reused in other applications.
-The \href{https://cornerstonejs.org/}{CornerstoneJS} family of libraries are providing essential functions, such as
-(i) image rendering;
-(ii) \ac{DICOM} retrieval;
-(iii) tool support; and
-(iv) interpretation (UI).
-
-\subsubsection{DICOM Server}
-\label{sec:sec004004001002}
-
-In this work, it is used the \href{https://www.orthanc-server.com}{Orthanc Server}~\cite{Jodogne2018} distribution to store (Section~\ref{sec:sec002008}) the medical images.
-The advantage of using an \href{https://www.orthanc-server.com}{Orthanc Server} is that it is a lightweight server for medical imaging (\ac{PACS}) and it is an open-source project with a free software license.
-Also, it has the capability of managing and analyzing all of the contents (Figure~\ref{fig:fig030}), and offers the possibility of visualizing the images in the web browser.
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\hfill
-\begin{figure}[ht]
+\begin{figure*}
 \centering
-\includegraphics[width=\textwidth]{images/fig030}
-\caption{[DOI: \href{http://rgdoi.net/10.13140/RG.2.2.27402.93126}{10.13140/RG.2.2.27402.93126}] Image retrieval~\cite{calisto2019micpuw} from the Orthanc Servers to the DICOM viewer. In this figure, the DICOM viewer is supported by both CornerstoneJS library and Cornerstone Prototype. Now, radiologists can annotate each lesion providing this data to the DL Algorithms.}
-\label{fig:fig030}
-\end{figure}
-\hfill
+\includegraphics[width=0.885\linewidth]{fig073}
+\caption{The w, comparing the relations between moderating effects, model constructs and hypotheses. We adapted this proposed research model from the UTAUT theoretical model to explain the actual adoption of AI in the medical imaging workflow. The research model includes 10 factors. We measured each factor with multiple items. Moreover, we adapted all items from extant literature to improve content validity.}
+\label{fig:fig073}
+\end{figure*}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-A \ac{DICOM} server, like the \href{https://www.orthanc-server.com}{Orthanc Server}, its built-in RESTful API\footnotemark[18] architectures~\cite{6556444}.
-It can be used to drive it from external applications.
-For instance, the \href{https://cornerstonejs.org/}{CornerstoneJS} set of tools (Section~\ref{sec:sec004004001001}) and originated platforms.
-The Orthanc uses several \ac{DICOM} tags from the stored medical images in the \ac{JSON} file format.
-The structures for the stored \ac{DICOM} resources are fourfold identifiers:
-(1) Patient;
-(2) Study;
-(3) Series; and
-(4) Instance.
+This study proposes a questionnaire adapted from the UTAUT model.
+Specifically, the questionnaire incorporates variables such as facilitating conditions, social influence, perceived usefulness (performance expectancy), ease of use (effort expectancy), security, risk, and trust.
+To understand the relationship between variables and hypotheses, Figure~\ref{fig:fig073} presents the proposed acceptance/use model.
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\footnotetext[18]{This REpresentational State Transfer (RESTful API) is a well-documented set of HTTP paths against which it is possible to make HTTP requests with any client tool, such as the standard curl command-line tool. Similarly to \href{https://www.orthanc-server.com}{Orthanc Server}, the RESTful API is served through the embedded Mongoose HTTP server.}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+For testing the hypothesis, the questionnaire comprised 28 questions (items) for responses on a Likert-type scale, ranging from 1 -- ``Strongly disagree'', 2 -- ``Disagree'', 3 -- ``Undecided'', 4 -- ``Agree'', and 5 -- ``Strongly agree''.
+To ensure the content validity of the questionnaire used to assess each construct, we adapted all items from previous studies regarding the measurement of the constructs~\cite{BOOTSMAN201999, LOOIJE2010386}.
+We carefully reworded it to fit the context of AI applications into the medical imaging workflow.
+Although this work focuses on AI applications in the medical imaging workflow, the proposed model can be generalized to other AI systems, specially in the clinical domain.
 
-\subsubsection{Main Server}
-\label{sec:sec004004001003}
+\subsection{Items Based on UTAUT Constructs}
+\label{sec:chap004003001}
 
-Similar to other systems~\cite{HOSTETTER2018811}, the proposed framework utilizes a Front-end and a Back-end ecosystem integration for content management, image storage, and image display.
-In this section, it is described how the proposed web-based tool (Figure~\ref{fig:fig011}) was created with a Back-end architecture.
-By utilizing a common JavaScript framework called NodeJS, the tool was integrated into an existing ecosystem ({\it i.e.}, with CornerstoneJS and Orthanc Server).
-The Back-end comprises web server, image storage, content management, and was created with open-source technologies, as well as data storage protocols.
+Based on the original UTAUT constructs, we developed several hypotheses.
+Since it is newly developed, our study adopts an exploratory approach in hypothesizing the significant effects on user adoption.
+Under these hypotheses, we propose a conceptual framework for the empirical study.
+Not only our model covers the core determinants predicting the {\it intention to adopt} and {\it actual adoption} of AI, but it also allows the research community to analyze each moderator uncertainty that would constraint the effects of core determinants.
+Because it has been empirically tested and proven superior to other models~\cite{AJZEN1991179, RePEc:inm:ormnsc:v:35:y:1989:i:8:p:982-1003}, this study chooses UTAUT as a theoretical foundation to develop the hypotheses.
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{figure}[ht]
-\centering
-\includegraphics[width=0.90\textwidth]{images/fig011}
-\caption{[DOI: \href{https://doi.org/10.13140/rg.2.2.13834.62405}{10.13140/RG.2.2.13834.62405}] Schematic demonstrating both {\bf Front-end} and {\bf Back-end} components of the system with integrated medical imaging solutions. In our solution, we show the use of technologies such as {\bf NodeJS} and {\bf CornerstoneJS} for the {\bf Medical Imaging Viewers}, as well as the {\bf Orthanc Server} for the {\bf DICOM Server} component~\cite{https://doi.org/10.13140/rg.2.2.13834.62405}.}
-\label{fig:fig011}
-\end{figure}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-Metadata was stored and retrieved using \ac{SQL} and \ac{JSON} databases.
-The web server was written in JavaScript using NodeJS, an open-source server-side Back-end implementation of the JavaScript programming language that is powered by V8 JavaScript engine.
-NodeJS is a platform built on JavaScript runtime for easy building of fast, scalable network applications on all the operating systems.
-Furthermore, NodeJS uses an event-driven, non-blocking \ac{IO} model that makes it lightweight and efficient, suitable for data-intensive real-time applications that run across distributed devices.
-As a WebSocket library, NodeJS was used for the WebSocket communication.
-
-The net module, which provides asynchronous network wrapper for creating both \ac{TCP} servers and clients, was used with \ac{IP} interconnections.
-The NodeJS server listens on two ports for incoming \ac{DICOM} or WebSocket connections.
-By using a \ac{DICOM} server (Section~\ref{sec:sec002007}) as a \ac{PACS} (Section~\ref{sec:sec002008}), the NodeJS server knows what image size to expect from incoming \ac{TCP} connection.
-When this data is received, the \ac{DICOM} server sends the image to the web client over WebSocket connection.
-This method needs to be followed since, in web browsers, JavaScript does not support access to \ac{TCP}/\ac{IP} communication or \ac{DICOM} protocol.
-Making it vital to apply this method.
-
-\subsubsection{Summarizing Medical Imaging Viewers}
-\label{sec:sec004004001004}
-
-The developed tool is using CornerstoneJS~\cite{10.1117/12.2513004} as an application (Section~\ref{sec:sec004004001001}) that performs the rendering (Section~\ref{sec:sec004004001001}), the download (Section~\ref{sec:sec004004001002}) and some other functionalities (Section~\ref{sec:sec004003002}) across the images.
-In this section (Section~\ref{sec:sec004004001}), all of the above characteristics are discussed and summarized to cover the rendering (Section~\ref{sec:sec004004001001}) and communication (Section~\ref{sec:sec004004001003}) concerns in medical imaging.
-Moreover, the thesis is going to use this tool to operate the images (Figure~\ref{fig:fig011}), making use of functionalities (Section~\ref{sec:sec004003001003}) such as zoom, contrast, etc.
-The CornerstoneJS library can display interactive medical images (Section~\ref{sec:sec004003001002}) on any modern browser that supports the HTML5 canvas element.
-This includes desktops, mobile devices, and tablets.
-In short, the library is a zero-footprint viewer enabling access to images on a browser without requiring installation of additional software.
-Similar types of online medical imaging systems have been previously reported in the radiology literature~\cite{HOSTETTER2018811}.
-Those systems are supporting a full range of standard image viewing and manipulation functions including multimodality viewing with zoom, pan, as well as window and image levels.
-Annotation of masses (Section~\ref{sec:sec002004001}) and microcalcifications (Section~\ref{sec:sec002004002}) is also implemented (Section~\ref{sec:sec004003002}), allowing measurements of the lesion types (Section~\ref{sec:sec002004}), such as margins and shapes of masses (Figure~\ref{fig:fig021}), as well as microcalcification types (Figure~\ref{fig:fig022}).
-Measurements for the \acp{ROI} where developed, with the ability to draw among lesion masses and to bullet point the calcifications.
-
-\subsection{Annotated Data}
-\label{sec:sec004004002}
-
-The proposed solution will enable \ac{ML} communities to organize and promote medical imaging projects.
-As result of the generated dataset (Figure~\ref{fig:fig013}), the community can now have access to a tool, creating their own datasets of medical images and annotations, respectively.
-With this solution, the community has now a way for the data extraction and structured adjudication (Section~\ref{sec:sec003005}) of lesion annotations among the breast cancer disease.
-This data is saved to a set of \ac{JSON} files, one per each patient, where each file has \ac{JSON} objects organized into a standard structure.
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{figure}[htbp]
-\centering
-\includegraphics[width=\textwidth]{images/fig013}
-\caption{[DOI: \href{https://doi.org/10.13140/rg.2.2.33967.28323}{10.13140/RG.2.2.33967.28323}] Schematic diagram for the annotations flow and JSON file generation~\cite{https://doi.org/10.13140/rg.2.2.33967.28323}. Each bullet point is computed into a pair of coordinates. Then, the set of coordinates is saved as annotations for that patient into the JSON file. Finally, the file is stored on a remote server.}
-\label{fig:fig013}
-\end{figure}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-Now, the extraction of the latter data (Figure~\ref{fig:fig013}), {\it i.e.}, \ac{JSON} objects, requires specialized knowledge and understanding of the data structure.
-Bullet points under the image are the most intuitive form of user input~\cite{10.1145/3132272.3134111, 10.1145/3399715.3399744}.
-Clinicians use this technique when transferring knowledge via visual assets on medical images.
-Having this in mind, the document can mathematically detail the transformation of these visual assets into data structures of the generated dataset.
-
-The overlaid mask on the visualization of the image ${\bf I}~\in~\mathbb{R}^{w, h}$ to segment, consists of structures called annotations, where $w$ is the width and $h$ is the height of image ${\bf I}$ in pixels.
-In every image ${\bf I}$, it is possible to annotate several ${\it i}~\in~\mathbb{N}$ number of lesions.
-The set of annotations is made of two structure options for: (1) masses by using the freehand functionality; and (2) microcalcifications by using the probe functionality.
-One set of annotations is a tuple ${\bf a}$~=~(${\bf F}$, ${\bf P}$), where $\texttt{F}~=~\{{\bf f}_{1}, {\bf f}_{2}, ...\}$ is made of $\texttt{f}_{i}~\in~\mathbb{R}^2$ subsets and $\texttt{P}~=~\{{\bf p}_{1}, {\bf p}_{2}, ...\}$ is made of $\texttt{p}_{i}~\in~\mathbb{R}$ subsets.
-Each bullet point is a tuple of coordinates ${\bf c}$~=~($\texttt{x}$, $\texttt{y}$), where $\texttt{x}~\in~\mathbb{R}$ describes horizontal \texttt{x} position and $\texttt{y}~\in~\mathbb{R}$ describes vertical \texttt{y} position of ${\bf c}$ in an {\bf I} image with a $w$ and $h$ size.
-Freehand annotations are bullet points ${\bf f}_{i}$~=~($\texttt{s}_{i}$, $\texttt{t}_{i}$), where each child $\texttt{t}_{i}~\in~\mathbb{R}^2$ has a parent $\texttt{s}_{i}~\in~\mathbb{R}^2$ and is connected by a line.
-A child is a $\texttt{t}_{i}$ of target coordinates and a parent is a $\texttt{s}_{i}~\in~\mathbb{R}^2$ of source coordinates.
-The process ends when the clinician intersects the last bullet point ${\bf f}_{n~-~1}$ for ${\it n}~\in~\mathbb{N}$ into the first ${\bf f}_{0}$ bullet point.
-Probes ${\bf p}_{i}$~$\supset$~$\texttt{c}_{i}$ are bullet points with simple plain ({\it i.e.}, with no child/parent logic) structures, meaning that a probe is simply a coordinate.
-As follows, this section is explaining the annotations data structure for the \ac{JSON} files generation from user interactions.
-
-By selecting (Section~\ref{sec:sec004003001003}) the {\it 5.2.7. Freehand} ({\it i.e.}, the \texttt{freehand} tag of the \ac{JSON} file) or the {\it 5.2.8. Probe} ({\it i.e.}, the \texttt{probe} tag of the \ac{JSON} file) feature (Figure~\ref{fig:fig008}), the tool will generate an array of objects.
-Each object is a list of variables, which are referencing the sate, {\it i.e.}, \texttt{visible} and \texttt{active}, of the annotations.
-The last variable, {\it i.e.}, \texttt{handles}, is the array of objects with the coordinates, {\it i.e.}, \texttt{x} and \texttt{y}, of the annotations.
-Moreover, each \texttt{handles} object has another three state variables: (1) \texttt{highlight}; (2) \texttt{active}; and (3) \texttt{lastFlag}.
-Finally, each \texttt{handles} object has also an object of \texttt{lines}.
-The \texttt{lines} are sets of objects where each object ({\it i.e.}, child coordinates) represents all \texttt{x} and \texttt{y} coordinates of a parent.
-However, in this solution each \texttt{x} and \texttt{y} parent coordinate have one, and only one, associated \texttt{x} and \texttt{y} child coordinate.
-Because of that, we called this variable as \texttt{lines}, since the variable refers to the visually connected line between child/parent coordinates.
+\vspace{2.25mm}
 
 \noindent
-The following snippet, shows a possible sample of a \ac{JSON} source by following the Figure~\ref{fig:fig007} example:
+We specifically developed the following hypotheses:
 
-\hfill
+\vspace{2.25mm}
 
-\begin{lstlisting}[language=json,firstnumber=1]
-"freehand":[ 
-  { 
-    "visible":true,
-    "active":false,
-    "handles":[ 
-      { 
-        "x":7,
-        "y":3,
-        "highlight":true,
-        "active":true,
-        "lastFlag":false,
-        "lines":[ 
-          { 
-            "x":4,
-            "y":4
-          }
-        ]
-      },
-      ...
-      { 
-        "x":9,
-        "y":3,
-        "highlight":true,
-        "active":true,
-        "lastFlag":false,
-        "lines":[ 
-          { 
-            "x":7,
-            "y":3
-          }
-        ]
-      }
-    ],
-    "highlight":false
-  }
-]
-\end{lstlisting}
+{\it Facilitating Conditions}. have direct positive relations with user behavior but no effect on behavioral intentions~\cite{10.2307/30036540}.
+Although other authors~\cite{KHALILZADEH2017460} are using the original UTAUT model with separate constructs, in this study we are using behavioral intention as a proxy for user behavior.
 
-The value of \texttt{freehand}, \texttt{probe}, \texttt{handles} and \texttt{lines} must be one array of objects. The values of \texttt{visible}, \texttt{active}, \texttt{highlight} and \texttt{lastFlag} must be boolean ({\it e.g.}, \texttt{true} or \texttt{false}). Finally, the values of \texttt{x} and \texttt{y} coordinates must be {\it integers} or {\it floats}.
+\vspace{2.25mm}
 
-\subsection{System Architecture}
-\label{sec:sec004004003}
+\noindent
+Hence, we hypothesize that:
 
-Hereinafter, the section is briefly explaining how diagnose and lesion annotations are performed (Figure~\ref{fig:fig012}) by a clinician using the proposed framework.
-A more detail explanation will be given at the end of this section.
-First of all, clinicians acquire the patient images and perform a medical exam that is then stored as a \ac{DICOM} file (Section~\ref{sec:sec002007}) on the \ac{DICOM} server (Section~\ref{sec:sec004004001002}).
-Thereafter, the clinician will open the browser and an Orthanc connection, signing-in with medical credentials (Section~\ref{sec:sec004004001003}).
+\vspace{2.25mm}
+
+\noindent
+{\bf H1.1.} The facilitating conditions for using AI in the clinical workflow, positively predict users' intentions to use it;
+
+\vspace{2.25mm}
+
+\noindent
+{\bf H1.2.} The facilitating conditions ({\it e.g.}, knowledge to use the system) for using AI in the clinical workflow, has direct positive impact on effort expectancy;
+
+\vspace{2.25mm}
+
+{\it Social Influence}. has direct impact on behavioral intention.
+The underlying assumption is that clinicians tend to consult their medical community about novel diagnosis paradigms and can be influenced by perceived social pressure.
+Because perceived security also involves a patient's health for misdiagnosing the case, it should be highly influenced in the proposed model.
+
+\vspace{2.25mm}
+
+\noindent
+Based on this, we anticipate that:
+
+\vspace{2.25mm}
+
+\noindent
+{\bf H2.1.} The social influence ({\it e.g.}, recommendation from the medical community) for using an AI system, positively predicts effort expectancy;
+
+\vspace{2.25mm}
+
+\noindent
+{\bf H2.2.} The social influence ({\it e.g.}, recommendation from the medical community) for using an AI system, positively and directly influences perceived security;
+
+\vspace{2.25mm}
+
+\noindent
+{\bf H2.3.} The social influence ({\it e.g.}, recommendation from the medical community) for using an AI system, has a direct positive impact on performance expectancy;
+
+\vspace{2.25mm}
+
+{\it Performance Expectancy}. is the strongest predictor of behavior intention~\cite{KHALILZADEH2017460}.
+Yang~\cite{Yang2010} divided the construct into two separate constructs of utilitarian performance expectancy and hedonic performance expectancy.
+Although enhancing task performance could lead to increased satisfaction, some authors~\cite{ESCOBARRODRIGUEZ201470, HART201993} report a weak effect of hedonic motivation.
+In radiology, one attractive goal of AI is the ability to provide an autonomous second reader to support decision-making.
+Such an AI system offer utilitarian benefits that are likely to be important drivers of adoption.
+
+\vspace{2.25mm}
+
+\noindent
+Therefore, we hypothesize that:
+
+\vspace{2.25mm}
+
+\noindent
+{\bf H3.} Performance expectancy ({\it i.e.}, usefulness) positively affects behavioral intention to use an AI system;
+
+{\it Effort Expectancy}. is another significant predictor of intention to use AI systems~\cite{doi:10.5465/amr.2019.0178}.
+Several authors~\cite{Fan2020, Tran2021} also find effort expectancy to have a significant effect on behavioral intention.
+As AI systems are providing a new shift of paradigm, it is likely that perceived degree of ease associated with AI systems will affect behavioral intention.
+
+\noindent
+In accordance, we denote that:
+
+\vspace{2.25mm}
+
+\noindent
+{\bf H4.} Effort expectancy ({\it i.e.}, ease of use) positively affects performance expectancy ({\it i.e.}, usefulness) to use AI systems;
+
+\subsection{Items Based on UTAUT Extensions}
+\label{sec:chap004003002}
+
+Trust, security and risk became critical additional constructs in studies about technology adoption~\cite{KHALILZADEH2017460, https://doi.org/10.1002/mar.20823}.
+Specially, in the case of sharing medical information~\cite{6038852}, as clinicians are resistant to adopt new technologies~\cite{10.1145/3132272.3134111}.
+
+\vspace{2.25mm}
+
+{\it Perceived Security}. is expected to affect directly behavioral intention.
+Because AI systems involve sensitive information about patients, it should be highly influential in the proposed model~\cite{KHALILZADEH2017460}.
+Moreover, perceived security is an aggregating construct, changing over time according to the community opinion and social influence of medical experts.
+
+\vspace{2.25mm}
+
+\noindent
+Therefore, we hypothesize that:
+
+\vspace{2.25mm}
+
+\noindent
+{\bf H5.1.} Perceived security of AI systems positively and directly predicts perceived trust;
+
+\vspace{2.25mm}
+
+\noindent
+{\bf H5.2.} Perceived security of AI systems positively and directly behavioral intention to use AI systems;
+
+\vspace{2.25mm}
+
+{\it Perceived Risk}. is usually related to perceived security.
+The more a user perceives the risk, the less secure the user's feel, leading to a negative relationship between risk and security~\cite{KHALILZADEH2017460}.
+Indeed, the literature~\cite{SHIN20091343, Thakur2014} states that perceived risk has negative impact on perceived security, trust, as performance expectancy.
+
+\vspace{2.25mm}
+
+\noindent
+Based on these literature findings, we formulate the following hypothesis:
+
+\vspace{2.25mm}
+
+\noindent
+{\bf H6.1.} The perceived risk of using AI systems has a direct negative impact on perceived security;
+
+\vspace{2.25mm}
+
+\noindent
+{\bf H6.2.} The perceived risk of using AI systems has a direct negative impact on perceived trust;
+
+\vspace{2.25mm}
+
+\noindent
+{\bf H6.3.} The perceived risk of using AI systems has a direct negative impact on performance expectancy;
+
+\vspace{2.25mm}
+
+{\it Trust}. Perceived security and trust positively affect behavioral intentions~\cite{SHIN20091343}.
+As a unitary construct, the effect of trust on behavioral intention has gained notable support.
+Moreover, this construct is the most significant predictor of behavioral intention~\cite{chandra2010evaluating, SHIN20091343}.
+While AI-based solutions become ubiquitous, trust supersedes the importance of traditional adoption factors such as perceived usefulness.
+Akin to Chandra et al.~\cite{chandra2010evaluating}, this study includes trust as a singular construct, which is likely to be critical due to the novelty of AI systems in the medical workflow and convoluted environments.
+
+\vspace{2.25mm}
+
+\noindent
+Thus, we hypothesize that:
+
+\vspace{2.25mm}
+
+\noindent
+{\bf H7.1.} Trust positively affects performance expectancy ({\it i.e.}, usefulness) to use AI systems;
+
+\vspace{2.25mm}
+
+\noindent
+{\bf H7.2.} Trust positively affects effort expectancy ({\it i.e.}, ease of use) to use AI systems;
+
+\subsection{Items Related to Impact}
+\label{sec:chap004003003}
+
+AI has a significant social and personal behavioral impact on the medical community all over the world~\cite{Fan2020}.
+Medical diagnosis impacts significantly on peoples' health and peoples' lives, and clinicians have to take responsibility for their actions.
+Therefore, clinicians may be more cautious than professionals in other fields when considering adopting new technologies to assist their work.
+Although clinicians typically resist new technologies, several authors~\cite{doi:10.1148/ryai.2020190043, WAYMEL2019327} are reporting a new change of behavior for the adoption of AI systems in the clinical workflow, whereas these systems are increasing clinicians' performance during decision-making \cite{CALISTO2021102607}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{figure}[ht]
+\begin{figure*}
 \centering
-\includegraphics[width=\textwidth]{images/fig012}
-\caption{[DOI: \href{https://doi.org/10.13140/RG.2.2.16601.47209}{10.13140/RG.2.2.16601.47209}] System architecture of the invention with a black box of scalable interactions~\cite{hugo2020si, lencastre2020msia}.}
-\label{fig:fig012}
+\includegraphics[width=0.985\linewidth]{fig075}
+\caption{The basic statistical flow steps followed by us, which are usually taken in the framework of SEM modeling. Before the employment of the SEM modeling, we used the conceptual EFA to reduce descriptors and group them. Here, we identified the latent factors by using the CFA. Finally, we applied the SEM to estimate the coefficients.}
+\label{fig:fig075}
+\end{figure*}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+As introduced in Section~\ref{sec:chap004002}, the TRA inspires various technology adoption models, arguing that both attitude toward an action and subjective norms have impact on behavioral intention, affecting how people perform an action~\cite{https://doi.org/10.1002/hbe2.195}.
+Adapted from TRA and TAM, the UTAUT definition of attitude through behavior is ``{\it an individual's positive feeling about performing the target behavior}''~\cite{10.2307/30036540}.
+On the other hand, subjective norm refers to ``{\it a person's perception that most people who are important to them think they should or should not perform the behavior in question}''~\cite{10.2307/30036540}.
+
+\vspace{2.25mm}
+
+\noindent
+Hence, we hypothesize that:
+
+\vspace{2.25mm}
+
+\noindent
+{\bf H8.1.} The extent to which AI positively impacts the clinical workflow ({\it e.g.}, decreasing the medical error, time-to-diagnose, etc.) due to better decision-making of clinicians, affects the intention to follow AI guidance;
+
+\vspace{2.25mm}
+
+\noindent
+{\bf H8.2.} The extent to which AI positively impacts the clinical workflow ({\it e.g.}, decreasing the medical error, time-to-diagnose, etc.) due to better decision-making of clinicians, directly predicts perceived trust;
+
+\vspace{2.25mm}
+
+Salient beliefs and evaluations determine a person's attitude toward a behavior~\cite{KHALILZADEH2017460}.
+In fact, several studies report a strong relationship between trust, risk, and behavior intentions~\cite{GANSSER2021101535, 9197782, https://doi.org/10.1002/mar.20823}.
+Although trust and perceived risk significantly affect behavioral intention, in some of these studies, trust negatively affects perceptions of risk.
+When it comes to applications that require context awareness~\cite{10.1145/3313831.3376506}, as it involves machines to learn subjective data, clinicians have significant concerns about trusting AI.
+
+Existing studies have not explicitly examined whether perceived risk plays a mediating role~\cite{AMEEN2021106548}.
+As clinicians are likely to perceive AI guidance as being highly risky for patients, trust will likely play a significant role in behavioral intention than perceived risk.
+Instead, its role will be more critical in reducing risk perceptions for misdiagnosing a patient.
+
+\noindent
+Given the wide applicability of UTAUT, we can anticipate that:
+
+\vspace{2.25mm}
+
+\noindent
+{\bf H9.1.} The willingness to follow the AI guidance positively and directly influences perceived security;
+
+\vspace{2.25mm}
+
+\noindent
+{\bf H9.2.} The willingness to follow the AI guidance positively affects intention to use AI systems;
+
+\section{Methods}
+\label{sec:chap004004}
+
+Our research model includes ten constructs.
+For this study, we measured each construct with multiple items (Figure~\ref{fig:fig075}).
+To preserve the content validity and reliability, we measured most of our items from the extant literature~\cite{SOHN2020101324, info:doi/10.2196/14316}.
+Finally, we adjusted these items in our questionnaire to match the context of AI adoption among clinicians.
+
+In compliance with recommendations of the two-stage analytical procedure, we used Confirmatory Factor Analysis (CFA) to test the measurement model’s validity and reliability~\cite{2019-07124-034}.
+In addition, we used Structural Equation Modeling (SEM) as a preferable technique to regression. It allows simultaneous analysis of all relationships through multiple regression while also allowing for both observed and latent variables to be analyzed simultaneously and providing overall fit statistics.
+
+We conducted CFA using the \texttt{R language} (\texttt{v 4.0.2}) employing Maximum Likelihood Estimation (MLE).
+Furthermore, MLE was then followed by path analysis of the structural relationships conducted in the \texttt{R language} with SEM libraries (\texttt{lavaan v. 0.6-7} and \texttt{semTools v. 0.5-3}).
+We also undertook moderation analysis in the \texttt{R language}.
+
+\subsection{Procedures}
+\label{sec:chap004004001}
+
+We sent the questionnaire via social media ({\it e.g.}, radiology groups on Facebook and LinkedIn) to 17203 participants who gave prior permission to use their data for research purposes under this international study.
+The questionnaire contained i) a general explanation of the study, ii) the details of the privacy policy, iii) data treatment, and a iv) link to a Google Forms survey.
+
+We sent the questionnaire in the middle of February 2021.
+The criterion was to send the questionnaire to clinicians worldwide who are members of these social media target groups ({\it i.e.}, radiologists, physicians from any other expertise, technicians, etc.).
+Overall, this procedure remained until the end of July 2021, when we analysed and discussed our data.
+
+\subsection{Participants}
+\label{sec:chap004004002}
+
+Table~\ref{tab:tab008} is listing the sample demographics under this study.
+In total, we collected data from 322 participants, corresponding to an overall participation of 1.9\%.
+The participation was higher from people of the USA/Canada (25.5\%), Africa (11.2\%), Portugal (10.6\%), and Other-EU Countries (9.9\%).
+On the other hand, the participation was lower from the Middle East (8.1\%), Asia (7.5\%), South or Central America (5.9\%), Italy (5.3\%), UK (4.3\%), Non-EU European (3.7\%), New Zealand/Australia (2.8\%), France (1.9\%), Germany (1.9\%), and Spain (1.6\%).
+
+Regarding general demographics (N = 322), the sample consisted of a slightly higher proportion of men (59.9\%) than women (38.8\%) with 1.2\% answering ``Prefer not to say''.
+For age groups, 12.1\% of participants range from 18 to 29 years old, 29.5\% from 30 to 39, 22.7\% from 40 to 49, 23.9\% from 50 to 59, 10.2\% older than 59, and 1.6 answering ``Prefer not to say''.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\input{tables/tab008}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Other demographic data are important to this study, such as medical experience of participants (Section~\ref{sec:chap004004002001}), training levels (Section~\ref{sec:chap004004002002}), and expertise areas (Section~\ref{sec:chap004004002003}).
+In this study, the education level of participants is also important to denote relations between demographic data.
+Specifically, 34.5\% of participants are specialists, 25.2\% have at least one bachelor degree, 24.2\% have a master degree, and 14\% a PhD.
+The other 2.1\% are typically students or academic associate degrees.
+
+\subsubsection{Medical Experience}
+\label{sec:chap004004002001}
+
+Concerning medical experience, 65.2\% are seniors with more than 10 years of experience.
+Additionally, 16.5\% are middles with more than 5 years of work but less than 10 years.
+Clustering both categories together, this makes a total of 81.7\% clinical experts.
+On the contrary, 8.1\% are juniors up to 5 years after taking the exam.
+Besides, 7.5\% are interns before the specialty exam.
+Within these two groups, we clustered the information, making a total of 15.6\% clinical novices.
+The other 2.4\% are students and academics who do not considered any of the above groups.
+
+\subsubsection{Training Levels}
+\label{sec:chap004004002002}
+
+For the training levels, 41\% of participants are doctors, 32.6\% are technicians, and 26.4\% received different training, such as nursing, medical physics or biomedical sciences, but are working on medical imaging.
+To understand the procedures of the clinical workflow, information about the work sector of each participant is also important.
+Under this purpose, we also analyzed the work sector, where 17.39\% work on both Public/Private sectors, 39.41\% of participants work only on the public sector (such as public hospitals or public cancer institutes), 32.91\% work only on the private sector (such as private clinics or private hospitals), and the other 10.29\% are working for companies ({\it e.g.}, medical devices), are academics or retired.
+
+\subsubsection{Expertise Areas}
+\label{sec:chap004004002003}
+
+Finally, for the expertise areas, 79.2\% of participants work in the radiology field.
+For this study, it is also important to analyze other expertise areas, as some of these categories work in medical imaging.
+For instance, 7.1\% of participants work in medical intervention, 5.6\% in oncology, and 4.3\% in general medicine.
+With lower participation, but still important to report, 2.5\% of participants work in surgery, 2.2\% in family medicine, and 1.6\% in several other categories.
+
+\section{Results}
+\label{sec:chap004005}
+
+The results of the sample characteristics (Table~\ref{tab:tab008}) indicate that a typical participant of this study was a male radiology specialist between 30 and 39 years old, considered seniors with more than ten years of experience.
+The primary working place was in the public sector.
+We ask participants how often and how long they analyze medical imaging exams.
+Specifically, 66.1\% answered they do analyze patients with medical imaging exams every day, 7.8\% answered 3 or 4 days a week, 3.7\% answered 2 or 3 days a week, another 3.7\% answered once a week. The other 18.7\% answered monthly or as needed.
+
+Regarding how long they analyze patients with medical imaging exams, 28\% answered more than 20 years, 27\% with less than five years, 17.1\% between 6 and 10 years, 15.5\% between 11 and 15 years, and finally, 12.4\% between 16 and 20 years.
+Moreover, we gave participants additional questions about their experience with AI systems and the frequency of their use.
+Respectively, 42.5\% answered they know about AI but never tried it, 27\% have attempted to but do not use it regularly, 19.3\% use it regularly, and 11.2\% never heard about AI systems.
+
+\subsection{Checking Assumptions}
+\label{sec:chap004005001}
+
+We checked the SEM assumptions, where all variables showed a normal distribution based on a visual inspection of box plots and histograms.
+Residuals showed a normal distribution with no relation between residuals and predictors~\cite{murtagh2012multivariate}.
+The overall fit of the model was good, with all the relevant goodness of fit indices higher than the recommended threshold of 0.90 for adjusted goodness of fit indices and 0.95 for other indices~\cite{Bagozzi2012, doi:10.1504/IJMDA.2017.087624, murtagh2012multivariate, SUMAK2016602}.
+
+Under this study, the Goodness of Fit Index (GFI) = 0.824, the Adjusted Goodness of Fit Index (AGFI) was 0.784, the Comparative Fit Index (CFI) = 0.909, the Normative Fit Index (NFI) was 0.861, and the Tucker-Lewis Index (TLI) = 0.896 reported from our analysis.
+Although goodness of fit ($GFI = 0.824 < 0.90$), adjusted goodness of fit ($AGFI = 0.784 < 0.80$), and Tucker-Lewis test ($TLI = 0.896 < 0.90$) are slightly lower than the recommended levels, studies have shown that sample size impacts these fit indices~\cite{KHALILZADEH2017460, doi:10.1080/00273171.2019.1602503, ZHOU2010760}.
+Some of these studies show the downward bias of the previously mentioned indices when the degree of freedom values increase in comparison to the sample size of the model~\cite{doi:10.1080/00273171.2019.1602503}.
+Indeed, the ratio of the test statistic ($\chi^2$) to the degree of freedom ($df$) was lower than 3.0 as recommended ($\chi^2$ / $df$ $= 2.587 < 3.0$) in the literature.
+Pairwise with the Root Mean Square of Error Approximation ($RMSEA = 0.073 < 0.08$), both indicated an acceptable model fit~\cite{ZHOU2010760}.
+
+The test statistic ($\chi^2$) for the model was significant due to the sample size.
+Based on Hoelter index~\cite{https://doi.org/10.1002/nur.20088}, the sample size of 138 is sufficient and the sample of 322 seems adequate for the sophisticated model of the study.
+Additionally, the Standardized Root Mean Square Residual (SRMR) was also good, at 0.083, above the threshold ($SRMR = 0.083 > 0.06$) for a good overall fit.
+
+\subsection{Measurement Model}
+\label{sec:chap004005002}
+
+Given the satisfactory measurement of the model fit, we initiated measuring each construct (Section~\ref{sec:chap004005002}).
+From here, we aim to purify the measurement items, to check the model fit, validity, and reliability of the measurement scales.
+Thoroughly, Table~\ref{tab:tab009} reports the results of the CFA.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\input{tables/tab009}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Convergent validity shows whether each factor can be reflected by its items~\cite{10.3389/fpubh.2018.00149, Henseler2015}.
+To this end, all loadings were significant at alpha level ({\it p-value} = 0.000), and the minimum loading was 0.57, with most loadings higher than 0.8, which indicates good convergent validity~\cite{info:doi/10.2196/14316}.
+Each item loaded significantly ({\it p-value} < 0.001) on its underlying construct in all cases.
+On the other hand, discriminant validity reflects whether two factors are statistically different~\cite{10.3389/fpubh.2018.00149, Henseler2015}.
+For that, we examined both convergence and discriminant validity of the model, measuring the reliability of each measure and each construct and the Average Variance Extracted (AVE) for each construct.
+
+We compared the shared variance across constructs with the AVE from the individual construct to examine discriminant validity.
+The shared variety between constructs was lower than the AVE from the individual constructs (Table~\ref{tab:tab009}), confirming discriminant validity.
+In the end, we checked the measurement model for the Composite Reliability ($CR = 0.95$), which indicated good measurement reliability of our measurement model~\cite{Bagozzi2012, doi:10.1504/IJMDA.2017.087624, murtagh2012multivariate, SUMAK2016602}.
+
+To conclude, the measurement model demonstrated adequate reliability, convergent validity, and discriminant validity.
+However, given the complex relationships across the model's factors, we should consider the moderating effects on other variables.
+Expressly, we can reasonably assume that the model has unexpected moderating relationships.
+Hence, the recognition of moderating effects for demographics (Section~\ref{sec:chap004005004}) across the factors is particularly important in this study and must be further reported.
+
+\subsection{Parallel Analysis}
+\label{sec:chap004005006}
+
+To measure how many factors should we keep, we must base that on multiple pieces of information, such as parallel analysis~\cite{doi:10.1080/10705511.2019.1615835}.
+Parallel analysis is a simulation based on the number of items {\it vs.} sample size, while computing the simulated eigenvalues, which can be used to compare the eigenvalues from the analysis (Figure~\ref{fig:fig093}).
+Specifically, it indicates if there are factors with dots overlap between the eigenvalue sizes and the cut off-line for the retention.
+
+Large changes in effect size indicate a break point for the number of factors, but we also must consider the line limits of the parallel analysis.
+For instance, the difference between the first components can sustain the argument for choosing the optimal eigenvalue size as four (Figure~\ref{fig:fig093}).
+However, we can also observe that this difference is much more conclusive for the comparison between the components five and six, as well as between the six and seven.
+Where both components eight and night are almost totally below the line, the rule for keeping an item for a factor or overall are generally arbitrary~\cite{doi:10.1207/S15328031US0201}.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure}
+\centering
+\includegraphics[width=0.985\linewidth]{fig093}
+\caption{Scree plot of eigenvalues with the eigenvalues greater than one rule, elbow bend, and intersecting lines.}
+\label{fig:fig093}
 \end{figure}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-In the end, the connection is completed, the browser will request (Section~\ref{sec:sec004004001001}) available images to the server and present (Section~\ref{sec:sec004003001}) them through the \ac{UI}.
-By opening a patient case (Section~\ref{sec:sec002007}) the clinician will visualize the \ac{DICOM} files and manipulate (Section~\ref{sec:sec004003001001}) those files using the available tools.
-Finally, after analysing the medical exams, clinicians will diagnose the patient.
+\subsection{Structural Model}
+\label{sec:chap004005003}
 
-Now, the Orthanc Server is launched and the database is ready and will stay on standby, waiting for requests.
-All available patient images are requested by the framework to the Orthanc Server and if the response given is successful, a \ac{JSON} file is received.
-After a successful database fetch, it is reported back to the clinician the list of patients available for diagnose.
-The clinician will now choose a patient to diagnose, and the \ac{UI} will show (Figure~\ref{fig:fig003}) all the available images on the left side of the screen.
+Since the measurement model achieves an overall fit, we used SEM to analyze our data.
+Structural modeling evaluates whether data fits the theoretical measurement of the model~\cite{doi:10.1080/10705511.2017.1401932}.
+This study extends the proposed research model to include two new constructs:
+(1) Clinical Workflow Impact; and
+(2) AI Guidance.
+Additionally, we extended the two constructs to new interactions between these constructs and security, trust, and behavioral intention to use.
+To test the structural relationships, we estimated the hypothesized casual paths (Figure~\ref{fig:fig073}).
+From Table~\ref{tab:tab011}, we can denote that the study supports ({\it p-value} < 0.10) the majority of hypotheses, except for {\bf H6.1}, {\bf H6.3}, and {\bf H7.1} hypotheses.
+
+The coefficient of determination ($R^2$), also known as Squared Multiple Correlations (SMC), was calculated for the constructs of the measurement model (Table~\ref{tab:tab010}).
+This coefficient varies between 0 and 1, while indicating the explanatory power of the model and predictive accuracy~\cite{doi:10.1080/10705511.2017.1401932}.
+It shows the portion of the total variance in the dependent variable that can be accounted for by the independent variables.
+
+Higher loadings indicate that items are strongly related to the latent variables.
+In addition, the $R^2$ values express the variance of items explained by the latent factor (Table~\ref{tab:tab010}).
+The $R^2$ values are the squared factor loadings extracted from the CFA model.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\input{tables/tab010}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+The $R^2$ of the behavioral intention was the highest at 0.681 (Table~\ref{tab:tab010}), which showed that the proposed model explained a considerable amount of the variance for the dependent variable.
+The lowest amount of $R^2$ in the model belongs to AI Guidance ($R^2$ = 0.238), followed by security ($R^2$ = 0.397), due to their proximity to independent variables, as well as the nature of the constructs, which are rooted in terms of a clinician's belief in AI systems.
+The coefficient for performance expectancy ($R^2$ = 0.595), effort expectancy ($R^2$ = 0.496), and trust ($R^2$ = 0.465) were also acceptable, which is consistent with previous results~\cite{KHALILZADEH2017460}.
+
+\subsection{Moderating Effects}
+\label{sec:chap004005004}
+
+To investigate demographic moderator effects, we conducted a moderating analysis using the split sample approach \cite{LI2021106581, LI2021106929}.
+This approach uses a pre-established moderator level, which emerges naturally from data and cannot be modified by the study.
+For instance, the nationality of a clinician, gender, or age variables is a form of different moderator levels.
+We tested the moderator effects of gender (F/M), age (divided into two groups $<$ 30 and $\geq$ 30), nationality (grouped into developed and developing countries), education (higher and advanced education), and a proxy of clinical knowledge (expert {\it vs.} novice) for working with medical imaging technologies, which was calculated from a combination of medical experience (Section~\ref{sec:chap004004002001}), training levels (Section~\ref{sec:chap004004002002}), and expertise areas (Section~\ref{sec:chap004004002003}).
+
+We classified senior and middle radiology doctors as experts working with medical imaging technologies.
+Similarly, we also consider senior and middle radiology technicians as an expert with knowledge of working with these technologies.
+On the contrary, we consider novice knowledge all juniors and interns independently of being doctors, technicians, or another different training level.
+We also considered all clinicians not working directly in radiology expertise as novice knowledge of working with medical imaging technologies.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\input{tables/tab011}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+We tested the moderating effects (Table~\ref{tab:tab012}) of the above variables by comparing, between the different groups, the path coefficients produced for each moderator after testing for measurement invariance using $X^2$ difference tests, and the fit indices.
+Furthermore, we tested invariance for factor structure, loading, residuals, and means.
+The model supported enough evidence of measurement invariance at {\it p-value} < 0.001 significance.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\input{tables/tab012}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Summary}
+\label{sec:chap004005005}
+
+Overall, the results from this study demonstrate that our research model explains 68.1\% (Table~\ref{tab:tab010}) of the intention to use AI.
+Compared to other empirical results~\cite{LIU2022107026, info:doi/10.2196/14316} of UTAUT models, which are explaining a variance between 51.5\%~\cite{LIU2022107026} and 66.4\%~\cite{info:doi/10.2196/14316}.
+Notice that studies related to the use of AI are still scarce, exhibiting a low variance below 70\%.
+However, the extended model in this study has demonstrated a similar achievement in terms of good explanatory and predictive power ({\it i.e.}, 70\% approx.) of the model.
+Our model has enough explanatory and predictive power, including new constructs regarding the willingness to follow the {\it AI guidance} ({\it i.e.}, recommendations) and the extent to which AI positively {\it impacts the clinical workflow}.
+Hence, shaping a more complex network of interrelated causal relationships, which are not present in the original UTAUT models.
+This idea borrowed from the literature~\cite{KHALILZADEH2017460, SIGERSON201887} in which it extends both UTUAT and UTUAT2 models with the inclusion of other influential constructs, increasing the explanatory power of the model while keeping parsimony.
+
+In line with other authors~\cite{https://doi.org/10.1111/joca.12267, snyder2020oxford}, we reduced the number of items in some constructs while preserving reliability.
+Thus, condensing  the scale even further than the above research~\cite{KHALILZADEH2017460}.
+According to the literature recommendations \cite{SIGERSON201887}, we were able to retain the factors with only several items retaining validity, reliability, and correlation.
 
 \section{Discussion}
-\label{sec:sec004005}
+\label{sec:chap004006}
 
-With the hype of \ac{AI} methods, such as \ac{ML} and \ac{DL} algorithms, intelligent agents are closer to the \ac{RRR} than ever~\cite{He2019, DANA2020541}.
-This proximity, makes highly relevant to the \ac{ML} community, whom is showing interest on solutions for the generation of datasets among medical imaging.
-Datasets are generated by an oracle ({\it e.g.}, clinicians, radiologists, etc), having more supervised data~\cite{MAICAS2019101562, 10.1007/978-3-030-59719-1_44} to train their methods.
-A greater human-centered approach is requiring sufficient validation and continuous monitoring of emerging \ac{AI} tools, as well as the available data from breast cancer screening.
-That said, \ac{NHS} are on the need for frameworks, such as the one developed under this thesis, to a continuous monitoring and re-calibration of these \ac{AI} tools.
+The present study proposed a theoretical research model to examine the roles of security, risk, and trust in accepting AI recommendations based on the UTAUT model.
+The results of this study provide strong support for the validity and reliability of the proposed acceptance model (Figure~\ref{fig:fig074}), as it explained 68.1\% of the variance in behavioral intention to use an AI system.
+The results can offer important theoretical and practical implications, as discussed in the following sections.
 
-\subsection{Stakeholders}
-\label{sec:sec004005001}
+\subsection{Main Findings}
+\label{sec:chap004006001}
 
-Several of these \ac{AI} tools have garnered medical regulatory approval within multiple countries, including Portugal and other \ac{EU} members~\cite{pesapane2018artificial, vayena2018machine}.
-With the approval of this medical regulations, these frameworks and tools can now be marketed for clinical use directly to stakeholders such as clinicians, physicians and radiologists.
-However, key stakeholders, including major payers, service providers, and women undergoing routine screening, need convincing evidence that these new tools can reliably improve screening performance beyond current practice standards.
-For instance, by reducing the numbers of \ac{FP} and \ac{FN} values.
+The findings of this study show that facilitating conditions are positively predicting the intention to use AI ({\bf H1.1.}) in the clinical workflow.
+However, facilitating conditions not only affect usage behavior in the original UTAUT model, but also supports the positive effect of facilitating conditions on behavioral intention~\cite{DWIVEDI2016174, Seethamraju2018}.
+On the other hand, the study results show a significant relationship between facilitating conditions and effort expectancy ({\bf H1.2.}).
+Additionally, the role of facilitating conditions increased significantly (Table~\ref{tab:tab012}) with the specific moderating effect of {\it males} for both intention to use and effort expectancy.
+Overall, the results of the study demonstrate that facilitating conditions in the clinical workflow would impact attitude and intention to use AI systems, as well as a positive impact on belief and usage of these systems.
 
-Given the ``black box'' nature of \ac{AI} algorithms, there are a number of unique challenges in the process of algorithm validation and stakeholder acceptance.
-There is a myriad of ethical, social, political and technical issues regarding \ac{AI} algorithm validation.
-Thus, there is some work to do regarding major pressing issues in validating those methods from the perspective of regulatory agencies, organizations with imaging data, and \ac{AI} researchers.
-In the research developed under this thesis, the work already formulated two collaborative protocols with two main Portuguese clinical institutions: (1) \href{https://hff.min-saude.pt/}{Hospital Fernando Fonseca}; and (2) \href{http://www.ipolisboa.min-saude.pt/}{IPO Lisboa}.
-The purpose of these protocols is the interchange of data and knowledge.
-In this work, several other protocols are being formalized.
-However, there already exists (Chapter~\ref{chap:chap005}) various collaboration agreements for user testing purposes in a total of nine clinical institutions.
+The direct impact of social influence on effort expectancy ({\bf H2.1.}), perceived security ({\bf H2.2.}), and performance expectancy ({\bf H2.3.}) of using AI systems on the clinical workflow is significant.
+Our results suggest that social influence positively impacts the adoption of AI systems.
+These findings indicate that the more AI systems decrease the effort to diagnose a patient while increasing clinicians' performance in the clinical workflow, the more it influences the medical community.
+At the same time, perceived security is also influencing the medical community.
+Meaning that the more the medical community reports AI algorithms as secure, the more clinicians are willing to adopt AI systems in their clinical workflow.
+However, concerning the moderating effects (Table~\ref{tab:tab012}), our results are indicating that the groups of {\it younger clinicians} with {\it novice knowledge} are not significantly related to their social influence in the technology when considering the factors of perceived security and performance expectancy.
 
-\subsection{Technology Transfer}
-\label{sec:sec004005002}
+The results show that the clinicians' intention to use an AI system is positively affected by performance expectancy ({\bf H3.}), which supports the existing research on the behavioral intention to adopt novel health technologies~\cite{DWIVEDI2016174, Seethamraju2018, WU2021106840}.
+In addition, for the groups of male expert clinicians ({\it e.g.}, typically {\it older males clinicians} and clinicians with {\it expert knowledge}), the impact of AI on the clinical workflow is significantly affected by performance expectancy.
+Performance expectancy indicates that this behavioral intention is a key determinant for adoption, as long as the final decision-making is performing better with AI than with traditional diagnosis~\cite{LIN2021e486}.
+Another essential requirement is the ability of AI to mimic the human rationale with interactive assistance.
+By providing direct, interactive assistance adapted to each reported group of clinicians and simple operations for supporting the final decision-making, intelligent agents are enabling clinicians to use it more easily~\cite{CALISTO2021102607}.
 
-Clinicians, such as radiologists, are key stakeholders for several current \ac{AI} challenges~\cite{pesapane2018artificial}.
-They do that by creating high quality training datasets, but also by doing the interpretation of obtained results, and definition of clinical tasks to address.
-Indeed, they represent the final user of these technologies.
-For that reason, radiologists point of view and feedback are crucial to optimize the use of \ac{AI}-based solutions, such as proposed framework.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure*}
+\centering
+\includegraphics[width=0.794\linewidth]{fig074}
+\caption{Detailed results of the research model. For beta results, the significance values are: in green for *** significant at level $\alpha = 0.01$; yellow for ** significant at $\alpha = 0.05$; orange for * significant fixed at $\alpha = 0.10$; and red for \underline{n}ot \underline{s}ignificant (ns).}
+\label{fig:fig074}
+\end{figure*}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Concerning these developments, part of the thesis is solving five key problems:
-(a) providing a tool to improve the curation of sufficient image data on \ac{AI} algorithm development and evolution supporting medical imaging;
-(b) promoting the generation of medical imaging datasets to be compared by several \ac{AI} methods among the literature;
-(c) also providing a tool for clinicians to collaborate each other on a remote and distributed fashion;
-(d) bringing together several medical imaging modalities on a multimodality visualization strategy; and
-(e) offering the opportunity for clinicians to diagnose each patient with the above characteristics and in the same time generating a dataset while simply interacting with the \ac{UI}.
+Effort expectancy is positively affecting the performance expectancy construct ({\bf H4.}).
+If clinicians think that AI assistance can provide an easy, clear, and understandable recommendation, they are more likely to expect higher performance from the system.
+Theoretically, this adds a new view to UTAUT research.
+As the ease of use for intelligent agents increases, performance expectancy for AI systems will become more positive.
+Besides, there is a significant decrease in terms of mediating effects for groups of {\it female}, {\it young clinicians}, as well as clinicians with {\it advanced education} and {\it novice knowledge} on the medical imaging practice.
+Hence, the AI community should ensure that these intelligent agents cover the above group characteristics.
+Not only do our results require intelligent agents to be easy and understandable to use clearly for the majority of clinicians.
+But consider the group differences from the mediating effects to introduce AI on the clinical workflow properly.
 
-By solving these five key points, the thesis is addressing several opportunities with the proposed solution, as well as in further inventions.
-Actually, \ac{AI} is driving factor behind market growth in medical imaging.
-By 2023, \ac{AI} in medical imaging\footnotemark[19] will become a \$2 billion industry.
-Making it vital to have a solution, as the one proposed in this thesis, to solve those five problems.
+In our results, security shows a strong effect on clinician's trust ({\bf H5.1.}) toward AI systems. At the same time, a strong impact on specific groups of moderating effects, such as decreasing the groups of {\it females}, {\it young clinicians} with {\it advanced education} but {\it novice knowledge} on medical imaging.
+The role of attitude, specifically, becomes more important when we consider the moderating effects of {\it males}, {\it older clinicians}, as well as clinicians in {\it developed countries} with {\it higher education} and {\it expert knowledge}.
+The impact of security on attitude and behavioral intention ({\bf H5.2.}) is significant and increased for these groups. At the same time, the research community must consider the adoption of AI in this clinical workflow in the medical imaging domain.
 
-\footnotetext[19]{These claims (\href{https://www.signifyresearch.net/medical-imaging/ai-medical-imaging-top-2-billion-2023/}{signifyresearch.net/medical-imaging/ai-medical-imaging-top-2-billion-2023}) are present in the ``\href{https://www.signifyresearch.net/medical-imaging/ai-medical-imaging-top-2-billion-2023/}{AI in Medical Imaging to Top \$2 Billion by 2023}'' online articled. The article was published on 2nd of August, 2018, and accessed on 2nd of December, 2020. Internet connection is required.}
+Although some of our hypotheses ({\it e.g.}, {\bf H6.1.} and {\bf H6.3.}) are not supported for perceived risk, our empirical findings demonstrate that perceived risk is an important construct for some groups of the moderating effects.
+Perceived risk is related to the level of AI performance ({\bf H6.3.}) concerning clinician's expectations, where the groups of {\it females}, and clinicians working in {\it developed countries} (Table~\ref{tab:tab012}) are showing small, yet, significant values.
+It is related to the degree to which clinicians believe using the technology will improve their diagnostic performance and final patient care.
+Specifically, it is related to the possibility of AI misdiagnosing a patient and not performing as expected.
+Therefore, failing to deliver more accurate decision-making in the clinical workflow.
 
-\section{Conclusions}
-\label{sec:sec004006}
+Perceived trust in patient's privacy ({\bf H6.2.}) is also related to perceived risk, but this time only significant for the groups of {\it female clinicians}.
+Here, perceived trust pertains to clinicians' concern over misuse or unwanted disclosure of their patients' information.
+Another critical empirical finding of this study is that perceived risk negatively impacts perceived security ({\bf H6.1.}).
+Depending on the group of the moderating effects, clinicians would feel insecure using AI if they perceive a low performance of the model and risk their trust in patients' privacy.
+From another perspective, the perceived trust of clinicians within this new AI paradigm would increase by improving the algorithm performance and successful implementation of the diagnostic tasks.
+The obtained results and insights can serve both AI and HCI communities.
 
-In this document, a new method and process supported by an interactive \ac{UI} of a framework platform is proposed.
-More precisely, the purpose of this \ac{UI} is to generate a standardized dataset of medical imaging annotations, while initially supporting the future data curation (Section~\ref{sec:sec006004004}) described bellow.
-Across the domain of breast cancer, it was adopted a multimodality visualization strategy ({\it i.e.}, \ac{MG}, \ac{US} and \ac{MRI}) for the production of a qualified datasets.
-In the end, clinicians are fostering to share and have a collaborative evaluation by developing a distributed, as well as remote accessible framework.
+The inclusion of the construct for the clinical workflow impact enabled us to understand if there was a significant but weak impact on trust ({\bf H8.2.}).
+Specially, when considering the moderating effects (Table~\ref{tab:tab012}).
+Our results show that for some groups ({\it e.g.}, {\it young clinicians} and clinicians with {\it novice knowledge} on the medical imaging field), the clinical workflow impact is not significantly related to their trust in the technology.
+According to our results, the same weak link between the influence of trust on performance expectancy ({\bf H7.1.}) and effort expectancy ({\bf H7.2.}), is clear on groups of {\it young} and {\it novice clinicians}.
+On the contrary, for the groups of expert clinicians ({\it e.g.}, typically {\it older clinicians} and clinicians with {\it expert knowledge}), the impact of AI on the clinical workflow is significantly related to trust.
 
-From the beginning of the document (Section~\ref{sec:sec004002}), it is explained how the above framework will provide a solution on the clinical domain.
-With this proposed framework (Section~\ref{sec:sec004004}), the document guarantee the detailed requirements to design the final tool.
-In the end, the outputs (Section~\ref{sec:sec004004}) of proposed solution will reduce healthcare costs, enabling medical-error mitigation, while improving the patient's healthcare.
-Such, is achieved by various embodiment items of this thesis, discussing (Section~\ref{sec:sec004005}) in detail the impact of it.
-The properties and environment characteristics, also underline the contextual description, and how it will be addressed to workflow on the \ac{RRR}.
+Comprehensively, the role of AI guidance on security ({\bf H9.1.}) and behavioral intention ({\bf H9.2.}) retained significant regardless of moderator variables.
+However, the new AI guidance construct ({\it i.e.}, the aim of clinicians to follow an AI recommendation) on security ({\bf H9.1.}), decreases with all moderating effects except for {\it males} and {\it older clinicians}.
+Similarly, the role of AI guidance on intention to use ({\bf H9.2.}), decreases with all moderating effects. Still, this time except {\it males}, {\it older clinicians}, and clinicians with {\it expert knowledge}.
+
+\subsection{Design Recommendations}
+\label{sec:chap004006002}
+
+With the growing demand for intelligent agents in the clinical workflow of medical imaging, our findings can provide valuable guidelines and implications for design.
+From the present study, we recommend a new perspective for the design and development of the next generation of AI systems to secure successful implementation of the technology for patient diagnosis.
+The present study stressed the critical role of trust in accepting intelligent agents.
+As some authors also state~\cite{LIU2022107026}, yet complex solutions, building and maintaining clinicians' trust is a high priority to facilitate user engagement and acceptance.
+
+\vspace{1.50mm}
+
+\noindent
+From the following aspects, efforts can be made concerning our design recommendations:
+
+% ####
+
+% Ver aqui:
+
+% https://www.sciencedirect.com/science/article/pii/S0747563221003496?via%3Dihub
+
+% No 5.2. Practical implications
+
+% ####
+
+% Ver aqui:
+
+% https://www.sciencedirect.com/science/article/pii/S0747563221003162?via%3Dihub
+
+% No 8.3. Managerial implications
+
+% ####
+
+% Ver aqui:
+
+% https://www.sciencedirect.com/science/article/pii/S0747563221001631#bib64
+
+% No 6.2. Managerial implications
+
+% ####
+
+\vspace{1.00mm}
+
+\begin{enumerate}
+\item An intelligent agent should inform clinicians concerning the consequences of following AI guidance and respective clinical workflow impact for each decision, while providing clinicians control over choice;
+\item An AI system should consider demographic data, while adapting the intelligent agent communication depending on gender, age, and country development categories of clinicians;
+\item An AI system should take into account the variability of different medical cases, while paying attention to individual conditions and respective needs with varied AI techniques;
+\item Designers and developers should enhance the ease of use (usability) and usefulness (functionality) of AI systems to improve perceived security, perceived risk, and trust of clinicians;
+\end{enumerate}
+
+\vspace{1.00mm}
+
+Similar to the work of Liu et al.~\cite{LIU2022107026}, our results show how intelligent agents may optimize their control over a decision while informing the consequences of it.
+As a (1) first recommendation to introduce an AI algorithm successfully in these clinical workflows, intelligent agents must derive efficient representations ({\it e.g.}, explanations), and use them to specify each patient case.
+By providing efficient representations and control, clinicians will trust more AI guidance, with a higher feeling of security and less risk of their decision.
+
+For the (2) second recommendation, our results show how clinicians behave and perceive differently regarding several demographic groups.
+We found differences in behavior between gender, age, and country development categories.
+Hence, making it essential to adapt the communication of intelligent agents depending on the specific characteristics of each situation.
+For example, clinicians from developed countries usually have access to cutting-edge technology and, thus, are more aware of AI technology. However, clinicians from underdeveloped countries are typically less familiar with it.
+This is an important finding and recommendation in our study, as the level of AI-based communication must be adapted to groups of clinicians.
+
+As a (3) third recommendation and identical to the last one, we also found that personalizing how intelligent agents report the AI results is an attractive aspect.
+AI system designers and developers should consider the variability of different medical cases and embrace the individual needs of clinicians with varied AI techniques.
+We must pay attention to individual conditions, such as medical experience ({\it e.g.}, expert {\it vs.} novice knowledge), training levels, and expertise areas.
+For instance, expert clinicians may be more susceptible than novice clinicians (and vice versa) to an AI technique trained on a dataset of images or trained with patients' medical histories.
+
+Finally, our (4) fourth recommendation denotes how AI designers and developers should enhance new intelligent agents' usability and functionality.
+Although we already reported other salient design recommendations, increasing the ease of use and usefulness of an intelligent agent, respectively, is of chief importance for AI adoption.
+Whereas user satisfaction and behavioral intention are consequences of trust~\cite{LIU2022107026, LV2022106993}, ease of use and usefulness are significant antecedents of user's confidence.
+By doing so, clinicians' perceived security, risk, and trust towards using the AI system can be largely enhanced.
+
+\subsection{Limitations}
+\label{sec:chap004006003}
+
+Despite its contributions, the study has some limitations, and these limitations provide fruitful avenues for further research.
+Several of these limitations affect the scope of our results.
+Although we had a significant sample of global nationalities, there is still a bias for the small sample size (Table~\ref{tab:tab008}) of specific nationalities.
+To understand the effect of this bias, we analyzed the moderator effect of country development categories in our model, which showed the same evidence of invariant measure when compared to other moderators (gender, age, etc.).
+However, we did not record race and ethnicity differences in our sample.
+Previous works are showing a significant impact of cultural diversity on social influence, usefulness, and behavior intention~\cite{Belanche2019, info:doi/10.2196/27122}.
+
+Another limitation of our study is that it involved clinicians mainly related to radiology.
+Given the focus of our study, {\it i.e.}, the medical imaging field, our sample could be biased.
+The effect of such characteristics limits the generalizability of this research, since the sample employed in this study could express different perceptions towards AI systems compared to other clinical expertise.
+However, the experimental design helps reduce the impact of the Common Method Bias (CMB), which we employed in this study, particularly for the new AI constructs.
+Moreover, by combining the survey with outcome variables measured separately and more objectively ({\it e.g.}, frequency of usage/reporting), we are revealing valid results less prone to measurement and method bias.
+
+Despite the above limitations, this study fosters the community understanding of the intention to use AI systems in the clinical workflow. Specifically for the associated constructs of security, risk, and trust concerns on AI systems.
+Finally, we provide a valuable set of design guidelines and recommendations for delivering AI systems with these concerns to different user groups.
+
+\subsection{Future Directions}
+\label{sec:chap004006004}
+
+Anticipating clinical behavior is notoriously tricky, especially under critical circumstances, such as decision-making in the health sector.
+An obvious avenue for future research would be to apply our measurement model to a more broad approach to a higher number of AI applications.
+For instance, the applicability of this model to other clinical contexts ({\it e.g.}, systems for clinical drug development, epidemiology, dementia treatment, between others), where decision support systems are also demanding.
+Indeed, such a study will sample a more extensive and generalizable achievement of our findings and recommendations.
+Therefore, future studies should sample a more significant number of users and compare the differences in various clinical domains.
+
+Our generalized application of the research model would require a data collection process of more clinical characteristics for better thorough validation.
+For example, it is also essential to understand the clinical behaviors and needs of public and private health institutions.
+Hence, further research would examine change in the importance of constructs over these characteristics, mainly to see the effect of safety, risk, and trust on behavioral intention over different scenarios.
+The results of this study should promote future research and consider adding other antecedents of behavioral intention.
+
+\section{Conclusion}
+\label{sec:chap004010}
+
+The advent of AI techniques enables intelligent agents as a new medical imaging diagnosis paradigm.
+However, the implementation success of these AI techniques depends on clinicians' trust and acceptance of such systems.
+The present study examines the role of security, risk, and trust in influencing the acceptance of AI-based assistance.
+We empirically tested the proposed research model, showing that trust is a crucial path in shaping user acceptance, which mediated the effects of AI-specific aspects on user acceptance.
+Additionally, we demonstrate that clinicians' demographic characteristics are relevant moderators of the relationship between factors and behavioral intention.
+Indeed, this study indicates that some characteristics of clinicians should be considered when developing novel intelligent agents for the clinical workflow of medical imaging diagnosis.
+The study offers significant findings and implications for better design, development, and implementation of this level of AI-based assistance.
+

@@ -12,20 +12,20 @@ This chapter (Chapter~\ref{chap:chap002}) contains useful information about the 
 However, it does not describe any original contributions and can be skipped if the reader is acquainted with the background.
 
 \section{Medical Imaging Diagnosis}
-\label{sec:sec002001}
+\label{sec:chap002001}
 
 Screening aims to identify cancer at earlier stages of the several diseases, when treatment can be more successful~\cite{McKinney2020}.
 However, two main difficulties arise.
 First, the amount of data to be processed has been increasing significantly and greatly surpasses the throughput capabilities of the radiologists~\cite{HANNA20181709}.
 Second, processing such amount of data in a timely fashion without compromising the reliability of the diagnosis is very challenging~\cite{waite2017systemic, stec2018systematic}.
-These difficulties have been the driving force behind the recent trend in {\it radiomics}\footnotemark[4] (Section~\ref{sec:sec002006}) and the integration of \ac{AI} techniques into medical imaging~\cite{Lambin2017, pesapane2018artificial, doi:10.1148/radiol.2015151169}.
+These difficulties have been the driving force behind the recent trend in {\it radiomics}\footnotemark[4] (Section~\ref{sec:chap002006}) and the integration of \ac{AI} techniques into medical imaging~\cite{Lambin2017, pesapane2018artificial, doi:10.1148/radiol.2015151169}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \footnotetext[4]{Involving the high-throughput extraction of quantitative imaging features, {\it radiomics} intent of creating mining information from radiological images. Large-scale data sharing is necessary for the validation and full potential that {\it radiomics} represents.}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Breast Cancer Domain}
-\label{sec:sec002002}
+\label{sec:chap002002}
 
 In the context of breast cancer, the requirements for multi-modal data have a significant impact on the clinical workflow~\cite{10.1117/1.JBO.22.4.046008}.
 Although \ac{MG} is the primary imaging modality for breast screening, it may be insufficient to reach a correct diagnosis.
@@ -33,7 +33,7 @@ For instance, in dense breasts (Figure~\ref{fig:fig005} {\bf B}, {\bf D}), the l
 Thus, for dense breasts, other modalities constitute a valuable information to complement the diagnosis.
 Figure~\ref{fig:fig005} {\bf E}, {\bf F} depicts the \ac{US} and \ac{DCE}-\ac{MRI} modalities, where the lesions can be easily viewed.
 Among all these imaging characteristics, classifying a tumor into benign or worrisome categories (severity) is the ultimate objective~\cite{SHAN2016980}.
-Next (Section~\ref{sec:sec002003}), this document explains how the severity classification works for the breast cancer diagnosis.
+Next (Section~\ref{sec:chap002003}), this document explains how the severity classification works for the breast cancer diagnosis.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure}[htbp]
@@ -45,7 +45,7 @@ Next (Section~\ref{sec:sec002003}), this document explains how the severity clas
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Severity Classification}
-\label{sec:sec002003}
+\label{sec:chap002003}
 
 Clinical guidelines recommend regular image screenings to assess the risk of breast cancer~\cite{MIAO201817}.
 To reduce variations in the radiologists’ descriptions of imaging findings, the \href{https://www.acr.org/}{\ac{ACR}} developed the \ac{BI-RADS}~\cite{d2018breast}.
@@ -68,14 +68,14 @@ In this thesis, a \ac{DNN} was trained to assess \ac{BI-RADS} breast classificat
 Chapter~\ref{chap:chap006} will detail the number of screening patients and images, as well as its importance of assessing these categories.
 
 \section{Lesion Typification}
-\label{sec:sec002004}
+\label{sec:chap002004}
 
 The lesion typification~\cite{doi:10.1148/radiol.2018181371} is also a challenge to address in this thesis background.
-The goal of this section is to explain what is the importance of the lesions, {\it i.e.}, masses (Section~\ref{sec:sec002004001}) and the microcalcifications (Section~\ref{sec:sec002004002}), that will feed the \ac{AI} algorithms (Chapter~\ref{chap:chap005} and Chapter~\ref{chap:chap006}) and provide visual information to clinicians.
+The goal of this section is to explain what is the importance of the lesions, {\it i.e.}, masses (Section~\ref{sec:chap002004001}) and the microcalcifications (Section~\ref{sec:chap002004002}), that will feed the \ac{AI} algorithms (Chapter~\ref{chap:chap005} and Chapter~\ref{chap:chap006}) and provide visual information to clinicians.
 For the severity classification~\cite{8611096, 9231684}, it is important to know the type of mass shapes, microcalcification patterns, and size to understand its importance to the algorithms.
 
 \subsection{Masses}
-\label{sec:sec002004001}
+\label{sec:chap002004001}
 
 Concerning the mass typification (Figure~\ref{fig:fig021}), the benign masses are either round, oval, or lobular shapes, and the malign masses are either lobular, irregular, or architectural distortion shapes~\cite{nadia2020xai}.
 The margins can also tell us information about the lesion.
@@ -97,7 +97,7 @@ In this case, part of the margin is hidden by fibroglandular tissue.
 If a patient case has an obscured margin result, the suggested action (Figure~\ref{fig:fig018}) is to perform an \ac{US}.
 
 \subsection{Microcalcifications}
-\label{sec:sec002004002}
+\label{sec:chap002004002}
 
 Regarding the typification of the microcalcifications, there are five types~\cite{nadia2020xai}.
 In this section, the document will explain the patterns (Figure~\ref{fig:fig022}) from the less malign to the most malign.
@@ -119,20 +119,20 @@ Lastly the segmental pattern (letter {\bf d} of Figure~\ref{fig:fig022}), meanin
 
 In the context of breast cancer, the requirements for multimodality have a significant impact on the clinical workflow~\cite{https://doi.org/10.1002/cncr.32910}.
 Although \ac{MG} is the primary imaging modality (Figure~\ref{fig:fig018}), it may be insufficient to reach a correct and complete dataset for clinicians and for \ac{AI}~\cite{DANA2020541}.
-Next (Section~\ref{sec:sec002005}), the document explains the current imaging workflow and the importance of having a multi-modal available data.
+Next (Section~\ref{sec:chap002005}), the document explains the current imaging workflow and the importance of having a multi-modal available data.
 
 \section{Radiology Reading Room}
-\label{sec:sec002005}
+\label{sec:chap002005}
 
 The main \ac{RRR} workflow (Figure~\ref{fig:fig018}) can be defined as a three-stage process:
 (1) {\it examination};
 (2) {\it diagnosis}; and
 (3) {\it report}.
-The {\it examination} stage (Section~\ref{sec:sec002005001}) refers to the time spent on the examination and processing of the patient records ({\it e.g.}, demographics, clinical records or past medical images).
+The {\it examination} stage (Section~\ref{sec:chap002005001}) refers to the time spent on the examination and processing of the patient records ({\it e.g.}, demographics, clinical records or past medical images).
 For instance, the radiologist receives this information from both the hospital and radiology information systems~\cite{islam2018recent}.
-The second stage, {\it i.e.}, {\it diagnosis} (Section~\ref{sec:sec002005002}), corresponds to the time that the radiologist spends on the interpretation and diagnosis of the patient exams.
-In this phase, the radiologist interacts with a \ac{PACS} retrieving the {\it modality working list} (Figure \ref{fig:fig003}) from a radiology information system~\cite{DIROBERTO2016950} of the hospital.
-Finally, in the last stage, {\it i.e.}, {\it report} (Section~\ref{sec:sec002005003}), it refers to the time spent on reporting her/his conclusions after the patient's medical images analysis.
+The second stage, {\it i.e.}, {\it diagnosis} (Section~\ref{sec:chap002005002}), corresponds to the time that the radiologist spends on the interpretation and diagnosis of the patient exams.
+In this phase, the radiologist interacts with a \ac{PACS} retrieving the {\it modality working list} from a radiology information system~\cite{DIROBERTO2016950} of the hospital.
+Finally, in the last stage, {\it i.e.}, {\it report} (Section~\ref{sec:chap002005003}), it refers to the time spent on reporting her/his conclusions after the patient's medical images analysis.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure}[htbp]
@@ -148,17 +148,17 @@ The stages will be important to identify and define each workflow of the nine cl
 Next, we describe each stage in detail.
 
 \subsection{Image Examination}
-\label{sec:sec002005001}
+\label{sec:chap002005001}
 
 For the {\it examination} stage~\cite{8621479}, the clinician relates medical imaging analysis with other exams and medical records, {\it i.e.}, the clinical situation of the patient.
 The {\it examination} of the patient is sometimes supported by other systems that give the clinician a more reliable source of information~\cite{islam2018recent, DIROBERTO2016950}.
 Most of the information sought is stored in various formats~\cite{GIBSON2018113}, including notes from the referring physician (the doctor who sent the patient to the radiology department), past exams and respective reports, and second opinion from other clinicians.
 
 \subsection{Patient Diagnosis}
-\label{sec:sec002005002}
+\label{sec:chap002005002}
 
 Regarding the {\it diagnosis} stage~\cite{https://doi.org/10.1002/cncr.32872}, this is the most crucial from this document perspective, since it is the one that most contributes to the treatment choice.
-The {\it diagnosis} stage includes image classification (Section~\ref{sec:sec002003}) by using the \ac{BI-RADS} scale.
+The {\it diagnosis} stage includes image classification (Section~\ref{sec:chap002003}) by using the \ac{BI-RADS} scale.
 During this stage, clinicians were observed on the diagnosis process, namely accessing several medical images.
 Several studies were conducted (Chapter~\ref{chap:chap005}) to understand what clinicians need during decision-making and while interacting with an intelligent agent.
 In this stage, each medical image takes about 40 seconds to be analyzed, meaning that the clinician takes about half a minute to interpret an image~\cite{jiang2018interpretation}.
@@ -172,7 +172,7 @@ These handicaps may cause human errors and medical distractions~\cite{bruno2015u
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Final Report}
-\label{sec:sec002005003}
+\label{sec:chap002005003}
 
 After a patient classification, the clinician takes into consideration the first and the second stages ({\it i.e.}, {\it examination} and {\it diagnosis}) to improve the patient's clinical records and determine the prognosis~\cite{segrelles2017increasing}.
 During the classification phase, the clinician examines the patient records and, by analyzing each medical image, records the {\it report} in a dictating system~\cite{SENG202079}.
@@ -181,7 +181,7 @@ After a patient classification, the clinician takes into consideration the first
 The records are transcribed to a {\it report}, which are reviewed later by clinicians (signing the report as final).
 
 \subsection{Summarizing Clinical Procedures}
-\label{sec:sec002005004}
+\label{sec:chap002005004}
 
 As previously discussed, using images to display breast lesions vary widely across medical imaging modalities (\ac{MG}, \ac{US} and \ac{DCE}-\ac{MRI}, being the latter two modalities crucial for dense breasts diagnosis).
 Multimodality is responsible for increasing the cognitive load of radiologists and increasing detection rates, but also reducing \acp{FP} and \acp{FN}~\cite{cheung2017integral}.
@@ -212,7 +212,7 @@ In the end, the clinical history provides the necessary knowledge on how to guid
 In the next section, the document will introduce the basics and definitions of the {\it radiomics} topic.
 
 \section{Radiomics}
-\label{sec:sec002006}
+\label{sec:chap002006}
 
 The topic of {\it radiomics} is a growing field that aims at extracting and mining the information from medical images~\cite{van2020radiomics}.
 Specifically, the goal is to develop computerized support systems to improve the clinical decision-making.
@@ -222,7 +222,7 @@ Among the clinical tasks, breast cancer diagnosis is one of the main areas where
 Through these \ac{CADx} systems, the application of {\it radiomics} to breast cancer may result in the acquisition of important information for feature modelling~\cite{10.1007/978-3-030-59716-0_71}.
 The introduction of intelligent agents for feature modelling in \ac{CADx} systems will result in a better breast cancer characterization.
 An accurate communication of intelligent agents will have the potential to improve diagnostic performance by a decrease in sensitivity and specificity of the medical errors~\cite{doi:10.1148/radiol.2020192039}.
-For breast tumor classification (Section~\ref{sec:sec002003} and Section~\ref{sec:sec002004}), this section needs to also address the {\it radiomics} pipeline (Figure~\ref{fig:fig023}) that will be employed to extract imaging features from tumor images.
+For breast tumor classification (Section~\ref{sec:chap002003} and Section~\ref{sec:chap002004}), this section needs to also address the {\it radiomics} pipeline (Figure~\ref{fig:fig023}) that will be employed to extract imaging features from tumor images.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure}[htbp]
@@ -234,14 +234,14 @@ For breast tumor classification (Section~\ref{sec:sec002003} and Section~\ref{se
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 Several techniques are employed to analyse (letter {\bf a} of Figure~\ref{fig:fig023}) imaging features.
-From tumor images, automatic segmentation can delineate the lesion contours (Figure~\ref{fig:fig021}), as well as extract texture, shape, and margin (Section~\ref{sec:sec002004001}).
+From tumor images, automatic segmentation can delineate the lesion contours (Figure~\ref{fig:fig021}), as well as extract texture, shape, and margin (Section~\ref{sec:chap002004001}).
 With these feature extraction (letter {\bf c} of Figure~\ref{fig:fig023}), the descriptors of {\it radiomics} can characterize, {\it i.e.}, detect (letter {\bf b} of Figure~\ref{fig:fig023}) and classify (letter {\bf d} of Figure~\ref{fig:fig023}), the lesion.
 Further, it will be possible to compare the autonomous with the clinician characterization.
 
 In this thesis, several {\it radiomics} are extracting quantitative features to train a variety of classifiers.
 The aim is to extract the quantified characteristics for an available and curated dataset (Chapter~\ref{chap:chap004}) of breast images with the aid of automated algorithms and respective intelligent agents.
 There has been numerous pipelines and methods developed, although the lack of standardization in medical image processing makes it difficult to consume different formats.
-Thus, in Section~\ref{sec:sec002007} this challenge is addressed.
+Thus, in Section~\ref{sec:chap002007} this challenge is addressed.
 
 Despite the success of \ac{DL}, and even though different studies have shown that {\it radiomics} ({\it i.e.}, \ac{AI}-assisted methods for medical image analysis) can reduce human error and improve outcomes~\cite{Cai:2019:HTC:3290605.3300234, delvaux2017effects, middleton2016clinical}, their adoption by the medical community has been slow.
 One of the main reasons is the inability of these systems to provide relevant medical information or to capture the nuances of the human mind~\cite{khairat2018reasons, kohli2018cad, 10.1145/2858036.2858373}, making them untrustworthy and preventing their clinical acceptance.
@@ -249,7 +249,7 @@ In particular, \ac{DL}-based methods have been frequently viewed as `black box' 
 Therefore, \ac{HCI} play an important role in creating user-friendly interactive systems for \ac{AI}-assisted medical image analysis~\cite{10.1145/3132272.3134111}.
 
 \section{Medical Imaging Standards}
-\label{sec:sec002007}
+\label{sec:chap002007}
 
 The \ac{DICOM} format\footnotemark[7] is normally used to store medical images~\cite{Trivedi2019} and is a standard in medicine.
 Supporting a wide variety of medical information ({\it e.g.}, exam images, structured reports, etc), it also has the benefit to convert known file formats, such as \ac{JPEG} and \ac{MPEG}.
@@ -275,7 +275,7 @@ In this thesis work, the above technologies are used to store the exams and pati
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Medical Imaging Storage}
-\label{sec:sec002008}
+\label{sec:chap002008}
 
 The \ac{PACS}~\cite{carter2018digital} offers efficient storage and a simple way to access the (\ac{DICOM}) images in a variety of modalities.
 The deployment of these technologies requires specific packages and environments, which will be detailed below.

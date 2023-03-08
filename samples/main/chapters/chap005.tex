@@ -3,34 +3,30 @@
 % !TEX root = main.tex
 % #############################################################################
 % Change the Name of the Chapter i the following line
-\fancychapter{Assessment of Intelligent Agents}
+\fancychapter{Assessment \& Implications}
 \clearpage
 % The following line allows to ref this chapter
 \label{chap:chap005}
 
-In the last chapter (Chapter~\ref{chap:chap004}), the thesis introduces the development of a framework (Section~\ref{sec:sec004003}).
-Indeed, this framework will serve as the basis of the main work objectives (Section~\ref{sec:sec001002}).
-Consequently, the first steps for the design of a labeling tool (Section~\ref{sec:sec004003002}) are made.
-For medical imaging annotations, the tool is promoting a standardized generation of datasets (Section~\ref{sec:sec004004002}) which will fulfil the thesis main concerns.
-After all, the datasets are important information to train the implemented models.
+TODO: Intro Chapter. For instance, start saying where was this chapter published.
 
-A proof-of-concept tool was designed for the production of qualified datasets in order to provide clinicians, as well as the \ac{ML} community, a sharing and collaborative solution (Section~\ref{sec:sec004002003}).
-This solution is giving the potential to extract features (Section~\ref{sec:sec002006}), like contours, intersections, margins, shapes and severities that can be used in the process of lesion segmentation and classification.
-As a result of that, the framework is covering the initial challenges (Section~\ref{sec:sec001002}) concerning the lack of available and curated medical data.
+A proof-of-concept tool was designed for the production of qualified datasets in order to provide clinicians, as well as the \ac{ML} community, a sharing and collaborative solution.
+This solution is giving the potential to extract features (Section~\ref{sec:chap002006}), like contours, intersections, margins, shapes and severities that can be used in the process of lesion segmentation and classification.
+As a result of that, the framework is covering the initial challenges (Section~\ref{sec:chap001002}) concerning the lack of available and curated medical data.
 Due to a human-centered approach, the annotating process is now enabling clinicians to understand the importance between existing medical data and \ac{AI} algorithms.
 However, this is just a minor concern according to the main objectives of this thesis.
 
-For this thesis, the main goal is to understand how the implemented \ac{DL} methods (Section~\ref{sec:sec003007}) can consume the aforementioned generated data and being integrated within an intelligent agent.
+For this thesis, the main goal is to understand how the implemented \ac{DL} methods (Section~\ref{sec:chap003007}) can consume the aforementioned generated data and being integrated within an intelligent agent.
 Moreover, it is of chief importance to understand how the intelligent agent(s) can better communicate with clinicians as a second reader.
 In this chapter, the document takes a \ac{HCI} perspective on the opportunities provided by \ac{AI} techniques in medical imaging, focusing on workflow efficiency and quality, preventing errors and variability of diagnosis in breast cancer.
 
 \section{Introduction}
-\label{sec:sec005001}
+\label{sec:chap005001}
 
 \ac{AI} has the potential to fundamentally transform many application domains~\cite{ghahramani2015probabilistic}.
 One notable example is clinical radiology \cite{choy2018current, hosny2018artificial}, for which a growing number of \ac{AI}-based systems have been proposed for lesion detection and segmentation.
 In the \ac{RRR}, these are two fundamental steps to accomplish the diagnosis and treatment planning \cite{kooi2017large, graffy2019automated, lakhani2017deep, liang2019deep}.
-This synergy between \ac{AI} and medical imaging is currently known as {\it radiomics}~\cite{Lambin2017} and aims to develop methods that automatically analyze large amounts of data and extract meaningful features to support diagnosis~\cite{Ruddle:2016:DEI:2872314.2834117} and clinical decision making~\cite{Park:2015:TOA:2737795.2656213}.
+This synergy between \ac{AI} and medical imaging is currently known as {\it radiomics}~\cite{Lambin2017} and aims to develop methods that automatically analyze large amounts of data and extract meaningful features to support diagnosis~\cite{Ruddle:2016:DEI:2872314.2834117} and clinical decision-making~\cite{Park:2015:TOA:2737795.2656213}.
 
 Many studies have reported robust and relevant findings in {\it radiomics}~\cite{aerts2017data}.
 Without hand-designed features~\cite{ker2018deep}, the field is including significant hierarchical relationships within the data automatically discovered.
@@ -60,29 +56,29 @@ Then, we applied our \ac{UTA} to the full list of clinical institutions and clin
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Motivation}
-\label{sec:sec005001001}
+\label{sec:chap005001001}
 
-Breast cancer (Section~\ref{sec:sec002002}) is one of the most diagnosed cancers worldwide~\cite{desantis2016breast, torre2015global}.
+Breast cancer (Section~\ref{sec:chap002002}) is one of the most diagnosed cancers worldwide~\cite{desantis2016breast, torre2015global}.
 In fact, breast cancer is the second leading cause of death from cancer in women~\cite{doi:10.3322/caac.21492}.
 Early detection is one of the most effective ways to increase the survival rate for this disease~\cite{welch2016breast, saadatmand2015influence}.
 Screening mammography aims to identify breast cancer at earlier stages of the disease, when treatment can be more successful~\cite{McKinney2020}.
 However, two main difficulties arise.
 First, the amount of data to be processed has been increasing significantly and greatly surpasses the throughput capabilities of the radiologists.
 Second, processing such amount of multi-modal data (Figure~\ref{fig:fig005}) in timely fashion without compromising the reliability of the diagnosis which is very challenging.
-These difficulties have been the driving force behind the recent trend in {\it radiomics} (Section~\ref{sec:sec002006}) and the integration of \ac{AI} techniques into medical imaging.
+These difficulties have been the driving force behind the recent trend in {\it radiomics} (Section~\ref{sec:chap002006}) and the integration of \ac{AI} techniques into medical imaging.
 
 Agent-based tools are one of the new paradigm for complex and distributed healthcare systems~\cite{10.1145/3206505.3206555, esteva2019guide}.
 In this paradigm, developed components are not tightly coupled with one another and can work autonomously, even in unpredictable environments.
 Intelligent agents are the natural choice for dynamic and critical environments that are characterized with heterogeneous information and its interactions, rapidly growing data quantity and different data representation forms, such as segmentation and classification of lesions.
 Hence, the use of these agents can provide additional value for the final diagnostic.
 
-Support for visualization of multi-modal images and \ac{AI} techniques can provide improvements and insights in the breast screening radiology workflow (Section~\ref{sec:sec002005}).
+Support for visualization of multi-modal images and \ac{AI} techniques can provide improvements and insights in the breast screening radiology workflow (Section~\ref{sec:chap002005}).
 In this chapter, the goal is to evaluate the impact of the integration of these techniques in the context of the breast cancer diagnosis using the {\it BreastScreening-AI} tool.
 Specifically, this work focus on how multimodality and intelligent agents could add a value in the {\it radiomics} medical workflow~\cite{calisto2017mimbcdui}.
 The answers of the work to this problem include usage and acceptance by physicians and the improvement of workflow efficiency and quality, as well as reduction and prevention of errors and variability of diagnosis.
 
 \subsection{Research Goals}
-\label{sec:sec005001002}
+\label{sec:chap005001002}
 
 A vital component of this research was to access a significant number of clinical settings and radiologists.
 In this thesis, the work have established the foundations of its research via a human-centered design process and following the guidelines for \ac{HAII}~\cite{10.1145/3290605.3300233, Cai:2019:HTC:3290605.3300234, Kocielnik:2019:YAI:3290605.3300641}, including:
@@ -110,7 +106,7 @@ Diagnosis can be defined as mapping between visualization of the image and the r
 The above research questions are placed in a context to encompass the  richness of each modality, especially in the {\it Current} vs. {\it AI-Assisted} medical imaging scenarios discussed in the methods section.
 
 \section{Related Work}
-\label{sec:sec005002}
+\label{sec:chap005002}
 
 Due to improved screening techniques and treatments, death as a result of breast cancer has fallen in recent years~\cite{doi:10.3322/caac.21492, doi:10.1002/cncr.32859}.
 These improvements are the direct result of scientific research~\cite{AGRAWAL201927, murtaza2019deep}.
@@ -120,7 +116,7 @@ Then, the section introduces the reader to existing \ac{HAII} techniques to faci
 As follows, each area is properly addressed.
 
 \subsection{Assisted Medical Imaging Analysis}
-\label{sec:sec005002001}
+\label{sec:chap005002001}
 
 In modern healthcare, medical images are crucial to support decision making, both in terms of diagnosis, predictions, and treatment planning.
 In many situations, the accurate lesion detection and segmentation constitutes a mandatory requirement for image analysis. 
@@ -143,7 +139,7 @@ In particular, DL-based methods have been frequently viewed as black box approac
 Therefore, HCIs play an important role in creating user-friendly interactive systems for {\it AI-Assisted} medical image analysis~\cite{10.1145/3132272.3134111}.
 
 \subsection{Human-AI Collaboration}
-\label{sec:sec005002002}
+\label{sec:chap005002002}
 
 In this thesis, the problem of better supporting ambiguity in \ac{HAII} collaborative tasks is addressed~\cite{10.1145/3313831.3376506}.
 Specifically, Chapter~\ref{chap:chap005} focus on supervised learning settings for data classification that rely on clinician-labeled medical data to train and evaluate \ac{AI} algorithms~\cite{SchaekermannMike2020}.
@@ -161,20 +157,20 @@ Specifically, expecting more than the system can deliver will decrease user sati
 Hence, in this thesis it was created and proposed a new technique, based on the following contributions:
 (1) providing users a new control feature on the introduction of \ac{AI} methods among medical imaging diagnosis; and
 (2) the impact of the radiologists {\it behaviour} and the impact in professional practice.
-Indeed, such was done under this thesis to achieve more accurate expectations of the systems capabilities while addressing potential gaps.
+Indeed, such was done under this thesis to achieve more reliable expectations of the systems capabilities while addressing potential gaps.
 
 \section{Design Keys}
-\label{sec:sec005003}
+\label{sec:chap005003}
 
 The process that leads to the development of the {\it BreastScreening-AI} prototype~\cite{https://doi.org/10.13140/rg.2.2.29816.70409} included a holistic understanding for context of {\it radiomics} in breast screening.
 Herein, the developed study was specifically interested in the use of several modalities and intelligent agents to detect and classify lesions.
 Quantitative and qualitative studies were conducted in nine health institutions to understand the medical practices surrounding {\it radiomics} in breast cancer, including the classifications of the lesion severity using the \ac{BI-RADS}~\cite{https://doi.org/10.13140/rg.2.2.36306.86725} score.
-At this point, impressions were taken regarding the efficiency of clinicians, and their recommendations based on their experience for improvements of the patient {\it examination} (Section~\ref{sec:sec002005001}).
+At this point, impressions were taken regarding the efficiency of clinicians, and their recommendations based on their experience for improvements of the patient {\it examination} (Section~\ref{sec:chap002005001}).
 In fact, several studies demonstrated~\cite{waite2017tired} that radiologist fatigue levels and performance are related to environmental factors such as number of \acp{FP} and \acp{FN}.
 That said, the study started by analyzing the potential enhancement that an \ac{AI}-assisted diagnosis could take in the \ac{RRR}~\cite{chatelain2018evaluation, miglioretti2007radiologist}.
 
 \subsection{Insights and Challenges}
-\label{sec:sec005003001}
+\label{sec:chap005003001}
 
 Observations and interviews are aligned with previous research on clinician-driven diagnostic {\it tasks}~\cite{rosset2004osirix, wolf2005medical, Sultanum:2018:MTP:3173574.3173996, weese2016four, heinrich2012mind}.
 From the research insights, the following main challenges were identified:
@@ -184,21 +180,21 @@ Next, each of the two points above mentioned are detailed.
 
 {\it Radiomics} in general, and {\it BreastScreening-AI} in particular, require managing a significant and heterogeneous number of large image files.
 This is paramount in \ac{MRI} volumes.
-During the \ac{MRI} acquisition, tens of breast volumes are obtained, comprising different imaging volumes (Section~\ref{sec:sec002005002}) some of them in time intervals ({\it e.g.}, T1, T2, diffusion, and \ac{DCE} with subtraction \cite{sorace2018distinguishing}).
+During the \ac{MRI} acquisition, tens of breast volumes are obtained, comprising different imaging volumes (Section~\ref{sec:chap002005002}) some of them in time intervals ({\it e.g.}, T1, T2, diffusion, and \ac{DCE} with subtraction \cite{sorace2018distinguishing}).
 
 From the  observations and interviews, it was clear that clinicians observe only a fraction of these \ac{MRI} volumes.
 Also, the imaging volumes inspected are different depending on the practices of each clinical institution.
 For instance, it was observed that in Hospital Fernando Fonseca only the \ac{DCE}-\ac{MRI} at second time instant is considered, while in IPO Lisboa only the third time instant of imaging volume is used for diagnosis.
-Consequently, the \ac{UI} should reflect the specific institution as it will be detailed in Section~\ref{sec:sec005004002}.
+Consequently, the \ac{UI} should reflect the specific institution as it will be detailed in Section~\ref{sec:chap005004002}.
 
-Related to the requirements of {\it radiomics}, the second challenge involves the generation of ground-truth data. This is twofold, namely, (i) for visualization issues, when the radiologist is able to inspect the delineation provided, thus, facilitating an eventual second reading of the exam, also (ii) it constitutes valuable information for training deep neural nets with (semi)supervised learning procedures, as mentioned above (Section~\ref{sec:sec002006}).
-This comprises the localization/delineation (Section~\ref{sec:sec004003002}) of anatomical microcalcification and mass lesions (Section~\ref{sec:sec002004}).
+Related to the requirements of {\it radiomics}, the second challenge involves the generation of ground-truth data. This is twofold, namely, (i) for visualization issues, when the radiologist is able to inspect the delineation provided, thus, facilitating an eventual second reading of the exam, also (ii) it constitutes valuable information for training deep neural nets with (semi)supervised learning procedures, as mentioned above (Section~\ref{sec:chap002006}).
+This comprises the localization/delineation of anatomical microcalcification and mass lesions.
 
-In addition, it is easier to detect the lesion patterns (Section~\ref{sec:sec002004}) by comparing the region of the breast in different modalities.
-This is particularly relevant in prototyping {\it BreastScreening-AI} since the lesions in dense breasts are almost impossible to detect in \ac{MG} (in both \ac{CC} and \ac{MLO} views) -- a recognized problem leading to a large number of non-diagnosed cancers -- which only manifest later in touch exams or after severe consequences from disease progression~\cite{mohamed2018deep}.
+In addition, it is easier to detect the lesion patterns (Section~\ref{sec:chap002004}) by comparing the region of the breast in different modalities.
+This is particularly relevant in prototyping {\it BreastScreening-AI} since the lesions in dense breasts are almost impossible to detect in \ac{MG} (in both \ac{CC} and \ac{MLO} views) -- a recognized problem leading to numerous non-diagnosed cancers -- which only manifest later in touch exams or after severe consequences on disease progression~\cite{mohamed2018deep}.
 
 \subsection{Design Goals}
-\label{sec:sec005003002}
+\label{sec:chap005003002}
 
 In this section, it is investigated how \ac{AI}-assisted methods could be integrated into the design of an intelligent agent for the medical imaging diagnostic.
 The purpose is to help mitigating breast cancer diagnosis, while meeting overall healthcare design goals.
@@ -208,7 +204,7 @@ With the introduction of intelligent agents, the improved framework ({\it Breast
 Here, the main goal is to expose the \ac{AI} algorithm results in a readily available format.
 The design goals of {\it BreastScreening-AI} have been for a robust, reliable, and elegant \ac{UI} to promote the integration of intelligent agents in the \ac{RRR} workflow.
 
-The main design goals are closely related to the research insights and challenges of the previous section (Section~\ref{sec:sec005003001}), namely:
+The main design goals are closely related to the research insights and challenges of the previous section (Section~\ref{sec:chap005003001}), namely:
 (1) collection of a ground-truth annotations, {\it i.e.}, masses in all imaging modalities and microcalcification lesions in \ac{MG} (for both \ac{CC} and \ac{MLO} views);
 (2) classification of the lesion severity using the \ac{BI-RADS}~\cite{aghaei2018association};
 (3) categorization of the breast tissues (dense vs non-dense);
@@ -237,7 +233,7 @@ Through user studies, it was identified the above three ({\it i.e.}, \ac{MID}, \
 Next, the document will describe the design methods to achieve these design goals.
 
 \subsection{Design Methods}
-\label{sec:sec005003003}
+\label{sec:chap005003003}
 
 In this thesis, all clinicians were actively involved in the design of this medical imaging solution.
 To generate clinician's empathy and involvement, design methods from participatory design were used~\cite{10.1145/3308558.3314123}.
@@ -256,23 +252,23 @@ Under this thesis, the followed design methods consist of three aspects:
 \end{itemize}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Interviews and observations are helpful to obtain a synthesized {\it insight} in the clinical workflow (Section~\ref{sec:sec002005}).
+Interviews and observations are helpful to obtain a synthesized {\it insight} in the clinical workflow (Section~\ref{sec:chap002005}).
 As design method according to this aspect, this work went through several observations and interviews on clinical institutions.
-From those methods, information was extracted regarding, not only, workflow (Section~\ref{sec:sec002005}), but also, demographic data of clinicians (Section~\ref{sec:sec005005001}).
+From those methods, information was extracted regarding, not only, workflow (Section~\ref{sec:chap002005}), but also, demographic data of clinicians (Section~\ref{sec:chap005005001}).
 
 For {\it ideation}, the process of generating new ideas, is central to design where the goal is to find novel solutions around a set of user needs and requirements.
 In terms of design methods, this work promotes several brainstorming techniques.
-Those techniques are such as workshops (Section \ref{sec:sec005006002001}), focus groups (Section~\ref{sec:sec005006002002}) and affinity diagrams (Section \ref{sec:sec005006002003}).
-Affinity diagramming (Section \ref{sec:sec005006002003}) has been used in this study to organize the acquired large sets of ideas into data clusters (Section~\ref{sec:sec005006002004}).
-In this thesis, the methods are used to organize the findings and to sort design ideas into {\it ideation} of a focus group (Section~\ref{sec:sec005006002002}) during several workshops (Section \ref{sec:sec005006002001}).
-The techniques will be further (Section~\ref{sec:sec005006002}) detailed and discussed.
+Those techniques are such as workshops (Section \ref{sec:chap005006002001}), focus groups (Section~\ref{sec:chap005006002002}) and affinity diagrams (Section \ref{sec:chap005006002003}).
+Affinity diagramming (Section \ref{sec:chap005006002003}) has been used in this study to organize the acquired large sets of ideas into data clusters (Section~\ref{sec:chap005006002004}).
+In this thesis, the methods are used to organize the findings and to sort design ideas into {\it ideation} of a focus group (Section~\ref{sec:chap005006002002}) during several workshops (Section \ref{sec:chap005006002001}).
+The techniques will be further (Section~\ref{sec:chap005006002}) detailed and discussed.
 
-Finally, the {\it implementation} is promoted as a way of developing the prototype (Section~\ref{sec:sec005006002005}).
+Finally, the {\it implementation} is promoted as a way of developing the prototype (Section~\ref{sec:chap005006002005}).
 The successful {\it implementation} was quickly recognized and would rely on a bare minimum number of requirements.
 Short iterations enabled the use of many different design methods for prototyping and testing, as work is having many different concerns with clinicians.
 
 \section{BreastScreening-AI}
-\label{sec:sec005004}
+\label{sec:chap005004}
 
 To validate the proposed design goals and research questions, {\it BreastScreening-AI} was developed.
 As a proof-of-concept fully functional prototype, this tool aims to be evaluated in a realistic clinical scenario.
@@ -280,9 +276,9 @@ In the following sections, the document will describe the main functionalities o
 Next, the document describe the prototype details and system implementation.
 
 \subsection{Implementation}
-\label{sec:sec005004001}
+\label{sec:chap005004001}
 
-Similar to the younger brother ({\it BreastScreening} of Section~\ref{sec:sec004004001001}), {\it BreastScreening-AI} was implemented using \href{https://cornerstonejs.org/}{CornerstoneJS}~\cite{urban2017lesiontracker} with a \href{https://nodejs.org/}{NodeJS} server.
+Similar to an earlier version~\cite{https://doi.org/10.13140/rg.2.2.29816.70409}, {\it BreastScreening-AI} was implemented using \href{https://cornerstonejs.org/}{CornerstoneJS}~\cite{urban2017lesiontracker} with a \href{https://nodejs.org/}{NodeJS} server.
 To power the system, image patient sets were selected from Hospital Fernando Fonseca and uploaded into an \href{https://www.orthanc-server.com}{Orthanc Server}~\cite{Jodogne2018}.
 Three imaging modalities (\ac{MG}, \ac{US} and \ac{MRI}) were provided for each patient.
 The images were pre-processed and anonymized on the \href{https://www.orthanc-server.com}{Orthanc Server} and then consumed by the {\it BreastScreening-AI} system.
@@ -314,27 +310,27 @@ This requires a novel mechanism for visualizing the three modalities of medical 
 \end{figure}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-To summarize, the {\it BreastScreening} framework (Section~\ref{sec:sec004004001001}) is used by default for image interpretation and labelling on breast cancer diagnosis.
+To summarize, the {\it BreastScreening} framework~\cite{https://doi.org/10.13140/rg.2.2.29816.70409} is used by default for image interpretation and labelling on breast cancer diagnosis.
 Due to the integration of intelligent agents, the new developments of the {\it BreastScreening-AI} prototype were giving this thesis the opportunity to test properly what are the implications of \ac{AI} techniques on the \ac{RRR} workflow.
 Such implications are achieved through the implementation and integration of a classifier model (DenseNet) into the designed \ac{UI}.
 By showing the work design decisions, the following sections will cover these prototyping directions.
 
 \subsection{User Interface}
-\label{sec:sec005004002}
+\label{sec:chap005004002}
 
-Based on identified user needs (Section~\ref{sec:sec002005} and Section~\ref{sec:sec005003003}), the \ac{UI} was designed and implemented.
+Based on identified user needs (Section~\ref{sec:chap002005} and Section~\ref{sec:chap005003003}), the \ac{UI} was designed and implemented.
 This \ac{UI} includes a set of refinement mechanisms to guide clinicians during the diagnostic process.
-The \ac{UI} of {\it BreastScreening-AI} consists of two main components, comprising the list of patients (Figure~\ref{fig:fig003}) and medical imaging views (Figure~\ref{fig:fig031}).
+The \ac{UI} of {\it BreastScreening-AI} consists of two main components, comprising the list of patients and medical imaging views (Figure~\ref{fig:fig031}).
 
 The first assistant view is the {\it 4. List of Patients Views}.
 With this view, clinicians can quickly choose the respective {\it 4.1. List of Patients}.
 Using the \ac{BI-RADS} functionality ({\it 6.3.1.~Physician Severity}), clinicians can now classify (Figure~\ref{fig:fig031}) the severity of the breast lesion for each patient.
 This {\it 4.1. List of Patients} contains only the most important and required information, avoiding the excess of data ({\it e.g.}, gender, access activity on the file, etc), typically shown on these systems.
-Therefore, improving the medical imaging (\ac{MID}) visualization (Section~\ref{sec:sec005003002}) across the \ac{RRR} (Section~\ref{sec:sec002005}).
+Therefore, improving the medical imaging (\ac{MID}) visualization (Section~\ref{sec:chap005003002}) across the \ac{RRR} (Section~\ref{sec:chap002005}).
 The {\it 4.5. Study List Tabs} also allows clinicians to switch between diagnosed patients, {\it 5. Medical Imaging Diagnosis Views}, and {\it 4. List of Patients Views}.
 
 Upon starting the \ac{UI} in the web browser, the user can select from the {\it 4.1. List of Patients} available in the study list.
-Hence, it will improve the design around medical imaging (\ac{MID}) at a higher diagnostic accuracy level (Section~\ref{sec:sec005006001006}) for a single clinician.
+Hence, it will improve the design around medical imaging (\ac{MID}) at a higher diagnostic accuracy level (Section~\ref{sec:chap005006001006}) for a single clinician.
 From here, users can search all patients using criteria such as {\bf Patient ID}, {\bf Study Date}, available {\bf Modality} sets, {\bf Study Description}, and number of {\bf Images}.
 By pressing in a selected row, clinicians open the image viewers.
 In the image viewers, it is possible to visualize the image modalities.
@@ -343,7 +339,7 @@ To support clinicians, {\it 4.3. Help} and {\it 4.4. About} components were prov
 The components are providing clinicians information about how to classify and information about the system, such as how to proceed in a specific use case.
 For instance, these components mainly were used by Interns, to better understand how they could use the tool for diagnosis.
 The {\it 5.2. Toolbars} (Figure \ref{fig:fig031}) were positioned to match the user's requirements (conclusions drawn during observations and interviews).
-This corresponds to the MID goal (Section~\ref{sec:sec005003002}).
+This corresponds to the MID goal (Section~\ref{sec:chap005003002}).
 The {\it 5.1. Viewports} are displayed at the right, after the {\it 5.2. Toolbars}.
 
 Clinicians can probe for lesion patterns via the {\it 5.1.~Viewports}.
@@ -352,12 +348,12 @@ Each time the {\it 5.2.~Toolbars} functionalities are activated, the clinician n
 Using the {\it 5.2.~Toolbars} on the {\it 5.1.~Viewports}, the clinician can locate the lesions and classify its severity (\ac{BI-RADS}).
 
 In this section, the document describe the minor set of designed functionalities of the \ac{UI}.
-Some of these functionalities are already mapped to the respective design goal (Section~\ref{sec:sec005003002}).
+Some of these functionalities are already mapped to the respective design goal (Section~\ref{sec:chap005003002}).
 However, some functionalities were not yet mapped.
-The following sections will map the two main \ac{UI} functionalities, {\it i.e.}, assistant (Section~\ref{sec:sec005004002001}) and explainability (Section~\ref{sec:sec005004002002}), with the design goals (Section~\ref{sec:sec005003002}).
+The following sections will map the two main \ac{UI} functionalities, {\it i.e.}, assistant (Section~\ref{sec:chap005004002001}) and explainability (Section~\ref{sec:chap005004002002}), with the design goals (Section~\ref{sec:chap005003002}).
 
 \subsubsection{Assistant}
-\label{sec:sec005004002001}
+\label{sec:chap005004002001}
 
 The {\it 6.1.~Accept} or {\it 6.3.~Reject} allows the clinician to accept (or reject) the automatic classification of the {\it 6.~Assistant}.
 The {\it 6.~Assistant} is based on the use of a DenseNet~\cite{Huang_2017_CVPR}.
@@ -375,19 +371,19 @@ Each node is assigned to a given class that corresponds to each \ac{BI-RADS} sco
 After this stage, we have conditions for the integration, since now the DenseNet is tuned to perform the classification in unseen test images.
 The classification is fast, being tailored for an online diagnosis.
 
-When several modalities (\ac{MID} and \ac{CRD}) are correctly used (regarding the {\it 5.3.~Modality~Selection} on a multimodality view), the clinician can find more accurately the right severity classification, as concluded in Section~\ref{sec:sec005006001006}.
-For the {\it 6.3.~Reject} option, the physician will have the opportunity to insert (\ac{CRD}) the proposed BIRADS on a drag-and-drop menu ({\it 6.3.1.~Physician Severity}) of severity options. Both \ac{MID} and \ac{CRD} goals are supporting our {\bf RQ5.1} question (Section~\ref{sec:sec005001002}).
+When several modalities (\ac{MID} and \ac{CRD}) are correctly used (regarding the {\it 5.3.~Modality~Selection} on a multimodality view), the clinician can find more accurately the right severity classification, as concluded in Section~\ref{sec:chap005006001006}.
+For the {\it 6.3.~Reject} option, the physician will have the opportunity to insert (\ac{CRD}) the proposed BIRADS on a drag-and-drop menu ({\it 6.3.1.~Physician Severity}) of severity options. Both \ac{MID} and \ac{CRD} goals are supporting our {\bf RQ5.1} question (Section~\ref{sec:chap005001002}).
 
 \subsubsection{Explainability}
-\label{sec:sec005004002002}
+\label{sec:chap005004002002}
 
 Finally, the clinician may press for the {\it 6.2.~Explain} functionality  by looking at the generated heatmaps (Figure~\ref{fig:fig032}).
 The generation of the above colour maps come from the following information: (i) the area ({\it Lesion Size}) of the lesion that comes from the delineation process, (ii) the circularity/sharpness ({\it Lesion Shape}) that can be computed from the annotation in (i), and (iii) the BI-RADS score automatically provided by the DenseNet ({\it i.e.}, classifier intelligent agent).
-The \ac{ED} design goal is performed as above described helping to answer to research questions {\bf RQ5.2} and {\bf RQ5.3} (Section~\ref{sec:sec005001002}).
+The \ac{ED} design goal is performed as above described helping to answer to research questions {\bf RQ5.2} and {\bf RQ5.3} (Section~\ref{sec:chap005001002}).
 
-Covered by the \ac{ED} design goal, the thesis can provide a key component (Section~\ref{sec:sec003006}) to disambiguate the \ac{AI} result with the application of an explanation technique.
+Covered by the \ac{ED} design goal, the thesis can provide a key component (Section~\ref{sec:chap003006}) to disambiguate the \ac{AI} result with the application of an explanation technique.
 For a better prediction, the result of this explanation process is a heatmap visualizing the importance of each pixel.
-With heatmaps, clinicians can capture and understand the logic arguments of the DenseNet (Section~\ref{sec:sec005006002}) by giving images and pixels a colour meaning of the lesion severity.
+With heatmaps, clinicians can capture and understand the logic arguments of the DenseNet (Section~\ref{sec:chap005006002}) by giving images and pixels a colour meaning of the lesion severity.
 Thus, the \ac{ED} design goal is bringing the opportunity to disambiguate this \ac{DL} method for more transparent and explainable (\ac{XAI}) process.
 Next, the section will describe the applied study methods to prove these claims.
 
@@ -402,10 +398,10 @@ Next, the section will describe the applied study methods to prove these claims.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Methods}
-\label{sec:sec005005}
+\label{sec:chap005005}
 
 For this study, an evaluation of {\it BreastScreening-AI} simulating real world conditions with 45 clinicians in nine different clinical institutions was conducted.
-The study goal was to quantitatively (Section~\ref{sec:sec005006001}) and qualitatively (Section~\ref{sec:sec005006002}) assess the proposed design principles that the {\it BreastScreening-AI} embodies and to understand how these principles would work in practice.
+The study goal was to quantitatively (Section~\ref{sec:chap005006001}) and qualitatively (Section~\ref{sec:chap005006002}) assess the proposed design principles that the {\it BreastScreening-AI} embodies and to understand how these principles would work in practice.
 The experimental setup aimed at testing two conditions: {\bf Cond. C1} - {\it Current}, {\it i.e.}, a multimodality strategy without any \ac{AI}-assisted technique; {\bf Cond. C2} - multimodality strategy taking advantage of the  \ac{AI}-assisted ({\it e.g.}, DenseNet~\cite{9098470}), supporting clinician's second opinion and autonomous patient diagnostic.
 
 \hfill
@@ -421,7 +417,7 @@ For each condition, three classes of patients were defined:
 \end{itemize}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Having data available is challenging and requires multiple steps, including anonymization of data (Section~\ref{sec:sec004004001001}).
+Having data available is challenging and requires multiple steps, including anonymization of data.
 The ideal approach is collaboration between clinicians and \ac{AI} researchers, either in-house or through collaborative research agreements.
 Therefore, a protocol was celebrated with Hospital Fernando Fonseca so that the interchange of patients could be possible.
 The purpose of this protocol is to establish bases of collaboration in all scientific and technological areas, as well as education and training in which \ac{IST} and Hospital Fernando Fonseca carry out their activities.
@@ -429,7 +425,7 @@ From this protocol, the exams were annotated by eight radiologists and classifie
 The expert doctor is the head of the radiologist services of Hospital Fernando Fonseca.
 
 \subsection{Participants}
-\label{sec:sec005005001}
+\label{sec:chap005005001}
 
 In this study, participants were asked to practice with three predefined patients selected from the three above classes.
 To accomplish this, each patient was randomly selected ({\it i.e.}, {\bf P1}, {\bf P2} and {\bf P3}) from each class ({\it i.e.}, {\bf Class 1}, {\bf Class 2} and {\bf Class 3}), respectively.
@@ -456,7 +452,7 @@ In the following list, the number of clinicians and respective clinical institut
 \end{itemize}
 \end{multicols}
 
-Before the experiment, clinicians first filled out a pre-study questionnaire eliciting demographic information (Appendix~\ref{chap:appendix}), including age group, gender, medical professional experience, between others.
+Before the experiment, clinicians first filled out a pre-study questionnaire eliciting demographic information (Appendix~\ref{chap:app004}), including age group, gender, medical professional experience, between others.
 From the demographic questionnaires:
 24.4\% of the clinicians have between 31 and 40 years of practical experience (seniors);
 31.1\% have between 11 and 30 years of experience (middles);
@@ -466,15 +462,15 @@ Interviews were conducted in a semi-structured fashion taking about 30 minutes.
 Overall, 57 days were spent on the clinical institutions for the observation process and six months for the classification.
 
 \subsection{Procedure}
-\label{sec:sec005005002}
+\label{sec:chap005005002}
 
 After providing informed consent for participation in the study, clinicians reported information about their demographics (age, gender, etc) and professional background (professional or academic training, number of years of clinical experience).
-Next, clinicians familiarized themselves for about 30 seconds with \ac{UI} and with the basic interface components common to both {\bf Cond. C1} and {\bf Cond. C2} conditions (Section~\ref{sec:sec005005}).
+Next, clinicians familiarized themselves for about 30 seconds with \ac{UI} and with the basic interface components common to both {\bf Cond. C1} and {\bf Cond. C2} conditions (Section~\ref{sec:chap005005}).
 However, the two conditions are different.
 
 The first condition ({\bf Cond. C1}) relies on classifying patients without \ac{AI} assistance~\cite{10.1145/3399715.3399744}.
 The goal was to understand what is the actual clinicians' performance.
-Thus, a simulation of the current clinicians' available tools on the \ac{RRR} was held, while interacting with the first developed tool (Figure~\ref{fig:fig028}).
+Thus, a simulation of the current clinicians' available tools on the \ac{RRR} was held, while interacting with the first developed tool.
 
 For the second condition ({\bf Cond. C2}), the procedure required to reject (or accept) the proposed \ac{BI-RADS} provided by the intelligent agent~\cite{https://doi.org/10.13140/rg.2.2.16566.14403/1}.
 At this stage, participants will interact with the new prototype ({\it i.e.}, {\it BreastScreening-AI}) using the multi-modal dataset acquired and curated under this thesis.
@@ -507,7 +503,7 @@ When analysing the patients, for the second condition ({\bf Cond. C2}), the main
 In case of {\it rejecting} the proposed value, participants were asked to provide a new \ac{BI-RADS} value on the \ac{UI}.
 An {\it explain} functionality was provided to be used informing participants concerning where and how much sever the lesions are (Figure~\ref{fig:fig032}).
 However, for the first condition ({\bf Cond. C1}), the \ac{BI-RADS} classification was provided by clinicians in the end of patient analysis alongside filling a form~\cite{https://doi.org/10.13140/rg.2.2.36306.86725}.
-These setups will be used to support the work results (Section~\ref{sec:sec005006}).
+These setups will be used to support the work results (Section~\ref{sec:chap005006}).
 
 Before the main test, every interaction was shown by the facilitator and upcoming questions were clarified.
 In the end, for each participant it was applied both \ac{SUS}~\cite{Tyllinen:2016:WNN:2858036.2858570} and \ac{NASA-TLX}~\cite{ramkumar2017using, grier2015high} on two different questionnaires~\cite{https://doi.org/10.13140/rg.2.2.25301.06883, https://doi.org/10.13140/rg.2.2.26978.79044} for usability\footnotemark[21] and workload\footnotemark[22] measurements.
@@ -522,9 +518,9 @@ Finally, a {\it post-task} questionnaire~\cite{https://doi.org/10.13140/rg.2.2.1
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Analysis}
-\label{sec:sec005005003}
+\label{sec:chap005005003}
 
-The study of {\it BreastScreening-AI} included both quantitative (Section~\ref{sec:sec005006001}) and qualitative (Section~\ref{sec:sec005006002}) analysis.
+The study of {\it BreastScreening-AI} included both quantitative (Section~\ref{sec:chap005006001}) and qualitative (Section~\ref{sec:chap005006002}) analysis.
 For the qualitative analysis\footnotemark[23], user interactions were tracked across the prototype using \href{https://www.hotjar.com/}{Hotjar}~\cite{liikkanen2017data}.
 To record the task activities and the interview, screen and sound recordings were resorted.
 Finally, \href{https://www.tobiipro.com/product-listing/tobii-pro-sdk/}{Tobii Pro SDK}~\cite{chatelain2018evaluation} was used for eye tracking and gaze information.
@@ -552,7 +548,7 @@ Finally, the number of \acp{FP} and \acp{FN} were measured to understand severit
 
 Although \ac{SUS} is more regularly used as single score, in this study the scale was used as individual questionnaires.
 Individual \ac{SUS} scores have typically negative skew~\cite{lewis2018system}, but the the mean sample values are usually normal distributed.
-Therefore, taking advantage of this statistical behaviour to compute the quantitative analysis (Section~\ref{sec:sec005006001}) was held under this thesis.
+Therefore, taking advantage of this statistical behaviour to compute the quantitative analysis (Section~\ref{sec:chap005006001}) was held under this thesis.
 On the other hand, the basic \ac{NASA-TLX} scores were used, which are highly reliable~\cite{ramkumar2017using}.
 \ac{NASA-TLX} questionnaire consistently exhibits high reliability, user acceptance and low inter-subject variability to measure workload.
 In this study, \ac{NASA-TLX} was used to identify clinicians' workload during various stages of the workflow.
@@ -568,13 +564,13 @@ Clinicians were asked to provide feedback concerning how they decided for each p
 Recurring themes are reported below.
 
 \section{Results}
-\label{sec:sec005006}
+\label{sec:chap005006}
 
 In this section, several concerns will be studied by performing a set of quantitative and qualitative analysis of participants' information and behaviour.
 As follows, the document will cover each one.
 
 \subsection{Quantitative Analysis}
-\label{sec:sec005006001}
+\label{sec:chap005006001}
 
 In this study, the quantitative analysis takes into account differences between medical expert levels ({\it i.e.}, {\it Intern}, {\it Junior}, {\it Middle}, and {\it Senior}), user characteristics, and medical imaging interpretation to understand user behaviour during decision-making.
 In this section, the goal is providing a general and straightforward approach to do a quantitative analysis and inference understanding on data collected during user studies.
@@ -599,14 +595,14 @@ Hence, four relations emerged under this analysis:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsubsection{{\it SUS Scores} vs {\it SUS Positive Questions}}
-\label{sec:sec005006001001}
+\label{sec:chap005006001001}
 
 The generated results of the \ac{SUS} questionnaire are depicted in Figures \ref{fig:fig033} and \ref{fig:fig034}.
 On the one hand, Figure ~\ref{fig:fig033} shows the results obtained with
 {\it Current} scenario.
 On the other hand, Figure~\ref{fig:fig034} shows the results with the introduction of the {\it Assistant}.
 Both study conditions can be compared to understand usability improvements from the {\it Current} to {\it Assistant} scenario.
-However, this claim will be further (Section~\ref{sec:sec005007}) discussed.
+However, this claim will be further (Section~\ref{sec:chap005007}) discussed.
 Next, the results are detailed.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -641,11 +637,11 @@ A total of 84\% of agreement under the {\it Current} condition.
 But more important, with the introduction of an intelligent agent this value was improved by far.
 Although the total agreement value for the {\it Assistant} condition is inferior with 80\% in comparison to the {\it Current} condition, about 67\% of clinicians "Strongly agree" with the \ac{SUS} sentence.
 Due to the high improvements of the "Strongly agree" sentence, it can be denoted that intelligent agents are increasing high values of confidence.
-Such comparison will be further discussed (Section~\ref{sec:sec005007}) to clarify the achieved results.
+Such comparison will be further discussed (Section~\ref{sec:chap005007}) to clarify the achieved results.
 Indeed, values of confidence will be extremely important to understand the impact for the introduction of \ac{AI} systems in the medical workflow, which will also be addressed with values of {\it trust} in Chapter~\ref{chap:chap006}.
 
 \subsubsection{{\it SUS Scores} vs {\it SUS Negative Questions}}
-\label{sec:sec005006001002}
+\label{sec:chap005006001002}
 
 Similarly to the previous analysis, here the same study was conducted, but now concerning the negative questions (Figure~\ref{fig:fig036}) of the scale.
 Regarding the negative questions (Figure~\ref{fig:fig036}), 86\% of the clinicians disagree that the system is unnecessarily complex.
@@ -679,7 +675,7 @@ A total of 84\% disagreement for cumbersome on the {\it Assistant} condition, wh
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsubsection{{\it Workload} (Demands)}
-\label{sec:sec005006001003}
+\label{sec:chap005006001003}
 
 The results generated from the \ac{NASA-TLX}~\cite{ramkumar2017using, grier2015high} (Mental, Physical and Temporal) Demands are expressed in Table \ref{tab:tab001}.
 For each \ac{NASA-TLX} item, the normalized data were first ranked and aligned to the \ac{ANOVA}\footnotemark[27] measurements.
@@ -707,10 +703,10 @@ Comparing both {\it Current} and {\it Assistant} conditions, it is possible to b
 The time duration of decision-making is strongly associated with Temporal Demand.
 Nonetheless, only the {\it Current} condition follows a significant main effect making it difficult to do a strong comparison with the {\it Assistant} condition.
 For simplicity of the results, this work divided the \ac{NASA-TLX} questionnaire items in {\bf Demands} and {\bf Non-Demands} categories.
-Next (Section~\ref{sec:sec005006001004}), the document will report the three items from {\bf Non-Demands} of the \ac{NASA-TLX} questionnaire.
+Next (Section~\ref{sec:chap005006001004}), the document will report the three items from {\bf Non-Demands} of the \ac{NASA-TLX} questionnaire.
 
 \subsubsection{{\it Workload} (Non-Demands)}
-\label{sec:sec005006001004}
+\label{sec:chap005006001004}
 
 The \ac{NASA-TLX} on the Non-Demands scales only yields significant difference among groups for Performance (F\textsubscript{Curre.} = 5.56, p\textsubscript{Curre.} = 0.003 $<$ 0.05).
 A more detailed comparison is shown on Table~\ref{tab:tab002}.
@@ -730,10 +726,10 @@ Note that, as far as the scores are less than three times the results from the {
 Effort and Frustration do not provide any significant main effect on both {\it Current} and {\it Assistant} conditions.
 Therefore, it is not possible to consider any findings regarding these issues.
 Nor even the Performance results, since the fact that the {\it Assistant} does not represent any significant main effect.
-Notwithstanding, these results will be paired (Section~\ref{sec:sec005006}) with the above (Demands) and these (Non-Demands) \ac{NASA-TLX} results with other metrics to discuss the final results with more evidence.
+Notwithstanding, these results will be paired (Section~\ref{sec:chap005006}) with the above (Demands) and these (Non-Demands) \ac{NASA-TLX} results with other metrics to discuss the final results with more evidence.
 
 \subsubsection{{\it Diagnostic Time} vs {\it Breast Severity}}
-\label{sec:sec005006001005}
+\label{sec:chap005006001005}
 
 The results\footnotemark[28] expressing the full diagnostic time length and breast severity among the 289 Patients ({\it i.e.}, {\bf P1} - Low, {\bf P2} - Medium and {\bf P3} - High severities) are shown in Figure \ref{fig:fig037}.
 For the {\bf P1} - Low severity, the {\it Current} (M\textsubscript{Curre.} = 146, SD\textsubscript{Curre.} = 86.17) condition was longer than the {\it Assistant} (M\textsubscript{Assis.} = 89, SD\textsubscript{Assis.} = 74.13) condition.
@@ -758,12 +754,12 @@ Verifying that the introduction of an intelligent agent did not increase the dia
 Planned post-hoc testing~\cite{10.1145/2858036.2858360}, using the Tukey's HSD Post-Hoc Comparison (p\textsubscript{Curre.} $<$ 0.05), revealed that for the groups of {\it Juniors} it significantly increased the time performance and severity accuracy compared to {\it Interns}.
 Therefore, the proposed intelligent agent, not only improves time performance (Figure~\ref{fig:fig037}) and diagnostic accuracy (Figure~\ref{fig:fig038}) among the others clinicians' categories of medical experience, but also provides important support for {\it Interns}.
 
-Although the diagnostic time increased on medium severities, the increase was just residual and will be further discussed (Section~\ref{sec:sec005007}).
+Although the diagnostic time increased on medium severities, the increase was just residual and will be further discussed (Section~\ref{sec:chap005007}).
 These results support {\bf RQ5.1}, suggesting that the proposed {\it BreastScreening-AI} tool could impact positively the clinical workflow.
-While improving time performance (Section~\ref{sec:sec005006001005}) and diagnostic accuracy (Section~\ref{sec:sec005006001006}), the system is also mitigating the different types of errors on clinical perception.
+While improving time performance (Section~\ref{sec:chap005006001005}) and diagnostic accuracy (Section~\ref{sec:chap005006001006}), the system is also mitigating the different types of errors on clinical perception.
 
 \subsubsection{{\it False-Negatives} vs {\it False-Positives}}
-\label{sec:sec005006001006}
+\label{sec:chap005006001006}
 
 In this study, it was also measured the rates of \acp{FN} and \acp{FP} (Figure~\ref{fig:fig038}) between {\it Current} and {\it Assistant} conditions.
 The \ac{FN} rates decrease from 33\% on the {\it Current} condition to 14\% on the {\it Assistant} condition.
@@ -787,23 +783,23 @@ In essence, the intelligent agent will have a 24\% decrease of situations where 
 These results are paired with the results of Chapter~\ref{chap:chap006}, where a more detailed study is making further claims of the achieved \acp{FP} and \acp{FN} rates in a more descriptive manner.
 
 \subsection{Qualitative Analysis}
-\label{sec:sec005006002}
+\label{sec:chap005006002}
 
 In this study, quantitative analysis are completed with insights and results from interviewing participants.
 In this section, the study of a preliminary design is described for the development of the prosed {\it Assistant}, informed by an iterative process to identify clinician's needs and recommendations.
-First of all, from a set of workshops (Section~\ref{sec:sec005006002001}) participants were introduced to aspects or open-ended questions that can drive this initial stage of qualitative data analysis.
+First of all, from a set of workshops (Section~\ref{sec:chap005006002001}) participants were introduced to aspects or open-ended questions that can drive this initial stage of qualitative data analysis.
 In this workshops, participants are divided into small groups.
-Second, by joining the research team with participants, the focus group (Section~\ref{sec:sec005006002002}) sessions are established.
-And third, to cluster and categorize (Section~\ref{sec:sec005006002003}) the set ideas, features and priorities, in this focus group it was introduced a lightweight approach called affinity diagrams (Section~\ref{sec:sec005006002004}).
+Second, by joining the research team with participants, the focus group (Section~\ref{sec:chap005006002002}) sessions are established.
+And third, to cluster and categorize (Section~\ref{sec:chap005006002003}) the set ideas, features and priorities, in this focus group it was introduced a lightweight approach called affinity diagrams (Section~\ref{sec:chap005006002004}).
 The following sections will detail and describe this qualitative analysis.
 
 \subsubsection{Workshops with Clinicians}
-\label{sec:sec005006002001}
+\label{sec:chap005006002001}
 
 The first step of our methodology was to record {\it workflow} practices and routines from clinicians~\cite{Hoiseth:2013:DHG:2485760.2485770, Hoiseth:2013:RGD:2468356.2468436}.
 To this end, several invitations were sent among the various medical institutions and, at least, one workshop was formed per each institution as described next.
 All participants, that volunteer to the remain study, were grouped in various sessions.
-The research team went to these clinical institutions (Section~\ref{sec:sec005005001}) at least one day per each institution.
+The research team went to these clinical institutions (Section~\ref{sec:chap005005001}) at least one day per each institution.
 For Hospital Fernando Fonseca, four workshop meetings were made, while it was the institution with more clinicians and, therefore, harder to schedule.
 For IPO Lisboa, two workshop meetings were made, as well as for Hospital do Barreiro.
 For the other institutions, just one workshop meeting was made.
@@ -812,7 +808,7 @@ A total of 45 professionals from the sector of healthcare ({\it i.e.,} Radiologi
 Based on preliminary content analysis of the semi-structured interviews with clinicians, workshops were conducted as part of the {\it BreastScreening} research work development.
 Participants worked in groups and brainstormed around their clinical practices and routines.
 Most of the practices are recorded and written.
-Also, notes were digitally transcribed while addressing (Section~\ref{sec:sec005006002003}) the affinity diagramming\footnotemark[30] technique.
+Also, notes were digitally transcribed while addressing (Section~\ref{sec:chap005006002003}) the affinity diagramming\footnotemark[30] technique.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \footnotetext[30]{Affinity diagramming is a powerful method for performing qualitative data organization and analysis. The method was used to help understand the role of technology into the radiology room workflow. More precisely, affinity diagrams were used to organize the provided information from clinicians to group it with related ideas or topics.}
@@ -821,10 +817,10 @@ Also, notes were digitally transcribed while addressing (Section~\ref{sec:sec005
 The duration of workshop by session was roughly two hours, and ended with joint sessions wherein each group of clinicians highlighted important aspects of the clinical {\it workflow} for their institutions.
 At the end of the workshop sessions, four different procedures were collected (Figure \ref{fig:fig018}) of acquiring medical images.
 Participants engaged into the planed design activities~\cite{https://doi.org/10.13140/rg.2.2.16566.14403/1}, in which they provided inputs regarding the current {\it Assistant}.
-Using the provided input from the workshops, a prototype was designed which was evaluated during several sessions at the nine (Section~\ref{sec:sec005005001}) clinical institutions.
+Using the provided input from the workshops, a prototype was designed which was evaluated during several sessions at the nine (Section~\ref{sec:chap005005001}) clinical institutions.
 
 \subsubsection{Focus Groups}
-\label{sec:sec005006002002}
+\label{sec:chap005006002002}
 
 Building on the qualitative data from the workshops with clinicians, a focus group consisting of six Researchers (MSc, PhD and Post-Doc students, as well as Assistant and Full Professors) and another six Radiologists (2 seniors; 1 middle; 2 juniors; and 1 intern) from Hospital Fernando Fonseca, organized the {\it workflow} practices and main feature ideas to greater detail by using affinity diagrams~\cite{Harboe:2012:CSC:2145204.2145379, Hoiseth:2013:RGD:2468356.2468436}.
 
@@ -848,12 +844,12 @@ The \ac{US} is the second most preferred modality to cross information between \
 Finally, because of the high costs ({\it e.g}, time of acquiring the images) associated with the \ac{MRI}, clinicians said (in nine institutions only one follows the {\bf Proc. 4}, see Figure \ref{fig:fig018}) it was typically recommended only for highly risk patients.
 
 \subsubsection{Affinity Diagrams}
-\label{sec:sec005006002003}
+\label{sec:chap005006002003}
 
 This was an interactive process that consisted of adding or removing items until a final pattern configuration is reached.
 As these ideas and functionalities from the clinicians could be relevant for several purposes, it was considered useful to short on a more general level to start with.
 Ideas, features and priorities were translated (Figure~\ref{fig:fig039}) to a digital tool\footnotemark[31], while the affinity diagrams~\cite{10.1145/3290605.3300628} are used for: (i) categorization of the focus group items; and (ii) data clustering of the chaotic information.
-This solves the problem (Section~\ref{sec:sec005006002004}) of chaotic data~\cite{10.1145/2858036.2858373, 10.1145/3343413.3377983} disorganization.
+This solves the problem (Section~\ref{sec:chap005006002004}) of chaotic data~\cite{10.1145/2858036.2858373, 10.1145/3343413.3377983} disorganization.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \footnotetext[31]{For that, the collaboration software Trello was used, which allowed this study to digitally organize and manage the group ideas. (\href{https://trello.com}{trello.com})}
@@ -868,10 +864,10 @@ This solves the problem (Section~\ref{sec:sec005006002004}) of chaotic data~\cit
 \end{figure}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-From workshops (Section~\ref{sec:sec005006002001}), participants ({\it i.e.}, researchers and some of the clinicians) of the focus group (Section~\ref{sec:sec005006002002}), were asked to review and re-position ideas and functionalities, within each category, in order to organize them.
+From workshops (Section~\ref{sec:chap005006002001}), participants ({\it i.e.}, researchers and some of the clinicians) of the focus group (Section~\ref{sec:chap005006002002}), were asked to review and re-position ideas and functionalities, within each category, in order to organize them.
 Every time an idea or a functionality was triggered, it was inserted on the ``Action Items'' category.
 After that, participants discuss where it should be, answering the workshop needs for item categorization.
-For instance, several clinicians listed\footnotemark[32] their preferred components as the position (32/45) and simplicity (28/45) of the {\it Toolbar} (Section~\ref{sec:sec004003001003} and Section~\ref{sec:sec005004002}):
+For instance, several clinicians listed\footnotemark[32] their preferred components as the position (32/45) and simplicity (28/45) of the {\it Toolbar} (Section~\ref{sec:chap005004002}):
 ``The {\it Toolbar} position is in a better place on the top in contrary what we usually [Current] see'' (C30).
 From here, an item was created titled as ``Toolbar Position'' and since it was accepted by a major number of clinicians (and rejected or omitted by another number) the item was stuck onto the ``Went Well'' category.
 
@@ -936,7 +932,7 @@ Later, the document describes how the clustering of acquired data was important.
 In fact, the importance of clustering is based on the {\it affinity} of the collected ideas and features.
 
 \subsubsection{Data Clustering}
-\label{sec:sec005006002004}
+\label{sec:chap005006002004}
 
 Data clustering is an important step for the developed \ac{UI}.
 Indeed, the \ac{MRI} data is inherently chaotic, since each exam contains tens of volumes.
@@ -988,27 +984,27 @@ From data clustering, it could be understand the need for each modality ({\it e.
 For instance, due to workshops and focus groups, it could be possible to take important data regarding how these modalities constitute complementary information for a reliable diagnosis per institution.
 
 \subsubsection{Prototype}
-\label{sec:sec005006002005}
+\label{sec:chap005006002005}
 
 The \ac{AI}-assisted prototype consists of two parts:
 (1) the diagnosis via medical images, in which the proposed prototype has several functionalities to support clinicians with tools for a proper final result; and
 (2) the automatic severity classification of lesions, in which a DenseNet was integrated as an intelligent agent providing the \ac{BI-RADS} values.
 
 \subsubsection{Final Visual Configuration Achievements}
-\label{sec:sec005006002006}
+\label{sec:chap005006002006}
 
 Due to workshops and the affinity diagrams, it is possible to explore in a higher manner the good insights of clinicians.
 At this stage of the study, several clinicians provided important modifications and feedback for the future system.
 For instance, bringing the {\it Assistant} (Figure~\ref{fig:fig031}) from the top and middle to the button right of the screen inside the {\it 5.1. Viewports}.
 Again, the comment was provided during the interaction with the prototype at this phase.
 Otherwise, clinicians' suggestions would not be tested.
-The suggestion made the {\it Assistant} improve at about a 40\% factor of the time (Section \ref{sec:sec005006001005}) over interaction.
+The suggestion made the {\it Assistant} improve at about a 40\% factor of the time (Section \ref{sec:chap005006001005}) over interaction.
 The explanation was simple, clinicians are use to work inside the {\it 5.1. Viewports} (Figure \ref{fig:fig031}).
 Meaning that it is less distance, time and effort to achieve the {6. \it Assistant} avatar.
 Furthermore, the visibility was not compromised because of two reasons: (a) first of all, most of the cases (typically the majority of MG and MRI modalities) has no relevant image information on the button right of the screen inside the {\it 5.1. Viewports}; and (b) we developed a hidden button, so that if a clinician really need to look at that area, the {6. \it Assistant} avatar will disappear, showing the full image with nothing overlaid.
 
 \subsubsection{Qualitative Feedback from Clinicians}
-\label{sec:sec005006002007}
+\label{sec:chap005006002007}
 
 Qualitative data presented an initial attempt to exploit knowledge from clinicians into useful guidelines.
 The goal is to translate these guidelines into design decisions, addressing clinician's final opinions and feedback.
@@ -1028,17 +1024,17 @@ From the positive feedback, it is expected that this tool will be helpful to imp
 Several reports with details of clinicians comments, system architecture, and description of dataset (results of the usability, workload scales and other metrics) will be made available.
 
 \section{Discussion}
-\label{sec:sec005007}
+\label{sec:chap005007}
 
 The optimal use of the assistant within clinical workflows ({\bf RQ5.1}) remains to be determined.
 The specificity advantage exhibited by the assistant suggests that it could help to improve diagnostic accuracy and, therefore, unnecessary biopsies.
 The findings suggest that there is an evidence that the integration of the \ac{AI} in the \ac{UI}, can help for an earlier cancer detection.
-Moreover, as presented on the results section (Section~\ref{sec:sec005006}), the introduction of an intelligent agent was well received by clinicians, while the proposed assistant is above their expectations ({\bf RQ5.2}).
-Finally, supported by the herein results (Section~\ref{sec:sec005006}), the study shows that clinicians' satisfaction and acceptance ({\bf RQ5.3}) of \ac{AI} assistance successfully impacted the intended aspects of expectations.
+Moreover, as presented on the results section (Section~\ref{sec:chap005006}), the introduction of an intelligent agent was well received by clinicians, while the proposed assistant is above their expectations ({\bf RQ5.2}).
+Finally, supported by the herein results (Section~\ref{sec:chap005006}), the study shows that clinicians' satisfaction and acceptance ({\bf RQ5.3}) of \ac{AI} assistance successfully impacted the intended aspects of expectations.
 The next sections will describe and discuss this work contributions in terms of clinical expectations and \ac{AI} assistance.
 
 \subsection{Contribution for Clinical Expectations}
-\label{sec:sec005007001}
+\label{sec:chap005007001}
 
 This work provides insights into feasible \ac{AI}-assisted mechanisms on medical imaging diagnosis.
 In this study, clinicians agree that an intelligent agent could improve their workflow.
@@ -1057,7 +1053,7 @@ At the same time, the \ac{AI} recommendations are also providing the opportunity
 
 In this study, it is provided evidence that \ac{AI} can be integrated on the clinical workflow ({\bf RQ5.1}), impacting the same diagnostic types.
 Importantly, the proposed intelligent agent was integrated into a clinical radiology \ac{RRR} scenario.
-The assistant has significantly benefit clinicians on diagnostic time (Section \ref{sec:sec005006001005}).
+The assistant has significantly benefit clinicians on diagnostic time (Section \ref{sec:chap005006001005}).
 Actually, 86\% of the clinicians are finding the assistant is not complex.
 Further, 84\% of the clinicians found that the system was not cumbersome.
 Thus, making the assistant quick to interact with and trivial.
@@ -1066,7 +1062,7 @@ Indeed, it was also verified that for both low and high severities, the assistan
 In addition, it is also improving the numbers of \acp{FP} and \acp{FN}.
 Therefore, the assistant will impact the clinical workflow in terms of time and accuracy.
 
-The findings show that supporting explainability\footnotemark[34] and intelligibility\footnotemark[35]~\cite{Abdul:2018:TTE:3173574.3174156}, improved the acceptance and confidence of clinicians.
+The findings show that supporting explainability\footnotemark[34] and intelligibility\footnotemark[35]~\cite{10.1145/3173574.3174156}, improved the acceptance and confidence of clinicians.
 In fact, results are showing that about 37 clinicians are accepting our approach and are feeling confident using it.
 A key factor to these results is pairing the {\it accept} or {\it reject} features with several visual explainability techniques (Figure~\ref{fig:fig032}) that empower the clinicians' choice and sense of control.
 Hence, the outcome is achieved for clinical expectations, answering the {\bf RQ5.2} question on how to improve (via interpretation of {\it heatmaps}) diagnostic interpretability.
@@ -1091,7 +1087,7 @@ By setting visual explainability techniques, the work shows how to support clini
 Finally, the work can successfully measure the impact of expectation-setting interventions ({\bf RQ5.3}) on the satisfaction and acceptance of \ac{AI} assistance in medical imaging.
 
 \subsection{Contribution for AI Assistance}
-\label{sec:sec005007002}
+\label{sec:chap005007002}
 
 While \ac{HAII} fields have traditionally been used to improve algorithms, this work found that \ac{AI}-assisted mechanisms empowered clinicians in the medical imaging diagnosis.
 More precisely, a medical {\it Assistant} can make itself more understandable to clinicians by providing some kind of explanation ({\it heatmaps}).
@@ -1135,7 +1131,7 @@ This initial study resulted in a consensus that allowed the selection of \ac{CC}
 This information was suppressed in this thesis since the main focus was on the evaluation of the (quantitative and qualitative) impact of an \ac{AI} integration, and where it can be assumed that the data collection was readily available.
 
 \section{Conclusion}
-\label{sec:sec005008}
+\label{sec:chap005008}
 
 Clinical translation of {\it radiomics} is a promising but challenging research topic.
 The integration of \ac{AI} techniques into the clinical workflow requires an holistic approach which can benefit from an \ac{HCI} perspective such as the one provided here.

@@ -16,14 +16,14 @@ This promising insight motivates future research into the development and valida
 
 Clinicians' overall preferences and perceived levels of trust for intelligent agents were polarized.
 Results suggested higher perceived \ac{UX}, as well as a trend towards higher accuracy and acceptance are increasing clinicians confidence (Chapter~\ref{chap:chap006}) in \ac{AI}-assistance compared to the conventional variant (Chapter~\ref{chap:chap005}).
-In this chapter, design implications (Section~\ref{sec:sec007004}) are discussed as a consequence of the achieved main findings (Section~\ref{sec:sec007003}) and conclude with the limitations (Section~\ref{sec:sec007005}) of the study.
+In this chapter, design implications (Section~\ref{sec:chap007004}) are discussed as a consequence of the achieved main findings (Section~\ref{sec:chap007003}) and conclude with the limitations (Section~\ref{sec:chap007005}) of the study.
 
 \section{Summarizing Discussions}
-\label{sec:sec007001}
+\label{sec:chap007001}
 
 The progress of \ac{AI} techniques in {\it radiomics} will have a profound impact in the workflow and tools used for medical imaging diagnosis.  
 Achieved results are showing that clinicians are receptive to the integration of these new techniques and tools into the clinical workflow.
-Resulted main findings (Section~\ref{sec:sec007003}) show that \ac{AI}-assistive techniques, like the proposed assistant, enabled clinicians to improve the performance and accuracy of the patient diagnostic.
+Resulted main findings (Section~\ref{sec:chap007003}) show that \ac{AI}-assistive techniques, like the proposed assistant, enabled clinicians to improve the performance and accuracy of the patient diagnostic.
 Moreover, not only it is reported findings but also share the thesis discussion and reflections.
 
 While it was demonstrated, efficiency (Figure~\ref{fig:fig037}) and efficacy (Figure~\ref{fig:fig038}) in medical imaging diagnosis, the techniques used are not specific to the breast screening domain.
@@ -34,14 +34,14 @@ The optimal use of the assistant within clinical workflows remains to be determi
 The specificity advantage exhibited by the assistant suggests ({\bf RQ5.1} and {\bf RQ6.1}) that it could help to reduce diagnostic accuracy and, therefore, unnecessary biopsies.
 The integration of such assistants into the clinical workflow, shows that \ac{AI} may be capable of detecting cancer earlier than the standard of care.
 Results are suggesting that \ac{AI} holds early promise for flagging suspicious cases for review by experts.
-Moreover, as presented in the results section (Section~\ref{sec:sec005006} and Section~\ref{sec:sec006006}), the introduction of \ac{AI} was well received by clinicians ({\bf RQ5.2}, {\bf RQ5.3} and {\bf RQ6.2}), while the assistant is above their expectations.
+Moreover, as presented in the results section (Section~\ref{sec:chap005006} and Section~\ref{sec:chap006006}), the introduction of \ac{AI} was well received by clinicians ({\bf RQ5.2}, {\bf RQ5.3} and {\bf RQ6.2}), while the assistant is above their expectations.
 
-Finally, supported by the achieved results (Section~\ref{sec:sec005006}), the document shows that clinicians' satisfaction and acceptance ({\bf RQ5.3}) were achieved.
+Finally, supported by the achieved results (Section~\ref{sec:chap005006}), the document shows that clinicians' satisfaction and acceptance ({\bf RQ5.3}) were achieved.
 Across the various groups of experts ({\bf RQ6.3}), the \ac{AI} assistance successfully impacted the intended aspects of expectations.
 The next sections will describe and discuss this document contributions and impact in terms of clinical expectations and \ac{AI} assistance.
 
 \section{Contributions and Impact}
-\label{sec:sec007002}
+\label{sec:chap007002}
 
 In this thesis, an intelligent agent was implemented and studied as a tool to classify, segment, and explain medical imaging diagnosis in the breast cancer domain.
 Indeed, the results are showing that \ac{AI} can positively impact the medical workflow at a cost of providing clinician control over the proposed \ac{BI-RADS} classification.
@@ -76,7 +76,7 @@ Towards the implementation of intelligent agents, the combination of several tec
 Such claims are being addressed as future work (Chapter~\ref{chap:chap008}) of this thesis proposal document.
 
 \section{Main Findings}
-\label{sec:sec007003}
+\label{sec:chap007003}
 
 Intelligent agents are representing a type of system that is passive ({\it i.e.}, assistive as a second reader) and casual.
 Clinicians can {\it accept}, {\it reject} and ask the system to {\it explain}, or even {\it ignore} the assistant result.
@@ -109,14 +109,14 @@ In critical systems, as the one developed under this thesis, it is more importan
 However, the severity of consequences shall be applied to different clinical errors rather than medical imaging workload improvements.
 
 \section{Design Implications}
-\label{sec:sec007004}
+\label{sec:chap007004}
 
 The main findings have implications for different stages into the design of an intelligent agent for \acp{CDSSe}.
 From data collection across model training, to the design of \acp{UI} for \ac{AI} systems, implications of design are influencing the final proposed solution of this thesis.
 In this section, the document is describing several design implications and recommendations applied until now, as well as the ones that will be applied in the future.
 
 \subsection{Data Collection}
-\label{sec:sec007004001}
+\label{sec:chap007004001}
 
 In this work, an \ac{AI} assistant was developed with the capability of classifying the patient's severity (\ac{BI-RADS}) and of providing the segmentation ({\it heatmaps}) of potential lesions.
 To this end, the document relies on discussion of medical data from previous study (Chapter~\ref{chap:chap004}) on the collection of images and generation of a standardized datasets from manual annotations ({\it e.g.}, masses and microcalcifications) in medical imaging.
@@ -132,7 +132,7 @@ On the other hand, recent works are demonstrating that imposing structure in the
 Thus, a data collection procedure is recommended for \ac{AI}-based systems by being equipped with structured procedures to benefit from these findings and facilitate the development of intelligent agents for medical imaging.
 
 \subsection{Model Training}
-\label{sec:sec007004002}
+\label{sec:chap007004002}
 
 This study suggests that medical workflows and trust can be positively affected by the introduction of intelligent agents which are endowing \ac{AI}-based \acp{CDSSe} with the ability to not only make \ac{BI-RADS} classification suggestions, but also to identify potential lesions.
 Implementation of such \ac{AI} systems would require that supervised \ac{ML} models are equipped with additional prediction targets ({\it e.g.}, automatic segmentation and classification of patient co-variables) beyond severity classification (\ac{BI-RADS}) alone.
@@ -141,11 +141,11 @@ Another additional target is showing information concerning the weights of each 
 
 Additional targets could be integrated either into one joint training process or by developing several separate models, one for each target.
 Mehta et al.~\cite{10.1007/978-3-030-00934-2_99} describes how to bring a multi-target approach into the classification and segmentation of medical images in one joint training process.
-These design implications were brought from the focus groups (Section~\ref{sec:sec005006002002}), but were not yet addressed under this thesis proposal.
+These design implications were brought from the focus groups (Section~\ref{sec:chap005006002002}), but were not yet addressed under this thesis proposal.
 However, they will be addressed as future work (Chapter~\ref{chap:chap008}) below.
 
 \subsection{User Interface Considerations}
-\label{sec:sec007004003}
+\label{sec:chap007004003}
 
 In this thesis, several ways of displaying and explaining breast cancer diagnosis were evaluated by visually showing explainable (\ac{XAI}).
 These explainable (\ac{XAI}) techniques are coming from the trained models and are informing clinicians in several ways.
@@ -171,7 +171,7 @@ As an example, if the model accuracy is low for a specific co-variable classific
 Thus, it will be of chief importance to study at what levels of accuracy are clinicians accepting each co-variable to be less accurately classified.
 
 \subsection{Medical Imaging Perspectives}
-\label{sec:sec007004004}
+\label{sec:chap007004004}
 
 Due to its multi-view and multi-modal nature, the assistant uses large amounts of data to inform clinicians.
 The very first step in both quantitative and qualitative studies was to extract from our study information a set of analysis~\textendash~a human-centered design methodology~\textendash~which was crucial to answer our design choices.
@@ -185,15 +185,15 @@ Concerning (iii), radiologists acquire a large set of \ac{MRI} ({\it e.g.}, T1, 
 This initial design choices resulted in a consensus that allowed the selection of \ac{CC} and \ac{MLO} views, in the case of \ac{MG} images, and \ac{MRI} volumes.
 
 \subsection{Summarizing Implications}
-\label{sec:sec007004005}
+\label{sec:chap007004005}
 
 The promoted evaluations and analysis (Chapter~\ref{chap:chap005} and Chapter~\ref{chap:chap006}) validated design choices and revealed clinician strategies for using the \ac{AI} assistant.
 The learned design lessons should generalize to other healthcare \ac{AI}-assisted systems.
 Finally, {\it BreastScreening-AI} demonstrates the value of the iterative, participatory design process that fueled its design.
-However, several limitations are still constraining this thesis proposal achievements and will be following (Section~\ref{sec:sec007005}) addressed.
+However, several limitations are still constraining this thesis proposal achievements and will be following (Section~\ref{sec:chap007005}) addressed.
 
 \section{Limitations}
-\label{sec:sec007005}
+\label{sec:chap007005}
 
 Unfortunately, due to time constrains of clinicians, it was not possible to investigate the impact of other \ac{AI}-assistance techniques.
 Furthermore, the assistant represents a type of system that is passive and casual~\cite{Kocielnik:2019:YAI:3290605.3300641}, where the impact of \ac{AI} imperfections in the clinical workflow is arguably critical.

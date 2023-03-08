@@ -13,7 +13,7 @@ The document outlines the role of intelligent agents and how other authors are h
 To substantiate this thesis, the next sections will summarize important contributions in the particular domain of medical imaging and the role that \ac{HCI} and \ac{AI} topics are playing in this context.
 
 \section{Literature Challenges}
-\label{sec:sec003001}
+\label{sec:chap003001}
 
 Medical imaging systems allow the end-user to diagnose several modalities, such as \ac{MG}, \ac{US} or \ac{MRI}, from a seamless retrieval medical imaging data~\cite{faraji2019radiologic, seifabadi2019correlation}.
 By bringing those modalities together, it offers new possibilities for quantitative imaging ({\it e.g.}, {\it radiomics}) and diagnosis but also requires specialized data handling, post-processing and novel visualization methods~\cite{Igarashi:2016:IVS:2984511.2984537, Ocegueda-Hernandez:2016:CMN:2876456.2879485, Sousa:2017:VVR:3025453.3025566}.
@@ -36,7 +36,7 @@ In particular, their work demonstrates how an interactive system can directly ad
 The next section, introduce the topic of \ac{HAII}, as well as several related works, explaining the importance of the topic to this thesis work.
 
 \section{Human-AI Interaction}
-\label{sec:sec003002}
+\label{sec:chap003002}
 
 Applications of \ac{HAII} collaboration~\cite{dellermann2019future} in complex domains are subject to the following two issues:
 (1) trust, transparency and accountability of the involved \ac{AI} agent~\cite{10.1145/3290605.3300233}; and
@@ -51,7 +51,7 @@ Specifically, expecting more than the system can deliver will decrease user sati
 Hence, in the proposed work of this thesis a technique was created, based on the following contributions:
 (a) providing users a new control feature on the introduction of \ac{AI} methods among medical imaging diagnosis~\cite{pesapane2018artificial}; and
 (b) the impact of the clinicians' {\it behaviour}, as well as the impact in professional practice~\cite{Challen231}.
-In the end, the final goal was to achieve more accurate expectations of each intelligent agent capabilities, addressing these potential gaps.
+In the end, the final goal was to achieve more reliable expectations of each intelligent agent capabilities, addressing these potential gaps.
 
 The growing prevalence of \ac{DL} models and their use in decision-making have led to increasing demands for more transparent and explainable results~\cite{10.5555/3305381.3305576}.
 However, the interpretation of \ac{DL} models is challenging due to their complexity and often opaque internal state.
@@ -69,7 +69,7 @@ In this thesis, the document builds on a growing interest in studying the broade
 The following section will discuss recent advances on the introduction of \acp{CDSSe} in the medical workflow.
 
 \section{Clinical Decision Support}
-\label{sec:sec003003}
+\label{sec:chap003003}
 
 Most of the best performing \acp{CDSSe}\footnotemark[8] rely on \ac{ML} algorithms that learn specific tasks from training data.
 The field recently gained enormous interest, mostly due to the practical successes of \ac{DL}~\cite{meacham2019towards}.
@@ -110,7 +110,7 @@ This raises the question of how assistive technologies and \ac{AI} systems shoul
 In the following sections, the document will explain how some studies are covering the problem of diagnosing such ambiguity by the design of assistive technologies while informing clinical uncertainty estimates.
 
 \section{Medical Image Assessment}
-\label{sec:sec003004}
+\label{sec:chap003004}
 
 A strong need for large amounts of annotated medical data has been created by the rise of \ac{DL} methods and \ac{AI}-assisted medical decision-making tools~\cite{10.1145/3313831.3376290}.
 In most cases, the ground-truth annotations required to develop supervised \ac{ML} algorithms ({\it e.g.}, diagnostic corrections) are not given in the raw data.
@@ -135,7 +135,7 @@ In that work, the authors presented the results of clinical professionals with e
 From here, this thesis is following the authors' suggestions that image adjudication may provide benefits beyond developing trusted consensus with \ac{AI}, and that exposure can be an effective intervention for medical imaging diagnosis.
 
 \section{Structured Adjudication}
-\label{sec:sec003005}
+\label{sec:chap003005}
 
 As previously stated, this section address several literature works which are studying the problem of expert disagreement to ambiguous \ac{AI} results for solving divergent medical imaging assessments.
 Specifically, expert disagreement is pervasive in clinical decision-making, while medical adjudication is a useful approach for divergent assessments~\cite{10.1145/3359178, SchaekermannMike2020}.
@@ -146,8 +146,8 @@ Also, the authors studied how adjudication impacts clinical decisions which is s
 Having this idea in mind, Schaekermann et al.~\cite{10.1145/3359178} findings are suggesting that structured adjudication can lead to significant revisions in treatment-relevant clinical parameters such as the generated annotations.
 Their work demonstrates how structured adjudication can support consensus and facilitate a deep understanding of experts during medical data analysis.
 
-The process of breast severity classification (Section~\ref{sec:sec002003}) and lesion typification (Section~\ref{sec:sec002004}) involves examination and adjudication~\cite{DODGION2017196} of several modalities ({\it e.g.}, \ac{MG}, \ac{US} and \ac{MRI}), as well as the assessment of several features (Section~\ref{sec:sec002006}).
-Such features can be, for instance, extracting texture, shape and margin (Section~\ref{sec:sec002004001}).
+The process of breast severity classification (Section~\ref{sec:chap002003}) and lesion typification (Section~\ref{sec:chap002004}) involves examination and adjudication~\cite{DODGION2017196} of several modalities ({\it e.g.}, \ac{MG}, \ac{US} and \ac{MRI}), as well as the assessment of several features (Section~\ref{sec:chap002006}).
+Such features can be, for instance, extracting texture, shape, and margin (Section~\ref{sec:chap002004001}).
 In a medical setting for remote screening~\cite{10.1200EDBK200141}, experts examine breast images to determine the presence and severity of the disease.
 
 Prior work~\cite{MIRANDA2015334} has shown that the process of medical interpretation is subject to individual expert bias, as demonstrated (Chapter~\ref{chap:chap006}) by inter-variability in relation to intra-variability~\cite{NIAZI2019e253}.
@@ -156,13 +156,13 @@ Yet, due to the lack of medical professionals threatens the adequacy and availab
 These assistive technologies, such as \ac{DL} systems and intelligent agents, are resulting in the sharp increase within the demand for high-quality of annotated-image data.
 
 In another work~\cite{10.1167/tvst.8.6.40}, the authors present and evaluate a remote tool, image-based system, as well as structured classification and annotation for medical imaging adjudication.
-Their results show that a remote, tool-based adjudication, can help organize the data generation process (Chapter~\ref{chap:chap004}) and to further disambiguate (Section~\ref{sec:sec003006}) the \ac{AI} results (Chapter~\ref{chap:chap005} and Chapter~\ref{chap:chap006}) of this thesis.
+Their results show that a remote, tool-based adjudication, can help organize the data generation process (Chapter~\ref{chap:chap004}) and to further disambiguate (Section~\ref{sec:chap003006}) the \ac{AI} results (Chapter~\ref{chap:chap005} and Chapter~\ref{chap:chap006}) of this thesis.
 Specifically, for those cases that can be solved with less doubts.
 However, their solution falls short for hard cases.
 Leading also space to explore new methods that can accelerate the resolution for such hard cases.
 
 \section{Disambiguate Artificial Intelligence}
-\label{sec:sec003006}
+\label{sec:chap003006}
 
 Among clinical experts, medical discussion can be useful to capture sources of disagreement in ambiguous classification and segmentation of hard cases, as well as adjudicate any resolvable disagreement~\cite{10.1145/3308560.3317085}.
 In supervised \ac{ML}, a common requirement is that objects can be unambiguously classified into categories~\cite{castro2020causality}.
@@ -189,10 +189,10 @@ Although the audience of this thesis is focused on the \ac{HCI} community, the d
 The next sections will cover these concerns.
 
 \section{Deep Learning Methods}
-\label{sec:sec003007}
+\label{sec:chap003007}
 
-Medical images are hard to classify and segment, because of their anatomical structures (Section~\ref{sec:sec002004}) vary in shape and size~\cite{10.1007/978-3-030-00934-2_99}.
-The representational power and capacity for capturing structural information of \acp{CNN}, have made such segmentation (Section~\ref{sec:sec003007001}) and classification (Section~\ref{sec:sec003007002}) possible~\cite{Hou_2016_CVPR, 10.1007/978-3-319-24574-4_28}.
+Medical images are hard to classify and segment, because of their anatomical structures (Section~\ref{sec:chap002004}) vary in shape and size~\cite{10.1007/978-3-030-00934-2_99}.
+The representational power and capacity for capturing structural information of \acp{CNN}, have made such segmentation (Section~\ref{sec:chap003007001}) and classification (Section~\ref{sec:chap003007002}) possible~\cite{Hou_2016_CVPR, 10.1007/978-3-319-24574-4_28}.
 The literature shows that the detection of lesions in breast cancer is highly inconsistent~\cite{shen2019deep, s20143903}.
 Breast cancer detection methods can be divided into five~\cite{s20143903} main approaches:
 (i) traditional image acquisition techniques;
@@ -237,7 +237,7 @@ To train a model, the segmentation process is more time-consuming and manual les
 Hence, the work under this thesis started first by developing intelligent agents to inform clinicians about the patient classification.
 
 \subsection{Segmentation}
-\label{sec:sec003007001}
+\label{sec:chap003007001}
 
 The above section described several literature works and challenges that this thesis must address to integrate classification and segmentation models into intelligent agents for a proper medical imaging diagnosis.
 In this section, the document focus on the works~\cite{7412749, Dabbous397} that will promote and motivate the future integration of segmentation models.
@@ -249,7 +249,7 @@ However, these are just future thoughts being out of the scope of this document,
 Therefore, the next section will address important literature for what was done until now under this thesis.
 
 \subsection{Classification}
-\label{sec:sec003007002}
+\label{sec:chap003007002}
 
 From the literature, recent proposed \ac{DenseNet}~\cite{Huang_2017_CVPR} is one of the most used \ac{CNN} structures for the classification of lesions in medical imaging~\cite{LIU2019e271}.
 The model connects all the preceding layers as the input for certain layer, which can strengthen feature propagation ({\it e.g.}, {\it radiomics}) and alleviate the gradient vanishing problem~\cite{10.1145/3136755.3143016}.
@@ -260,10 +260,10 @@ The task is to classify inputs of \ac{MG} (both in \ac{CC} and \ac{MLO}), \ac{US
 Along with ground-truth of masses and microcalcifications, the masks of the model can classify (either normal, benign, or malign) into the correct class.
 
 \section{Published Datasets}
-\label{sec:sec003008}
+\label{sec:chap003008}
 
 In breast screening, published research results are difficult to replicate due to the lack of datasets in the area of \acp{CDSSe}~\cite{lee2017curated}.
-Most of the used segmentation (Section~\ref{sec:sec003007001}) and classification (Section~\ref{sec:sec003007002}) methods are evaluated on private datasets~\cite{SADAF2011457} or on unspecified subsets of public databases~\cite{https://doi.org/10.1118/1.4921612}.
+Most of the used segmentation (Section~\ref{sec:chap003007001}) and classification (Section~\ref{sec:chap003007002}) methods are evaluated on private datasets~\cite{SADAF2011457} or on unspecified subsets of public databases~\cite{https://doi.org/10.1118/1.4921612}.
 These methods are integrated as algorithms for a proper \ac{CADe} and \ac{CADx} on breast cancer and are designed to assist clinicians for a better diagnostic interpretation.
 Despite promising results, current \ac{CADe} systems are limited by high \ac{FP} rates~\cite{NISHIKAWA20141320}, and \ac{CADx} systems for breast screening are not yet approved for clinical use because of the lack of available data~\cite{10.1145/3079765}.
 
