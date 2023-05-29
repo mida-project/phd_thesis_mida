@@ -8,7 +8,7 @@
 % The following line allows to ref this chapter
 \label{chap:chap006}
 
-\section{Introduction}
+\section{Motivation}
 \label{sec:chap006001}
 
 Artificial Intelligence (AI) systems are showing an increasing promise for numerous healthcare applications.
@@ -400,16 +400,16 @@ Clinicians rated these items on a 7-point Likert scale.
 \label{sec:chap006005005}
 
 For {\bf RQ1}, we investigated the impact of our assertiveness-based agent on clinicians' efficiency and efficacy in terms of time performance and accuracy in diagnosing patients with the support of the AI-suggested recommendations.
-Similar to the literature, we used the one-way ANOVA test~\cite{SADEGHI2022105554, 10.1145/3491102.3517791} to compare both AI agents with respect to the following outcome measures per clinician:
+Similar to the literature, we used the one-way \ac{ANOVA} test~\cite{SADEGHI2022105554, 10.1145/3491102.3517791} to compare both AI agents with respect to the following outcome measures per clinician:
 (i) the time (in seconds) for diagnosing each patient ({\bf H1.1.}); and
 (ii) accuracy rates via false-positives and false-negatives of clinician-provided classifications ({\bf H1.2.}).
 For the efficacy differences between novice and expert clinicians during decision-making ({\bf H1.3.}), we used the chi-squared test of independence~\cite{10.1145/3411764.3445464} to assess the relationship between the expertise of clinicians and the assertiveness levels of the agents.
 Regarding human-AI accuracy, our dataset has post-biopsy verification, meaning that we could measure the real ground-truth of the patient.
 
 For {\bf RQ2}, we compared clinicians' perceptions of both conventional and assertiveness-based agents.
-A possible observed pattern in perceived preference ({\bf H2.1.}) and trustworthiness ({\bf H2.2.}) was examined using the ANOVA test and statistical significance (p < 0.05) for testing our hypothesis.
+A possible observed pattern in perceived preference ({\bf H2.1.}) and trustworthiness ({\bf H2.2.}) was examined using the \ac{ANOVA} test and statistical significance (p < 0.05) for testing our hypothesis.
 Reported scores for cognitive workload and usability ({\bf H2.3.}) were compared between the two AI agents using statistical significance (p < 0.05) for computing the likelihood of confidence.
-Last, we used the one-way ANOVA test of variance to test the levels of assertiveness for the provided clinical arguments between the two groups ({\it i.e.}, novice and expert clinicians) of medical professional experience.
+Last, we used the one-way \ac{ANOVA} test of variance to test the levels of assertiveness for the provided clinical arguments between the two groups ({\it i.e.}, novice and expert clinicians) of medical professional experience.
 Specifically, we used this test to measure the perceived preferences of clinicians in terms of reliability and capability ({\bf H2.4.}).
 From ``Totally Non-Assertive'' level, {\it i.e.}, more suggestive, to ``Totally Assertive'' level, {\it i.e.}, more imposing AI recommendations, we test the overall tendency between novice and expert clinicians of the communication tone.
 
@@ -426,7 +426,7 @@ As follows (Section~\ref{sec:chap006003}), recurring themes are reported below a
 \section{Results}
 \label{sec:chap006006}
 
-To test our hypotheses, we used the \texttt{scipy} library from \texttt{python} to conduct a one-way ANOVA test with the level of medical professional experience as the main factor on the dependent variables~\cite{CASALE2022107302}.
+To test our hypotheses, we used the \texttt{scipy} library from \texttt{python} to conduct a one-way \ac{ANOVA} test with the level of medical professional experience as the main factor on the dependent variables~\cite{CASALE2022107302}.
 The alpha level ($\alpha$ = 0.05) was set for statistics, and the effect size was used to quantitatively measure the magnitude of the experimental comparison effect between variables~\cite{Yigit_Mendes_2018, 10.1145/3180155.3182556}.
 Briefly, we focus on statistically significant results and selectively report the results to address our hypotheses by following literature recommendations~\cite{10.1145/3301275.3302289, 10.1145/3290605.3300234, 10.1145/3491102.3517791}.
 Next, we investigate the time performance (Figure~\ref{fig:fig099}), accuracy (Figure~\ref{fig:fig084}) and decision (Table~\ref{tab:tab014}) rates of clinicians, while addressing their preference choices (Figure~\ref{fig:fig085}), agreement comparisons (Table~\ref{tab:tab013}), reliability and capability (Figure~\ref{fig:fig091}).

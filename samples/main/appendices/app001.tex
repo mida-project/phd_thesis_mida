@@ -5,25 +5,27 @@
 \chapter{Accessory Information}
 \label{chap:app001}
 
-In this appendix, we provide additional details on the use of AI models in our UI, as well as the severity classification during patient diagnosis, our patient selection, and information about participants.
+In this appendix, we provide additional details on the use of \ac{AI} models in our \ac{UI}, as well as the severity classification during patient diagnosis, our patient selection, and information about participants.
 We also discuss the existing system, evaluating performance recognition, thresholds, and strategies for curating patients, the next steps for explanations and tone, and the repositories.
 As follows, we will provide further information to better understand the details of our work.
 
 \section{Severity Classification}
 \label{sec:app001001}
 
-BIRADS stands for ``{\it Breast Imaging Reporting and Data System}'' and is a system used to standardize the way in which radiologists report the findings of mammograms and other imaging exams of the breast~\cite{SPAK2017179, mckinney2020international}.
-The BIRADS provides a standardized method for reporting the results of breast imaging exams, which can help to ensure that the information is accurate and consistent.
-This information is useful as an input for AI models that are designed to assist with the diagnosis of breast cancer, as it provides a standardized way of representing the findings of imaging exams~\cite{MAICAS2019101562}.
+\ac{BI-RADS} stands for ``{\it Breast Imaging Reporting and Data System}'' and is a system used to standardize the way in which radiologists report the findings of mammograms and other imaging exams of the breast~\cite{SPAK2017179, mckinney2020international}.
+The \ac{BI-RADS} provides a standardized method for reporting the results of breast imaging exams, which can help to ensure that the information is accurate and consistent.
+This information is useful as an input for \ac{AI} models that are designed to assist with the diagnosis of breast cancer, as it provides a standardized way of representing the findings of imaging exams~\cite{MAICAS2019101562}.
 
-By using the BIRADS system as an input for AI models, it may be possible to improve the accuracy and reliability of the model's predictions, and to help prevent bias in the results.
-The BIRADS system uses a scale from {\bf 0} to {\bf 6} for categorizing the findings of breast imaging exams.
+\clearpage
+
+By using the \ac{BI-RADS} system as an input for \ac{AI} models, it may be possible to improve the accuracy and reliability of the model's predictions, and to help prevent bias in the results.
+The \ac{BI-RADS} system uses a scale from {\bf 0} to {\bf 6} for categorizing the findings of breast imaging exams.
 However, in our study we just considered the scale from {\bf 1} to {\bf 5}, as the {\bf 0} means that the case is inconclusive, where we need to acquire more images, and {\bf 6} means we already have biopsy confirmation by previously known lesion.
 
 \vspace{1.5mm}
 
 \noindent
-Here is a brief overview of each category on the BIRADS scale:
+Here is a brief overview of each category on the \ac{BI-RADS} scale:
 
 \vspace{0.5mm}
 
@@ -37,20 +39,23 @@ Here is a brief overview of each category on the BIRADS scale:
 
 \vspace{0.5mm}
 
-It is important to note that the BIRADS system is only a tool for reporting the results of breast imaging exams and does not provide a definitive diagnosis of cancer. A biopsy is usually needed to confirm a cancer diagnosis.
+It is important to note that the \ac{BI-RADS} score is only a tool for reporting the results of breast imaging exams and does not provide a definitive diagnosis of cancer.
+A biopsy is usually needed to confirm a cancer diagnosis.
+For more details, follow the \href{https://radiopaedia.org/articles/breast-imaging-reporting-and-data-system-bi-rads}{link} (\href{https://radiopaedia.org/articles/breast-imaging-reporting-and-data-system-bi-rads}{radiopaedia.org/articles/breast-imaging-reporting-and-data-system-bi-rads}).
+Accessed on the 11th of January 2023.
 
 \section{Patient Selection}
 \label{sec:app001002}
 
-In this paper, we used a total of 338 cases and acquired in the HFF clinical institution.
+In Chapter~\ref{chap:chap006}, we used a total of 338 cases and acquired in the \ac{HFF} clinical institution.
 From this set of 338 cases, 289 were classified by the head of radiology.
-Each patient has several images concerning four X-ray MG modalities (two in CC and two MLO views), one or two US images, and roughly 5 volumes in MRI.
-In the MRI volumes, we take numerous image slices per patient, where the lesion is present.
+Each patient has several images concerning four X-ray \ac{MG} modalities (two in \ac{CC} and two \ac{MLO} views), one or two US images, and roughly 5 volumes in \ac{MRI}.
+In the \ac{MRI} volumes, we take numerous image slices per patient, where the lesion is present.
 
-From the 289 classified cases, we selected a total of 35 patients to be classified by our AI models.
+From the 289 classified cases, we selected a total of 35 patients to be classified by our \ac{AI} models.
 Because we aim to test the three trials ({\it i.e.}, conventional {\it vs.} non-assertive {\it vs.} assertive), plus the two groups of medical professional experience ({\it i.e.}, novice {\it vs.} expert) we computed at least $2^5=32$ the number of patients.
 Hence, the 35 patients were selected to cover that magnitude of patients.
-This classification corresponds to assigning a BIRADS value for each modality image of the exam.
+This classification corresponds to assigning a \ac{BI-RADS} value for each modality image of the exam.
 
 \section{Participants Information}
 \label{sec:app001003}
@@ -70,14 +75,14 @@ Our new approach allows for a more flexible and dynamic system.
 Furthermore, the new system addresses some limitations of the traditional system~\cite{CALISTO2022102285}, providing a more robust and scalable solution.
 Ultimately, offering a new and innovative approach for solving the diagnostic task.
 
-The AI models in this study are not fusing the predictions from different imaging modalities ({\it e.g.}, MG, US, or MRI).
+The \ac{AI} models in this study are not fusing the predictions from different imaging modalities ({\it e.g.}, \ac{MG}, \ac{US}, or \ac{MRI}).
 Instead, each modality had its own ground-truth score, which refers to the correct or known diagnosis for a given patient.
-This is because the different modalities may provide different information about a patient's breast tissue, and may, therefore; result in different diagnoses and BIRADS scores for a given patient.
-Hence, the AI models in this study generated individual final predictions for each modality.
+This is because the different modalities may provide different information about a patient's breast tissue, and may, therefore; result in different diagnoses and \ac{BI-RADS} scores for a given patient.
+Hence, the \ac{AI} models in this study generated individual final predictions for each modality.
 
-Specifically, the DenseNet model~\cite{8721151} was used to estimate the lesion score for 2D imaging data, such as MG and US images.
-The 3D ResNet model~\cite{Aldoj2020} was used to estimate the lesion score for 3D data, such as MRI volumes.
-Lesion score refers to the likelihood that a specific area of the breast tissue is cancerous, and is typically used as part of the BIRADS score for reporting the results of exams.
+Specifically, the DenseNet model~\cite{8721151} was used to estimate the lesion score for 2D imaging data, such as \ac{MG} and \ac{US} images.
+The 3D ResNet model~\cite{Aldoj2020} was used to estimate the lesion score for 3D data, such as \ac{MRI} volumes.
+Lesion score refers to the likelihood that a specific area of the breast tissue is cancerous, and is typically used as part of the \ac{BI-RADS} score for reporting the results of exams.
 
 \section{Evaluating Performance Recognition}
 \label{sec:app001005}
@@ -86,20 +91,20 @@ We have used the false-positive and false-negative metrics for evaluating the pe
 We chose to use these metrics because they are widely recognized as important indicators of performance in medical imaging classification tasks.
 Particularly, in the context of breast cancer diagnosis, where false-positives and false-negatives can have significant consequences for patient care.
 Furthermore, we believe that these metrics provide a more balanced and comprehensive evaluation of performance than classification accuracy, which can be misleading in imbalanced datasets.
-For instance, if a clinician provides a BIRADS of 3 but the real BIRADS is a 5, we consider it as a false-negative result.
-On the other hand, if the real BIRADS is a 2, but the clinician provides a BIRADS of 4, we consider it as a false-positive.
-Where the ``real'' score is the ground-truth provided by the expert %from the HFF clinical institution.
+For instance, if a clinician provides a \ac{BI-RADS} of 3 but the real \ac{BI-RADS} is a 5, we consider it as a false-negative result.
+On the other hand, if the real \ac{BI-RADS} is a 2, but the clinician provides a \ac{BI-RADS} of 4, we consider it as a false-positive.
+Where the ``real'' score is the ground-truth provided by the expert from the \ac{HFF} clinical institution.
 
 Overall, our goal was to evaluate the performance of our system in terms of its ability to reduce false-positives and false-negatives.
 We found that our classifiers achieved an average decrease of about 26\% for the false-positive rate and about 2\% for the false-negative rate, outperforming previous approaches that have been proposed for this task~\cite{CALISTO2022102285}.
 Moreover, we believe that the false-positive and false-negative metrics we used are appropriate for this purpose.
-By using these metrics, we were able to demonstrate the potential of our AI-assisted approach for reducing false-positives and false-negatives, and we believe that our findings could help to% inspire future research.
+By using these metrics, we were able to demonstrate the potential of our \ac{AI}-assisted approach for reducing false-positives and false-negatives, and we believe that our findings could help to inspire future research.
 
 \section{Thresholds \& Strategies for Curating Patients}
 \label{sec:app001006}
 
 Similar to what was already described (Section~\ref{sec:app001001}), the rationale is the following.
-The BIRADS score ranges from 0-to-6 scale, with the following meaning:
+The \ac{BI-RADS} score ranges from 0-to-6 scale, with the following meaning:
 0 -- inconclusive,
 1 -- no findings,
 2 -- benign findings,
@@ -107,7 +112,7 @@ The BIRADS score ranges from 0-to-6 scale, with the following meaning:
 4 -- suspicious findings,
 5 -- high suspicious malignancy,
 6 -- previously known lesion.
-BIRADS of 0 and 6 are ignored in our study, because they are meaningless for prediction purposes.
+\ac{BI-RADS} of 0 and 6 are ignored in our study, because they are meaningless for prediction purposes.
 
 \vspace{1.15mm}
 
@@ -117,20 +122,20 @@ We have clustered the values above into three classes as follows:
 \vspace{0.05mm}
 
 \begin{itemize}
-\item ``No Findings'' with BIRADS = 1
-\item ``Benign, probably benign findings'' with BIRADS = \{2, 3\}
-\item ``Probably, highly suspicious malignancy findings'' with BIRADS = \{4, 5\}
+\item ``No Findings'' with \ac{BI-RADS} = 1
+\item ``Benign, probably benign findings'' with \ac{BI-RADS} = \{2, 3\}
+\item ``Probably, highly suspicious malignancy findings'' with \ac{BI-RADS} = \{4, 5\}
 \end{itemize}
 
-Thus, the  DenseNet (for 2D MG and US) and the ResNet (for 3D MRI), three classes for the classification.
+Thus, the  DenseNet (for 2D \ac{MG} and \ac{US}) and the ResNet (for 3D \ac{MRI}), three classes for the classification.
 We take the values from 1-to-5, since the other two values do not count for the diagnosis.
-Notice that both networks are trained with the BIRADS ground truth provided by a radiologist from the HFF clinical institution.
+Notice that both networks are trained with the \ac{BI-RADS} ground truth provided by a radiologist from the \ac{HFF} clinical institution.
 
 \section{Next Steps for Explanations and Tone}
 \label{sec:app001007}
 
-In this paper, we resort to two main classes of tones:
-(1) assertive, by having a more authoritative tone, while imposing the AI recommendations; and
+In Chapter~\ref{chap:chap006}, we resort to two main classes of tones:
+(1) assertive, by having a more authoritative tone, while imposing the \ac{AI} recommendations; and
 (2) non-assertive, while being a more suggestive agent.
 However, and considering the clinical context, this should be expanded not only to test more trials in a near future, but also to a larger extent of the communication tones.
 Concretely, the explanations should be attached to the concept of the lexicon for each breast modalities~\cite{SPAK2017179}.
@@ -154,9 +159,7 @@ To study the full effects of the style of tone, we will need the following trial
 \vspace{0.5mm}
 
 This is an interesting point that presently we are pursuing our research in this direction.
-By providing more detailed and accurate explanations, we believe that our AI-assisted system can improve the diagnostic performance of medical imaging classification in the clinical domain of breast cancer.
-
-TODO: change the following text to the app002.tex file.
+By providing more detailed and accurate explanations, we believe that our \ac{AI}-assisted system can improve the diagnostic performance of medical imaging classification in the clinical domain of breast cancer.
 
 \section{Repositories}
 \label{sec:app001sec010}
@@ -164,15 +167,24 @@ TODO: change the following text to the app002.tex file.
 Our repositories are accessible to the public and can be easily located online.
 Please follow the \texttt{\href{https://github.com/MIMBCD-UI/prototype-assertive-reactive}{prototype-assertive-reactive}} repository (\href{https://github.com/MIMBCD-UI/prototype-assertive-reactive}{github.com/MIMBCD-UI/prototype-assertive-reactive}) for more details about the source code of the prototypes.
 In terms of results and statistical analysis, all information is available in the \texttt{\href{https://github.com/MIMBCD-UI/sa-uta11-results}{sa-uta11-results}} repository (\href{https://github.com/MIMBCD-UI/sa-uta11-results}{github.com/MIMBCD-UI/sa-uta11-results}).
-The repositories have the linking pointers for the other related repositories, such as the datasets, source code of the AI models, prototypes, documentation, between others.
-These links were accessed on 25th of January 2023.
+The repositories have the linking pointers for the other related repositories, such as the datasets, source code of the \ac{AI} models, prototypes, documentation, between others.
+These links were accessed on the 25th of January 2023.
 
 \section{Intellectual Property}
 \label{sec:app001sec011}
 
-The work described in this paper is covered by pending patent applications~\cite{WO2022071818A1}, filed by Instituto Superior T\'{e}cnico.
+The work described in this paper is covered by pending patent applications~\cite{WO2022071818A1}, filed by \href{https://tecnico.ulisboa.pt}{Instituto Superior T\'{e}cnico}.
 The contents of this paper are intended to be informative to the scientific and technical community.
 They are not intended to be used to limit the scope of the pending patent application.
 The patent rights will be enforced to the extent necessary to protect the proprietary interests of the patent holders.
 For more information, further details are available in the \texttt{\href{https://github.com/MIMBCD-UI/sa-uta11-results/blob/main/LICENSE.md}{LICENSE.md}} file of the \texttt{\href{https://github.com/MIMBCD-UI/sa-uta11-results}{sa-uta11-results}} repository (\href{https://github.com/MIMBCD-UI/sa-uta11-results}{github.com/MIMBCD-UI/sa-uta11-results}).
-Accessed on 25th of January 2023.
+Accessed on the 11th of January 2023.
+
+\section{Epilogue}
+\label{sec:app001sec013}
+
+In conclusion, this appendix provides additional details on key aspects of our work, including the use of \ac{AI} models in the design of our \ac{UI}, patient selection and diagnosis classification, as well as information about study participants.
+We have also discussed the evaluation of performance recognition, thresholds, and patient curation strategies in the existing system.
+Moving forward, we plan to explore more communication tones and explanations for our \ac{AI}-assisted system, as well as to conduct further trials to better understand their effects on the diagnostic performance of medical imaging classification.
+The repositories for our source code and statistical analysis are publicly accessible, and we remind readers that the work is covered by pending patent applications.
+We hope that the information presented here will help to advance the field of \ac{AI}-assisted medical imaging diagnosis, and we look forward to further research in this area.

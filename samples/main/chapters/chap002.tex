@@ -161,14 +161,14 @@ Regarding the {\it diagnosis} stage~\cite{https://doi.org/10.1002/cncr.32872}, t
 The {\it diagnosis} stage includes image classification (Section~\ref{sec:chap002003}) by using the \ac{BI-RADS} scale.
 During this stage, clinicians were observed on the diagnosis process, namely accessing several medical images.
 Several studies were conducted (Chapter~\ref{chap:chap005}) to understand what clinicians need during decision-making and while interacting with an intelligent agent.
-In this stage, each medical image takes about 40 seconds to be analyzed, meaning that the clinician takes about half a minute to interpret an image~\cite{jiang2018interpretation}.
-However, in most of the cases, each patient requires more than 100 images\footnotemark[6] to be analyzed ({\it e.g.}, MRI volumes).
-This means that a complete diagnosis in a real situation takes more than an hour of the clinician's time, making this task cumbersome in the overall time of the {\it diagnosis} and prone to errors.
+At this stage, every 2D medical imaging modality takes about 120 seconds to be analysed, meaning that the clinician takes about two minutes to interpret each imaging type~\cite{jiang2018interpretation}.
+However, in most of the cases, each patient requires more than six 2D images and several other 3D volume sequences\footnotemark[6] to be analysed ({\it e.g.}, the MRI volumes can have more than 100 frames per each sequence).
+This means that a complete diagnosis in a real situation ({\it i.e.}, reading all modalities, clinical records and reporting the patient case) can take more than an hour of the clinician's time~\cite{Forsberg2017}, making this task cumbersome in the overall time of the {\it diagnosis} and prone to errors.
 In observations, it was concluded that most of the clinicians disengage from visualizing all set of medical images, or disregard some pathologies in the images.
 These handicaps may cause human errors and medical distractions~\cite{bruno2015understanding}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\footnotetext[6]{The \ac{MRI} comprises different types of volumes, concretely, T1, T2, T2 Fat Sat, Diffusion, \ac{DCE}-\ac{MRI}, \ac{DCE}-\ac{MRI} with subtraction in five time instants. The sensitivity of \ac{MRI} makes it an excellent tool in specific clinical situations. Situations such as the screening of patients at high risk, and evaluation of the extent of disease in patients with a new diagnosis. Compared to \ac{MG} and \ac{US}, \ac{MRI} provides higher sensitivity, however its specificity is variable. Moreover, \ac{MRI} data analysis is time consuming and depends on reader expertise.}
+\footnotetext[6]{The \ac{MRI} volumes comprises different types of sequences, concretely, T1, T2, T2 Fat Sat, Diffusion, \ac{DCE}-\ac{MRI}, \ac{DCE}-\ac{MRI} with subtraction in five time instants. The sensitivity of \ac{MRI} makes it an excellent tool in specific clinical situations. Situations such as the screening of patients at high risk, and evaluation of the extent of disease in patients with a new diagnosis. Compared to \ac{MG} and \ac{US}, \ac{MRI} provides higher sensitivity, however its specificity is variable. Moreover, \ac{MRI} data analysis is time-consuming and depends on reader expertise.}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Final Report}
@@ -183,14 +183,14 @@ The records are transcribed to a {\it report}, which are reviewed later by clini
 \subsection{Summarizing Clinical Procedures}
 \label{sec:chap002005004}
 
-As previously discussed, using images to display breast lesions vary widely across medical imaging modalities (\ac{MG}, \ac{US} and \ac{DCE}-\ac{MRI}, being the latter two modalities crucial for dense breasts diagnosis).
+As previously discussed, using images to display breast lesions vary widely across medical imaging modalities (\ac{MG}, \ac{US} and \ac{DCE}-\ac{MRI}, being the two latter modalities crucial for dense breasts).
 Multimodality is responsible for increasing the cognitive load of radiologists and increasing detection rates, but also reducing \acp{FP} and \acp{FN}~\cite{cheung2017integral}.
-In this section, we define and describe the main workflow.
+In this section, we define and describe the main clinical procedures.
 
 \hfill
 
 \noindent
-The main workflow (Figure~\ref{fig:fig018}) of the \ac{RRR}~\cite{wagner2015analysis} usually comprises four different paths that correspond to different observed image acquisition procedures:
+The main clinical procedures (Figure~\ref{fig:fig018}) of the \ac{RRR}~\cite{wagner2015analysis} workflow usually comprises four different paths that correspond to different observed image acquisition procedures:
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{enumerate}
