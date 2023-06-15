@@ -1,770 +1,222 @@
 % #############################################################################
-% This is Appendix Questionnaires
+% This is Appendix Model Integrations
 % !TEX root = main.tex
 % #############################################################################
-\chapter{Supporting Details}
-\label{chap:app002}
+\chapter{Model Integrations}
+\label{chap:app003}
 
-% TODO: merge this ``Supporting Details'' appendix (which is the same of the AI in Medicine paper), with Chapter 5...
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
-In this appendix, the implications of integrating {\it BreastScreening-AI} in the medical imaging workflow are detailed regarding diagnostic performance and accuracy measured during the interaction between human clinicians and our intelligent medical agents~\cite{CALISTO2022102285}.
-Specifically, the {\it BreastScreening-AI} is a system based on communicating the \ac{AI} outcomes via anthropomorphic intelligent agents, providing an automated and interpretable diagnosis while integrating \ac{DL} methods on the \ac{UI} for medical imaging.
-Accuracy (measured in terms of \ac{FP} and \ac{FN} metrics) of intelligent agent results is compared, and study the impact of the design techniques on the expectations and satisfaction of the clinicians.
+Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?
 
-The appendix provides several supporting details.
-First, we summarize the metrics (Section~\ref{sec:app002001}) described in this appendix and map the information presented here to the rest of the thesis.
-Secondly, we provide details in terms of design guidelines for \ac{AI} systems (Section~\ref{sec:app002002}) to reinforce the early background of this thesis (Section~\ref{sec:chap005002002}).
-Third, we further detail the implementation characteristics of the medical assistant framework (Section~\ref{$TODO$}), providing more information about the {\it BreastScreening-AI} prototype (Section~\ref{sec:chap005004}).
-Finally, we provide information concerning the used measures (Section~\ref{$TODO$}), the clinical impact (Section~\ref{$TODO$}) across the integration of these intelligent agents in a real-world clinical setting, and the user expectations (Section~\ref{$TODO$}) of clinicians while working on these set of \ac{AI} systems.
+\section{Neural Network Integration}
+\label{sec:app003001}
 
-\section{Clinical Performance Metrics}
-\label{sec:app002001}
+In this section, we provide additional details concerning the use of the DenseNet that is integrated in our UI.
+Concretely, we provide additional details concerning:
+(i) the dataset;
+(ii) data pre-processing;
+(iii) evaluation strategy;
+(iv) learning methodology;
+(v) transfer learning; and
+(vi) additional description of the system.
 
-The terms \acf{TP}, \acf{FP}, and \acf{FN} are commonly used in binary classification tasks, where the goal is to classify instances into one of two possible categories: positive or negative.
-In classification tasks, \ac{TP} refers to the number of correctly classified positive instances, meaning instances classified as positive and indeed positive. \ac{FP} refers to the number of negative instances incorrectly classified as positive.
-\ac{FN} refers to the number of positive instances incorrectly classified as negative.
-These three metrics are often used to evaluate the performance of classification models, and they are used to calculate other metrics.
-For that, {\bf Precision}, {\bf Recall}, and {\bf F1-score} are commonly used metrics in evaluating the performance of breast cancer detection systems, including those based on the \ac{BI-RADS} scale.
+\subsection{Comparison with Existing Methodologies}
+\label{sec:app003001001}
 
-In breast cancer detection, {\bf Precision} refers to the proportion of \ac{TP} results out of all the positive results (\acp{TP} and \acp{FP}).
-In the context of \ac{BI-RADS}, {\bf Precision} would measure how accurately the \ac{AI} system correctly identifies breast cancer when it is present ({\it e.g.}, assigning a \ac{BI-RADS} score of 4 or 5).
-On the other hand, {\bf Recall} refers to the proportion of \ac{TP} results out of all the actual positive cases (\acp{TP} and \acp{FN}).
-{\bf Recall} would measure how well the system can identify all breast cancer cases, regardless of whether it assigns a \ac{BI-RADS} score of 4 or 5.
-Finally, the {\bf F1-score} measures the harmonic mean between {\bf Precision} and {\bf Recall}, providing an overall assessment of the diagnostic performance.
-In the context of \ac{BI-RADS}, the {\bf F1-score} would give a balanced evaluation of the ability to identify breast cancer cases and all breast cancer claims accurately by the \ac{AI} system.
+In terms of model comparison with already existing methods, the literature shows improvements of the DenseNet model concerning mean sensitivity and specificity by surpassing, as an example, the EfficientNet model~\cite{jpm10040211}.
+For instance, the authors report the Mean AUC for detecting breast cancer was 0.952~\textpm~0.005 by a DenseNet model and 0.954~\textpm~0.020 by an EfficientNet model.
+Moreover, the authors further report the mean sensitivity and specificity from a DenseNet model, of 87\% and 88\%, respectively, surpassed the mean values, of 81\% and 82\%, respectively, obtained in their meta-analysis.
+Hence, the literature has demonstrated the DenseNet model efficiency~\cite{8633197, Hai2019, Zhong_2020}.
 
-% #############################################################################
+\subsection{Dataset Size}
+\label{sec:app003001002}
 
-\vspace{2.00mm}
+In this paper, we used a total of 338 cases and acquired in the Hospital Fernando Fonseca.
+From this set of cases, 289 were classified by the head of radiology.
+Each patient has several images concerning four  X-ray mammography (two in CC and two MLO views), one ultrasound image, and roughly 5 images in MRI.
+In the MRI volumes, we take several image slices per patient, where the lesion is present (recall point 5) in the previous question).
+This provides us roughly 2890 images ({\it i.e.}, 289~\texttimes~(4 + 1 + 5)), that is used to train/test the AI agent (DenseNet).
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{multicols}{3}
+\subsection{Data Pre-Processing}
+\label{sec:app003001003}
+
+Traditional image processing and deep learning techniques require extensive pre-processing~\cite{Zhong_2020}.
+As a matter of fact, it is known that a cleaning dataset is welcome when training a deep neural network~\cite{RIASATIAN2021102032}.
+In our study this stage is of the utmost importance, since the MG, US and MR images contain quite different intensities and the images are of different sizes.
+Thus, before introducing the images to the DenseNet, we pre-process the data.
+Specifically, we perform a data normalization, so that the images have the same intensity, regardless of the modality.
+
+All the images are resized to 224x224 pixels.
+Also, the images are normalized by subtracting its mean and dividing by its standard deviation.
+The above size is used since the DenseNet is prepared to receive the input with this format.
+
+\subsection{DenseNet Steps}
+\label{sec:app003001004}
+
+\hfill
+
+\noindent
+The DenseNet steps are as follows:
+
+\hfill
+
+\begin{enumerate}
+\item The DenseNet is pre-trained with the ImageNet model that contains roughly 1.2 millions images. This gives generalization capabilities to new datasets.
+\item Next, we remove the last layer of the DenseNet (that contains a large number of classes, about 1000 classes or end-nodes) and replace it by a fully connected layer containing now three nodes. Each node of the network corresponds to one of the following classes: (i) low severity (Class 1: BIRADS <= 1 ), (ii) medium severity  (Class 2:  1 < BIRADS <= 3) and (iii) high severity (Class 3: BIRADS > 3). Thus, we have a DenseNet with three nodes in the last layer.
+\hfill
+\item Now, the pre-trained DenseNet goes through a process of fine-tuning in our breast dataset. The dataset comprises 1125 training images ({\it i.e.}, MG in both CC and MLO views, US, and MRI). Notice that here, we have 338 cases or patients (Section~\ref{sec:procedure}). The larger number of training images, when compared to the number of patients, stems from the fact that one patient may have more than one image.
+\hfill
+\item We split the above dataset in the following way: 80\% for training and the remaining 20\% for testing. In this partition, we guarantee that each set (training and test) are properly balanced, that is, each set contains samples that belong to all classes (recall that there are three classes as mentioned in Section~\ref{sec:procedure}, see also point 1) and all modalities ({\it i.e.}, MG, US, and MRI). Therefore, the experiments take into consideration the multimodality.
+\hfill
+\item The pre-training follows a supervised learning strategy. Specifically, during the training we provide the image, as well as the corresponding label, that is, the classification in one of the three classes for the image. This classification ({\it i.e.}, ground-truth) is provided by a set of eight radiologists (Section~\ref{sec:methods}). Say that this training stage gives to the DenseNet the ability to establish associations between the morphology of the lesion (image) and its severity (classification label).
+\hfill
+\item Finally, we use the held-out test set to measure the performance of the DenseNet. An accuracy of 98.2\% was obtained in this test set.
+\hfill
+\item As a final note, we should mention that the three patients (as mentioned in Section~\ref{sec:participants}) are obtained from the test set as mentioned above (see point 4). 
+From the above the number of test samples is high, however, only three samples are taken  for the experiments purpose. Thus, the training and testing phases take into account a large number of samples.
+\end{enumerate}
+
+\section{Training and Evaluation of the DenseNet}
+\label{sec:app003002}
+
+The evaluation mechanism for the DenseNet follows a two stage process, involving a training and testing stages.
+To accomplish this, we partition the dataset (see Section~\ref{sec:sec010002}) to form the training and testing subsets in the following manner:
+80\% of the samples are used for training and the remaining 20\% for testing.
+In this partition, we guarantee that each set (training and test) is properly balanced.
+That is, each set contains samples that belong to all five and in all modalities ({\it i.e.}, MG, US and MRI) - this is to guarantee  the multimodality.
+
+\vspace{1mm}
+
+\noindent
+{\it Training}:
+The training follows a supervised learning strategy.
+Specifically, during the training we provide the image, as well as the corresponding label, that is, the classification BI-RADS score.
+This classification ({\it i.e.}, ground truth) is provided by the head of radiology of the HFF institution.
+This allows the DenseNet the ability to establish associations between the morphology of the lesion (image) and its severity (classification label).
+
+\vspace{1mm}
+
+\noindent
+{\it Testing}:
+During the test phase, we used a hold-out test set that aimed to measure  the performance of the DenseNet.
+An accuracy of 94.81\% was obtained in this test set. 
+Notice that the three patients (as mentioned in Sec 4.4) are obtained from this hold-out test set.
+
+\vspace{2mm}
+
+\noindent
+{\it Remark}: 
+Another possibility for the DenseNet training is to resort to unsupervised learning  methods. However, this class of approaches is more challenging, since only the images are fed into the network without the help of having the classification labels ({\it i.e.}, without BI-RADS classification in training).
+This deserves our attention in a future work.
+
+\section{Transfer Learning}
+\label{sec:app003003}
+
+As a final remark, we should stress that although the  number of samples is relatively small (3000 as mentioned in Section~\ref{sec:sec010002}), we may argue that this could be not enough, since a robust training DNNs usually requires large amounts of annotated samples (order of 100Ks) to avoid overfitting to the training data given the large model capacity.
+This issue can be handled with the so-called ``Transfer Learning'' (TL).
+Basically, the TL process retrains (in a process called fine-tuning) publicly available models (pre-trained with large datasets) using smaller datasets.
+
+To initialize the weights of the network, the DenseNet model was pre-trained on the ImageNet dataset~\cite{deng2009imagenet} with more than 1.2 million images, which yields fast convergence for deep architectures~\cite{8515234}.
+We used the DenseNet model by following two particular literature works for the classification of mammograms~\cite{10.1007/978-3-030-88163-4_16, 10.1007/978-3-030-47679-3_23}.
+
+It has been demonstrated that this TL approach is possible to be applied in the medical image field, even if the datasets used in this pre-training stage are completely different from the medical images - in this case - different from breast images~\cite{10.1007/978-3-319-24574-4_78, 8032490}.
+This is precisely what we did here.
+Concretely, we used a pre-trained that provides the DNN more regularization and generalization capabilities to new datasets.
+In the experiments, the DenseNet was pre-trained with the  ImageNet model that contains millions of images from 1000 classes (Section~\ref{sec:sec004005}).
+The only adaptation required  to adapt the DenseNet, is to change the last layer from 1000 nodes (or classes) to the number of five classes in our problem.
+
+\section{DenseNet Final Remarks}
+\label{sec:app003004}
+
+The DenseNet is a complex model.
+This means that the model can handle heterogeneous types of the input.
+Thus, given the relatively small number of training samples, it is advantageous to join all the modalities.
+
+\vspace{2mm}
+
+\noindent
+In the experiments, we have compared two situations:
+
+\vspace{2mm}
+
+\begin{enumerate}
+\item Joining all the modalities to a single DenseNet; and
+\item Using three different DenseNet, each network for each image modality type (MG, US and MRI).
+\end{enumerate}
+
+\vspace{2mm}
+
+The best results were achieved for situation (1), and this was adopted for our UI.
+
+\section{Additional Description of the System}
+\label{sec:app003005}
+
+\vspace{2mm}
+
+\noindent
+Now we detail a little better the description of the system, as follows:
+
+\begin{enumerate}
+\item Each of the 289 patients was classified by the head of radiology of the Medical Imaging Department at the HFF institution. This classification corresponds to assigning a BI-RADS value for each modality image of the exam;
+\item We trained our DenseNet across the BI-RADS, (we already detailed how the  training/test of the DenseNet is accomplished);
+\item After the training, we have the test phase. Here the new (unseen) images are presented to the DenseNet, and a BI-RADS classification is provided to that test sample; and
+\item To evaluate the accuracy of the system, the precision and recall are computed.
+\end{enumerate}
+
+\vspace{2mm}
+
+\noindent
+The following link is available that illustrates eases the description of the proposed system, as well as its workflow:
+
+\vspace{2mm}
+
+\noindent
+\href{https://youtu.be/k2vBpbKqJqQ}{youtu.be/k2vBpbKqJqQ}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure*}[htbp]
 \centering
-\begin{itemize}
-\item[] {\bf Precision}~$\rightarrow$~$P = \frac{TP}{TP + FP}$
-\item[] {\bf Recall}~$\rightarrow$~$R = \frac{TP}{TP + FN}$
-\item[] {\bf F1-score}~$\rightarrow$~$F1 = 2 \times \frac{P \times R}{P + R}$
-\end{itemize}
-\end{multicols}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\vspace{2.00mm}
-
-% #############################################################################
-
-Since our work is strongly related to performance metrics, we start by defining them within the medical context.
-The accuracy level of a clinical system is defined as the total number of correct predictions over all possible predictions~\cite{seref2019performance}.
-This definition requires  the use of the following error metrics:
-(1) \ac{FP}; and
-(2) \ac{FN}.
-Typically, both \acp{FP} and \acp{FN} are quantified as {\bf Precision} {\it vs} {\bf Recall}, respectively.
-Generally, clinical systems are optimized for high precision and, therefore, avoid \acp{FP} ({\it i.e.}, in breast context, avoid recommending a \ac{BI-RADS} higher than the real one).
-
-Previous works outside of the clinical scope~\cite{Kocielnik:2019:YAI:3290605.3300641, Dove:2017:UDI:3025453.3025739}, denote that the impact of \ac{FP} {\it vs.} \ac{FN} on \ac{UX} is generally unexplored.
-However, thus is of high relevance when considering \ac{AI} systems for the clinical domain~\cite{boughey2016identification, dialani2015role} as it will be experimentally shown.
-This thesis also want to measure that the proposed assistant as a function of the above metrics.
-Measuring predictions are typically quantified as precision in contrast with recall.
-Therefore, this work explore the following \underline{R}esearch \underline{Q}uestions and associated each to the set of \underline{H}ypothesis according to the guidelines described in~\cite{10.1145/3290605.3300233, Kocielnik:2019:YAI:3290605.3300641}.
-
-\section{Design Guidelines}
-\label{sec:app002002}
-
-The work of Amershi et al.~\cite{10.1145/3290605.3300233}, describes a set of \underline{18 guidelines} (Table~\ref{tab:tab004}) for \ac{HAII} being highly useful to support the goal of this thesis.
-Additional to that work, the work of Kocielnik et al.~\cite{Kocielnik:2019:YAI:3290605.3300641} provides an exploratory study of an assistant to study the impact of several methods of user expectations.
-In both studies, the authors show that different focus on avoiding types of errors lead to a quite different subjective perceptions of acceptance and accuracy.
-Prior work of the authors~\cite{Kocielnik:2019:YAI:3290605.3300641} shows three significant contributions to clinician's expectations:
-(1) information from external sources;
-(2) reasoning and understanding; and
-(3) first hand experience.
-From here, this thesis aims to explore design techniques for achieving these mechanisms pairwise with the work done in~\cite{10.1145/3290605.3300233}.
-Also, the thesis provides an opportunity to reflect on practices in a specific case of \ac{HAII} early in its clinical context.
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\input{tables/tab004}
+\captionsetup{justification=centering}
+\includegraphics[width=0.925\textwidth]{fig072}
+\caption{Architecture and functionalities diagram~\cite{nadia2020xai} of the typical use cases. These use cases are presented with the order of actions for the interrogated AI system.}
+\label{fig:fig072}
+\end{figure*}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-To evaluate the impact of \ac{AI}-powered solutions in the clinical workflow with regard to clinicians' perceived \ac{UX}, this thesis aims to investigate the effects of the proposed assistant in reducing medical errors and improving clinicians' acceptance and diagnostic accuracy.
-Under this work~\cite{CALISTO2022102285}, it was explored how the system, with a focus on {\it High Precision}, can result in both higher acceptance and accuracy.
-For that, the thesis mapped {\bf G1}, {\bf G2}, {\bf G3}, and {\bf G4} guidelines to inform the design of the {\it BreastScreening-AI} prototype, making the \ac{AI} recommendations more clear based on the provided context.
-Hence, resulting in higher acceptance of clinicians on the introduction of intelligent agents in these clinical workflows.
-On the other hand, {\bf G5}, and {\bf G6} guidelines are informing our design to improve the inter-variability and intra-variability relationships of clinicians.
-Moreover, we follow {\bf G7}, {\bf G8}, and {\bf G9} guidelines to support an efficient implementation for the design of the {\it BreastScreening-AI} prototype.
-Until now, the design guidelines~\cite{10.1145/3290605.3300233} were mapped to inform our exploratory study on the impact of  \ac{AI}-powered solutions in terms of user expectations~\cite{Kocielnik:2019:YAI:3290605.3300641}.
-Next, we are mapping the design guidelines to bring more receptiveness and higher perception of what the system can do, so that we can improve clinicians' workflow through the introduction of an \ac{AI}-powered solution.
+\section{Separate vs. All Modalities}
+\label{sec:app003006}
 
-In this work~\cite{CALISTO2022102285}, we evaluate the effectiveness of the expectation adjustment requirements in increasing clinicians' satisfaction for completing actual diagnostic with the assistant.
-This thesis foresees that more positive expectations of an \ac{AI} system capabilities should result in clinicians being better prepared for \ac{AI} system imperfections and; therefore, result in higher satisfaction and performance.
-As a matter of fact, clinicians' receptiveness and expectations are affected by the capacity of an \ac{AI} system to potentially reduce the rates of \acp{FP} and \acp{FN}, as well as increase the diagnostic time performance.
-Because of that, we mapped {\bf G10}, and {\bf G11} guidelines to ensure that our prototype contextually inform clinicians when in doubt, or provide reasoning to make clear system choices.
-Additionally, we mapped {\bf G12}, {\bf G13}, {\bf G14}, and {\bf G15} guidelines so that the \ac{AI} system can remember recent interactions from user behavior, while cautiously updating and adapting granular feedback to clinicians.
-In the end, we followed {\bf G16}, {\bf G17}, and {\bf G18} guidelines to design an \ac{AI} system that informs the consequences of user actions, providing clinicians' control and notifying them about changes.
-Mapping these design guidelines is orienting this work to prototype an assistant that is increasing diagnostic performance and accuracy.
+As shown in Table~\ref{tab:tab006}, the performance in the multimodal scenario is significantly higher than in the unimodal case.
+This is a consequence of substantially increasing the training dataset when using all imaging modalities, which means the model is trained with a much larger number of images and with higher variability.
+This increase in data helps regularize the DenseNet model, preventing over-fitting and improving its generalization capabilities.
+In the unimodal case, the lack of a large training dataset resulted in severe over-fitting issues, despite our efforts to mitigate this through:
+(i) data augmentation strategies, where each image is randomly modified in each batch using common transformations, such as small rotations, flipping, and translations; and
+(ii) other regularization strategies like dropout and L2 (weight decay).
 
-\section{Medical Assistant Framework}
-\label{sec:app002003}
+As a final remark, we stress that the network architecture receives 2D images.
+Since the DCE-MRI are volumes, we extract some of the slices that contain the lesion.
+All the above issues led the network to obtain significantly better results in the multimodal scenario, as demonstrated in Table~\ref{tab:tab016}.
 
-The proposed {\it BreastScreening-AI} framework incorporates an assisted tool ({\it i.e.}, an intelligent agent for severity classification) offering radiologists a second opinion reader during the breast cancer diagnosis that is accomplished  using  a DenseNet model~\cite{chen2019learning}.
-To validate the proposed DenseNet results, the framework allows the radiologist to {\it accept} or {\it reject} the proposed \ac{BI-RADS} classification.
-Therefore, the radiologist can freely control the final diagnosis result.
-The {\it BreastScreening-AI} platform operates as a website that can be accessed via a web browser.
-In fact, a web browser-based solution is covering the early concerns regarding remote and distributed requirements of this thesis.
+\section{System Diagram}
+\label{sec:app003007}
 
-\subsection{Design Choices}
-\label{sec:app002003001}
+Concerning the system diagram~\cite{mourao2020architecture} of the BreastScreening-AI framework (Figure~\ref{fig:fig072}), the first action is to request the patients (Section~\ref{sec:sec004003}) stored on the Orthanc server~\cite{Jodogne2018}.
+Next, the assistant will show the AI outputs~\cite{10.13140/RG.2.2.12519.16803, nadia2020xai}.
+Finally, clinicians can decide by accepting or rejecting the AI suggestion.
 
-Due to the multi-view and multi-modal nature of the data, the proposed assistant uses large amounts of images.
-The most common used modalities are as follows:
-(i) \ac{US} (both \ac{CC} and \ac{MLO} views);
-(ii) \ac{US}; and
-(iii) \ac{MRI} volumes.
-The above modalities results from a selection provided by the radiologists team.
-Notice that in (i) a large number of \ac{MG} views are available.
-Concerning (iii), the acquisition allows to obtain a large set of \ac{MRI} data ({\it e.g.}, T1, T2, \ac{DCE})~\cite{seifabadi2019correlation}.
-
-Initial design choices resulted in a consensus that allowed the selection of \ac{CC} and \ac{MLO} views, in the case of MG, 
-and \ac{DCE} for the case or \ac{MRI}.
-From the above, it is vital to have the \textit{5.1.~Viewports} management feature (Figure~\ref{fig:fig040}), providing the users with the opportunity to arrange the viewport depending on the available modalities and views.
-Furthermore, the thesis choose to implement the \textit{5.2.~Toolbars} with a quick and configurable \textit{5.1.~Viewports} management button, to support this use case.
-
-For breast cancer, the user evaluation validated design choices (Section~\ref{sec:app002006}) and revealed clinician strategies for using the intelligent agent as a medical assistant.
-The learned design lessons should, in principle, generalize to other healthcare assisted systems.
-Design lessons are further discussed (Section~\ref{sec:app002007}) to understand how patterns of user interactions with {\it BreastScreening-AI} helped to highlight some of more common clinician groups ({\it i.e.}, Interns, Juniors, Middles and Seniors) and behaviours.
-In the end, these patterns are also discussed and mapped to other healthcare assisted systems.
-
-\subsection{User Interface Elements}
-\label{sec:app002003002}
-
-Based on the user needs, {\it BreastScreening-AI} was designed and implemented.
-Specifically, the tool is including a set of refinement mechanisms to guide radiologists during the diagnostic process.
-The designed \ac{UI} of {\it BreastScreening-AI} consists of one main component, comprising the medical imaging views (Figure~\ref{fig:fig040}).
-The {\it 4.5. Study List Tabs} (Figure~\ref{fig:fig040}) gives radiologists the opportunity to switch between the patient who is being diagnosed and a full list of patients.
-Using the {\it 5.2.~Toolbars} on the {\it 5.1.~Viewports}, the clinician can locate the lesions and classify its severity (via \ac{BI-RADS}), choosing the {\it 6.1.~Accept} or {\it 6.3.~Reject} options for the given severity of the {\it 6.~Assistant}.
-
-When the several modalities are correctly used (regarding the {\it 5.3.~Modality~Selection} on a multimodality view), the clinician can find more accurately the right severity classification.
-For the {\it 6.3.~Reject} option, the clinician will have to insert the proposed \ac{BI-RADS} on a drag-and-drop menu ({\it 6.3.1.~Physician Severity}) of severity options.
-Finally, the clinician may look for the {\it 6.2.~Explain} feature (Figure~\ref{fig:fig040}) showing the model explainability regarding the {\it Lesion Circularity} values.
-In the following sections, the sections will be explaining how to measure the {\it Lesion Circularity}.
-
-\subsection{BreastScreening-AI Implementation}
-\label{sec:app002003003}
-
-{\it BreastScreening-AI} framework was implemented using CornerstoneJS\footnotemark[36]~\cite{urban2017lesiontracker} with a NodeJS framework\footnotemark[37]~\cite{farrell2016nodejs, drnasin2017javascript} and ExpressJS\footnotemark[38]~\cite{gustin2017empowerment} for managing the server part.
-To sustain the system and user evaluation, image sets are selected from Hospital Fernando Fonseca and uploaded them into an Orthanc server~\cite{Jodogne2018}.
-Patient data was collected from this institution.
-Then, a user evaluation method was followed and applied~\cite{https://doi.org/10.13140/rg.2.2.16566.14403/1} to the remaining nine clinical institutions.
-Three imaging modalities (\ac{MG}, \ac{US} and \ac{MRI}) were provided for each patient.
-The images were pre-processed and anonymized on the Orthanc server and then consumed by the system.
-This system is efficiently designed as a set of modules (Figure~\ref{fig:fig041}) that can be reused in other imaging applications.
+As stated before (Section~\ref{sec:sec004}), our interface (Figure~\ref{fig:fig002}) has three main button functionalities ({\it i.e.}, 6.1. Accept; 6.2. Explain; and 6.3. Reject).
+Each button of our interface is generating different triggers~\cite{10.1145/3436954} on the framework (Figure~\ref{fig:fig072}).
+Hence, three triggers are important to denote.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\footnotetext[36]{\href{https://cornerstonejs.org/}{cornerstonejs.org} - a JavaScript library to display interactive medical images of the assistant including but not limited to DICOM. It was used to display the medical images on the browser. Accessed on 8th of December, 2020.}
+\input{tables/tab016}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\footnotetext[37]{\href{https://nodejs.org}{nodejs.org} - a JavaScript based framework for back-end implementation. NodeJS is defined as a JavaScript code execution environment. Accessed on 8th of December, 2020.}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\footnotetext[38]{\href{https://expressjs.com}{expressjs.com} - minimal and flexible NodeJS web application framework that provides a robust set of features. It deals with requests, responses and subsequent middleware functions. Accessed on 8th of December, 2020.}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-The CornerstoneJS family of libraries provide essential functions, such as
-i) image rendering, which can be achieved through different techniques, like window-leveling, zoom, pan, and image rotation;
-ii) \ac{DICOM} retrieval, enabling the communication with the \ac{PACS} to query and retrieve medical images;
-iii) tool support ({\it i.e.}, developed functionalities), which includes a variety of functionalities, such as annotation tools, measurement tools, and filters; and
-iv) interpretation, which involves the manipulation of medical images for diagnostic purposes.
-Together, these functionalities enable the development of powerful web-based medical imaging applications, bringing the benefits of remote access, collaboration, and scalability to healthcare providers and patients.
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{figure}[htbp]
-\centering
-\includegraphics[width=0.80\linewidth]{images/fig041}
-\caption{{\it BreastScreening-AI} Architecture: the main components of the system are AI Application, Image Viewer, Datasets and DICOM Storage. The Image Viewer of {\it BreastScreening} framework will provide essential interaction tools for radiologists. A study list is fetched from the Orthanc server, and through CornerstoneJS the radiologist can manipulate the image, interacting with the assistant at the same time.}
-\label{fig:fig041}
-\end{figure}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-It should be noted that the {\it BreastScreening} core~\cite{https://doi.org/10.13140/rg.2.2.29816.70409} was developed in JavaScript with jQuery\footnotemark[39]~\cite{depeursinge2011mobile} for \ac{HTML} document manipulation, event handling of the \ac{UI} interactions, such as mouse events, and with look \& feel improvements.
-Additionally, a {\it dicomParser}~\cite{zhang2015dicom} was used for parsing \ac{DICOM} files.
-The \ac{DICOM} files can be loaded by drag-and-drop into the browser window on the Orthanc  (Figure~\ref{fig:fig041}) view.
-Loaded images can be further displayed on both views but with different visualization configurations.
-After the loading stage, images are automatically arranged according to the scan IDs from the \ac{DICOM} files.
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\footnotetext[39]{\href{https://jquery.com}{jquery.com} - a fast, small, and feature-rich {\it JS} library for the GUI. {\it JQuery} is generic, as it can be configured to render many different types of views.}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-Finally, for this assistant, the DenseNet was developed using \href{https://pytorch.org/}{PyTorch}~\cite{NEURIPS2019_bdbca288}.
-More specifically, \href{https://pytorch.org/}{PyTorch} is a \ac{DL} library that is widely used by the \ac{ML} community due to its imperative and ``Pythonic'' programming style.
-The library performs immediate execution of dynamic tensor computations with automatic differentiation and \ac{GPU} acceleration, and does so while maintaining performance comparable to the fastest current libraries for \ac{DL} methods.
-The availability and normalization of general-purpose massively parallel hardware, such as \acp{GPU}, provided the computing power required to this thesis.
-Thus, \href{https://pytorch.org/}{PyTorch} was used under this work  (Figure~\ref{fig:fig041}) to facilitate the implementation of \ac{DL} methods and easily integrate the methods into intelligent agents.
-
-\subsection{Acquired Medical Imaging Datasets}
-\label{sec:app002003004}
-
-In order to control the medical imaging information, radiologists interact with in a sub-sequence study.
-The {\it BreastScreening-AI} was fixed to operate on a limited subset of 289 classified patients from the collected dataset at \acf{HFF}.
-In fact, the acquired dataset of medical images contains more than 200 000 \ac{DICOM} files from a total of 338 patients.
-For this work, each of the 289 patients was classified by the head of radiology of Medical Imaging Department at \ac{HFF}.
-Then, the head of radiology provided both \ac{BI-RADS} values of the pre-biopsy and pathological results of each patient.
-
-From the pre-biopsy classification, the acquired and curated dataset was divided into three distinct patient types:
-{\bf P1} with low severity, {\it i.e.}, BIRADS $\leq$ 1;
-{\bf P2} with medium severity, {\it i.e.}, 1 $<$ BIRADS $\leq$ 3; and
-{\bf P3} with high severity, {\it i.e.}, BIRADS $>$ 3;
-on all possible modalities (\ac{MG}, \ac{US} and \ac{MRI}).
-Each radiologist will open each patient ({\it e.g.}, {\bf P1}, {\bf P2} or {\bf P3}), that is chosen randomly, and will examine the set of images.
-The dataset resulted from work done by eight of the 45 clinicians.
-All the eight clinicians are resident radiologists of \acl{HFF}, working directly with the head of radiology of this institution.
-
-\subsection{Model Description}
-\label{sec:app002003005}
-
-A fundamental component in the designed \ac{UI} is the integration of a \ac{DNN} ({\it i.e.}, DenseNet).
-A DenseNet is capable to automatically provide the classification for the lesion severity of the exam.
-For this study, the DenseNet~\cite{Huang_2017_CVPR} architecture used in {\it BreastScreening-AI} was DenseNet-161.
-The DenseNet was initially pre-trained on ImageNet~\cite{10.1145/3351095.3375709}, a large dataset of 1.2 million images from 1,000 classes.
-This is an important step, to regularize the network whenever small sets are available for training.
-The network parameters were fine-tuned using the acquired and curated medical dataset.
-This is accomplished by removing the last layer and replace it by a new fully-connected layer for five classes, corresponding to the \ac{BI-RADS} (from 1 to 5) values.
-
-To ensure a fair and unbiased evaluation of model performance, the curated dataset was split into two disjoint sets: a training set and a testing set.
-The training set was used to fine-tune the weights of the architecture to the medical dataset acquired and curated under this thesis, while the testing set was held out exclusively for evaluation.
-It should be noted that in the experimental evaluation, only the test set was used, and radiologists were asked to perform patient diagnosis ({\it i.e.}, {\bf P1}, {\bf P2} or {\bf P3}) to assess the model's diagnostic accuracy.
-By using a separate test set, the generalization ability of the model to unseen data can be evaluated, providing more confidence in the model's performance when applied to new datasets.
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{figure}[htbp]
-\centering
-\includegraphics[width=\textwidth]{images/fig042}
-\caption{DenseNet extracts features from images using dense blocks to efficiently compute the probability of each class. Classification probabilities are calculated and, in the end, the intelligent agent display the highest probability ({\it i.e.}, from 0\% to 100\%) of all images from that patient. Moreover, the resulted Classification/Probabilities square can also be displayed to provide some kind of XAI to clinicians.}
-\label{fig:fig042}
-\end{figure}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-In this study, all modalities were evaluated using the same model, which was trained on a curated dataset.
-To prepare the dataset for training, a pre-processing step was applied that included resizing the images to $224\times 224$ pixels using bilinear interpolation, as well as normalization to remove the mean and standard deviation.
-This pre-processing step is similar to the one used in the ImageNet dataset. The training process utilized the Adam optimizer~\cite{kingma2014adam} with the default parameters, including a learning rate of $10^{-3}$ and weight decay of $10^{-4}$.
-During training, the model fine-tuned the weights of the architecture to the medical dataset acquired and curated under this study.
-In order to evaluate the performance of the model, a hold-out test set was used, which was separated from the curated dataset for fairness purposes.
-Only the test set was used for experimental evaluation, and radiologists were asked to perform patient diagnoses on the test set.
-
-To prevent overfitting, online data augmentation was employed using random cropping and random horizontal flipping.
-The model was trained using cross-entropy loss, where model predictions after softmax were compared with classifications provided by radiologists.
-During testing, unseen images underwent the same pre-processing steps as during training, and the model predictions and classifications were recorded.
-The model achieved an accuracy of 94.81\% on the test set using this approach.
-
-\section{Additional Findings \& Analysis}
-\label{sec:app002004}
-
-In this section, the section experimentally shows the usefulness of integrating the Human-\ac{AI}, namely its gains when compared to the single radiologist performance.
-The experimental evaluation will be conducted to map the \acp{RQ} formulated in Section~\ref{sec:app002003}.
-The study will comprise on the following setups.
-The collaboration (within-subject) was distributed into three scenarios: (i) {\it Clinician-Only}; (ii) {\it Clinician-AI}; and (iii) {\it AI-Only}.
-For each scenario, three patient classes are considered.
-Concretely, {\it Low}, {\it Medium} and {\it High} severities.
-Each class concerns the lesion severity in the \ac{BI-RADS} score, as ${\rm BIRADS} = 1$, ${\rm BIRADS} \in\{2, 3\}$ and, ${\rm BIRADS}\in\{4, 5\}$, respectively.
-
-\subsubsection{{\it SUS Scores} vs {\it SUS Positive Questions}}
-\label{sec:sec005006001001}
-
-The generated results of the \ac{SUS} questionnaire are depicted in Figures \ref{fig:fig033} and \ref{fig:fig034}.
-On the one hand, Figure ~\ref{fig:fig033} shows the results obtained with
-{\it Current} scenario.
-On the other hand, Figure~\ref{fig:fig034} shows the results with the introduction of the {\it Assistant}.
-Both study conditions can be compared to understand usability improvements from the {\it Current} to {\it Assistant} scenario.
-However, this claim will be further (Section~\ref{sec:sec005007}) discussed.
-Next, the results are detailed.
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{figure}[htbp]
-\centering
-\includegraphics[width=\textwidth]{images/fig033}
-\caption{Results of SUS with Positive Questions for the {\it Current} condition. Each color and respective bar number indicate the mean score for the question, {\it i.e.}, ranging from 1 = "Strongly disagree" to 5 = "Strongly agree". This figure represents the positive questions. The "Strongly agree" is the optimal value. From the reported results, a majority of the clinicians agree that the system was easy to use and with well integrated functionalities.}
-\label{fig:fig033}
-\end{figure}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{figure}[htbp]
-\centering
-\includegraphics[width=\textwidth]{images/fig034}
-\caption{Results of SUS with Positive Questions for the {\it Assistant} condition. This {\it Assistant} condition was well accepted by clinicians. Almost all clinicians would like to use this system frequently. Moreover, they consider the system much easier to use and with higher integrated functionalities. Last but not least, clinicians learn more quick and with more confidence this {\it Assistant} system condition.}
-\label{fig:fig034}
-\end{figure}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-In short, the {\it Current} condition obtained 22\% of agreement against an obtained 69\% for the {\it Assistant} condition, revealing a higher acceptance for using the {\it Assistant} (Figure~\ref{fig:fig034}).
-This means that despite of the clinicians' resistance of change for new tools~\cite{10.1145/3132272.3134111, gagnon2014electronic}, clinicians are now accepting this novel intelligent agents to support their clinical workflow.
-
-Another clear fact to explain these values are the results for the easy of use.
-In those results, the {\it Assistant} condition reveals an 85\% of agreement against the 71\% for the {\it Current} condition.
-Conversely, 82\% of clinicians found that the various functions of the {\it Assistant} were well integrated with the workflow.
-The confidence level with the {\it Assistant} condition was also very high, reaching 80\% on this condition.
-
-Values of user confidence are also important to detail.
-While using the {\it Current} condition, clinicians felt confident, where 53\% "Agree" and 31\% "Strongly agree" with this \ac{SUS} sentence.
-A total of 84\% of agreement under the {\it Current} condition.
-But more important, with the introduction of an intelligent agent this value was improved by far.
-Although the total agreement value for the {\it Assistant} condition is inferior with 80\% in comparison to the {\it Current} condition, about 67\% of clinicians "Strongly agree" with the \ac{SUS} sentence.
-Due to the high improvements of the "Strongly agree" sentence, it can be denoted that intelligent agents are increasing high values of confidence.
-Such comparison will be further discussed (Section~\ref{sec:sec005007}) to clarify the achieved results.
-Indeed, values of confidence will be extremely important to understand the impact for the introduction of \ac{AI} systems in the medical workflow, which will also be addressed with values of {\it trust} in Chapter~\ref{chap:chap006}.
-
-\subsubsection{{\it SUS Scores} vs {\it SUS Negative Questions}}
-\label{sec:sec005006001002}
-
-Similarly to the previous analysis, here the same study was conducted, but now concerning the negative questions (Figure~\ref{fig:fig036}) of the scale.
-Regarding the negative questions (Figure~\ref{fig:fig036}), 86\% of the clinicians disagree that the system is unnecessarily complex.
-Suggesting that the introduction of an intelligent agent will not bring more complexity to the diagnostic.
-Actually, these results are also paired with the \ac{NASA-TLX} (Tables \ref{tab:tab001} and \ref{tab:tab002}) results to prove this claim.
-
-Concerning both {\it Current} and {\it Assistant} conditions, clinicians also answered two important \ac{SUS} statements addressing system inconsistency and cumbersome.
-Specifically, about 44\% of clinicians "Strongly disagree" and 27\% "Disagree" for system inconsistency statement in the {\it Current} condition.
-On the other hand, about 80\% of clinicians "Strongly disagree" and 4\% "Disagree" for system inconsistency statement in the {\it Assistant} condition.
-Thus, by having a total of 84\% of disagreement, the {\it Assistant} condition was far improved, against the 71\% of the {\it Current} condition, with the introduction of an intelligent agent.
-Moreover, in terms of the cumbersome \ac{SUS} statement, about 60\% "Strongly disagree" and 20\% "Disagree" that the {\it Current} condition was cumbersome.
-For the {\it Assistant} condition, 80\% "Strongly disagree" and 4\% "Disagree" that the system is cumbersome.
-A total of 84\% disagreement for cumbersome on the {\it Assistant} condition, which is more in comparison to the 80\% of the {\it Current} condition.
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{figure}[htbp]
-\centering
-\includegraphics[width=\textwidth]{images/fig035}
-\caption{Results of SUS with Negative Questions for the {\it Current} condition. In this case, it can be observed that 23\% found the system inconsistent and 24\% felt that need to learn before interacting with the system.}
-\label{fig:fig035}
-\end{figure}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{figure}[htbp]
-\centering
-\includegraphics[width=\textwidth]{images/fig036}
-\caption{Results of SUS with Negative Questions for the {\it Assistant} condition. Comparing the {\it Assistant} with the {\it Current} condition, it can be observed that clinicians found the {\it Assistant} condition less complex, inconsistent and cumbersome.}
-\label{fig:fig036}
-\end{figure}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\subsubsection{{\it Workload} (Demands)}
-\label{sec:chap005006001003}
-
-The results generated from the \ac{NASA-TLX}~\cite{ramkumar2017using, grier2015high} (Mental, Physical and Temporal) Demands are expressed in Table \ref{tab:tab001}.
-For each \ac{NASA-TLX} item, the normalized data were first ranked and aligned to the \ac{ANOVA}\footnotemark[27] measurements.
-There are two main conditions, {\it i.e.}, the {\it Current} (Curre.) condition and {\it Assistant} (Assis.) condition.
-As follows, results are presented for the demands of the \ac{NASA-TLX} questionnaires.
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\footnotetext[27]{{\it N}: the number of users (Clinicians); $F\textsubscript{var}$: the F-test used for comparing the factors of the total deviation per each variable ({\it var}) categorized by clinical experience; $M\textsubscript{var}$: Mean value of the variable ({\it var}); $SD\textsubscript{var}$: the Standard Deviation (SD) per each variable ({\it var}). Notice that from the statistical significance analysis described in Table \ref{tab:tab001} and setting a significance threshold to 0.05, two scenarios are possible to occur. First, if a p-value $>$ 0.05 is obtained, this means that the approaches are not statistically different, better saying. Thus, it can not state anything about the data. On the contrary, if the p-value $<$ 0.05 the approaches are statistically different, since now the value can reject the null hypothesis that states there is not a statistically significant difference between results of the proposed method and the other methods compared.}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\input{tables/tab001}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-The \ac{ANOVA} statistical test~\cite{Wobbrock:2011:ART:1978942.1978963, mathews2017usability} yields a significant main effect for the Mental Demand (F\textsubscript{Curre.} = 3.39, p\textsubscript{Curre.} = 0.027 $<$ 0.05), Physical Demand (F\textsubscript{Curre.} = 11.99, p\textsubscript{Curre.} = 0.001 $<$ 0.05) and Temporal Demand (F\textsubscript{Curre.} = 10.51, p\textsubscript{Curre.} = 0.001 $<$ 0.05).
-On the other hand, the {\it Assistant} condition indicates a significant difference only in Physical Demand (F\textsubscript{Assis.} = 2.85, p\textsubscript{Assis.} = 0.048 $<$ 0.05). A detailed comparison is shown in Table~\ref{tab:tab001}.
-Despite of the higher rates from the \ac{NASA-TLX} over the several Demands (Table~\ref{tab:tab001}), it can be pointed improvements from the {\it Current} to the {\it Assistant} setup.
-
-From this study, it can be identified that some functionalities contribute significantly to one (or more) types of workloads (criteria variables) in the \ac{NASA-TLX} questionnaire.
-For instance, increasing the number of available image modalities on the viewport is strongly associated to Mental Demand.
-However, for the {\it Assistant} condition it is not possible to take conclusions since the fact that their is no significant main effect.
-The overall time duration of manipulating the images ({\it i.e.}, zoom, pan, scroll) is strongly associated to the Physical Demand.
-Comparing both {\it Current} and {\it Assistant} conditions, it is possible to be observed a significant main effect and improvements on the {\it Assistant} condition.
-
-The time duration of decision-making is strongly associated with Temporal Demand.
-Nonetheless, only the {\it Current} condition follows a significant main effect making it difficult to do a strong comparison with the {\it Assistant} condition.
-For simplicity of the results, this work divided the \ac{NASA-TLX} questionnaire items in {\bf Demands} and {\bf Non-Demands} categories.
-Next (Section~\ref{sec:chap005006001004}), the document will report the three items from {\bf Non-Demands} of the \ac{NASA-TLX} questionnaire.
-
-\subsubsection{{\it Workload} (Non-Demands)}
-\label{sec:chap005006001004}
-
-The \ac{NASA-TLX} on the Non-Demands scales only yields significant difference among groups for Performance (F\textsubscript{Curre.} = 5.56, p\textsubscript{Curre.} = 0.003 $<$ 0.05).
-A more detailed comparison is shown on Table~\ref{tab:tab002}.
-Despite these higher rates, one can point improvements from {\it Current} vs {\it Assistant}.
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\input{tables/tab002}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-This is a result of the increasing number of visualization modalities, from one in the {\it Current} condition, to three in the {\it Assistant} condition while it is assisted by an \ac{AI} model.
-Due to the fact that in {\it Current} condition clinicians are analyzing less number of lesions, the effort is less in comparison to the {\it Assistant} condition.
-For the {\it Current} condition results, clinicians just diagnosed one modality per each ({\it i.e.}, {\bf P1}, {\bf P2} and {\bf P3}) patient.
-On the contrary, for the {\it Assistant} results, each clinician diagnose all the three modalities ({\it i.e.}, \ac{MG}, \ac{US} and \ac{MRI}) per each patient.
-In fact, the improvement scores (\textbf{F}) of the proposed {\it Assistant} are positive.
-Note that, as far as the scores are less than three times the results from the {\it Current} condition, one can conclude that it is getting better results.
-
-Effort and Frustration do not provide any significant main effect on both {\it Current} and {\it Assistant} conditions.
-Therefore, it is not possible to consider any findings regarding these issues.
-Nor even the Performance results, since the fact that the {\it Assistant} does not represent any significant main effect.
-Notwithstanding, these results will be paired (Section~\ref{sec:chap005006}) with the above (Demands) and these (Non-Demands) \ac{NASA-TLX} results with other metrics to discuss the final results with more evidence.
-
-\subsubsection{{\it Diagnostic Time} vs {\it Breast Severity}}
-\label{sec:chap005006001005}
-
-The results\footnotemark[28] expressing the full diagnostic time length and breast severity among the 289 Patients ({\it i.e.}, {\bf P1} - Low, {\bf P2} - Medium and {\bf P3} - High severities) are shown in Figure \ref{fig:fig037}.
-For the {\bf P1} - Low severity, the {\it Current} (M\textsubscript{Curre.} = 146, SD\textsubscript{Curre.} = 86.17) condition was longer than the {\it Assistant} (M\textsubscript{Assis.} = 89, SD\textsubscript{Assis.} = 74.13) condition.
-However, for the {\bf P2} - Medium severity, the {\it Current} (M\textsubscript{Curre.} = 78, SD\textsubscript{Curre.} = 48.05) condition was, again, longer than the {\it Assistant} (M\textsubscript{Assis.} = 77, SD\textsubscript{Assis.} = 96.80) condition.
-Finally, for the {\bf P3} - High severity, the {\it Current} (M\textsubscript{Curre.} = 116, SD\textsubscript{Curre.} = 65.70) condition was longer than the {\it Assistant} (M\textsubscript{Assis.} = 64, SD\textsubscript{Assis.} = 86.94) condition.
-The \ac{ANOVA} statistical test shows a significant effect over the total {\it Time} for the {\it Current} (F\textsubscript{Curre.} = 3.25, p\textsubscript{Curre.} = 0.03 $<$ 0.05) condition regarding the clinical experience groups on a {\bf P1} - Low severity case.
-Verifying that the introduction of an intelligent agent did not increase the diagnostic time for Low and High severities.
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\footnotetext[28]{An available dataset (\href{https://mimbcd-ui.github.io/dataset-uta7-time/}{mimbcd-ui.github.io/dataset-uta7-time}) is provided and made public from the achieved {\it time} data. This will make the work more easier to replicate the results from the scientific community, or more precisely, for the HCI community. The link was accessed on 6th of December, 2020.}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{figure}[ht]
-\centering
-\includegraphics[width=\columnwidth]{images/fig037}
-\caption{Relation between full diagnostic time length (seconds) and breast severity. Both {\it Current} (Curre.) condition and {\it Assistant} (Assis.) condition were compared as Low, Medium and High values of BI-RADS.}
-\label{fig:fig037}
-\end{figure}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-Planned post-hoc testing~\cite{10.1145/2858036.2858360}, using the Tukey's HSD Post-Hoc Comparison (p\textsubscript{Curre.} $<$ 0.05), revealed that for the groups of {\it Juniors} it significantly increased the time performance and severity accuracy compared to {\it Interns}.
-Therefore, the proposed intelligent agent, not only improves time performance (Figure~\ref{fig:fig037}) and diagnostic accuracy (Figure~\ref{fig:fig038}) among the others clinicians' categories of medical experience, but also provides important support for {\it Interns}.
-
-Although the diagnostic time increased on medium severities, the increase was just residual and will be further discussed (Section~\ref{sec:chap005007}).
-These results support {\bf RQ5.1}, suggesting that the proposed {\it BreastScreening-AI} tool could impact positively the clinical workflow.
-While improving time performance (Section~\ref{sec:chap005006001005}) and diagnostic accuracy (Section~\ref{sec:chap005006001006}), the system is also mitigating the different types of errors on clinical perception.
-
-\subsection{Clinical Impact}
-\label{sec:app002004001}
-
-Concerning the first research question (RQ6.1), Figure~\ref{fig:fig043} and Figure~\ref{fig:fig044} show the metric statistics using the confusion matrix (with 45 clinicians).
-More precisely, the performance accuracy can be observed with the proposed \ac{AI} integration (Figure~\ref{fig:fig043}) is superior in comparison with the performance without integration (Figure~\ref{fig:fig044}).
-In this confusion matrix, the diagonal shape of the matrix is denoted as being more evident with the introduction of the \ac{AI} (Figure~\ref{fig:fig043}).
-Moreover, the diagnostic accuracy is also higher (Table~\ref{tab:tab005}) when the assistant is integrated in the \ac{UI}.
-The mean and standard deviation\footnotemark[40] of (M = 0.656, SD = 0.34) and 
-(M = 0.622, SD = 0.27) were obtained for the {\it Precision} and {\it Recall}, respectively.
-From the above results, the hypothesis {\bf H6.1.1} is therefore supported.
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\footnotetext[40]{{\it N}: the number of users (Clinicians); $F\textsubscript{var}$: the F-test used for comparing the factors of the total deviation per each variable ({\it var}) categorized by clinical experience; $M\textsubscript{var}$: Mean value of the variable ({\it var}); $SD\textsubscript{var}$: the Standard Deviation (SD) per each variable ({\it var}) denoted in this description of the results.}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\input{tables/tab005}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-{\bf TODO: Add F1-score to the table...} From the \ac{DOTS}~\cite{https://doi.org/10.13140/RG.2.2.23078.37448/1} questionnaire\footnotemark[41], 98\% of the 45 clinicians answered that they do understand what the system is thinking.
-Also, 93\% of the clinicians trust on the system capability, answering {\bf H6.1.2} regarding the acceptance of the system.
-Using \ac{DOTS}~\cite{10.1145/2898375.2898385}, it was possible to answer the two null-hypotheses of {\it an \ac{AI} system focused on Precision/Recall will result in}: (1) {\bf H6.1.1} higher accuracy; and (2) {\bf H6.1.2} higher acceptance.
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\footnotetext[41]{The DOTS is a 3-item Likert scale questionnaire. In this study, the three questions are scored between 0 and 20.}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{figure}[htbp]
-\centering
-\includegraphics[width=\textwidth]{images/fig043}
-\caption{Confusion Matrix with information of the collaboration ({\it Provided}) between physicians and the proposed AI ({\it Clinician-AI}) technique. For this case, a DenseNet results were used among the BI-RADS outputs to support the physician decision. The classification accuracy was 71\% for the number of True-Positives. On the other hand, the number of False-Negatives was 15\% and the number of False-Positives was 14\%, only. The {\it Provided} value was most accurate in classifying low (BIRADS $<$ 2) and high (BIRADS $\ge$ 4) severity cases. The columns represent the {\it Actual} (biopsy confirmed) category of the objects and the rows represent the {\it Provided} (collaboration between physician and AI) value.}
-\label{fig:fig043}
-\end{figure}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{figure}[htbp]
-\centering
-\includegraphics[width=\textwidth]{images/fig044}
-\caption{Confusion Matrix without the AI ({\it Clinician-Only}) technique. For this case, the DenseNet results were not used. Each physician directly provided the BI-RADS to the system with no support of AI techniques. The classification accuracy was just 13\% for the number of True-Positives. On the other hand, the number of False-Negatives was 59\% and the number of False-Positives was 28\%. The {\it Provided} value was most accurate in classifying high (BIRADS $\ge$ 4) severity cases. The columns represent the {\it Actual} (biopsy confirmed) category of the objects and the rows represent the {\it Provided} (only physician) value.}
-\label{fig:fig044}
-\end{figure}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\subsection{User Expectations}
-\label{sec:app002004002}
-
-Concerning the explanation (\ac{XAI}) for clinicians, a visual information strategy was adopted that relies on the use of {\it heatmaps} (Figure~\ref{fig:fig032}).
-Herein, the work takes into consideration the following two functionalities for the colored-visualization:
-(1) the lesion circularity or distribution; and
-(2) the associated \ac{BI-RADS} value.
-It is known that the mass morphology is a relevant feature for the lesion classification~\cite{maicas2018training}.
-The more irregular the lesion is, the more severe its classification will be.
-Thus hot colors are associated to more irregular morphology, improving the user's expectation regarding the final result of the \ac{AI}.
-Concerning the \ac{BI-RADS}, we also assign hot colors for increasing values of the \ac{BI-RADS}. 
-This can be easily accomplished by the clinician, by simply press the {\it 6.2. Explain} button.
-
-From the \ac{DOTS} questionnaire, the following scores for {\bf Understanding} were obtained.
-Concretely, (M = 19.7, SD = 2.92) and (M = 10, SD = 7) when clinicians {\it press} or {\it do not press} the  {\it Explain} button, respectively.
-Furthermore, the values of trust in the assistant were also much higher (M = 18.81, SD = 2.96) in comparison to the values of clinicians who did not press the {\it 6.2. Explain} button (M = 12.43, SD = 3.21).
-Similarly no significant imbalance was present in prior frequency for the use of {\it BreastScreening-AI}.
-That said, the {\bf RQ6.2} was considered as covered.
-
-Explanation intervention is significantly increasing clinicians’ perceived level, both in terms of understanding and trust capability.
-This suggests that an assistant design helps to improve user perception.
-Another important requirement for the clinician's acceptance is to provide the control of the system.
-This can be accomplished by assigning to the {\it control} with {\it Accept} or {\it Reject} functionalities as a way to provide (or inhibit) a second opinion, resulted by the assistant.
-From \ac{DOTS}, the answers to this questionnaire obtained 76\% of the clinicians that agreed to {\it Accept} with a positive benevolence statistics (M = 14.67, SD = 5.24).
-In this work, by providing clinicians' with control of the final result, it revealed a significant (p $<$ 0.05) positive impact, with a higher feeling of control for clinicians that agree with the benevolence of the assistance than for those that did not agree.
-Now analysing the 14\% of clinicians who did {\it Reject}, it should be highlighted that from this set, 52\% of the clinicians failed (M = 3.72, SD = 4.68) in the classification, contributing for the higher \acp{FP} or \acp{FN} rates.
-
-Finally, it was found that the integration of the assistant helps clinicians to improve the final rates, {\it i.e.}, \acp{FP} and \acp{FN} ({\bf H6.2.1} and {\bf H6.2.2}), and time performance ({\bf H6.2.3} and {\bf H6.2.4}).
-This is related with the number of correctly identified cases during the classification (Figure~\ref{fig:fig043} and Figure~\ref{fig:fig044}) that is always higher than the ones obtained without the assistant.
-Specifically, the mean values of (M = 19.2, SD = 12.81) and (M = 3.6, SD = 4.03) were obtained, with and without the assistance, respectively.
-The values are taken from the diagonal of the confusion matrices.
-Furthermore, in terms of time performance, it can be denoted that with the {\it Clinician-AI} (M = 76.67 seconds, SD = 85.96 seconds) setup clinicians took less time in comparison to the {\it Clinician-Only} (M = 113.33 seconds, SD = 66.64 seconds) setup.
-
-With the above results, both {\bf H6.2.1} and {\bf H6.2.2} hypotheses were considered as supported.
-In terms of time performance, clinicians took 31\% less diagnostic time with the assistant (M = 308 seconds, SD = 57.03 seconds) in comparison with no assistance (M = 377 seconds, SD = 44.56 seconds).
-Reflecting an improvement of 69 seconds per image, which does not seems much, but for patients with more than 10 images (something really common), it will save more than 11 minutes per patient.
-Therefore, the current result can answer the two {\bf H6.2.3} and {\bf H6.2.4} null-hypotheses since improvements of time performance were achieved in both \acp{FP} and \acp{FN}.
-Achieving improvements of time performance in both \acp{FP} and \acp{FN} means that the assistant is not a distraction for clinicians.
-In fact, not only the assistant is decreasing the medical errors, but also, successfully telling clinicians where the lesions are.
-Improving clinicians' time performance without loosing their focus.
-
-\subsection{Inter-Variability \& Intra-Variability}
-\label{sec:app002004003}
-
-In order to express the clinicians' variability of both {\it Clinician-Only} and {\it Clinician-AI} setups, two measures of the \acf{CV} were reported (Table~\ref{tab:TODO}) as:
-(a) Inter-Variability; and
-(b) Intra-Variability.
-The \ac{CV} is a measure that is defined as the Standard Deviation (SD) of a measurements set divided by the mean of that same set.
-In this study, the Inter-Variability (CV\textsubscript{inter}) was considered as the \ac{CV} results of all clinicians' set while diagnosing each of the three patients, {\it i.e.}, Low, Medium or High severities.
-On the other hand, Intra-Variability (CV\textsubscript{intra}) represents the \ac{CV} results per (intra) group of medical experience, {\it i.e.}, Interns, Juniors, Middles or Seniors.
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\input{tables/tab006}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-As can be denoted, on patients with Low severities the Inter-Variability improved with the introduction of the assistant (CV\textsubscript{inter} = 46.69\%) in comparison with no \ac{AI} (CV\textsubscript{inter} = 57.69\%).
-A total of 11\% improvement.
-For patients with Medium severities, the improvement was of 3.28\% with the introduction of \ac{AI}.
-In terms of patients with High severities (which are the most severe cases), the improvements were of 34.10\%.
-Therefore, the {\bf H6.3.1} null-hypothesis is supported by the results as the Inter-Variability of the diagnosis made by the clinicians improved on patients with Low, Medium and High severities.
-
-For the Intra-Variability, it was found that all groups improved their results with the introduction of \ac{AI}.
-More precisely, Interns improved on the \ac{AI} setup (CV\textsubscript{inter} = 29.28\%) by a 6.65\% in comparison with no \ac{AI} (CV\textsubscript{inter} = 35.93\%).
-From the group of Juniors, the improvements are even higher.
-With a 23.66\% improvement, the variability of Juniors was reduced from a no \ac{AI} setup (CV\textsubscript{intra} = 43.95\%) to the \ac{AI} setup (CV\textsubscript{intra} = 20.29\%).
-On the same hand, Middles reduced their variability by a 14.58\%.
-Finally, Seniors reduced the variability at a 19.64\%.
-Making it evident that the {\bf H6.3.2} null-hypothesis is also supported by these results.
-
-\subsection{Diagnostic Performance}
-\label{sec:app002004004}
-
-Here, some of the results obtained in Section~\ref{sec:app002006} are highlighted.
-For this study, three groups of patients were considered: {\it Low}, {\it Medium} and {\it High} severities.
-As follows, the sections will summarize and correlate each group with the respective obtained results.
-
-\subsubsection{{\it False-Negatives} vs {\it False-Positives}}
-\label{sec:chap005006001006}
-
-In this study, it was also measured the rates of \acp{FN} and \acp{FP} (Figure~\ref{fig:fig038}) between {\it Current} and {\it Assistant} conditions.
-The \ac{FN} rates decrease from 33\% on the {\it Current} condition to 14\% on the {\it Assistant} condition.
-From the published dataset\footnotemark[29], the results show a significant potential reduction of \acp{FN}, i.e., cases where the diagnosis leads to a low severity (\ac{BI-RADS}) against expert ground-truth.
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\footnotetext[29]{Under this work, an available dataset (\href{https://mimbcd-ui.github.io/dataset-uta7-rates/}{mimbcd-ui.github.io/dataset-uta7-rates}) concerning the severity {\it rates} (BI-RADS) was provided. The link was accessed on 6th of December, 2020.}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{figure}[ht]
-\centering
-\includegraphics[width=\columnwidth]{images/fig038}
-\caption{{\it Current} {\bf vs} {\it Assistant} rates for False-Negatives and False-Positives. A False-Positive is considered when the BIRADS\textsubscript{provided} $>$ BIRADS\textsubscript{real}. A False-Negative is considered when the BIRADS\textsubscript{provided} $<$ BIRADS\textsubscript{real}.}
-\label{fig:fig038}
-\end{figure}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-Notwithstanding, the \ac{FP} rates decrease from 39\% on the {\it Current} condition to 15\% on the {\it Assistant} condition for an overall ({\it i.e.}, Total) condition.
-In essence, the intelligent agent will have a 24\% decrease of situations where clinicians are providing a \ac{BI-RADS} higher than the real one.
-These results are paired with the results of Chapter~\ref{chap:chap006}, where a more detailed study is making further claims of the achieved \acp{FP} and \acp{FN} rates in a more descriptive manner.
-
-\subsubsection{Precision \& Recall}
-\label{sec:app002004004001}
-
-There is a correlation between the above groups and the scores of {\it Precision} and {\it Recall}.
-This is interesting, since the {\it Clinician-AI} (Table~\ref{tab:tab007002}) scenario complies with what we observe for the {\it Clinician-Only} (Table~\ref{tab:tab007001}) scenario.
-Specifically, it is easier for the clinician to classify exams with {\it Low} and {\it High} severities. Notice that, for these cases higher scores were obtained for both {\it Precision} and {\it Recall} (with smaller standard deviation).
-This contrasts to the classification performance in the exams that belongs to {\it Medium} severity (see lower values for the metrics).
-The reason behind is that, in the  extreme scenarios ({\it i.e.}, {\it Low} and {\it High}) the classification is easier than the {\it Medium} scenario.
-Concretely, in {\it Low} severity, the usual decision is to assign a pathology of ``no findings'' (no lesion is present), while in {\it High} severity the lesion is usually of large dimensions and present a specular (irregular shaped) contours, that are quite visible.
-However, the {\it Medium} severity is regarded a ``mid-term'' in sense that, although the lesion is present, it is not straightforward to classify them as benign or malign.
-These are the cases where the clinician are making more mistakes.
-The above issues can be testified in Table~\ref{tab:tab007001}, where a minimum value for the {\it Precision} ($M\textsubscript{Precision} = 0.17$, $SD\textsubscript{Precision} = 0.05$) is obtained for the {\it Medium} severity.
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\input{tables/tab007}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-The great advantage of the proposed assistant, is that the assistant was able to improve the accuracy of the clinician in the most challenging cases ({\it i.e.}, {\it Medium} severity) where it is hard to perform a reliable and trivial classification.
-This can be seen in the proposed {\it Clinician-AI} scenario (Table~\ref{tab:tab007002}), where now a higher score was obtained for the precision ($M\textsubscript{Precision} = 0.68$, $SD\textsubscript{Precision} = 0.06$).
-Also note that both {\it Low} and {\it High} severities present superior performance, where the latter exhibits the most notable improvement.
-
-\subsubsection{Accuracy \& Acceptance}
-\label{sec:app002004004002}
-
-Now, regarding the qualitative results, the most important clinician's opinions and feedback were addressed.
-The feedback and results enable us to conclude that this system achieves a significantly higher expectations of accuracy.
-Hence, with the collaboration of clinicians, the assistant will likely improve the rates of \acp{TP} (Figure \ref{fig:fig043}).
-In line with these promising results the level of benevolence was increased providing clinicians the opportunity to control the acceptance or rejection of the results.
-Nevertheless, the system lead clinicians to higher rates of trust and satisfaction by also providing an assistant as a second opinion.
-This study show that a threefold of questions: (1) {\bf Understanding}; (2) {\bf Capability}; and (3) {\bf Benevolence}; can positively answer this respective requirement.
-Also, the existence of {\it heatmaps} were pointed by 82\% of the clinicians as an important functionality, promoting higher levels of trust, accuracy and acceptance of the assistant on the clinical workflow.
-
-\section{Further Reflections}
-\label{sec:app002005}
-
-Before discussing the obtained results for diagnostic precision and recall, the prevalence of the condition must first be known.
-Specifically, the prevalence of the condition is defined as the population percentage that has the condition~\cite{chkotua2017peer}.
-From literature~\cite{doi:10.1002/ijc.27711}, the estimated prevalence of breast cancer is between 0.75 and 0.90 sensitivity and 0.90 to 0.95 specificity.
-In this chapter, it will be assumed this high end with sensitivity of 0.90 and specificity of 0.95.
-
-Just to remember, sensitivity is the accuracy of the test on women who have breast cancer.
-In other words, if a woman who has breast cancer gets imaging reports, the test will come back positive 90\% of the time because the test has a 0.9 sensitivity.
-For 10\% of the women with breast cancer, the imaging results will be a \ac{FN}, where the test misdiagnoses a woman who has the disease.
-Under this work, sensitivity of breast cancer was calculated by a combination of radiologist-assessed \ac{BI-RADS} values and Clinician/\ac{AI}-assessed {\it acceptance} or {\it rejection} of the proposed values.
-
-Specificity is the accuracy of the diagnosis for women who do not have breast cancer.
-That is, if a woman does not have breast cancer, the test will be negative 95\% of the time.
-The other 5\% of the time the woman gets a \ac{FP}, which means the test is positive for a woman who does not have breast cancer.
-
-Consistent with expectations from previous work~\cite{chaurasia2017novel, topol2019high}, the support of {\bf H6.1.1} and {\bf H6.1.2} from {\bf RQ6.1} shows that clinicians accuracy and acceptance of a clinical system optimized for high {\it Precision} can be significantly higher than for a system optimized for higher {\it Recall} values.
-For instance (Table~\ref{tab:tab001} and Table~\ref{tab:tab002}), taking the {\it Medium} severity case as an example, it was observed that 83\% of the clinicians make mistakes, from which 71\% are making the \acp{FP} ({\it Recall}).
-This aspect underlines the need of having more studies regarding {\it Precision/Recall} understanding impact to the workflow.
-\ac{ML} can be a useful tool to match the above requirement  on clinical institutions~\cite{Dove:2017:UDI:3025453.3025739, Kocielnik:2019:YAI:3290605.3300641}.
-Furthermore, hypotheses {\bf H6.2.1}, {\bf H6.2.2}, {\bf H6.2.3}, and {\bf H6.2.4} of {\bf RQ6.2} are confirmed by the achieved results.
-Measuring \ac{FP}/\ac{FN} rates and time performance, results suggest that expectation adjustment techniques successfully impact the intended aspects of expectations.
-Finally, {\bf H6.3.1} and {\bf H6.3.2} of {\bf RQ6.3} was also supported showing that the techniques are successful in reducing both inter-variability and intra-variability with an \ac{AI} system.
-
-In this work, insights were provided into feasible preparation techniques for clinical end-users interacting with medical decision-making systems for a breast cancer diagnosis purpose.
-This is especially valuable as assistant techniques are very simple and easy to apply.
-As a matter of fact, the {\it BreastScreening-AI} framework is a web-based tool.
-Therefore, it can be deployed in any remote server and accessed via web browser.
-Which is typically available in any computer device.
-
-Through an user evaluation and analysis~\cite{https://doi.org/10.13140/rg.2.2.16566.14403/1}, clinicians spent about 89 seconds/image for the {\bf P1} - Low severity, while using the assistant.
-On the contrary, clinicians spent about 146 seconds/image, while using a system without any \ac{AI} technique.
-Meaning that clinicians are having 60\% more of higher time performance with the assistant, in comparison to a system with no \ac{AI}.
-Furthermore, by looking at the time spent on the {\bf P2} - Medium severity, clinicians spent almost the same time.
-With this assistant, the time spent was 77 seconds/image {\it vs.} 78 seconds/image with no \ac{AI}.
-Last but not least, for the {\bf P3} - High severity, clinicians did a 116 seconds/image without \ac{AI} techniques and with the assistant, clinicians did a 64 seconds/image.
-The higher results for the {\it Low} and {\it High} results can be easily explained as follows.
-In {\it Low} severity ({\it i.e.}, no lesion found) even the radiologist does not see any suspicious region, the clinician wants to make sure about this decision.
-In {\it High} ({\it i.e.}, presence of malign lesion), the clinician tends to spend more time to ascertain if there are more lesions to take in consideration.
-This means that, for an overall of severity conditions, clinicians are performing with better values of time while interacting with the assistant.
-On one hand, the assistant achieve, as well as report, better results of {\it Precision} and {\it Recall} accuracy.
-On the other hand, the assistant significantly improves time, accuracy, and acceptance.
-
-In this work, the results are showing that clinician's accuracy and acceptance can be improved with the introduction of an intelligent agent.
-Not only in terms of deception~\cite{hengstler2016applied}, but also in terms of the involved understanding for what the system can do.
-Which is used in typical intelligible \ac{AI} works~\cite{10.1145/3173574.3174156}, and can be applied to this type of medical decision-making systems.
-At the end, this addresses an important gap in existing research on preparing clinicians for \ac{AI}-assisted systems.
-
-\subsection{Clinical Impact}
-\label{sec:app002005001}
-
-Expectation adjustments were found to offer significant improvement in accuracy and acceptance across higher levels of {\it Recall}.
-Moreover, those adjustments proved effective high {\it Precision} and {\it Recall} rates in which clinicians experienced higher levels of trust.
-It is believed that expectation adjustments are intended to clinicians.
-As explained in this work, a study to expose clinicians to the proposed \ac{AI}-assisted techniques was developed in order to check if the preparation through expectation adjustments can be an effective approach on the clinical domain.
-In terms of user expectations, few studies have been performed to evaluate how a \ac{CDSSe} can be implemented in a manner that maximizes their clinical impact.
-Even with the presented limitations, it is expected that \ac{HAII} will play a major role in the evaluation of these systems.
-In the {\it BreastScreening-AI}, by having a high specificity method to minimize the \ac{FP} outcomes may lead to unnecessary anxiety among patients and negatively impact to the cost-effectiveness.
-
-As we presented in our results section, the analysis of significance for high severity cases (BIRADS $>$ 3) shows that our assistant will impact on the radiologists choice of malignant lesions.
-The results proved a 51\% accuracy improvements of these high severity cases during the use of our \ac{AI}-assisted system.
-With this achieved improvements, it is trivial to understand that \ac{AI} will positively impact the clinical domain.
-In short, \ac{AI} is progressively having a cognitive impact in medical practice by applying several AI-assisted techniques ({\it i.e.}, DenseNet~\cite{GOTTAPU2018179}) to rapidly and automatically read the medical images.
-As above described, AI can provide new paths to optimize the healthcare using medical imaging, and may provide new therapies, reducing medical errors and clinical trials analysis.
-
-\subsection{Perception Differences}
-\label{sec:app002005002}
-
-Directly from medical data, \ac{AI} can advert clinical errors due to cognitive biases, positively impacting patient care.
-In this study, the achieved results are showing that, despite several achieved tasks in which the \ac{AI} functionalities are supposed to assist, clinicians should circumspect result decisions for the impact of various types on assistant flaws.
-Particularly, a number of aspects should be considered, such as {\it workload}, {\it usability} and {\it usefulness}.
-
-For {\it workload}, both {\it mental} and {\it physical} demands were measured.
-First of all, {\it mental} measurements are bringing to this work information regarding how do clinicians perceive while ignoring incorrect suggestions and scanning multiple suggestions.
-Second, {\it physical} measurements provide information regarding how do clinicians perceive while having to execute a new task manually or reverse an incorrect assistant action.
-In this study, the document focus on the {\it Precision} and {\it Recall} problem, since the thesis want to measure the perception differences of a decision-making system for medical purposes.
-Despite {\it workload} results are not being provided in this results section (Section~\ref{sec:app002007002}), they were earlier provided (Chapter~\ref{chap:chap006}) and will be discussed here.
-
-To measure {\it workload}, the well known \ac{NASA-TLX}~\cite{ramkumar2017using, grier2015high} scale was used.
-For the statistical significance, the \ac{ANOVA} statistical tests\footnotemark[5]~\cite{Wobbrock:2011:ART:1978942.1978963, mathews2017usability} were used in this thesis.
-Briefly, both {\it mental} and {\it physical} measurements perceived lower (which is better) with our assistant (F = 2.85) in comparison to the condition without the AI technique (F = 7.86).
-Both results showed to have a significant impact (p $<$ 0.05) for the two ({\it i.e.}, {\it mental} and {\it physical}) {\it workload} measurements.
-
-For the {\it usability}, it was measured in terms of performance and learnability, as well as satisfaction.
-Performance denotes the accuracy and completeness of clinicians in accomplishing the specified system functionalities.
-Learnability is one of the measurements for effectiveness and it assists with abilities in functioning the system.
-Satisfaction indicates the insights and opinions of the system.
-To measure {\it usability}, the well known \ac{SUS} scale~\cite{ramkumar2017using, grier2015high} was used.
-In short, 86\% of the clinicians agree that the introduction of an assisted system will not bring more complexity to the diagnosis task.
-Moreover, 85\% of the clinicians preferred the assistant condition against the opposite.
-Meaning that the overall {\it usability} results are positive.
-
-Finally, {\it usefulness} was also measured in this work.
-An early qualitative analysis showed that (41/45) clinicians accept the introduction of an \ac{AI} algorithm to their daily work.
-In fact, many of the clinicians said that: "I would like to frequently use your system on my daily practice" (C1).
-Which is representative for the acceptance of the system.
-
-To conclude this section, with \ac{AI} it is possible to advert clinical errors by taking advantage of the acquired and curated medical data.
-At a same time, not only patient care was improved, but also several other aspects for clinicians.
-From accuracy of the diagnostic results, to the reduction of clinicians' {\it workload}.
-With the introduction of the proposed \ac{AI}-assisted techniques, several perception differences of the cognitive biases so present on the medical decision-making systems were improved.
-
-\subsection{Observed Outcomes}
-\label{sec:app002005003}
-
-The output classification (present information) of this network always depend on the images that the network received previously (past information).
-While this is only one class of \ac{CDSSe}, we believe this class of systems represents many current efforts of integrating \ac{HAII} into other clinical domains ({\it e.g.}, systems for clinical drug development, epidemiology, dementia treatment)~\cite{Savage2019, shah2019artificial, topol2019high}.
-
-Regarding (1), it is known that in critical systems, it is more important to analyze the severity of consequences.
-However, the severity of consequences applies to different clinical decision-making ({\it i.e.}, the classification) doubts rather than any medical imaging workload improvements ({\it e.g.}, drug development, epidemiology or dementia treatment).
-For instance, one of the major doubts and difficulties came from the {\it Medium} cases which must be a higher concern regarding explanations.
-To accomplish this, when the clinician presses the {\it Explain} button, the information showed by the {\it heatmaps} must further cover those cases.
-
-In (2), by comparing the clinicians' behaviour with respect to {\it Clinician-Only} vs. {\it Clinician-AI}, system requirements were obtained, which encompass the current practices and the future of \ac{AI}-assisted diagnosis.
-One important requirement, was to provide clinician control over the proposed \ac{BI-RADS} resulted from the \ac{AI} algorithm.
-With the {\it Accept} and {\it Reject} buttons, the clinician can control the final diagnostic value.
-In case of {\it Reject}, the clinician can even input and provide the new \ac{BI-RADS} value.
-
-In (3), the importance of avoiding the different type of errors depends on the information available from a specific clinical domain.
-Indeed, this is a complex issue.
-While the thesis could argue that for the breast cancer diagnosis \acp{FN} are always better to avoid, the solution can not always suggest that independently regrading the clinical domain.
-In breast cancer domain, missing \acp{FP} has more impact in the patient's condition, than marking an \ac{FP}.  
-
-In (4), from other clinical domains, an \ac{FP} might be more important to avoid.
-For instance, on drug development, the field want to prefer avoiding the \ac{FP} rates.
-By doing that, the field is optimizing the number of chemicals and drugs identified incorrectly by the system~\cite{raja2017machine}.
-Having that said, it is believed that these findings are generalizing a solution to a clinical class of passive systems ({\it i.e.}, clinicians are making the final decisions) in which the end ratio of workload regarding both \acp{FP} and \acp{FN} is lower.
-
-\subsection{Further Work}
-\label{sec:app002005004}
-
-Breast cancer screening is one of the nuclear topics in medical imaging analysis.
-Under this thesis, it is believed that with the proposed assistant, intelligent agents are able to change diagnosis paradigm.
-Results are indicating that it is possible to introduce behavioral change on the clinical workflow in a \ac{HAII} manner.
-Further work will include other deep network architectures, besides the DenseNet used herein and to generate attention maps as an alternative to the heatmaps.
-That is, it will include not only the classification output (as proposed in this thesis) but also, the segmentation map of the lesion.
-This will be done automatically and integrated in the \ac{UI}.
-
-Other interesting future work is related with the data used. 
-In this chapter, the study was performed with a dataset of images from one institution.
-Could be interesting to enlarge the clinician number from this institution, and also enlarging the data from other institutions.
-This is interesting, since in recent years, many \ac{ML} models have been proposed to accurately diagnose breast cancer.
-However, when these models are tested on unseen datasets, acquired with different devices and scanners, their performance is usually reduced.
-Thus, there exist a need to build generalizable models that can be applied consistently across clinical institutions.
-
-\section{Final Remarks}
-\label{sec:app002006}
-
-In this chapter, it was developed and studied {\it BreastScreening-AI}, an \ac{AI}-assisted clinical imaging support system which provides automated diagnosis based on \ac{DL} methods.
-The study deployed and tested {\it BreastScreening-AI} in a real-world scenario with 45 clinicians from nine clinical institutions to experiment with several techniques of \acp{HAII}.
-Results show improvements in clinician’s accuracy, as well as acceptance of an \ac{AI}-assisted system on the clinical domain for the breast cancer diagnosis.
-Also, results are showing that by focusing on both {\it Precision} and {\it Recall} problem, the higher rates of the system will perform at the same level of accuracy, leading to much higher perceptions of accuracy.
-Hence, increasing acceptance of the system by the medical professionals.
-
-Before \ac{AI}-assisted techniques can be used in medicine, it is first a need to go through clinical trials, so that the final solution can establish the system validity.
-It is vital to make sure that the model actually provides benefit and guarantee the value to clinicians, as well as to the final patient.
-Advances in precision medicine will bring more diagnostic tests and information with more treatment options.
-Which will only increase the workload of clinicians and decrease of expectations.
-Indeed, the introduction of \ac{AI} systems in the clinical workflow will change medical interventions.
-The findings open the way of shaping expectations among medical decision-making as an effective way of improving clinician’s acceptance of \ac{AI} systems on the clinical domain.
+The first trigger is made by clinicians when pressing the accept button, where a JSON file is generated to provide success information to the model~\cite{10.13140/rg.2.2.14792.55049}.
+The second trigger represents the AI model explanations.
+Clinicians press the explain button, in order of having more reliable information concerning what regions were considered by the model and how severe are these lesions to the model.
+Finally, the third trigger happens when clinicians are rejecting the AI result.
+At this point, clinicians must provide the new BI-RADS so that we can further retrain the AI model.
+To this end, the framework will generate a JSON file with the new rejected BI-RADS values provided by clinicians.

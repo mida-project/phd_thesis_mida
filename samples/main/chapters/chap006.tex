@@ -8,180 +8,132 @@
 % The following line allows to ref this chapter
 \label{chap:chap006}
 
+\noindent
+{\it This Chapter~\ref{chap:chap006} was published in one top (A* in 2023) conference:}
+
+\vspace{0.5mm}
+
+\begin{itemize}
+\item {\bf Francisco Maria Calisto}, Jo\~{a}o Fernandes, Margarida Morais, Carlos Santiago, Jo\~{a}o M. Abrantes, Nuno J. Nunes, and Jacinto C. Nascimento. 2023. Assertiveness-based Agent Communication for a Personalized Medicine on Medical Imaging Diagnosis. Proceedings of the 2023 CHI Conference on Human Factors in Computing Systems (CHI '23), April 23--28, 2023, Hamburg, Germany. Association for Computing Machinery, New York, NY, USA, Article 13, 1–20. DOI: \href{https://doi.org/10.1145/3544548.3580682}{doi.org/10.1145/3544548.3580682}
+\end{itemize}
+
+Until now, this thesis explored the factors influencing the acceptance and adoption of \ac{AI} systems (Chapter~\ref{chap:chap004}), where we found enough evidence for the needs of different user groups.
+Then, we delved into designing interventions (Chapter~\ref{chap:chap005}) to enhance the acceptance and integration of \ac{AI} systems in healthcare settings.
+In this chapter, our focus shifts to understanding how \ac{AI} systems should communicate to address the specific needs and characteristics of different user groups~\cite{10.1145/3544548.3580682}, particularly considering the professional experience of the clinician.
+
 \section{Motivation}
 \label{sec:chap006001}
 
-Artificial Intelligence (AI) systems are showing an increasing promise for numerous healthcare applications.
-Recently, the advantages of Deep Learning (DL) are spawning AI systems with human-like performance in several clinical domains~\cite{CALISTO2022102285, Hannun2019, Ruamviboonsuk2019, Stephansen2018}.
-However, these applications are not designed to capture the variability of personal or subpopulation level of clinicians ({\it e.g.}, interns, juniors, middles, and seniors)~\cite{Uddin2019}.
-In fact, recent works are highlighting how AI and the advancement of technologies together are empowering the aim of personalized and precision medicine~\cite{Subramanian2020, HO2020497, Wetzstein2020}.
-Given the need of personalizing and customizing the AI recommendations, an important question in the design of AI systems is how they should communicate (Figure~\ref{fig:fig097}), considering the professional experience of the clinician.
+\ac{AI} systems, driven by \ac{DL} techniques, hold promise for various healthcare applications~\cite{CALISTO2022102285, Hannun2019, Ruamviboonsuk2019, Stephansen2018}.
+However, these systems often fail to capture the variability among clinicians, such as interns, juniors, middles, and seniors~\cite{Uddin2019}.
+Integrating technological advancements in the clinical workflow, such as \ac{AI} systems, can potentially advance personalized and precision medicine~\cite{Subramanian2020, HO2020497, Wetzstein2020}.
+Consequently, understanding how \ac{AI} systems should communicate (Figure~\ref{fig:fig097}), considering the professional experience of the clinician (Section~\ref{sec:chap004006001} of Chapter~\ref{chap:chap004}), becomes a crucial design question~\cite{pacheco2019alignment}.
 
-\begin{figure}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure}[htpb]
 \includegraphics[width=\textwidth]{fig097}
 \caption[]{A sample of ``Non-Assertive'' ({\it e.g.}, suggesting ``it looks like'') {\it vs.} ``Assertive'' ({\it e.g.}, imposing ``must'') communications.}
 \label{fig:fig097}
 \end{figure}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-As the means to achieve a more persuasive and reliable intelligent agent, we need to analyze and collect data regarding the clinician's behavior~\cite{PELAU2021106855}.
-Communication is essential to increase the reliability of an intelligent agent~\cite{10.1145/3311350.3347162} providing a diagnosis to a clinician.
-One way to achieve that is by aligning the levels of assertiveness~\cite{pacheco2019alignment} of the agent with the years of experience of the clinician.
-Besides that, providing an explanation of `how' and `why' the AI assistant achieved a certain output increases trust on the system, solving a problem known as the ``black-box'' problem~\cite{10.1145/3491102.3502104, CALISTO2021102607}.
+This study explores the application of the BreastScreening-AI framework in two conditions: conventional and assertiveness-based agents~\cite{pacheco2019alignment, 10.1145/3311350.3347162}.
+By serving as a second reader, the intelligent agents aim to enhance diagnostic performance, reduce \acp{FP} and \acp{FN} (Over-Diagnosis {\it vs} Under-Diagnosis), and improve the efficiency and efficacy of the clinical workflow~\cite{CALISTO2022102285, 10.1145/3311350.3347162}.
+While much research has focused on improving the accuracy of \ac{AI} algorithms, there is a necessity to address the adoption (Chapter~\ref{chap:chap004}) and usability (Chapter~\ref{chap:chap005}) concerns of interactive assistance techniques.
+This study sheds light on clinicians' needs, practices, and attitudes toward \ac{AI}-powered assistance, emphasizing the importance of personalized communication and explanations to foster trust and acceptance of \ac{AI} systems~\cite{10.1145/3491102.3502104, CALISTO2021102607}.
 
-In this paper, we present our study for applying {\it BreastScreening-AI} (Section~\ref{sec:app001004}) in two conditions, where clinicians will interact with conventional and assertiveness-based intelligent agents~\cite{pacheco2019alignment, 10.1145/3311350.3347162}.
-The assistant will act as a second reader, resulting in improvements in diagnostic performance, by reducing false-positives and false-negatives ({\it i.e.}, Over-Diagnosis {\it vs} Under-Diagnosis), as well as in efficiency and efficacy in the clinical workflow (Section~\ref{sec:app001005}).
-While considerable work has focused on improving the accuracy of AI algorithms, comparatively less work focused on improving adoption and usability of interactive assistance techniques.
-This paper contributes broadly to the latter by examining what clinicians need when using AI-powered assistance, the practices they adopt while using diagnostic tools, and how these tools affect the end-user attitudes towards the underlying AI algorithms.
+Through a within-subject study involving 52 clinicians, our research examines the interaction between conventional and assertiveness-based agents in diagnosing a dataset of 289 patients~\cite{PELAU2021106855}.
+The assertiveness-based agent utilizes different communication tones while providing human-interpretable clinical arguments to explain the \ac{AI} algorithms' diagnostic outputs~\cite{HANCER2023321}.
+This integration of \ac{DL} methods into communication theories allows us to explore the impact of assertiveness-based \ac{AI} mediation on clinicians with varying expertise levels, specifically addressing critical medical decision-making scenarios~\cite{Aldoj2020, 8721151}.
+The findings from our study contribute to computational interaction approaches, providing valuable insights into the design of interactive systems underpinned by computational principles for the \ac{HCI} community, particularly in high-stakes domains.
 
-Here, we detail a within-subject study with 52 clinicians who interacted with both conventional and assertiveness-based agents, diagnosing a total of 35 patients from a dataset of 289 patients, out of which 34\% have benign abnormalities, 31\% have malignant abnormalities, and the other 35\% are healthy patients (Section~\ref{sec:app001001}).
-Two different tones were used to communicate the AI recommendations in our assertiveness-based agent, from a more suggestive to a more imposing tone.
-Moreover, the assertiveness-based agent explained `{\it how}' and `{\it why}' the AI algorithms achieved a particular diagnostic by providing human-interpretable clinical arguments for the achieved outputs.
-
-While we used real AI outputs and clinical arguments curated from human clinicians, the AI models were trained for classification and segmentation purposes through different architectures~\cite{HANCER2023321}.
-Specifically, through a DenseNet model~\cite{8721151} for a multimodal diagnosis of MammoGraphy (MG) and UltraSound (US) images.
-Similarly, a 3D ResNet model~\cite{Aldoj2020} was trained to diagnose the Magnetic Resonance Imaging (MRI) volumes.
-Our findings suggest that explaining the AI outputs and clinical arguments by exploring how to adapt the communication through an assertiveness-based agent can benefit AI assistance of medical reasoning.
-
-The novelty of this work is in the application of communication theories through the use of DL systems.
-Our goal was to explore and understand how assertiveness-based AI mediation is affecting different expertise levels in a high-stake decision-making domain, such as critical medical decisions dealing with the life of a patient.
-For that purpose, we updated the design of the {\it BreastScreening-AI} framework~\cite{CALISTO2022102285} in where we aim to study how does different expertise levels in clinical scenarios are influenced by an assertiveness-based communication.
-Not only we are contributing with knowledge of computational interaction approaches in the HCI filed ({\it i.e.}, assertiveness-based AI mediation), but also understanding on how to design interactive systems underpinned by computational principles to the CHI community.
+\vspace{1.50mm}
 
 \noindent
-In sum, the main contributions of this work are as follows:
+The main contributions of this work are summarized as follows (detailed in Section~\ref{sec:app005002} of Appendix~\ref{chap:app005}):
 
-\vspace{0.5mm}
+\vspace{0.05mm}
 
 \begin{enumerate}
-\item We present a novel approach for personalizing and customizing the AI-assisted medical reasoning, providing evidence that assertiveness-based agents can alter clinical workflows by effectively adapting the communication depending on the categories of medical professional experience.
-\item We demonstrate that while explaining the AI outputs can contribute to enhancing medical efficiency, its impact heavily depends on the communication tone ({\it i.e.}, more suggestive or imposing the AI recommendations) of the provided clinical arguments.
-\item We report our results demonstrating that these assertiveness-based agents can increase the utility of clinical information found and increase user trust in the AI recommendations, without a loss in diagnostic performance.
-\item We provide design considerations for adapting the communication in AI-assisted medical reasoning, laying a foundation for future implementations of intelligent agents better capable of personalizing and customizing explanations.
+\item Our novel approach customizes \ac{AI}-assisted medical reasoning, demonstrating the positive impact of assertiveness-based communication on clinical workflows.
+\item We show that explaining \ac{AI} outputs improve medical efficiency, but its impact depends on the communication tone of the clinical arguments.
+\item Our results show that assertiveness-based agents increase the utility of clinical information and user trust in \ac{AI} recommendations without compromising diagnostic performance.
+\item We offer design considerations to adapt communication in \ac{AI}-assisted reasoning based on medical expertise levels, paving the way for future implementations of personalized intelligent agents.
 \end{enumerate}
 
-\vspace{0.5mm}
+\vspace{0.50mm}
 
-Across the following sections, we outline related works on the issues of guiding the Human-AI Interaction (HAII) topic, assisting clinical decision-making, going through some examples of Clinical Decision Support Systems (CDSS) present in the literature~\cite{NAISEH2023102941, 10.1145/3531146.3533193}, and ending on the effects of AI communication.
+The following sections outline related works on the issues of guiding the \ac{HAII} topic, assisting clinical decision-making, going through some examples of \acp{CDSSe} present in the literature~\cite{NAISEH2023102941, 10.1145/3531146.3533193}, and ending on the effects of \ac{AI} communication.
 We then introduce the design of our {\it Assertiveness-based BreastScreening-AI} assistant, followed by our research questions, hypotheses, and methods.
-Last, we report our quantitative and qualitative findings, as well as concluding with a discussion of design considerations.
+Last, we report our quantitative and qualitative findings, concluding with a discussion of design considerations.
 
 \section{Related Work}
 \label{sec:chap006002}
 
-Medical imaging systems allow the end-user to diagnose several modalities, such as MG, US, or MRI, from a seamless retrieval of medical imaging data~\cite{faraji2019radiologic}.
-Bringing those modalities together offers new possibilities for quantitative imaging and diagnoses, but also requires specialized data handling, post-processing, and novel visualization methods~\cite{Igarashi:2016:IVS:2984511.2984537}.
-In the clinical domain, medical imaging tools can help experts make better decisions, {\it e.g.}, by identifying cancer prognostics among the available multi-modal data~\cite{IBRAHIM2019438, Tan2023}.
-In this document, we focus on understanding different aspects and expectations of a medical imaging CDSS integrated into the radiology workflow.
-In particular, our work demonstrates how an assertiveness-based interaction can improve the medical imaging diagnosis.
+Medical imaging systems enable end-users to diagnose various modalities, including \ac{MG}, \ac{US}, and \ac{MRI}, through seamless data retrieval~\cite{faraji2019radiologic}.
+Integrating these modalities presents opportunities for quantitative imaging and diagnoses, necessitating specialized data handling, post-processing, and visualization methods~\cite{Igarashi:2016:IVS:2984511.2984537}.
+In the clinical domain, medical imaging tools aid experts in making better decisions, such as identifying cancer prognostics from multi-modal data~\cite{IBRAHIM2019438, Tan2023}.
+This chapter focuses on understanding different aspects and expectations of a \ac{CDSSe} integrated into the radiology workflow, highlighting the enhancement of medical imaging diagnosis through assertiveness-based interaction.
 
-\subsection{Human-AI Interaction}
-\label{sec:chap006002001}
+In the context of \ac{HAII}, intelligent agents must go beyond providing results alone and consider user behaviors during decision-making~\cite{10.1145/3313831.3376807}.
+In Section~\ref{sec:app005003001} of Appendix~\ref{chap:app005}, we delve deeper into this \ac{HAII} literature.
+Additionally, we explore the interdisciplinary topic of \ac{XAI}, which intersects cognitive psychology, learnability, and context awareness within the field of \ac{HCI}~\cite{doi:10.1073/pnas.1618211113, doi:10.1080/07370024.2021.1977128}.
+Learnability, an essential aspect of usability, encompasses various aspects such as hints, guidance, and visualizations when designing \ac{XAI} systems\cite{10.1145/1753326.1753552, 10.1145/3173574.3174156}.
+Furthermore, explainable context awareness simplifies context representation, providing users with information about the obtained data and system actions~\cite{10.1145/3313831.3376545, 10.1145/1518701.1518832}.
 
-Intelligent agents need to provide users with, not only results, but also accounting for their behaviors during decision-making~\cite{10.1145/3313831.3376807}.
-In the field of Human-Computer Interaction (HCI), the topic of eXplainable-AI (XAI) contains subjects that intersect cognitive psychology, learnability, and context awareness~\cite{doi:10.1073/pnas.1618211113, doi:10.1080/07370024.2021.1977128}.
-Cognitive psychology is a subject focusing more on explanation theory~\cite{10.1093/mind/fzu023}.
-For cognitive psychology, Lombrozo~\cite{LOMBROZO2010303} found that cognitive explanations are strongly connected with causality reasoning.
-Learnability is an important part of usability~\cite{10.1145/1753326.1753552}.
-Here, Abdul~\cite{10.1145/3173574.3174156} summarized topics of learnibility related for designing a XAI system, such as hints, guidance, and visualizations.
+\ac{HAII} incorporates human feedback in model training to create better \ac{ML} models~\cite{10.1145/3290605.3300233, 10.1145/3132272.3134111, Kocielnik:2019:YAI:3290605.3300641, aha2017ai}, where we bring the topic focusing on personalized and customized \ac{AI} suggestions tailored to varying levels of medical expertise (Section~\ref{sec:app005003001}).
+Researchers emphasize the importance of explaining \ac{AI} systems' reasoning to enhance \ac{HAII}, particularly in medical domains, where the interpretability of \ac{AI} predictions is crucial~\cite{10.1145/3411764.3445717, Rudin2022, Kawamleh2022, Lundberg2018}.
+However, these approaches often fail to account for cognitive bias in decision-making, which varies among individuals with different levels of expertise and knowledge~\cite{https://doi.org/10.1111/nuf.12430, Seidel2021}.
+Our work addresses these gaps by studying assertiveness-based communication in \ac{AI} systems, considering expertise levels to reduce cognitive bias.
 
-Finally, explainable context awareness is a simplistic representation of the context to inform users what is obtained and which action will be done by the system~\cite{10.1145/3313831.3376545}.
-Dey et al.~\cite{10.1145/1518701.1518832} designed a tailored interface, providing visual and textual explanations following several context-aware rules.
-However, research in both HCI and AI communities is oftenly disconnected between the two fields~\cite{10.1145/3173574.3174156, 10.1145/3313831.3376807}.
-There is a research gap that is not crossing nor combining both fields to the interdisciplinary approach of accounting user's different behaviors during decision-making.
+The integration of \ac{AI} systems into clinical decision-making is a complex endeavor (Section~\ref{sec:app005003002} of Appendix~\ref{chap:app005}), as it presents challenges and unintended consequences~\cite{burr2018analysis, miller2019intrinsically}.
+Critical decisions related to patient safety, clinician fatigue, and increased medical errors need to be carefully addressed~\cite{10.1093/jamia/ocab291, 10.1117/12.2613082, doi:10.1148/radiol.212631}.
+Clinicians often find \ac{AI} systems challenging to use due to limited technical skills and a lack of customization to their behavioral aspects~\cite{CALISTO2022102922}.
+Additionally, the understanding and communication of \ac{AI} outcomes to clinicians are hindered by poorly designed interfaces.
+These interfaces often fail to consider the differences in clinician characteristics during decision-making, such as the varying reasoning approaches between novice and expert clinicians~\cite{Edgar2022}.
 
-HAII incorporates human feedback in the model training process to create better Machine Learning (ML) models.
-In this document, we refer to the topic as HAII, that somehow is addressed by Amershi et al.~\cite{10.1145/3290605.3300233} providing a set of design guidelines~\cite{10.1145/3132272.3134111}.
-The work of Kocielnik et al.~\cite{Kocielnik:2019:YAI:3290605.3300641} is also addressing the study on the impact of several methods of expectation setting, and others studied the design for specific HAII scenarios~\cite{aha2017ai}.
-While much of the mentioned prior work has employed handcrafted features~\cite{10.1145/3290605.3300233, Kocielnik:2019:YAI:3290605.3300641}, we leverage the rich image data features automatically learned from DL algorithms.
+The lack of large-scale deployment of \ac{AI} systems in healthcare further complicates the understanding of how these systems are perceived and used in real-world settings~\cite{10.1145/3411764.3445432, SU202328, ZAPPATORE20231}.
+While approaches such as \ac{iML}~\cite{10.1145/604045.604056}, \ac{HITL}~\cite{holzinger2016interactive, 10.1145/3397481.3450668}, human-\ac{AI} symbiosis~\cite{JARRAHI2018577}, and human-\ac{AI} collaboration~\cite{10.1145/3411764.3445432} have been proposed in \ac{HCI}, they primarily focus on improving prediction accuracy, model efficiency, and interpretability without adequately considering the burden on healthcare professionals~\cite{10.1145/3555157, 10.1145/3209889.3209897}.
+Existing studies on the perception and usage of \ac{AI} systems for clinical decision-making often overlook potential differences in behavioral reasoning.
+Additionally, some approaches solely prioritize accurate algorithmic suggestions without accounting for the clinician's professional medical experience~\cite{10.1145/3491102.3502104}.
+A more detailed literature review concerning these topics is further described in Section~\ref{sec:app005003002} of Appendix~\ref{chap:app005}.
+Our research bridges the gaps between \ac{HCI} and \ac{AI} approaches, focusing on personalized and customized algorithmic suggestions based on varying levels of medical expertise.
+These approaches empower clinicians, improves decision-making, and enhances patient care outcomes.
 
-Many researchers have argued that HAII would be improved if the AI systems could {\it explain their reasoning}~\cite{10.1145/3411764.3445717, Rudin2022, Kawamleh2022}.
-In medicine, explaining predictions from AI models is particularly salient, where the uncovered patterns of the model can be more important than prediction performance~\cite{Lundberg2020}.
-Lundberg et al.~\cite{Lundberg2018} are demonstrating how to retain interpretability by developing a method to provide explanations of model predictions.
-Although these works are exploring how clinicians interact with AI recommendations and their perceptions of AI outcomes, they are not taking into account cognitive bias in decision-making.
-One of the most notorious cognitive differences is seen between people with different levels of expertise and knowledge~\cite{https://doi.org/10.1111/nuf.12430, Seidel2021}.
-It is why we are studying how assertiveness-based agents are designed to adapt their communication tone based on expertise levels to reduce cognitive bias.
+\acp{CDSSe} have greatly benefited from \ac{DL} algorithms~\cite{esteva2019guide} in various applications (Section~\ref{sec:app005003003} of Appendix~\ref{chap:app005}).
+\ac{DL} systems have demonstrated their ability to detect patterns, make predictions, and assist clinicians in high-stakes decision-making processes~\cite{10.1145/3555157}, such as skin cancer diagnosis~\cite{esteva2017dermatologist}, cardiac \ac{MRI} segmentation~\cite{8759179}, and breast cancer detection~\cite{MAICAS2019101562}.
+These models have shown exceptional performance in identifying meaningful patterns within medical data, sometimes surpassing human capabilities~\cite{wang2019deep}.
+However, there is a need to adapt the communication tone of \acp{CDSSe} for personalized and customized medicine~\cite{MAICAS2019101562, CALISTO2022102285}, considering the unique behavioral characteristics and expertise levels of clinicians.
+While \ac{DL}-based \acp{CDSSe} have shown promising results~\cite{mckinney2020international, Rajpurkar2022, MAIERHEIN2022102306}, there are challenges in translating them from research and development environments to real clinical settings.
 
-\subsection{Assisting Clinical Decision-Making}
-\label{sec:chap006002002}
+Utility to clinicians and logistical hurdles are common obstacles in clinical adoption~\cite{Elwyn2013, Musen2021}, and some systems have not effectively reduced clinician workload~\cite{KOHLI2018535} or improved diagnostic accuracy~\cite{Cole2014fi, KOHLI2018535}.
+\ac{HCI} research in clinical environments has explored the evaluation of interactive \ac{DL} systems from a human-centered perspective~\cite{10.1145/3311957.3359433, 10.1145/3359206, Fitzpatrick2013, 10.1145/3538882.3542790}.
+Studies have investigated techniques to enhance diagnostic utility and user trust in \ac{DL} predictions, as well as identified important information for clinicians when integrating \ac{AI} assistants into routine practice~\cite{10.1145/3290605.3300234, 10.1145/3359206}.
+However, these studies (Section~\ref{sec:app005003003}) have yet to consider the heterogeneous behavioral nature of decision-making among clinicians.
 
-Although the research in interaction with intelligent agents is recent~\cite{burr2018analysis}, still this topic has seen new advances, {\it e.g.}, chat-bots and other agents~\cite{miller2019intrinsically}.
-Recent advances in medical technologies that promote the generation of data have continued to drive interaction research in the clinical domain~\cite{azuaje2019artificial, Lopes:2017:UHC:3143820.3144118}.
-Moreover, the new interest of the medical community to support AI research projects and the available public {\it datasets}, are encouraging researchers to work in both fields~\cite{lau2018dataset}.
-Therefore, we bring together both HCI and AI communities to leverage the high-stakes of clinical decision-making.
-
-The introduction of technology for assisting clinical decision-making is fraught with challenges and unintended consequences, such as critical decisions dealing with patient safety, clinician fatigue, and increased medical errors~\cite{10.1093/jamia/ocab291, 10.1117/12.2613082, doi:10.1148/radiol.212631}.
-Moreover, clinicians find AI systems challenging to use because they may have limited technical skills for the adoption of these novel technologies, where these technologies are not customized to behavioral aspects of clinicians~\cite{CALISTO2022102922}.
-In fact, the AI outcomes are challenging to understand and communicate to clinicians, as these systems often have poorly designed interfaces~\cite{10.1145/3555157}, without taking into account differences of clinician's characteristics during decision-making.
-For instance, the reasoning of a novice clinician vary from an expert~\cite{Edgar2022}.
-
-There is a lack of large-scale deployment of these systems in healthcare~\cite{10.1145/3411764.3445432, SU202328, ZAPPATORE20231}, making it difficult to understand how these systems are perceived and used by their intended users in real-world settings.
-HCI has proposed and conceptualized several approaches of human-AI relationships, such as interactive Machine Learning (iML)~\cite{10.1145/604045.604056}, Human-In-The-Loop (HITL)~\cite{holzinger2016interactive, 10.1145/3397481.3450668}, human-AI symbiosis~\cite{JARRAHI2018577}, and human-AI collaboration~\cite{10.1145/3411764.3445432}.
-However, these approaches mainly use human input to improve the prediction accuracy, model efficiency, and interpretability of AI to the unwanted added burdens on healthcare professionals~\cite{10.1145/3555157, 10.1145/3209889.3209897}.
-Wang et al.~\cite{10.1145/3411764.3445432} studied the perception and usage of AI systems for assisting clinical decision-making, but the work is not accounting the potential differences between behavioral reasoning.
-Similarly, the work of Panigutti et al.~\cite{10.1145/3491102.3502104} is only considering accurate algorithmic suggestions without considering the clinician's professional medical experience.
-In our work, we are covering this literature gap by studying how to personalize and customize algorithmic suggestions to different levels of professional medical experience.
-
-\subsection{Clinical Decision Support Systems}
-\label{sec:chap006002003}
-
-In medical applications, DL systems have also been the major contributor to the success of several CDSS applications~\cite{esteva2019guide}.
-Such CDSS applications can detect and learn patterns or make predictions to assist clinicians, such as pathologists, or radiologists, among others, in high-stakes clinical decision-making~\cite{10.1145/3555157}.
-For instance, on the diagnosis of skin cancer \cite{esteva2017dermatologist}, the segmentation of cardiac MRI \cite{8759179}, or breast cancer detection \cite{MAICAS2019101562}, there are a variety of works where DL systems were introduced for clinical purposes.
-Their outstanding performance in identifying meaningful patterns within the available data, recently used to help humans learn new biomarkers of specific diseases \cite{wang2019deep}.
-Because of that, several works are arguing that these models can see beyond what a trained radiologist sees in medical images~\cite{mckinney2020international, Rajpurkar2022, MAIERHEIN2022102306}.
-Although some works are already contemplating the idea of a CDSS that predicts and explains some AI outcomes~\cite{MAICAS2019101562, CALISTO2022102285}, they ignore the need of adapting the communication tone for a personalized and customized medicine.
-
-Most of the best performing CDSS rely on ML algorithms that learn specific tasks from training data~\cite{10.1001/jama.2018.17163, Zaman49, 10.1145/3399715.3399744}.
-The field recently gained enormous interest, primarily due to the practical successes of DL~\cite{10.1007/978-3-030-22871-2_67}.
-The rapid and widespread development of DL methods supports a wide range of image analysis tasks in breast cancer diagnosis, including classification, detection, and segmentation \cite{lecun2015deep, DIN2022106073}.
-These methods rely on large annotated datasets to learn essential and discriminative image features for each specific task, with performances matching and even surpassing humans \cite{esteva2017dermatologist}.
-However, past works are highlighting several obstacles in going from research and development environments to hospital or real clinical settings for these set of applications~\cite{https://doi.org/10.3322/caac.21552, 10.1145/3313831.3376718}.
-
-The lack of utility to clinicians and logistical hurdles that slow or block deployment are frequent obstacles in real clinical settings~\cite{Elwyn2013, Musen2021}.
-Even systems with widespread adoption, such as systems to aid radiologists during breast cancer diagnosis, are requiring them to do more work~\cite{KOHLI2018535}.
-Instead of reducing the radiologist workload or ease the clinical workflow, these systems are generally not improving the radiologist's diagnostic accuracy~\cite{Cole2014fi, KOHLI2018535}.
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{figure*}[htpb]
-\centering
-\includegraphics[width=0.935\textwidth]{fig096}
-\caption[]{Interface for conventional and assertiveness-based AI agents for medical imaging analysis. Attributes are associated with numbers in each testing condition. When a clinician hovers the mouse over each variable ({\it e.g.}, accuracy, BIRADS, or any other clinical argument of attribute 6), the AI agent will pop up a window to inform the severity of each finding. The colors are ranging from benign (green) to malign (red). The number of findings is a (blue) neutral color, conclusions taken from the interviews, as one highly severe finding can be more critical than having several findings. During the interviews, clinicians choose the purple color for the family and personal history variables of the patient.}
-\label{fig:fig096}
-\end{figure*}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-The work of Beede et al.~\cite{10.1145/3313831.3376718} studies the introduction of CDSS set of tools, with the primary focus on AI systems that use clinical data.
-However, they are not examining the use of real patient AI predictions.
-Our work covers this gap by, not only incorporating real granular patient information from the AI outputs, but also studying how to personalize and customize a CDSS for the clinical setting.
-
-Across the HCI literature~\cite{10.1145/3311957.3359433, 10.1145/3359206, Fitzpatrick2013, 10.1145/3538882.3542790}, or more precisely, from the CHI community~\cite{10.1145/3313831.3376718, 10.1145/3290605.3300234}, human-centered evaluation of interactive, DL systems, is an open area of research within clinical environments.
-Cai et al.~\cite{10.1145/3290605.3300234} created interactive techniques, leading to an increased diagnostic utility and user trust in the predictions from a DL system, used by clinicians in a lab setting.
-Correspondingly, Cai et al.~\cite{10.1145/3359206} examined in the lab setting what information clinicians found to be important when being introduced to AI assistants, before integrating these assistants into routine prostate cancer screening practice.
-While these works bring us closer to understand the clinician's needs as they interact with DL-based systems, they do not account for the heterogeneous behavioral nature of decision-making.
-
-\subsection{Effects of AI Communication}
-\label{sec:chap006002004}
-
-Trust is critical in communication, especially, in clinical environments, where clinicians are exposed to critical scenarios that affect life decisions~\cite{Amann2020}.
-From the HCI literature~\cite{10.1145/3479587, 10.1145/3334480.3375147, 10.1145/3334480.3382842}, we know that the development of trust is influenced by the positive motivational attribution between the communication entity and the user.
-The work of Hohenstein et al.~\cite{HOHENSTEIN2020106190} is showing that a successful collaboration between human and AI occurs when ambiguity and uncertainty in terms of perceptions are reduced through trust~\cite{HOHENSTEIN2020106190}.
-While communicating AI predictions and explanations is shaping the design of recent works~\cite{Lundberg2020, 10.1145/1518701.1518832}, we do not know how assertiveness-based AI mediation is affecting novice or expert clinicians.
-
-To avoid unexpected clinical consequences, we need to understand the effects of AI communication on human interactions.
-In fact, the direct effects of communication are suggesting that clinicians' level of trust in an AI system directly affects their perception of the outcomes~\cite{HOHENSTEIN2020106190}.
-Panigutti et al.~\cite{10.1145/3491102.3502104} are arguing that higher levels of trust will cause the clinician to have a positive attitude, resulting in high satisfaction and positive perceptions of performance with respect to the interaction outcome.
-Moderation via adapting the communication suggests that trust will influence how a clinician interprets and evaluates information relevant to attitude and behavior.
-Attribution theory tell us that when behavior is consistent with explanations, humans will attribute causality to self characteristics and needs~\cite{LOMBROZO2010303}.
-On the other hand, when behavior is inconsistent with prior expectations, where there is missing information or ambiguity, external cues will determine behavior~\cite{HOHENSTEIN2020106190}.
-As an example, a novice clinician asking for help and receiving a suggestive, {\it i.e.}, non-assertive communication.
-When in a real human-human interaction, would receive an assertive recommendation from an expert advisor.
-The novelty of our work is in the application of assertive communication theories in a deep learning system and clinical scenario that considers its use.
+Trust plays a critical role in communication (Section~\ref{sec:app005003004} of Appendix~\ref{chap:app005}), especially in clinical environments where life-altering decisions are made~\cite{Amann2020}.
+Positive motivational attribution and reducing ambiguity through trust~\cite{HOHENSTEIN2020106190} are key factors in successful collaboration between humans and \ac{AI}~\cite{10.1145/3479587, 10.1145/3334480.3375147, 10.1145/3334480.3382842}.
+The impact of assertiveness-based \ac{AI} mediation on novice and expert clinicians is still not well understood~\cite{Lundberg2020, 10.1145/1518701.1518832}.
+Understanding the effects of \ac{AI} communication is vital to avoid unforeseen clinical consequences.
+Trust directly influences clinicians' perception of \ac{AI} outcomes and their attitudes, satisfaction, and performance evaluations~\cite{10.1145/3491102.3502104}.
+Attribution theory and external cues shape clinicians' interpretation of information~\cite{LOMBROZO2010303}.
+Our work introduces assertive communication theories into a deep learning system and clinical scenario, offering a novel approach to address these dynamics.
 
 \section{Assertiveness-based System}
 \label{sec:chap006003}
 
-In this study, we explore how human-AI interactions are affected by the ability of an AI agent to not only incorporate granular patient information from the AI outputs but also exploring how to adapt the communication tone ({\it i.e.}, more assertive or suggestive) depending on the medical experience ({\it i.e.}, novice or expert) of the clinician.
-Specifically, we compare the AI outputs (Figure~\ref{fig:fig096}) that explain to clinicians some clinical arguments with more granular information about the patient regarding the lesion details, to a conventional agent that only provides numeric estimates ({\it e.g.}, BIRADS and accuracy) of the classification.
+In this chapter, we explore how human-\ac{AI} interactions are affected by the ability of an \ac{AI} agent to not only incorporate granular patient information from the \ac{AI} outputs but also exploring how to adapt the communication tone ({\it i.e.}, more assertive or suggestive) depending on the medical experience ({\it i.e.}, novice or expert) of the clinician.
+Specifically, we compare the \ac{AI} outputs (Figure~\ref{fig:fig096}) that explain to clinicians some clinical arguments with more granular information about the patient regarding the lesion details, to a conventional agent that only provides numeric estimates ({\it e.g.}, BIRADS and accuracy) of the classification.
+Further details are described in Section~\ref{sec:app005004} of Appendix~\ref{chap:app005}.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure}[htpb]
+\centering
+\includegraphics[width=1.000\textwidth]{fig096}
+\caption[]{Interface for conventional and assertiveness-based AI agents for medical imaging analysis. Attributes are associated with numbers in each condition. AI agent provides severity information when hovering over variables. Colors range from benign (green) to malign (red). Number of findings displayed in neutral color (blue). Clinicians use purple color for family and personal history variables.}
+\label{fig:fig096}
+\end{figure}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 Our assertiveness-based agent uses recommendations for classifying and segmenting:
 (1) the number of detected findings;
@@ -195,45 +147,15 @@ Figure~\ref{fig:fig096} illustrates how the two AI agents were integrated into a
 Both agents are recommending classification and segmentation based on the DenseNet model~\cite{8721151} for MG and US, as well as based on the ResNet model~\cite{TALO2019101673} for MRI.
 The two AI agents provided the severity classification of the patient via BIRADS~\cite{SPAK2017179}, the accuracy of the model for that classification, and the segmentation of the lesion to explain the regions that derived from that classification.
 
-Clinicians can open the patient by selecting the ID in a list of patients.
-When the patient is open (attribute 1 of Figure~\ref{fig:fig096}), clinicians can select each respective image of the breast, by dragging-drop each image to the view-ports.
-From here, clinicians can manipulate the image through the toolbox (attribute 3 of Figure~\ref{fig:fig096}).
-In the end, the idea is to {\it accept} or {\it reject} the final recommendation of the AI agent (attribute 5 of Figure~\ref{fig:fig096}), while clinicians can also ask for an {\it explanation} to support their final decision-making.
-The key difference between the two AI agents was in how they show communication with clinicians.
-A typical output from an AI model includes not only the predicted classification of the BIRADS, but also a likelihood distribution over all possible classification choices.
-
-In our study, both AI agents were designed to communicate this type of {\it quantitative} confidence in two ways (Figure~\ref{fig:fig098}):
-(1) for the conventional condition, clinicians could simply see the suggested numeric representation of the BIRADS and the respective accuracy of the model;
-(2) for the assertiveness-based condition, the agent was communicating the clinical arguments along with the communication of the BIRADS and accuracy, but this time by descriptive information.
-While our conventional agent employed this baseline numeric representation of confidence, our assertiveness-based agent is communicating the {\it quantitative} confidence based on a descriptive sentence of the clinical arguments.
-Specifically, the image view-port was augmented with an additional bounding box or circle ellipse {\bf highlighting the lesion characteristics} that were likely to explain the final BIRADS classification.
-Note that these suggestions did not dictate the order in which imaging modalities are presented to clinicians.
-Indeed, clinicians can remain to decide freely what modalities and clinical arguments are reviewed first.
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{figure}[htpb]
-\begin{center}
-\centering
-\includegraphics[width=0.625\textwidth]{fig098}
-\end{center}
-\caption[]{Example of representative use cases for the different testing trials. From top to the bottom, the first agent is representing a conventional example (pink), while the other two are representing assertiveness-based examples (brown), from assertive to non-assertive communication.}
-\label{fig:fig098}
-\end{figure}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-The patient's detailed augmentation for medical imaging on breast cancer diagnosis was extended with an {\bf assertiveness-based explanation}.
-With our system, we are listing human-interpretable clinical arguments for classification and segmentation recommendations that would adapt their communication depending on the personalized and customized demographic characteristics of the clinician.
-These clinical arguments correspond to the classification outputs of an AI model and were trained on data (Section~\ref{sec:chap006005002}) from real-world clinical cases, as described next.
-
 \section{Research Questions \& Hypotheses}
 \label{sec:chap006004}
+
+TODO (15/06/2023): shorten this section...
 
 The final purpose of our research is twofold.
 Through assertiveness-based agents, we first aim to understand how personalized and customized communication could affect medical assessments in terms of the efficiency and efficacy of the clinical workflow.
 Secondly, we aim to understand how clinicians perceive assertiveness-based agents differently.
 Thus, our work addresses two primary research questions concerning the impact of assertiveness-based agents on efficiency and efficacy (RQ1), as well as the perception (RQ2) of clinicians.
-
-\vspace{2.5mm}
 
 \noindent
 Specifically, we consider the following research questions and related hypotheses:
@@ -732,7 +654,7 @@ These studies suggest that the recommendations we make for medical imaging diagn
 
 % \clearpage
 
-\subsection{Limitations and Future Work}
+\subsection{Limitations}
 \label{sec:chap006007002}
 
 In this work, we conducted a within-subject experiment to investigate the use of assertiveness-based agents by clinicians in the particular medical domain of breast cancer diagnosis.
