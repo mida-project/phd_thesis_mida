@@ -1,15 +1,15 @@
 \begin{table}[htbp]
 \centering
-\begin{tabular}{|c|c|c|c|c|}
+\begin{tabular}{|c|c|c|c|c|c|c|}
 \hline
-\multirow{2}{*}{BIRADS} & \multicolumn{2}{c|}{Precision} & \multicolumn{2}{c|}{Recall}   \\ \cline{2-5} 
-                        & Clini.-On.      & Clini.-AI    & Clini.-On.     & Clini.-AI    \\ \hline
-1                       & 0.01            & 0.69         & 0.76           & 0.91         \\ \hline
-2                       & 0.13            & 0.86         & 0.91           & 0.91         \\ \hline
-3                       & 0.20            & 0.50         & 0.50           & 0.20         \\ \hline
-4                       & 0.20            & 0.99         & 0.61           & 0.68         \\ \hline
-5                       & 0.99            & 0.99         & 0.57           & 0.86         \\ \hline
+\multirow{2}{*}{BIRADS} & \multicolumn{2}{c|}{Precision} & \multicolumn{2}{c|}{Recall} & \multicolumn{2}{c|}{F1-score}   \\ \cline{2-7} 
+                        & Clini.-On.      & Clini.-AI    & Clini.-On.     & Clini.-AI    & Clini.-On.     & Clini.-AI    \\ \hline
+1                       & 0.01            & 0.69         & 0.76           & 0.91         & 0.02           & 0.78         \\ \hline
+2                       & 0.13            & 0.86         & 0.91           & 0.91         & 0.23           & 0.88         \\ \hline
+3                       & 0.20            & 0.50         & 0.50           & 0.20         & 0.29           & 0.29         \\ \hline
+4                       & 0.20            & 0.99         & 0.61           & 0.68         & 0.30           & 0.81         \\ \hline
+5                       & 0.99            & 0.99         & 0.57           & 0.86         & 0.72           & 0.92         \\ \hline
 \end{tabular}
-\caption{Reported performance of Clinician-Only (Clini.-On.) and Clinician-AI (Clini.-AI) collaborations. The {\it Precision} is the fraction of relevance instances among the classified instances. On the other hand, the {\it Recall} (sensitivity) is the fraction of relevant instances classified over the total amount of relevant instances.}
+\caption{Reported performance of Clinician-Only (Clini.-On.) and Clinician-AI (Clini.-AI) collaborations. The {\it Precision} is the fraction of relevant instances among the classified instances. On the other hand, the {\it Recall} (sensitivity) is the fraction of relevant instances classified over the total amount of relevant instances. The {\it F1-score} is the harmonic mean of precision and recall, giving a balanced measure of precision and recall performance.}
 \label{tab:tab005}
 \end{table}

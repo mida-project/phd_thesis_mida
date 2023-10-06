@@ -12,7 +12,7 @@
 %
 % Add PDF bookmark 
 \pdfbookmark[0]{Titlepage}{Title}
-\input{cover}
+\input{structure/cover.tex}
 \clearpage
 %
 % -----------------------------------------------------------------------------
@@ -22,12 +22,50 @@
                    %               -18pt for 1 1/2 spacing
                    %               -24pt for double spacing
 % -----------------------------------------------------------------------------
+% THE ABSTRACT
+\pdfbookmark[0]{Abstract}{abstract}
+\begin{abstract}
+\input{structure/abstract.tex}
+\end{abstract}
+%
+% -----------------------------------------------------------------------------
+\clearpage
+% -----------------------------------------------------------------------------
+% THE Resumo
+\pdfbookmark[0]{Resumo}{resumo}
+\begin{resumo}
+\input{structure/resumo.tex}
+\end{resumo}
+%
+% -----------------------------------------------------------------------------
+\clearpage
+% -----------------------------------------------------------------------------
+% THE KEYWORDS
+\pdfbookmark[0]{Keywords}{keywords}
+\begin{keywords}
+\input{structure/keywords.tex}
+\end{keywords}
+%
+% -----------------------------------------------------------------------------
+\clearpage
+% -----------------------------------------------------------------------------
+% THE PALAVRASCHAVE
+\pdfbookmark[0]{Palavraschave}{palavraschave}
+\begin{palavraschave}
+\input{structure/palavraschave.tex}
+\end{palavraschave}
+%
+% -----------------------------------------------------------------------------
+\clearpage
+% -----------------------------------------------------------------------------
 % THE ACKNOWLEDGMENTS
 \pdfbookmark[0]{Acknowledgments}{acknowledgments}
 \begin{acknowledgments}
-\input{chapters/acknowledgments.tex}
+\input{structure/acknowledgments.tex}
 \end{acknowledgments}
 %
+% -----------------------------------------------------------------------------
+\clearpage
 % -----------------------------------------------------------------------------
 % This is required for the Fancy Chapters with minitoc
 \dominitoc
@@ -68,7 +106,7 @@
 % % List of acronyms
 \pdfbookmark[1]{Acronyms}{loac}
 \chapter*{\tlangAcronyms}
-\input{chapters/acronyms.tex}
+\input{structure/acronyms.tex}
 % If Printing on DOUBLE SIDED pages, the second page should be white.
 % Otherwise, comment the following command:
 \cleardoublepage
@@ -171,7 +209,7 @@ bibliography/references
 \appendix
 %% First Appendix
 \pdfbookmark[1]{Appendix}{appendix}
-\input{chapters/appendix.tex}
+\input{structure/appendices.tex}
 %% If Printing on DOUBLE SIDED pages, the second page should be white.
 %% Otherwise, comment the following command:
 \cleardoublepage

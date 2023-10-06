@@ -19,7 +19,7 @@
 \typeout{                                                              }
 \typeout{ AUTHOR: Francisco Maria Calisto                              }
 \typeout{ BASED ON: Rui Santos Cruz                                    }
-\typeout{ INSPIRED BY: Pedro Tomás work                                }
+\typeout{ INSPIRED BY: Pedro Tom\'{a}s work                            }
 \typeout{--------------------------------------------------------------}
 \typeout{}
 % -----------------------------------------------------------------------------
@@ -145,6 +145,7 @@
 \RequirePackage{epsf}
 \RequirePackage[absolute]{textpos}
 \RequirePackage{helvet}
+\RequirePackage{etoolbox}
 %
 % -----------------------------------------------------------------------------
 % SPECIAL INTERNAL COMMANDS. (Needed by later routines)
@@ -228,18 +229,29 @@
 %
 % DEFINE COMMAND FOR: Thesis type, depending on language
 \newcommand{\thesistypelang}{\IfLanguageName{english}
-		{Thesis to obtain the Doctor of Philosophy Degree in}
-		{Disserta\c{c}\~ao para obten\c{c}\~ao do Grau de Doutor em}}
+		{Thesis specifically prepared to obtain the PhD Degree in}
+		{Tese especialmente elaborada para obten\c{c}\~{a}o do Grau de Doutor em}}
 %
 % DEFINE COMMAND FOR: subtitle (optional)
 \newcommand*{\subtitle}[1]{\th@StoreIn{\th@subtitle}{#1}}
 \newcommand*{\th@subtitle}{\relax} % command is optional
 %
+% DEFINE COMMAND FOR: university
+\newcommand*{\university}[1]{\th@StoreIn{\th@university}{#1}}
+\newcommand*{\th@university}{\relax} % command is optional
+%
+% DEFINE COMMAND FOR: institution
+\newcommand*{\institution}[1]{\th@StoreIn{\th@institution}{#1}}
+\newcommand*{\th@institution}{\relax} % command is optional
+%
 % DEFINE COMMAND FOR: Supervisors prefix depending on language
-\newcommand{\tlangSupervisors}{\IfLanguageName{english}{Supervisors: }{Orientadores: }}
+\newcommand{\tlangSupervisors}{\IfLanguageName{english}{Supervisor: }{Orientador: }}
 %
 % DEFINE COMMAND FOR: the only Supervisor prefix depending on language
 \newcommand{\tlangComSupervisor}{\IfLanguageName{english}{Supervisor: }{Orientador: }}
+%
+% DEFINE COMMAND FOR: Supervisors prefix depending on language
+\newcommand{\tlangOtherSupervisors}{\IfLanguageName{english}{Co-Supervisor: }{Co-Orientador: }}
 %
 % DEFINE COMMAND FOR: Examination Committee, depending on language
 \newcommand{\tlangCommittee}{\IfLanguageName{english}{Examination Committee}{J\'uri}}
@@ -284,8 +296,25 @@
 		\end{textblock*}
 	}
 	% insert vertical spacing for the TITLES
-	\vspace*{8cm}
+	\vspace*{1cm}
 	{
+    % printing thesis UNIVERSITY
+		\centering
+		\begin{setfont}{22}
+			\bfseries\th@university
+		\end{setfont}
+	% insert vertical spacing for the INSTITUTION
+		\vfill 
+	% printing thesis INSTITUTION (if any)
+		\ifthenelse{\equal{\th@institution}{\relax}}{\relax}{
+			\centering
+			\begin{setfont}{18}
+				\th@institution
+			\end{setfont}
+                \vspace*{2cm}
+		}
+        % insert vertical spacing for the TITLE
+		\vfill
     % printing thesis TITLE
 		\centering
 		\begin{setfont}{16}
@@ -307,6 +336,18 @@
         \begin{setfont}{14}
         \bfseries\@author
         \end{setfont}
+	% insert vertical spacing for the SUPERVISORS
+		\vfill
+	% printing SUPERVISORS
+		\centering
+		\begin{setfont}{12}
+			\ifthenelse{\equal{\th@othersupervisor}{\relax}}{
+               \tlangComSupervisor \th@supervisor\\
+               }{
+                 \tlangSupervisors \th@supervisor\\
+                 \tlangOtherSupervisors \th@othersupervisor\\
+               }
+		\end{setfont}
 	% insert vertical spacing for the APPLYING DEGREE
 		\vfill
 	% printing THESISTYPE and applying DEGREE
@@ -317,18 +358,6 @@
 			\end{setfont}
 		\begin{setfont}{16}
 			\bfseries\th@degree
-		\end{setfont}
-	% insert vertical spacing for the SUPERVISORS
-		\vfill
-	% printing SUPERVISORS
-		\centering
-		\begin{setfont}{12}
-			\ifthenelse{\equal{\th@othersupervisor}{\relax}}{
-               \tlangComSupervisor \th@supervisor\\
-               }{
-                 \tlangSupervisors \th@supervisor\\ 
-                 \th@othersupervisor\\
-               }
 		\end{setfont}
 	% insert vertical spacing for the Examination Committee
 		\vfill
@@ -357,6 +386,18 @@
 		\end{setfont}
 		% else not print the Examination Committee, just a fill
 		}{\vfill}
+        % insert vertical spacing for the Draft/Final word
+		\vfill
+	% printing the Draft/Final word
+		\centering
+		\begin{setfont}{14}
+			\bfseries
+            \ifthenelse{\equal{\th@finalthesis}{true}}{
+                {\it Final}
+            }{
+                {\it Draft}
+            }
+		\end{setfont}
 	% insert vertical spacing for the DATE
 		\vfill
 	% printing the DATE
@@ -374,6 +415,10 @@
   \global\let\@author\@empty
   \global\let\@date\@empty
   \global\let\@title\@empty
+  \global\let\@institution\@empty
+  \global\let\@university\@empty
+  \global\let\university\relax
+  \global\let\institution\relax
   \global\let\title\relax
   \global\let\author\relax
   \global\let\date\relax

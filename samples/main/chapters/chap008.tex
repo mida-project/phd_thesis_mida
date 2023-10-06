@@ -3,83 +3,127 @@
 % !TEX root = main.tex
 % #############################################################################
 % Change the Name of the Chapter i the following line
-\fancychapter{Future Work}
+\fancychapter{Conclusion}
 \clearpage
 % The following line allows to ref this chapter
 \label{chap:chap008}
 
-The last chapter (Chapter~\ref{chap:chap007}) discussed the design implications, research limitations, and future directions with a specific focus on the research scope of breast cancer diagnosis.
-In this chapter, the document broadly scopes and addresses additional directions for future research in this space of \ac{HAII} collaboration decision-making for complex and explainable functionalities.
-As a result, the following sections are detailing the future directions sustained by the work developed under this thesis proposal.
+This chapter presents the concluding findings of our dissertation, focusing on integrating \ac{AI} into clinical workflows.
+It examines factors influencing \ac{AI} acceptance, emphasizing the importance of a human-centered approach for integration in high-stakes domains.
+The chapter explores design principles achieved in this thesis, emphasizing practical implementation in intelligent agents.
+It synthesizes our research journey, highlighting achievements and paving the way for \ac{AI} integration in healthcare.
 
-\section{Technology Adoption}
+\section{Findings Overview}
 \label{sec:chap008001}
 
-Although the current work under this thesis proposal has already studied the preliminary acceptance and trust of \ac{AI} systems, more work should be done.
-To strengthen the thesis evidence for such claims, further work must measure a more detailed technology adoption in the context of medical imaging diagnosis.
-In this work, a continuing quest to ensure clinicians' acceptance of \ac{AI} is an ongoing clinical challenge.
-However, this challenge has occupied researchers to such an extent that \ac{AI} adoption in the clinical domain is now considered an opportunity.
+Our research encompassed three key areas:
+(1) acceptance and adoption of \ac{AI} systems in the clinical workflow;
+(2) human-centered design approach in radiology; and
+(3) personalization of \ac{AI} recommendations for clinicians.
+In the acceptance and adoption study, trust emerged as a critical factor influencing clinicians' acceptance of \ac{AI}-based assistance in medical imaging diagnosis.
+Clinicians' demographic characteristics, such as gender, age, and educational background, moderated the relationship between trust, security, and risk, and their intention to use \ac{AI} systems.
+Integrating \ac{HCI} principles into developing \ac{AI}-based assistance enhanced usability and effectiveness, improving clinical workflows and patient outcomes.
+These findings highlight the importance of considering clinicians' needs and characteristics when designing intelligent agents.
 
-A substantial level of activity has witnessed the use of a wide range of exploratory techniques, examining many different systems in countless different contexts, to the extent that even the most cursory examination will reveal a variety of user perspectives, contexts, analysis, theories, and research methods~\cite{williams2015unified}.
-Such situation has in turn led to an element of confusion, as it is often current to be forced of picking specific characteristics across a wide variety of models and theories.
-In response to this confusion, and in order to harmonize the literature associated with acceptance of new systems, Venkatesh et al.~\cite{venkatesh2016unified} developed a unified model~\textendash~created and studied by these authors, the \ac{UTAUT}~\textendash~that brings together alternative views on user and innovation acceptance.
+In the application of a human-centered design approach, our proposed design interventions played a pivotal role in the development of the intelligent agent for radiology.
+By following a \ac{UCD} process and incorporating feedback from clinicians, we were able to create an \ac{AI} system that effectively addressed their needs and preferences.
+The design interventions ceased crucial elements such as explainability functionalities, visualizations, and control mechanisms, aimed at facilitating accurate diagnosis and fostering clinicians' understanding and trust in \ac{AI} recommendations.
+These interventions were crucial in optimizing the workflow, reducing \acp{FP}, \acp{FN}, and diagnostic time.
+Ultimately, improving the accuracy of patient classification.
+The success of the design interventions underscores the importance of a human-centered approach in designing \ac{AI} systems for real-world clinical settings.
 
-As future work, the thesis proposes the application of a model based on the \ac{UTAUT} constructs to study the determinants for adoption of \ac{AI} systems in medical imaging diagnosis.
-The idea is to test the model via confirmatory factor analysis and structural equation modeling while using clinicians' responses (expected n $>$ 300 clinicians) to a formulated \ac{UTAUT} questionnaire.
-Future results will show how an increased understanding of a vital role of safety, security, privacy, and trust in usage intention of intelligent agents in these medical fields.
-It is expected that such results will show to this thesis how improvements of the workflow performance for a clinical \ac{AI} system is a strong predictor of adoption, while medical professional experience ({\it i.e.}, Interns, Juniors, Middles and Seniors) and medical specialities ({\it e.g.}, Radiologists, Surgeons, Dermatologists, Neurologists, etc) are essential moderators of behavioral intention.
-The future empirical findings will provide valuable theoretical contributions to \ac{HCI} and \ac{AI} researchers concerning the design and implementation of intelligent agents by explaining the reasons behind adoption and usage of \ac{AI} systems in the clinical workflow.
+Our investigation also focused on the personalization of explanations for human clinicians.
+Through an experimental study comparing a conventional agent to an assertiveness-based agent, we demonstrated the merits of tailoring communication tone and providing granular explanations.
+The assertiveness-based agent outperformed the conventional agent regarding diagnostic time and accuracy, particularly for novice clinicians.
+Additionally, clinicians exhibited increased trust in the assertiveness-based agent, perceiving it as more reliable, competent, and understandable.
+These findings highlight the significance of personalizing \ac{AI} systems to clinicians' expertise and experience, fostering higher engagement and acceptance.
+The implications of this research extend beyond the medical domain, providing insights into the design of \ac{AI} systems in fields requiring personalized \acp{HAII}.
 
-The questionnaire will be sent via e-mail to participants and the raw data will be analyzed as follows.
-In accordance with the recommendations of the two-stage procedure~\cite{rahi2018investigating}, \ac{CFA} will be used to test validity and reliability of the model~\cite{crede2019questionable}.
-\ac{SEM} will be used as a preferable technique to regression as it allows simultaneous analysis of all relationships through multiple regression, while also allowing for both observed and latent variables to be analyzed at the same time, and providing overall fit statistics~\cite{hair2017advanced}.
-\ac{CFA} will be conducted in \href{https://www.python.org/}{Python} using \ac{MLE}~\cite{cham2017full}, which will be followed by path analysis of the structural relationships that are also expected to be conducted in \href{https://www.python.org/}{Python} with \ac{SEM} libraries~\cite{igolkina2020semopy}.
-Moderation analysis will also be undertaken in \href{https://www.python.org/}{Python}~\cite{hayes2017regression}.
-
-\section{Assertiveness-based Intelligent Agents}
+\section{Design Principles}
 \label{sec:chap008002}
 
-Having mechanisms to obtain and analyse clinicians' behaviour, can help researchers to create a more reliable assistant agent~\cite{Miao2019}.
-Concerning medical experience and clinical profile ({\it e.g.}, radiologists, surgeons, etc), the future directions of the thesis will analyse critical behaviour and implement persuasive mechanisms to reduce the rates of \acp{FP} and \acp{FN}.
-In particular, personalized persuasion strategies are more effective than non-personalized strategies in reporting the diagnostic or influencing the clinician to take the right decision~\cite{sonntag2016persuasive}.
-Thus, it will add great value for researchers in the development of assistant agents for the diagnostic via medical imaging.
+In this thesis, we leverage \ac{HCI} principles to optimize \ac{AI} system design and adoption in healthcare.
+Through rigorous research, we identify crucial design principles for successful integration.
+Our goal is to enhance \ac{UX}, promote acceptance, and improve effectiveness in healthcare.
 
-In this section, it is presented a proposal for applying {\it BreastScreening-AI} in two scenarios, where clinicians will interact with Assertive and Non-Assertive assistant agents~\cite{pacheco2019alignment, 10.1145/3311350.3347162}.
-The assistant will act as a second reader, providing results in terms of improvements on the classification diagnosis ({\it i.e.}, Over-Diagnosis {\it vs} Under-Diagnosis) regarding \acp{FP} and \acp{FN}, as well as efficiency and efficacy in the workflow.
-While considerable work is focusing on improving the accuracy of \ac{AI} algorithms, comparatively less work focused on improving the communication between Humans and \ac{AI} to satisfy the clinician's own concerns on the explained (\ac{XAI}) information.
-This thesis proposal contributes broadly to new work development by examining what clinicians need when using \ac{AI}-powered image diagnostics with proper communication, the practices they adopt while interacting with these novel communication approaches, and how these communications are affecting the end-user interpretation towards the underlying \ac{AI} algorithms.
+\vspace{2.00mm}
 
-To conclude, this section describes a proposal study to understand how the level of assertiveness, displayed by an assistant agent, will impact the clinicians' decision-making process during breast cancer diagnosis.
-A proof-of-concept prototype~\textendash~another medical imaging assistant~\textendash~will be developed with two major scenarios of the assistant behaviour:
-(1) one scenario for an Assertive assistant; and
-(2) a second scenario for a Non-Assertive assistant;
-paired with two assistant behaviours:
-(i) Proactive; and
-(ii) Reactive.
+\noindent
+The following design principles emerged from our study:
 
-A $4$x$4$ within-subjects experiment (n $>$ 45 clinicians) will be conducted, in which the four Assertive, Non-Assertive, Proactive, and Reactive subjects will be matched with the four categories of radiologists' professional experience, {\it i.e.}, Interns, Juniors, Middles and Seniors.
-In a latter study, the rates of \acp{FP} and \acp{FN} will be extracted to understand the patterns of critical behaviour among the four categories of professional experience.
-Finally, several strategies are proposed expecting to promote unbiased behaviour per each category of professional experience, improving the \acp{FP} and \acp{FN} rates during diagnostics.
+\vspace{0.05mm}
 
-\section{New Explainable Methods}
+\begin{enumerate}
+
+\item {\bf Clinician-Centric Design}:
+Prioritize the unique needs, characteristics, and workflows of clinicians in the design of \ac{AI}-based assistance systems for decision-making in real-world healthcare settings.
+Incorporate their input and feedback throughout the design process to ensure the system meets their requirements and preferences.
+
+\vspace{0.05mm}
+
+\item {\bf Explainability and Transparency}:
+Enhance clinicians' understanding and trust in \ac{AI} recommendations by incorporating explainability functionalities, visualizations, and control mechanisms.
+Provide clear and interpretable granular explanations of the system's reasoning and decision-making process, allowing clinicians to comprehend and validate each \ac{DL} output.
+
+\vspace{0.05mm}
+
+\item {\bf Personalized Communication}:
+Customize the communication style and approach of \ac{DL} models to address the specific needs and expertise levels of different user groups.
+Tailor the presentation of information, \ac{AI} guidance, and recommendations to align with the professional experience and knowledge of clinicians, promoting engagement and acceptance.
+
+\vspace{0.05mm}
+
+\item {\bf Usability and Workflow Integration}:
+Design \ac{AI} systems that seamlessly integrate into the existing clinical workflow, minimizing disruptions and enhancing efficiency.
+Ensure the system is intuitive, user-friendly, and easy to navigate, enabling clinicians to access and utilize \ac{AI} assistance seamlessly during their routine tasks without interruptions or changing their workflow.
+
+\vspace{0.05mm}
+
+\item {\bf Continuous Evaluation and Iterative Design}:
+Establish mechanisms for ongoing evaluation of \ac{AI} systems' performance and user feedback.
+Continuously gather data on system usability, accuracy, and impact on clinical outcomes to identify areas for improvement and refine the system iteratively.
+
+\vspace{0.05mm}
+
+\item {\bf Ethical Considerations and Regulatory Compliance}:
+Adhere to ethical guidelines and regulatory requirements in the development and deployment of \ac{AI}-based systems in healthcare.
+Safeguard patient privacy and confidentiality of each country or region.
+Ensure the responsible use of \ac{AI} technology, and comply with relevant regional regulations to maintain trust and integrity.
+
+\end{enumerate}
+
+To summarize, we emphasize the importance of incorporating well-defined design principles to optimize \ac{AI} systems in healthcare.
+Aligning these principles with the specific needs and requirements of clinicians enhances \ac{UX} and ensures the effectiveness of the systems.
+This approach facilitates seamless integration of \ac{AI} technology into healthcare, improving outcomes for clinicians and patients.
+
+\section{Summarizing Research Objectives}
 \label{sec:chap008003}
 
-Explanations for machine decisions and predictions are needed to justify their reliability.
-This requires greater interpretability, which often means a need to understand the mechanisms that are underlying the algorithm.
-Unfortunately, the ``black-boxe'' nature of \ac{DL} is still unresolved, and many machine decisions are still poorly understood.
-Future developments of this thesis must follow literature implementations on explainable (\ac{XAI}) and interpretability methods suggested by research works~\cite{9233366}.
-The various methods will show clinicians different dimensions in interpretability research, from provide ``obviously'' explainable and interpretable information in complex patterns of lesions and patient co-variables.
-By applying such methods to interpretability in medical imaging, it is hoped that: (1) clinicians can subsequently approach these methods with caution; (2) insights into interpretability will be created with more considerations for the clinical workflow; and (3) initiatives to push forward the generated data and leverage its completeness are encourage.
-However, it will be also important to evaluate the quality of explanations and levels of interpretability given by the introduction of these new \ac{XAI} methods.
-Therefore, the \ac{SCS}~\cite{andreas2020measuring} will support future studies of this thesis.
+This thesis started by investigating the acceptance and adoption of \ac{AI} systems in medical imaging diagnosis.
+The research objectives (Section~\ref{sec:chap001002002}) covered clinicians' acceptance and adoption of \ac{AI}, emphasizing security, risk, and trust.
+While exploring these factors, the research strived to understand better how \ac{AI} could be effectively integrated into healthcare, particularly in medical imaging diagnosis.
 
-\section{Publishing Data}
+Subsequently, we incorporated \ac{HCI} principles into the design process, aiming to enhance usability and acceptance through a \ac{UCD} approach.
+We employed focus groups, workshops, interviews, and observations to refine functionalities and visualizations of explanations iteratively.
+This systematic introduction of design interventions tailored \ac{AI} recommendations to clinician needs.
+Positive feedback guided us towards an optimal \ac{AI} solution, strengthening clinicians' understanding and confidence.
+This revision significantly promoted clinicians' satisfaction and acceptance of \ac{AI} assistance in radiology, positively impacting the overall medical workflow.
+
+The final objectives focused on the influence of assertiveness-based agents on personalized communication and the effects on medical assessment efficiency and efficacy, considering both novice and expert clinicians.
+Our research follows several distinct aims.
+Firstly, we aim to enhance our comprehension of how intelligent agents can be effectively incorporated into healthcare.
+Secondly, our research objective was to discern the tangible effects of this integration.
+Ultimately, we seek to enhance the efficiency, accuracy, and overall quality of clinical decision-making.
+
+\section{Final Remarks}
 \label{sec:chap008004}
 
-Image data availability is an important hurdle for implementation of \ac{AI} in the clinical setting.
-Both \ac{HCI} and \ac{AI} communities need to be aware of the data source and potential biases, which may affect generalizability of \ac{AI} algorithms.
-However, curating and annotating data, as well as computational requirements, are substantial barriers.
-Future work will include collecting and curating an overall of data to demonstrate how the information produced by clinicians can be used to train humans and machines.
-In this thesis, a dataset will be published including, not only clinical data, but also user results.
-On the one hand, the clinical data will be published containing important information to the \ac{ML} algorithms, such as medical images, original classifications and manual segmentations from clinicians.
-On the other hand, the user results will be published containing usability (\ac{SUS}) and workload (\ac{NASA-TLX}) measures, as well as trust (\ac{DOTS}) and causability (\ac{SCS}) assessment information, between other future metrics to be applied.
+As we wrap up, it is crucial to highlight the wide-ranging contributions made by this thesis.
+This work encompasses several important areas, ranging from the examination of \ac{AI} acceptance and adoption in clinical procedures to the integration of \ac{HCI} principles in system design and the personalization of \ac{AI} recommendations.
+These combined endeavors have significantly advanced the integration of \ac{AI} into healthcare, particularly in the context of medical imaging diagnosis.
+Our findings provide meaningful insights and robust recommendations for designing, implementing, and evaluating \ac{AI}-based systems that are user-centric, effective, and well-suited to the unique needs of users in high-stakes domains.
+
+Looking forward, we anticipate that the principles and insights gleaned from this dissertation will be crucial in guiding future studies and developments in the realm of \ac{AI} in healthcare.
+The journey towards fully integrated, trusted, and valuable \ac{AI} systems in healthcare is complex and fraught with challenges.
+However, with a clear understanding of user needs, a commitment to iterative and transparent design, and a focus on personalization, we believe the potential benefits for clinicians and patients alike are immense and worth the effort.
+Our research marks a significant step in this direction, and we hope it serves as a valuable foundation for subsequent explorations in this burgeoning field.
