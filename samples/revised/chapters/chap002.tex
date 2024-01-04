@@ -1,0 +1,114 @@
+% #############################################################################
+% This is Chapter 2
+% !TEX root = main.tex
+% #############################################################################
+% Change the Name of the Chapter i the following line
+\fancychapter{Background}
+\clearpage
+% The following line allows to ref this chapter
+\label{chap:chap002}
+
+Chapter~\ref{chap:chap002} provides valuable background information about the breast cancer domain in the context of this thesis.
+While it does not present any original contributions, it can be omitted by readers already familiar with the subject matter.
+For more comprehensive details, including additional background information and medical specifications, please refer to Appendix~\ref{chap:app001}.
+
+\section{Medical Imaging Diagnosis}
+\label{sec:chap002001}
+
+Screening aims to identify cancer at earlier stages of several diseases when treatment can be more successful~\cite{McKinney2020}.
+However, two main difficulties arise.
+First, the amount of data to be processed has been increasing significantly and dramatically surpasses the throughput capabilities of radiologists~\cite{HANNA20181709}.
+Second, processing such an amount of data in a timely fashion without compromising the reliability of the diagnosis is very challenging~\cite{McKinney2020}.
+These difficulties have been the driving force behind the recent trend in radiomics\footnotemark[4] (Section~\ref{sec:chap002006}) and the integration of \ac{AI} techniques into medical imaging~\cite{doi:10.1148/radiol.2015151169}.
+For a more detailed exploration of these challenges, please refer to Section~\ref{sec:app001001} in Appendix~\ref{chap:app001}.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\footnotetext[4]{Involving the high-throughput extraction of quantitative imaging features, {\it radiomics} intent of creating mining information from radiological images. Large-scale data sharing is necessary for the validation and full potential that {\it radiomics} represents.}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Breast Cancer Domain}
+\label{sec:chap002002}
+
+Multi-modal data is crucial in breast cancer diagnosis (Figure~\ref{fig:fig005} on Section~\ref{sec:app001002} of Appendix~\ref{chap:app001}), impacting the clinical workflow~\cite{10.1117/1.JBO.22.4.046008}.
+While \ac{MG} is the primary screening modality, it may not suffice for accurate diagnoses, particularly in dense breasts where lesion detection is challenging~\cite{10.1093/jbi/wbaa010}.
+Conversely, adipose breasts allow precise lesion visualization, necessitating additional modalities for complementing the diagnosis.
+\ac{US} and \acs{DCE-MRI} modalities provide valuable information, facilitating lesion visualization.
+Ultimately, the primary objective in breast cancer diagnosis is to classify tumors based on severity into benign or malign categories~\cite{SHAN2016980}.
+
+\section{Severity Classification}
+\label{sec:chap002003}
+
+Clinical guidelines emphasize the importance of regular image screenings for evaluating the risk of breast cancer~\cite{MIAO201817}.
+To enhance consistency in the interpretation of imaging findings, the \acs{ACR} introduced the \acs{BI-RADS}~\cite{d2018breast}, which provides a standardized process (Figure~\ref{fig:fig020} on Section~\ref{sec:app001003} of Appendix~\ref{chap:app001}) for describing imaging characteristics and a classification framework with six categories to assess the probability of malignancy.
+In the present study, a \acs{DNN} was trained to perform \acs{BI-RADS} classification (Section~\ref{sec:app004003} of Appendix~\ref{chap:app004}).
+While this section offers a concise overview of severity classification, Section~\ref{sec:app001003} of Appendix~\ref{chap:app001} delves into further details regarding breast lesion classification.
+
+\section{Lesion Typification}
+\label{sec:chap002004}
+
+The lesion typification~\cite{doi:10.1148/radiol.2018181371} is also challenging in this thesis background.
+The goal of this section is to explain what is the importance of the lesions, {\it i.e.}, masses (Section~\ref{sec:chap002004001}) and the microcalcifications (Section~\ref{sec:chap002004002}), that will feed the \ac{AI} algorithms (Chapter~\ref{chap:chap005} and Chapter~\ref{chap:chap006}) and provide visual information to clinicians.
+For the severity classification~\cite{8611096, 9231684}, it is essential to know the type of mass shapes, microcalcification patterns, and size to understand their importance to the algorithms.
+This section summarizes the importance of lesion typification, which will be further detailed in Section~\ref{sec:app001004} of Appendix~\ref{chap:app001}.
+
+\subsection{Masses}
+\label{sec:chap002004001}
+
+Mass typification is a crucial aspect of a breast cancer diagnosis.
+Benign masses commonly exhibit round, oval, or lobular shapes, while malignant masses are often characterized by lobular, irregular, or architectural distortion shapes (Figure~\ref{fig:fig021} on Section~\ref{sec:app001004001} of Appendix~\ref{chap:app001}).
+Margins play a significant role in lesion evaluation.
+A circumscribed margin indicates a benign lesion, whereas microlobulated, indistinct, and spiculated margins raise suspicion, with spiculated margins being the most concerning.
+An obscured margin, where part of the margin is concealed by fibroglandular tissue, necessitates further investigation, such as an \ac{US} examination (Figure~\ref{fig:fig018}).
+It is important to note that this section summarizes the topic, with further details to be presented in Section~\ref{sec:app001004001} of Appendix~\ref{chap:app001}.
+
+\subsection{Microcalcifications}
+\label{sec:chap002004002}
+
+In this section, we provide an overview of microcalcification typification, covering five types and their corresponding patterns (Figure~\ref{fig:fig022} on Section~\ref{sec:app001004002} of Appendix~\ref{chap:app001}).
+These patterns include diffuse, regional, group, linear, and segmental, each representing distinct characteristics of microcalcifications.
+Understanding these patterns is crucial in diagnosing and assessing the severity of breast cancer.
+Further details about microcalcification patterns will be discussed in Section~\ref{sec:app001004002} of Appendix~\ref{chap:app001}.
+It's important to note that a comprehensive and accurate dataset for clinicians and \ac{AI} algorithms requires a multimodal approach beyond mammography (Figure~\ref{fig:fig018}).
+The subsequent section (Section~\ref{sec:chap002005}) will explore the current imaging workflow and emphasize the significance of multi-modal data availability.
+
+\section{Radiology Reading Room}
+\label{sec:chap002005}
+
+This section summarizes the intricate radiological workflow, further detailed in Section~\ref{sec:app001005} of Appendix~\ref{chap:app001}.
+The radiological workflow consists of three stages:
+(1) {\it examination};
+(2) {\it diagnosis}; and
+(3) {\it report}.
+Understanding each stage is vital for both the \ac{HCI} and \ac{AI} communities, as it offers valuable insights into the advancements made in this thesis, particularly in assisting radiologists.
+
+During the {\it examination} (Section~\ref{sec:app001005001}) stage, the radiologist reviews patient records and correlates medical imaging with other relevant information.
+The {\it diagnosis} (Section~\ref{sec:app001005002}) stage involves analyzing medical images and utilizing various sources of information to enhance accuracy.
+Finally, the {\it report} (Section~\ref{sec:app001005003}) stage captures the radiologist's findings and is a critical communication tool for other healthcare professionals.
+In Section~\ref{sec:app001005004} of Appendix~\ref{chap:app001}, we also summarize the main clinical procedures involved in the radiological workflow.
+
+\section{Radiomics}
+\label{sec:chap002006}
+
+\ac{DL} has emerged as a powerful asset in {\it radiomics}~\cite{litjens2017survey}, improving the accuracy of breast cancer diagnoses.
+These \ac{DL} models are contributing significantly to the {\it radiomics} pipeline (Figure~\ref{fig:fig023} on Section~\ref{sec:app001006} of Appendix~\ref{chap:app001}), including image pre-processing, feature extraction, and classification~\cite{10.1007/978-3-030-59716-0_71}.
+However, their `black box' nature, need for extensive annotated data, and data privacy concerns pose challenges~\cite{litjens2017survey}.
+This thesis explores these challenges and solutions, emphasizing the role of \ac{HCI} in enhancing trust and adoption of \ac{AI}-assisted medical tools (Chapter~\ref{chap:chap004}).
+Further insights into the role of \ac{DL} models in {\it radiomics} are provided in Section~\ref{sec:app001006} of Appendix~\ref{chap:app001}.
+
+\section{Medical Imaging Standards}
+\label{sec:chap002007}
+
+This section summarizes the \acs{DICOM} format, a widely used medical standard for storing images~\cite{Trivedi2019}.
+It supports various medical information types and file format conversions.
+\acs{DICOM} files use associative arrays for hierarchical data structures (Figure~\ref{fig:fig025} on Section~\ref{sec:app001007} of Appendix~\ref{chap:app001}), with each key referred to as a \acs{DICOM} tag.
+Standardizing these tags improves readability and facilitates the storage of exams and patient information (Section~\ref{sec:chap002008}).
+Further details on this topic can be found in Section~\ref{sec:app001007} of Appendix~\ref{chap:app001}.
+
+\section{Medical Imaging Storage}
+\label{sec:chap002008}
+
+The \acs{PACS}~\cite{carter2018digital} offers efficient storage and a simple way to access the \acs{DICOM} images in a variety of modalities.
+The deployment of these technologies requires specific packages and environments, which will be further detailed in Section~\ref{sec:app001008} of Appendix~\ref{chap:app001}.
+Our platform provides essential tools for deploying multimodality strategies, interactive image visualization/manipulation, and study navigation in a web browser.
+This paves the road for integrating multimodality strategies into, \acs{PACS} as it only needs a web browser that is always accessible on clinical workstations.
+Further details on deploying these technologies and environments can be found in Section~\ref{sec:app001008} of Appendix~\ref{chap:app001}.
