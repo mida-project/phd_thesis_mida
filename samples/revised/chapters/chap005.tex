@@ -11,7 +11,7 @@
 \vspace{0.05mm}
 
 \noindent
-{\it This Chapter~\ref{chap:chap005} was published in two top (Q1 in 2021 and 2022, respectively) ranked journals:}
+{\it Chapter~\ref{chap:chap005} was published in two journals, ranked Q1 in 2021 and 2022, respectively:}
 
 \vspace{0.05mm}
 
@@ -85,8 +85,8 @@ By focusing on the integration of multimodality and \ac{AI} techniques in {\it B
 In this section, two areas motivate our research work:
 a) related works designing autonomous systems ({\it e.g.}, {\it radiomics}, \acp{CADe}, \acp{CADx}, \acp{CDSSe}) for the clinical workflow, while providing an assisted medical imaging analysis; and
 b) the theories of \ac{HAII} collaboration while covering users' expectations and potential gaps.
-The section begins by outlining the role of design for the clinical workflow and how it is currently handled in various steps of the \ac{DL} pipeline (Figure~\ref{fig:fig027}) and {\it radiomics} stages, including image segmentation, feature extraction, and image classification.
-Then, the section introduces the reader to existing \ac{HAII} techniques to facilitate the integration of those intelligent agents into the framework.
+The section begins by outlining the role of design for the clinical workflow and how it is currently handled in various steps of the \ac{DL} pipeline and {\it radiomics} stages (Figure~\ref{fig:fig027}, Section~\ref{sec:app004001} of Chapter~\ref{chap:app004}), including image segmentation, feature extraction, and image classification.
+Then, the section introduces existing \ac{HAII} techniques for integrating intelligent agents into the framework.
 
 \subsection{Clinical Workflow Design}
 \label{sec:chap005002001}
@@ -95,7 +95,7 @@ In modern healthcare, medical images play a crucial role in supporting decision-
 Accurate lesion detection and segmentation are often mandatory for image analysis and {\it radiomics}, where numerous methods have been proposed to automatically perform these tasks~\cite{litjens2017survey}.
 In the field of breast cancer, medical imaging systems allow clinicians to diagnose several modalities from the retrieval of medical imaging data~\cite{seifabadi2019correlation}.
 To enhance clinical workflows, a wide range of \acp{CDSSe} are designed, including those that provide potential information for medical decision-making and those that make diagnostic decisions~\cite{10.1145/3290605.3300234, GU2020101858}.
-However, experts may resist using a system if it does not capture the nuances of their mental models or provides relevant context~\cite{yang2016investigating}.
+However, experts may resist using a system if it does not capture the nuances of their mental models or provides relevant context~\cite{10.1145/2858036.2858373}.
 Conversely, clinicians are known to resist changes and new tools~\cite{10.1145/3132272.3134111}, an issue that has an impact in their workflow.
 In our research, we take a human-centered approach to understanding various design aspects and expectations of a medical imaging \ac{CDSSe} that is integrated into a real radiology workflow.
 To accomplish this, we use methods such as bringing focus groups, workshops, observations, and interviews from the literature~\cite{Lim:2019:DDI:3319806.3301427} into our user research activities (Section~\ref{sec:chap005003001}).
@@ -179,9 +179,18 @@ From the research {\it insights}, the following main challenges were identified:
 i) how can we design for the heterogeneous visualization nature of large imaging numbers and file sizes; and
 ii) how the introduction of intelligent agents can improve patient classification.
 From the  observations and interviews, it was clear that clinicians observe only a fraction of the \ac{MRI} volumes (Section~\ref{sec:app001005002} of Appendix~\ref{chap:app001}).
-Also, the imaging volumes inspected are different depending on the practices of each clinical institution (Figure~\ref{fig:fig018} on Section~\ref{sec:app001005} of Appendix~\ref{chap:app001}).
+Also, the imaging volumes inspected are different depending on the practices of each clinical institution \textcolor{revised}{(Figure~\ref{fig:fig018})}.
 For instance, it was observed that in \acs{HFF} only the \acs{DCE-MRI} at the second time instant is considered, while in \acs{IPOL} only the third time instant of imaging volume is used for diagnosis.
 Consequently, the \ac{UI} should reflect the specific institution, as it will be detailed in Section~\ref{sec:chap005004002}.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure}[ht]
+\centering
+\includegraphics[width=\columnwidth]{images/fig018}
+\caption{Workflow of the radiology reading room is commonly adopted in clinical institutions using several image acquisition strategies. Screening modalities ({\it e.g.}, US, MRI, etc.) constitute important complementary information for a reliable diagnosis.}
+\label{fig:fig018}
+\end{figure}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 Related to the requirements of {\it radiomics}, the second challenge involves the generation of \ac{GT} data.
 This is twofold, namely,
@@ -194,44 +203,60 @@ This is particularly relevant in designing the {\it BreastScreening-AI} prototyp
 \subsection{Preliminary Design}
 \label{sec:chap005003003}
 
-In this thesis, our design keys are completed with {\it insights} from interviewing participants.
-Across this section, the study of a preliminary design is described for the medical assistant development, informed by an iterative process to identify clinician's needs.
-The design process involved workshops (Section~\ref{sec:chap005003003001}) where participants were introduced to open-ended questions, focus group sessions (Section~\ref{sec:chap005003003002}) with the research team, and the use of affinity diagrams (Section~\ref{sec:chap005003003004}) to cluster and categorize ideas (Section~\ref{sec:chap005003003003}).
-The following sections will provide more detail on this preliminary design.
+\textcolor{revised}{This thesis, rooted in \ac{UCD}, integrates insights from participant interviews into our design approach.
+It details the development of a medical assistant using an iterative methodology focused on clinicians' needs.
+This approach aligns the solutions with healthcare professionals' requirements, leading to intuitive and effective designs for clinical use.
+Our work connects \ac{AI} technology with practical application by centering on clinicians, ensuring relevance and utility in medical practice.}
+
+\textcolor{revised}{Workshops (Section~\ref{sec:chap005003003001}) were pivotal in this process, with participants answering open-ended questions for broad insights.
+Focus groups (Section~\ref{sec:chap005003003002}), involving the research team, further utilized affinity diagrams (Section~\ref{sec:chap005003003004}) for critical idea organization.
+These diagrams, essential for clustering and categorizing ideas (Section~\ref{sec:chap005003003003}), aligned with \ac{UCD} principles to ensure design evolution through user feedback and collaboration.
+The following sections detail this preliminary design, demonstrating adherence to \ac{UCD} methodologies, from data collection to iterative design refinement.}
 
 \subsubsection{Clinical Workshops}
 \label{sec:chap005003003001}
 
-The first step of our design activities was to record {\it workflow} practices and routines from clinicians.
-To this end, several invitations were sent among the various medical institutions, and, at least, one workshop was formed per each institution as described next.
-All participants (Section~\ref{sec:chap005005001}), who volunteered for the remaining study, were grouped in various sessions.
-The research team went to these clinical institutions at least one day per institution.
-For the \acs{HFF} clinical institution, four workshop meetings were made, while it was the institution with more clinicians and, therefore, harder to schedule.
-For the \acs{IPOL} clinical institution, two workshop meetings were made, as well as for the \acs{HB} clinical institution.
-For the other institutions, just one workshop meeting was made.
-A total of 45 professionals from the sector of healthcare ({\it i.e.,} Radiologists, Oncologists, and Surgeons), as well as six members of the {\it BreastScreening} research work ({\it i.e.}, \ac{HCI} and \ac{AI} Researchers) participated in these series of workshops.
+\textcolor{revised}{The first step of our design activities involved exploring the {\it workflow} practices and routines of clinicians.
+This process began with sending out invitations to various medical institutions and organizing at least one workshop per institution.
+Participants, detailed in Section~\ref{sec:chap005005001}, were volunteers who were grouped into different sessions.
+The research team dedicated at least one day to each institution for these workshops.
+Specifically, the \acs{HFF} institution required four workshop sessions due to its larger clinician population, posing scheduling challenges.
+\acs{IPOL} and \acs{HB} institutions hosted two sessions.
+For the remaining institutions, one workshop session was sufficient.
+In total, 45 healthcare professionals, including Radiologists, Oncologists, and Surgeons, along with six members of the {\it BreastScreening} research team (specializing in \acs{HCI} and \acs{AI}), participated in these workshops.}
 
-Based on preliminary content analysis of the semi-structured interviews with clinicians, workshops were conducted as part of the {\it BreastScreening} research work development.
-Participants worked in groups and brainstormed around their clinical practices and routines.
-Most of the practices are recorded and written.
-Also, notes were digitally transcribed while addressing (Section~\ref{sec:chap005003003003}) the affinity diagramming\footnotemark[6] technique.
-This participatory approach was planned to ensure that the needs and feedback informed the design of a novel intelligent agent for proper integration into real-world clinical settings.
+\textcolor{revised}{The decision to conduct workshops, rather than shadowing clinicians, was influenced by ethical and privacy considerations~\cite{10.1145/3449199}.
+Our established protocol with \acs{HFF} was meticulously designed to encompass specific patients within our dataset, ensuring they are under ethical approval from the hospital.
+However, this protocol did not encompass patients outside the protocol.
+Consequently, shadowing clinicians in their routine practice would have risked inadvertent exposure of the non-anonymized patients inside this institution's \acs{RRR}, thereby contravening established ethical and privacy norms.
+In light of this, workshops emerged as a more ethically sound alternative.
+They enabled us to gather valuable insights while maintaining the privacy of all patients, particularly those who were not directly informed about or involved in our research activities.
+This approach not only adhered to ethical standards but also ensured the integrity of our research process in the sensitive clinical environment.}
+
+\textcolor{revised}{These workshops, integral to the {\it BreastScreening} research, involved group-based brainstorming sessions about clinical practices and routines.
+The majority of these practices were meticulously recorded and subsequently transcribed digitally.
+During these sessions, we employed the affinity diagramming\footnotemark[6] technique (Section~\ref{sec:chap005003003003}) to organize and analyze the data systematically.
+This participatory approach was deliberately chosen to ensure that the design of our novel intelligent agent was informed by direct feedback and real-world needs, facilitating its seamless integration into clinical settings.}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\footnotetext[6]{Affinity diagramming is a powerful data organization and analysis method. The method was used to help understand the role of technology in the radiology room workflow. More precisely, affinity diagrams were used to organize the provided information from clinicians to group it with related ideas or topics.}
+\footnotetext[6]{Affinity diagramming is a methodical approach for organizing and analyzing complex data sets. In our context, it was pivotal in understanding the role of technology within radiology workflows. By using affinity diagrams, we could categorize clinicians' information into coherent groups, aligning them with related ideas or topics, and enhancing our understanding of their workflow intricacies.}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-The workshop by session was roughly two hours and ended with joint sessions wherein each group of clinicians highlighted essential aspects of the clinical {\it workflow} for their institutions.
-Four different procedures were collected at the end of the workshop sessions (Figure \ref{fig:fig018}) for acquiring medical images.
-Participants engaged in the planned design activities, providing inputs regarding the intelligent agent (Figure~\ref{fig:fig040}).
-Using the provided input from the workshops, a prototype was designed, which was evaluated (Section~\ref{sec:chap005005003}) during several sessions at the nine clinical institutions.
+\textcolor{revised}{Each workshop session lasted approximately two hours and concluded with joint sessions where each clinician group highlighted critical aspects of the clinical {\it workflow} for their institutions.
+Four distinct procedures for acquiring medical images were collated at the end of these sessions (Figure \ref{fig:fig018}).
+Participants actively engaged in the design activities, providing valuable inputs regarding the intelligent agent.
+Utilizing the insights gathered from the workshops, a prototype was developed and subsequently evaluated during multiple sessions across the nine clinical institutions (Section~\ref{sec:chap005005003}).}
 
 \subsubsection{Focus Groups}
 \label{sec:chap005003003002}
 
-Building on the qualitative data from the workshops with clinicians, a focus group consisting of six Researchers (\acs{MSc}, \acs{PhD} and Post-Doc students, as well as Assistant and Full Professors) and another six Radiologists (2 seniors; 1 middle; 2 juniors; and 1 intern) from the \acs{HFF} clinical institution, organized the {\it workflow} practices and main functionality ideas to greater detail by using affinity diagrams~\cite{CALISTO2021102607}.
-The affinity diagrams enable this study to identify several functionalities, such as the need to {\it accept} or {\it reject} the {\it assistant} result (Figure~\ref{fig:fig040}).
-Also important, it was from the affinity diagrams that it achieved a high priority functionality for developing a technique so that in case of {\it reject} the intelligent agent recommendation, the clinician can provide new information to retrain the DenseNet (Section~\ref{sec:app004004} of Appendix~\ref{chap:app004}).
+\textcolor{revised}{After the workshops with clinicians (Section~\ref{sec:chap005003003001}), a focus group of six Researchers (\acs{MSc}, \acs{PhD}, Post-Doc students, and faculty) and six Radiologists (2 seniors; 1 middle; 2 juniors; and 1 intern) from \acs{HFF} used affinity diagrams to organize {\it workflow} practices and functionality ideas~\cite{CALISTO2021102607}.
+Using these affinity diagrams was an essential aspect of our \ac{UCD} methodology, enabling the systematic identification and prioritization of functionalities.
+For instance, the affinity diagrams highlighted the critical need for clinicians to {\it accept} or {\it reject} the {\it assistant}'s results.
+Notably, the affinity diagrams revealed a high-priority need for a feedback mechanism to retrain the DenseNet when clinicians {\it reject} the intelligent agent's recommendation (Section~\ref{sec:app004004} of Appendix~\ref{chap:app004}).
+This approach refines functionalities based on clinician input, exemplifying \ac{UCD} and ensuring the design evolves with user needs and feedback.}
+
+% \vspace{1.00mm}
 
 \noindent
 The technique is novel and, while applying these \ac{HCI} practices, it provides twofold contributions:
@@ -255,16 +280,9 @@ Finally, because of the high costs ({\it e.g.}, time of acquiring the images) as
 \subsubsection{Affinity Diagrams}
 \label{sec:chap005003003003}
 
-This interactive process consisted of adding or removing items until a final pattern configuration was reached.
-As these ideas and functionalities from the clinicians could be relevant for several purposes, it was considered helpful to short on a more general level for starting with.
-Ideas, functionalities, and priorities were translated (Figure~\ref{fig:fig039}) to a digital tool\footnotemark[7] support, while the affinity diagrams~\cite{10.1145/3290605.3300628} are used for:
-(i) categorization of the focus group items; and
-(ii) data clustering of the chaotic information.
-This solves the challenge of chaotic data analysis, common in \ac{ML} projects~\cite{10.1145/2858036.2858373, 10.1145/3343413.3377983}.
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\footnotetext[7]{For that, the collaboration software \href{https://trello.com}{Trello} (\href{https://trello.com}{trello.com}) was used, which allowed this study to organize and manage the group ideas digitally. The links were accessed on the 5th of April, 2023.}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\textcolor{revised}{The use of affinity diagrams in our study was a dynamic and interactive process (Figure~\ref{fig:fig039}), characterized by the iterative addition and removal of items to achieve a final pattern configuration.
+This approach, aligning with \ac{UCD} principles, was particularly effective given the diverse range of clinicians' ideas and functionalities.
+Starting with a broad categorization, we established a strong foundation for a more detailed analysis, allowing us to capture a wide range of insights without prematurely restricting our focus.}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure}[htbp]
@@ -275,18 +293,66 @@ This solves the challenge of chaotic data analysis, common in \ac{ML} projects~\
 \end{figure}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-From workshops (Section~\ref{sec:chap005003003001}), participants ({\it i.e.}, researchers and some of the clinicians) of the focus group (Section~\ref{sec:chap005003003002}), were asked to review and re-position ideas and functionalities, within each category, in order to organize them.
-Every time an idea or functionality was triggered, it was inserted into the ``Action Items'' category.
-After that, participants discuss where it should be, answering the workshop needs for item categorization.
+\textcolor{revised}{These ideas, functionalities, and priorities were then systematically translated into a digital format\footnotemark[7] using the collaborative tool.
+Digital translation played a crucial role in streamlining data organization and enhancing collaboration among the research team.
+It facilitated comprehensive insight capture and categorization, improving our data analysis's robustness.
+Moreover, the flexibility of the digital format in modifying and reorganizing ideas was essential in adapting to evolving insights and feedback, a key aspect of the iterative \ac{UCD} process.}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\footnotetext[7]{For that, the collaboration software \href{https://trello.com}{Trello} (\href{https://trello.com}{trello.com}) was used, which allowed this study to organize and manage the group ideas digitally. The links were accessed on the 5th of April, 2023.}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\vspace{1.00mm}
+
+\noindent
+\textcolor{revised}{In this context, affinity diagrams~\cite{10.1145/3290605.3300628} played a crucial role by:}
+
+\vspace{0.10mm}
+
+\begin{enumerate}[(i)]
+\item \textcolor{revised}{Categorizing items from the focus group, structuring the diverse inputs into coherent categories.}
+\item \textcolor{revised}{Clustering chaotic and complex data, a common challenge in \ac{ML} projects~\cite{10.1145/2858036.2858373, 10.1145/3343413.3377983}, into manageable and interpretable groups.}
+\end{enumerate}
+
+\vspace{0.10mm}
+
+\textcolor{revised}{Our methodology adeptly navigated the complexities of chaotic data analysis in medical imaging diagnosis.
+By integrating affinity diagrams, we organized complex data and ensured continual alignment with clinician feedback.
+This approach facilitated an iterative cycle where designs were consistently refined based on evolving insights, crucial for developing \ac{AI}-assisted diagnostic tools that are technically robust and clinically relevant, especially in breast cancer diagnosis.
+The use of affinity diagrams thus became a pivotal element in our research, transcending data organization to reinforce a user-focused trajectory, ensuring that every stage of development resonated with the practical needs of clinicians.}
+
+\textcolor{revised}{During the workshops (Section~\ref{sec:chap005003003001}), participants, encompassing both researchers and clinicians, were deeply engaged in the affinity diagramming process within the focus groups (Section~\ref{sec:chap005003003002}).
+This collaborative effort involved critically reviewing and repositioning ideas and functionalities within various categories.
+Initially grouped under the ``Action Items'' component, each concept or functionality was subject to a rigorous re-evaluation and re-categorization, facilitated by inclusive group discussions.
+This methodical approach fostered a deeper understanding of the clinicians' perspectives and encouraged diverse viewpoints, enriching the design process with multifaceted insights.}
+
+\textcolor{revised}{The iterative process was a conscious implementation of \ac{UCD} principles, aimed at ensuring the design's continuous alignment with clinicians' real-world needs and insights.
+Embedding \ac{UCD} principles centrally within our methodology ensured that each element of the design was closely aligned with and shaped by the viewpoints of end-users.
+This approach markedly improved the practicality and user-friendliness of our solutions in clinical settings.
+Moreover, adopting these principles fostered a dynamic design environment, where feedback was actively sought and incorporated, resulting in a product that genuinely resonates with its intended users.}
+
+% \vspace{2.5mm}
+
+\noindent
 For instance, several clinicians listed\footnotemark[8] their preferred components as the position (32/45) and simplicity (28/45) of the {\it Toolbar} (Section~\ref{sec:chap005004002}):
-``The {\it Toolbar} position should be on the top in contrary to what we usually see'' (C30).
-From here, an item was created titled as ``Toolbar Position'' and since it was accepted by a major number of clinicians (and rejected or omitted by a minor number) the item was stuck onto the ``Went Well'' category.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \footnotetext[8]{The workshop answers and feedback were transcribed so that they can join with similar opinions in different items. A ``(32/45)'' means that 32 clinicians for a total of 45 clinicians appointed a similar sentence of the clinician number 30, {\it i.e.}, ``(C30)'' on that example.}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\vspace{0.05mm}
+\vspace{2.50mm}
+
+\noindent
+``{\it The {\bf Toolbar} position should be on the top in contrary to what we usually see}.'' (C30)
+
+\vspace{2.50mm}
+
+\textcolor{revised}{In this phase, we created a labeled ``Toolbar Position'' item, which underwent evaluation by the clinicians.
+Most clinicians endorsed this item, leading to its placement in the ``Went Well'' category, indicative of positive reception.
+This categorization reflected our \ac{UCD} principle of iterative design, where clinician feedback directly influenced the design process.
+The minority who rejected or omitted the item offered insights for refinement, showcasing the dynamic, responsive nature of our \ac{UCD} approach.}
+
+\vspace{1.00mm}
 
 \noindent
 Through the affinity diagrams, it was found that specific items, within each own categories, correspond to three needs of clinicians:
@@ -308,24 +374,40 @@ The technique was of chief importance to promote an understanding of this thesis
 Without such an approach, it would be impossible to follow the proper design of the developed intelligent agent.
 Furthermore, the technique will follow all the steps and iterations that will be important for the future directions of this thesis (Section~\ref{sec:chap007004} of Chapter~\ref{chap:chap007}).
 
-During the focus group, clinicians identified the need to map out all {\it workflow} processes and activities required to complete the diagnostic pipeline.
-This highlighted the importance of introducing \ac{AI} systems taking into account these {\it workflow} characteristics to assist with their clinical tasks.
+\textcolor{revised}{During the focus group sessions, clinicians emphasized the necessity to comprehensively map out all {\it workflow} processes and activities integral to the diagnostic pipeline.
+This discussion underscored the significance of integrating \ac{AI} systems tuned to these specific {\it workflow} characteristics, thereby augmenting their clinical tasks.
+This aspect of the research aligns with the \ac{UCD} approach, where understanding and incorporating user workflows is crucial in designing effective \ac{AI} tools.}
+
+\vspace{1.50mm}
+
+\noindent
 One clinician even stated that an intelligent agent would make their job more straightforward:
-``If we have an intelligent assistant like this in our workflow, it will be more simple and easy to do our job'' (C45).
-The identified needs included all the preconditions that facilitate prompt diagnosis.
+
+\vspace{2.50mm}
+
+\noindent
+``{\it If we have an assistant like this in our workflow, it will be more simple and easy to do our job.}'' (C45)
+
+\vspace{1.50mm}
+
+\textcolor{revised}{This statement aligns with \acs{UCD}'s primary goal: simplifying and improving the user experience.
+The identified needs to cover essential preconditions for prompt, accurate diagnosis, highlighting a user-centric approach in \ac{AI} system development.
+Focusing on these needs ensured our research followed \ac{UCD} principles, making the intelligent agent's design and implementation responsive to clinicians' real-world requirements.}
 
 Throughout this process, a set of design guidelines have been derived.
-In order to investigate how the clinical {\it workflow} proceeds, affinity diagrams were used to connect ideas and features to a set of guidelines that will be described next.
+To investigate how the clinical {\it workflow} proceeds, affinity diagrams were used to connect ideas and functionalities to a set of guidelines that will be described next.
 For this purpose, three central design components were created that can be applied for medical imaging systems with \ac{AI} behind:
 (i) highlighting the essential lesion regions;
 (ii) explaining the \ac{AI} results for higher interpretability; and
 (iii) providing control of the final result.
 As follows, these three design components are translated into four design guidelines.
 
+\vspace{2.00mm}
+
 \noindent
 From Figure~\ref{fig:fig039} and from the feedback obtained when building the affinity diagrams, the following design guidelines were considered:
 
-\vspace{1.00mm}
+\vspace{1.50mm}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{description}
@@ -341,21 +423,23 @@ This means the \ac{AI} system should support and enhance activities that facilit
 \vspace{1.50mm}
 
 \item[Provide Explanations] - the system must provide answers regarding the final \ac{AI} result.
-In this work, an ``Explain'' button (Figure~\ref{fig:fig040}) was created so that clinicians can open the heatmaps (Figure \ref{fig:fig032}) on the image.
+In this work, an ``Explain'' button (Figure~\ref{fig:fig040}) was created so that clinicians can open the heatmaps (Figure \ref{fig:fig032}) on the image to explain the \ac{AI} recommendations.
 The heatmaps will show the variability (color) of the important regions, which is information that will explain the final \ac{BI-RADS}.
 
 \vspace{1.50mm}
 
-\item[Feeling in Control] - the {\it Assistant} must provide control for the final decision. Clinicians must feel that, in case of a wrong \ac{AI} diagnostic, the final result must be changed ({\it reject}) by them so that we can guarantee the patient's safety and the right treatment of the lesion.
+\item[Feeling in Control] - the {\it Assistant} must provide control for the final decision. Clinicians must feel that, in case of a wrong \ac{AI} diagnostic, the final result must be changed ({\it reject}) by them so that we can guarantee the patient's safety and the right classification of the lesion.
 \end{description}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \vspace{2.00mm}
 
-Next (Section~\ref{sec:chap005003003004}), the document describes how the clustering of acquired data was essential.
-The importance of clustering is based on the {\it affinity} of the collected ideas and functionalities.
-The clustering process allowed us to identify common themes and patterns in the data, which were used to inform the design guidelines for the proposed medical assistant.
-By clustering the ideas and functionalities, we could distill the large amount of data collected from the interviews and workshops into a smaller set of key design components that could be applied to medical imaging systems with \ac{DL} models behind.
+\textcolor{revised}{To summarize, clinicians envision a transformation in their work processes as \ac{AI} tools integrate into breast cancer diagnosis.
+This evolution requires comprehensive training for their adjustment to new \acs{AI}-augmented workflows and decision-making.
+The collaboration between clinicians and \ac{AI} continuously refines itself through ongoing learning from new data, progressively improving diagnostic accuracy and efficiency.
+In this section (Section~\ref{sec:chap005003003004}), we delve into the key role of data clustering within our research methodology.
+Clustering, guided by the inherent `affinity' among collected ideas and functionalities, proves indispensable in uncovering common themes and patterns in the data, aligning seamlessly with established \ac{UCD} methodologies for informed design decisions~\cite{10.1145/3290605.3300234, 10.1145/3313831.3376718}.
+In our \ac{UCD} approach, this clustering efficiently distills data from interviews and workshops into essential design components for medical imaging systems with \ac{DL} methods, ensuring user needs shape the design of intelligent agents.}
 
 \subsubsection{Essential Data}
 \label{sec:chap005003003004}
@@ -365,9 +449,7 @@ Indeed, the \ac{MRI} data is inherently chaotic since each exam contains tens of
 The volumes can be part of several sequences\footnotemark[9] for the \ac{MRI} modality.
 Thus, designing a comprehensive visualization for such chaotic data is necessary.
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\footnotetext[9]{As the most sensitive method for detection of breast cancer (\href{https://radiopaedia.org/articles/breast-mri?lang=us}{radiopaedia.org/articles/breast-mri}), the breast MRI aims to obtain a reliable evaluation of any lesion within the breast. However, the modality relies on several sequence options, such as: (1) T1 (longitudinal relaxation time), the time constant which determines the rate at which excited protons return to equilibrium; (2) T2 (transverse relaxation time), similar to T1, but with the second time constant; (3) T2 Fat-Sat, pulses are short-duration tuned to the resonance frequency of fat; (4) T2 Turbo Inversion Recovery Magnitude (TIRM); (5) Diffusion, method that produces invivo MRI of tissues sensitized with the local characteristics of molecular diffusion; (6) DCE Maximum Intensity Projection (MIP); (7) DCE WithOut (WO) contrast agent; and (8) DCE Positive Enhancement Integral (PEI). Although they are more, these were the MRI sequence options used by the nine institutions. Nevertheless, it is important to underline that the MRI volumes are always used as an adjunct to the standard diagnostic procedures of the breast, {\it i.e.}, clinical examination, MG and US.}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\vspace{1.00mm}
 
 \noindent
 Specifically, for the medical imaging background (Chapter~\ref{chap:chap002}), the following \ac{MRI} characteristics were addressed:
@@ -391,14 +473,21 @@ Specifically, for the medical imaging background (Chapter~\ref{chap:chap002}), t
 
 \vspace{0.05mm}
 
-The process of clustering notes based on their {\it affinity} to a shared topic helps to create data groups, which are recursively labeled and clustered until the highest level has only a few groups~\cite{harrington2016affinity}.
-This leads to the identification of common issues and potential solutions, helping to frame user needs and design problems.
-The approach supported the final design and development decisions for the intelligent agent, resulting in an optimized solution that meets user needs.
+\textcolor{revised}{To address the ``chaotic data problem'' in our work, affinity diagramming was utilized~\cite{harrington2016affinity}.
+The method streamlined the organization of notes by clustering them according to shared topics, thereby forming structured data groups.
+Through an iterative process of labeling and clustering, we distilled the information into a few high-level groups.
+These groups were crucial for pinpointing prevalent issues and viable solutions.
+Employing this structured approach proved pivotal in delineating user needs and design challenges, ultimately guiding the design and development of the intelligent agent.}
 
-During the focus groups (Section~\ref{sec:chap005003003002}), participants identified several user needs and requirements that were crucial ({\it i.e.}, ``Essential'' column of Figure~\ref{fig:fig039}) in defining the most critical modalities and procedures for the medical imaging workflow (Figure~\ref{fig:fig018}).
-With several \ac{MRI} sequences available, clinicians face the ``chaotic data problem'' of visualizing all the volumes.
-Therefore, it is essential to identify the \ac{MRI} volumes that best match the clinicians' needs.
-This process is supported by affinity diagrams and the resulting user needs and requirements, which help define essential modalities and procedures for the workflow.
+\textcolor{revised}{During focus groups (Section~\ref{sec:chap005003003002}), participants pinpointed several user needs and requirements deemed essential (as shown in the ``Essential'' column of Figure~\ref{fig:fig039}).
+These insights were critical in defining the most pertinent modalities and procedures for the medical imaging workflow (Figure~\ref{fig:fig018}).
+Given the plethora of \ac{MRI} sequences available, clinicians often grapple with the challenge of visualizing all volumes effectively.
+Identifying the \ac{MRI} volumes that align closely with clinicians' needs was thus imperative.
+This identification was facilitated by the affinity diagrams, which distilled user needs and requirements, helping to define essential modalities and procedures for the workflow.}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\footnotetext[9]{As the most sensitive method for detection of breast cancer (\href{https://radiopaedia.org/articles/breast-mri?lang=us}{radiopaedia.org/articles/breast-mri}), the breast MRI aims to obtain a reliable evaluation of any lesion within the breast. However, the modality relies on several sequence options, such as: (1) T1 (longitudinal relaxation time), the time constant which determines the rate at which excited protons return to equilibrium; (2) T2 (transverse relaxation time), similar to T1, but with the second time constant; (3) T2 Fat-Sat, pulses are short-duration tuned to the resonance frequency of fat; (4) T2 Turbo Inversion Recovery Magnitude (TIRM); (5) Diffusion, method that produces invivo MRI of tissues sensitized with the local characteristics of molecular diffusion; (6) DCE Maximum Intensity Projection (MIP); (7) DCE WithOut (WO) contrast agent; and (8) DCE Positive Enhancement Integral (PEI). Although they are more, these were the MRI sequence options used by the nine institutions. Nevertheless, it is important to underline that the MRI volumes are always used as an adjunct to the standard diagnostic procedures of the breast, {\it i.e.}, clinical examination, MG and US.}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 We also observed that clinicians from different hospitals had different preferences for \ac{MRI} sequences.
 However, since the medical imaging data used was from the \acs{HFF} clinical institution, their main sequence (\acs{DCE-MRI} in a second instant) was chosen as the standard.
@@ -408,24 +497,66 @@ The workshops (Section~\ref{sec:chap005003003001}) and focus groups (Section~\re
 \subsubsection{Prototype Requirements}
 \label{sec:chap005003003005}
 
-From our human-centered approach, we conclude that the \ac{AI}-assisted prototype should consist of two parts:
-(1) the diagnosis via multi-modal medical imaging, in which the proposed prototype has several functionalities to support clinicians with tools prioritized during our design interventions; and
-(2) the automatic severity classification of lesions, in which a DenseNet is integrated as an anthropomorphic intelligent agent providing the \ac{BI-RADS} scores and explanations.
-Due to workshops and focus groups, it is possible to explore in a higher manner the good insights of clinicians.
-At this study stage, several clinicians provided necessary modifications and feedback for the future system.
-For instance, bringing the intelligent agent from the top and middle to the button right of the screen inside the {\it 5.1. Viewports} (Figure~\ref{fig:fig040}).
-Again, the comment was provided during the design activities at this phase.
+% \vspace{2.50mm}
 
-We expect that some suggestions will improve clinicians' decision-making, while reducing the total time to diagnose a patient (Section~\ref{sec:app003004005} of Appendix~\ref{chap:app003}) over interaction, as well as the medical error.
-From the proposed design activities, we could understand that the {\it 6. Assistant} avatar must be placed inside the {\it 5.1. Viewports} (Figure \ref{fig:fig040}), making the intelligent agent easily accessible without compromising visibility.
-The explanation was simple, clinicians are used to work inside the {\it 5.1. Viewports} (Figure \ref{fig:fig040}).
-Meaning that it is less distance, time, and effort to interact with the {\it 6. Assistant} avatar.
-Furthermore, the visibility was not compromised because of two reasons:
-(a) first, most of the cases (typically the majority of \ac{MG}, and \ac{MRI} modalities) has no relevant image information on the button right of the screen inside the {\it 5.1. Viewports}; and
-(b) we developed a hidden button, so that if a clinician really needs to look at that area, the {6. \it Assistant} avatar will disappear, showing the full image with nothing overlaid.
-By incorporating these design choices (Section~\ref{sec:app003003001}), the intelligent agent is not only more accessible, but also better integrated into the clinicians' existing workflow.
-This sets the stage for the investigation of how \ac{AI}-assisted methods can be integrated into the design of intelligent agents, which we explore in the following section (Section~\ref{sec:chap005003003}).
-Specifically, we focus on how the design of {\it BreastScreening-AI} can help mitigate breast cancer diagnosis while meeting overall design goals in healthcare.
+\noindent
+\textcolor{revised}{In adherence to our human-centered design philosophy, the development of the \ac{AI}-assisted prototype was guided by two principal objectives:}
+
+\vspace{1.00mm}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{enumerate}
+\item \textcolor{revised}{\textbf{Enhanced Diagnostic Capabilities through Multi-Modal Medical Imaging:} The prototype integrates a suite of functionalities specifically designed to assist clinicians.
+These tools, prioritized during our iterative design interventions, aim to augment the diagnostic process by leveraging the strengths of multi-modal imaging.}
+\item \textcolor{revised}{\textbf{Automated Severity Assessment of Lesions:} Incorporating a DenseNet architecture, the prototype functions as an anthropomorphic intelligent agent.
+This agent is responsible for providing \ac{BI-RADS} scores and detailed explanations, thereby enhancing the interpretability and reliability of lesion severity classification.}
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\vspace{1.00mm}
+
+\textcolor{revised}{The iterative design process, encompassing workshops and focus groups, facilitated a deeper engagement with clinicians, enabling us to garner valuable insights and feedback.
+This participatory approach was instrumental in refining the prototype to better align with clinical needs.
+For example, a significant modification, based on clinician feedback, involved repositioning the \ac{UI} of the intelligent agent.
+Originally positioned at the upper and central part of the display, the \ac{UI} was repositioned to the lower right corner within the {\it Viewports} ({\it Re-5.1.} of Figure~\ref{fig:fig040}).
+This adjustment was determined to be more user-friendly and less disruptive to the clinical workflow.}
+
+\textcolor{revised}{With a direct outcome from our design process, this relocation is anticipated to enhance clinicians' efficiency in decision-making and reduce the time required for patient diagnosis.
+Furthermore, it addresses the potential for reducing medical errors.
+The decision to integrate the {\it Assistant} ({\it Re-6.} of Figure~\ref{fig:fig040}) avatar within the {\it Viewports} ({\it Re-5.1.} of Figure~\ref{fig:fig040}) was driven by the need for seamless accessibility and minimal disruption to the clinicians' established workflow patterns.
+This integration exemplifies \ac{UCD} principles, with iterative feedback and testing crucial in evolving the design to meet user needs.
+In the subsequent Section~\ref{sec:chap005003004}, we explore how these design choices enhance breast cancer diagnosis through intelligent agent integration.}
+
+\textcolor{revised}{Anticipating that these recommendations will enhance clinicians' decision-making efficiency, as well as reduce diagnostic time and medical errors, our design activities led to significant conclusions (Section~\ref{sec:app003004005} of Appendix~\ref{chap:app003}).
+In summary, the strategic placement of the {\it Assistant} avatar ({\it Re-6.} of Figure~\ref{fig:fig040}) within the {\it Viewports} ({\it Re-5.1.} of Figure~\ref{fig:fig040}) ensures easy accessibility, aligning with clinicians' usual workspace and reducing interaction time.
+This placement highlights our commitment to user-centric design, ensuring the tool meets clinical needs and integrates smoothly into the existing workflow.
+By focusing on \ac{UX} enhancement, we aim to improve the acceptance and effectiveness of \ac{AI}-assisted diagnostic tools, contributing to more efficient and accurate medical assessments.}
+
+% \vspace{2.50mm}
+
+\noindent
+\textcolor{revised}{Because of that, this design choice addresses visibility concerns in two ways:}
+
+\vspace{1.00mm}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{enumerate}[(a)]
+\item \textcolor{revised}{Primarily, the majority of \ac{MG} and \ac{MRI} imaging modalities typically do not display critical information in the lower right area of the {\it Viewports} ({\it Re-5.1.} of Figure~\ref{fig:fig040}), where the avatar is positioned.}
+\item \textcolor{revised}{Additionally, we integrated a feature enabling the {\it Assistant} avatar ({\it Re-6.} of Figure~\ref{fig:fig040}) to be temporarily hidden via a discreet button.
+This ensures clinicians have an unobstructed view of the entire image when needed, preserving the diagnostic process's integrity.}
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\vspace{1.00mm}
+
+\textcolor{revised}{These user-centered design adaptations (detailed in Section~\ref{sec:app003003001}) not only make the intelligent agent more accessible, but also seamlessly integrate it into the clinicians' existing workflow.
+This integration is a testament to the application of \ac{UCD} principles, emphasizing iterative feedback and refinement in developing \acs{AI}-assisted tools.
+In the following Section~\ref{sec:chap005003004}, we are further exploring the integration of \acs{AI}-assisted methods in the design of intelligent agents.
+Specifically, we will examine how the {\it BreastScreening-AI} design contributes to mitigating challenges in breast cancer diagnosis, aligning with overarching healthcare design objectives.}
 
 \subsection{Design Goals}
 \label{sec:chap005003004}
@@ -434,6 +565,7 @@ In this section, it is investigated how \ac{AI}-assisted methods could be integr
 The purpose is to help mitigate breast cancer diagnosis, while meeting overall design goals.
 This solution provides an absolute scale for clinicians' performance and leads to the instrumentation of the hereby design goals and constrains.
 With the introduction of intelligent agents, the designed {\it BreastScreening-AI} framework~\cite{CALISTO2021102607} dictated a departure from the later {\it BreastScreening} annotating tool~\cite{10.1145/3399715.3399744} wrapping approach of \ac{AI} techniques, toward a new communication that only exposes the required patient information, as well as lesion classification and segmentation functionalities (Appendix~\ref{chap:app008}).
+
 The {\it BreastScreening-AI} framework is designed to reduce the burden of usage and expand clinicians' performance by simplifying the complexities that are frequently encountered when clinicians are diagnosing a patient.
 Here, the main goal is to expose the \ac{AI} algorithm results in a readily available format~\cite{CALISTO2022102285}.
 The design goals of {\it BreastScreening-AI} have been for a robust, reliable, and elegant \ac{UI} to promote the integration of intelligent agents in the \ac{RRR} workflow.
@@ -444,6 +576,8 @@ The main design goals are closely related to the research insights and challenge
 (3) categorization of the breast tissues (dense vs non-dense);
 (4) clinical co-variables, such as personal and family records; and
 (5) visualizations for clinical summary which are crucial for a proper diagnosis and to perform patient follow-up.
+
+% \vspace{1.50mm}
 
 \noindent
 These five insights were fused into three corresponding design goals, as follows:
@@ -494,7 +628,7 @@ By showing the work design decisions, the following sections will cover these pr
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=\textwidth]{images/fig040}
-\caption{The proposed {\it BreastScreening-AI} provides several functionalities. Specifically, it is possible to validate the DenseNet output classification along with radiologists. The system is framed in the following subcategories: 4.5. Study List Tabs; 5.1. Viewports; 5.2. Toolbars; 5.3. Modality Selection; 6. Assistant; 6.1. Accept; 6.2. Explain; 6.3. Reject; and 6.3.1. Physician Severity. On 6.2. Explain, the assistant will pop-up several heatmaps. The proposed model has two main stages: (i)  first it computes the BI-RADS, based on the output classification of the DenseNet; and (ii) it computes the size and circularity of the lesion based on the heatmaps.}
+\caption{\textcolor{revised}{The proposed {\it BreastScreening-AI} provides several functionalities. Specifically, it is possible to validate the DenseNet output classification along with radiologists. The system is framed in the following subcategories: Study List Tabs (Re-4.5.); Viewports (Re-5.1.); Toolbars (Re-5.2.); Modality Selection (Re-5.3.); Assistant (Re-6.); Accept (Re-6.1.); Explain (Re-6.2.); Reject (Re-6.3.); and Physician Severity (Re-6.3.1.). On Explain (Re-6.2.), the assistant will pop-up several heatmaps. The proposed model has two main stages: (i)  first it computes the BI-RADS, based on the output classification of the DenseNet; and (ii) it computes the size and circularity of the lesion based on the heatmaps.}}
 \label{fig:fig040}
 \end{figure}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -506,11 +640,11 @@ In this section, we describe the design and implementation of the \ac{UI} for th
 The \ac{UI} includes a set of refinement mechanisms to guide clinicians during the diagnostic process (Figure~\ref{fig:fig040}), comprising two main components:
 (1) the list of patients; and
 (2) medical imaging views.
-The {\it 4. List of Patients Views} include a {\it 4.1. List of Patients} with the most important and required information for clinicians.
+The \textcolor{revised}{{\it List of Patients Views} ({\it Re-4.})} include a \textcolor{revised}{{\it List of Patients} ({\it Re-4.1.})} with the most important and required information for clinicians.
 From here, users can search all patients using criteria such as {\bf Patient ID}, {\bf Study Date}, available {\bf Modality} sets, {\bf Study Description}, and number of {\bf Images}.
-The {\it 4.5. Study List Tabs} allow clinicians to switch between diagnosed patients and medical imaging diagnosis views.
-The \ac{UI} is also informing clinicians about how to classify and use the system, {\it 5.2. Toolbars} to match the user's requirements, and {\it 5.1.~Viewports} to process the image by using {\it 5.2. Toolbars} provided functionalities.
-In the end, the \ac{BI-RADS} functionality ({\it 6.3.1.~Physician Severity}) allows clinicians to classify the severity of the breast lesion for each patient.
+The \textcolor{revised}{{\it Study List Tabs} ({\it Re-4.5.})} allow clinicians to switch between diagnosed patients and medical imaging diagnosis views.
+The \ac{UI} is also informing clinicians about how to classify and use the system, where we designed the \textcolor{revised}{{\it Toolbars} ({\it Re-5.2.})} functionality to match the user's requirements, and \textcolor{revised}{{\it Viewports} ({\it Re-5.1.})} to process the image by using \textcolor{revised}{{\it Toolbars} ({\it Re-5.2.})} provided functionalities.
+In the end, \textcolor{revised}{inserting the \ac{BI-RADS} use case was held by the {\it Physician Severity} ({\it Re-6.3.1.}) functionality}, allowing clinicians to classify the severity of the breast lesion for each patient.
 
 Overall, this section describes the design and implementation of the \ac{UI} for prototyping the first iterations of the {\it BreastScreening-AI} framework.
 Specifically, it includes refinement mechanisms to guide clinicians during the diagnostic process.
@@ -519,14 +653,13 @@ The following sections will map the two main \ac{UI} functionalities, {\it i.e.}
 \subsubsection{Assistant}
 \label{sec:chap005004002001}
 
-The {\it 6.1.~Accept} or {\it 6.3.~Reject} (Figure~\ref{fig:fig040}) allows the clinician to accept or reject the automatic classification of the {\it 6.~Assistant}.
-The {\it 6.~Assistant} is based on the outcomes of a DenseNet~\cite{Huang_2017_CVPR}.
+\textcolor{revised}{Figure~\ref{fig:fig040} shows the {\it Assistant} ({\it Re-6.}) with its {\it Accept} ({\it Re-6.1.}) and {\it Reject} ({\it Re-6.3.}) functionalities, enabling clinicians to directly control the \ac{DNN} classifications derived from the DenseNet model~\cite{Huang_2017_CVPR}.
 However, integrating a \ac{DNN} needs special attention (Appendix~\ref{chap:app004}).
 Typically, the training of a \ac{DNN} is expensive regarding the time spent (Section~\ref{sec:app004001}), since its classification performance will improve as the training dataset becomes larger.
 Thus, training the model from scratch is not the best option.
 For this reason, we pre-train ({\it i.e.}, off-line training before the \ac{UI} integration) the \ac{DNN} on the ImageNet dataset~\cite{10.1145/3351095.3375709} and fine-tuned using our multi-modal breast dataset (Section~\ref{sec:app004005}).
 Specifically, we fine-tune the \ac{DNN} using supervised learning.
-Only afterwards, the pre-trained DenseNet is incorporated into the \ac{UI}.
+Only afterwards, the pre-trained DenseNet is incorporated into the \ac{UI}.}
 
 The implemented DenseNet takes medical images as an input and outputs the severity probability.
 The input consists of images ({\it i.e.} \ac{MG}, \ac{US} and \ac{MRI} slices) with the corresponding label ({\it i.e.}, the \ac{BI-RADS}) that is previously classified by an expert.
@@ -535,29 +668,31 @@ Each node is assigned to a given class that corresponds to each \ac{BI-RADS} sco
 After this stage, we have conditions for the integration, since now the DenseNet is tuned to perform the classification in unseen test images.
 The classification is fast, being tailored for an online diagnosis.
 
-When several modalities (\ac{MID} and \ac{CRD}) are correctly used (regarding the {\it 5.3.~Modality~Selection} on a multimodality view), the clinician can find more accurately the right severity classification, as concluded in Section~\ref{sec:app003003002} of Appendix~\ref{chap:app003}.
-For the {\it 6.3.~Reject} option, the physician will have the opportunity to insert (\ac{CRD}) the proposed \ac{BI-RADS} on a drag-and-drop menu ({\it 6.3.1.~Physician Severity}) of severity options.
-Both \ac{MID} and \ac{CRD} goals are supporting our {\bf RQ5.1} question (Section~\ref{sec:chap005001002}).
+\textcolor{revised}{When several modalities (\ac{MID} and \ac{CRD}) are correctly used, regarding the {\it Modality~Selection} ({\it Re-5.3.}) on a multimodality view, the clinician can find more accurately the right severity classification, as concluded in Section~\ref{sec:app003003002} of Appendix~\ref{chap:app003}.
+For the {\it Reject} ({\it Re-6.3.}) option, the physician will have the opportunity to insert (\ac{CRD}) the proposed \ac{BI-RADS} on a drag-and-drop menu of severity options by using the {\it Physician Severity} ({\it Re-6.3.1.}) functionality.
+Both \ac{MID} and \ac{CRD} goals are supporting our {\bf RQ5.1} question (Section~\ref{sec:chap005001002}).}
 
 \subsubsection{Explainability}
 \label{sec:chap005004002002}
 
-Finally, the clinician may press for the {\it 6.2.~Explain} functionality  by looking at the generated heatmaps (Figure~\ref{fig:fig032}).
-The generation of the above colour maps come from the following information: (i) the area ({\it Lesion Size}) of the lesion that comes from the delineation process, (ii) the circularity/sharpness ({\it Lesion Shape}) that can be computed from the annotation in (i), and (iii) the \ac{BI-RADS} score automatically provided by the DenseNet ({\it i.e.}, classifier intelligent agent).
-The \ac{EXD} design goal is performed as above described helping to answer to research questions {\bf RQ5.2} and {\bf RQ5.3} (Section~\ref{sec:chap005001002}).
+\textcolor{revised}{Finally, the clinician may press for the {\it Explain} ({\it Re-6.2.}) functionality  by looking at the generated heatmaps (Figure~\ref{fig:fig032}).
+The generation of the above colour maps come from the following information:
+(i) the area ({\it Lesion Size}) of the lesion that comes from the delineation process,
+(ii) the circularity/sharpness ({\it Lesion Shape}) that can be computed from the annotation in (i), and
+(iii) the \ac{BI-RADS} score automatically provided by the DenseNet ({\it i.e.}, classifier intelligent agent).
+The \ac{EXD} design goal is performed as above described helping to answer to research questions {\bf RQ5.2} and {\bf RQ5.3} (Section~\ref{sec:chap005001002}).}
 
 Covered by the \ac{EXD} design goal, the thesis can provide a key component to disambiguate the \ac{AI} result with the application of an explanation technique (Section~\ref{sec:chap003007}).
 For a better prediction, the result of this explanation process is a heatmap visualizing the importance of each pixel.
-With heatmaps, clinicians can capture and understand the logic arguments of the DenseNet (Section~\ref{sec:chap005006002}) by giving images and pixels a colour meaning of the lesion severity.
-Thus, the \ac{EXD} design goal is bringing the opportunity to disambiguate this \ac{DL} method for more transparent and explainable (\ac{XAI}) process.
-Next, the section will describe the applied study methods to prove these claims.
+With heatmaps, clinicians can capture and understand the logic arguments of the DenseNet (Section~\ref{sec:chap005006002}) by giving images and pixels a color meaning of the lesion severity.
+Thus, the \ac{EXD} design goal is bringing the opportunity to disambiguate this \ac{DL} method for a more transparent and explainable (\ac{XAI}) process.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=\columnwidth]{images/fig032}
-\caption{On {\it 6.2.~Explain}, the assistant will pop-up several {\it heatmaps}. The {\it heatmaps} represent two different scales: (a) {\it Shape}; and (b) {\it Size} of the lesion. First, the model computes the BI-RADS using the DenseNet classification. Second, the model computes the lesion circularity (top scale) and size (bottom scale) and associate it to the colors regarding both circularity/size and BI-RADS.}
+\caption{On Explain (Re-6.2.), the assistant will pop-up several {\it heatmaps}. The {\it heatmaps} represent two different scales: (a) {\it Shape}; and (b) {\it Size} of the lesion. First, the model computes the BI-RADS using the DenseNet classification. Second, the model computes the lesion circularity (top scale) and size (bottom scale) and associate it to the colors regarding both circularity/size and BI-RADS.}
 \label{fig:fig032}
 \end{figure}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -582,7 +717,7 @@ For each condition, three classes of patients were defined:
 \end{itemize}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Having data available is challenging and requires multiple steps (Section~\ref{sec:app004002}), including anonymization of data.
+Having data available is challenging and requires multiple steps (Section~\ref{sec:app004002} of Appendix~\ref{chap:app004}), including anonymization of data.
 The ideal approach is a collaboration between clinicians and \ac{AI} researchers, either in-house or through collaborative research agreements.
 Therefore, a protocol was celebrated with \acs{HFF} so that the interchange of patients could be possible.
 The purpose of this protocol is to establish bases of collaboration in all scientific and technological areas, as well as education and training in which \ac{IST} and \acs{HFF} carry out their activities.
@@ -726,8 +861,8 @@ Both quantitative and qualitative analyses were compared between Clinician-Only 
 
 For the quantitative\footnotemark[13] analysis, we used several measures to evaluate the impact of intelligent agents on the medical workflow and to understand the clinicians' experience during diagnostic.
 In addition to the well-known \ac{SUS} to assess the perceived workload required by the complex, highly demanding tasks of medical imaging diagnosis.
-To further understand the impact of the intelligent agent on the medical workflow, we also measured trust through three questions adapted from the Model of Trust~\cite{CALISTO2021102607}, which we referred to in this work as \ac{DOTS}.
-The diagnostic classification was also measured to find correlations with the lesion severity ({\it i.e.}, Low, Medium, and High values of the BI-RADS).
+To further understand the impact of the intelligent agent on the medical workflow, we also measured trust through three questions adapted from the Model of Trust~\cite{CALISTO2021102607}, which we referred to in this work as \ac{DOTS}. 
+The diagnostic classification was also measured to find correlations with the lesion severity ({\it i.e.}, Low, Medium, and High values of the \acs{BI-RADS}).
 For that, we measured the number of \acp{FP} and \acp{FN} to understand severity rates.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -743,11 +878,11 @@ Hence, four relations emerged under this analysis:
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{enumerate}[label=\alph*]
-\item - differences between {\it \ac{SUS} Scores} and {\it \ac{SUS} Questions} (Figures \ref{fig:fig109}, \ref{fig:fig033}, \ref{fig:fig034}, \ref{fig:fig035} and \ref{fig:fig036}) across the groups of medical experience ({\it i.e.}, {\it Intern}, {\it Junior}, {\it Middle}, and {\it Senior}) on both setups;
-\item - workload measurements (Tables \ref{tab:tab001} and \ref{tab:tab002}) of both Clinician-Only and Clinician-AI setups;
-\item - trust evaluation (Figure~\ref{fig:fig111}) of the system capability for providing \ac{AI} recommendations;
-\item - relation between diagnostic {\it time} and lesion severity on both conditions ({\it i.e.}, Clinician-Only and Clinician-AI), among different groups of medical experience (Figure \ref{fig:fig037}); and
-\item - \acf{FP} and \acf{FN} ratios (Figure \ref{fig:fig038});
+\item - differences between {\it \ac{SUS} Scores} and {\it \ac{SUS} Questions} across the groups of medical experience ({\it i.e.}, {\it Intern}, {\it Junior}, {\it Middle}, and {\it Senior}) on both setups;
+\item - workload measurements of both Clinician-Only and Clinician-AI setups;
+\item - trust evaluation of the system capability for providing \ac{AI} recommendations;
+\item - relation between diagnostic {\it time} and lesion severity on both conditions ({\it i.e.}, Clinician-Only and Clinician-AI), among different groups of medical experience; and
+\item - \acf{FP} and \acf{FN} ratios;
 \end{enumerate}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -833,21 +968,37 @@ These findings underscore the effectiveness of the design interventions in enhan
 \end{figure}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-The \ac{NASA-TLX} questionnaire was used to measure {\it workload}, leading us to understand the cognitive load change between conditions.
-From these results, the statistical analysis showed a significant impact (p = 0.03 $<$ 0.05) when comparing both conditions for the {\it workload} measurements.
-More precisely, the results indicated that the Clinician-AI (F = 0.819) condition perceived a lower workload (which is better) compared to the Clinician-Only (F = 5.729) condition.
-Our findings showed a reduced workload compared to the baseline scenario, indicating that the Clinician-AI condition effectively supported clinicians in their diagnostic tasks.
-Specifically, the results showed that the Clinician-AI condition was associated with lower perceived mental and physical demands (Section~\ref{sec:app003004003} of Appendix~\ref{chap:app003}) compared to the condition without the \ac{AI} technique.
-On the other hand, performance (Section~\ref{sec:app003004004} of Appendix~\ref{chap:app003}) was perceived negatively on the Clinician-AI condition.
-This may occur due to the increasing number of visualization modalities, and higher information to be analyzed ({\it e.g.}, explanations provided by the assistant).
-However, these findings indicate that the \ac{AI} assistant reduces clinicians' cognitive and physiological demands during medical decision-making tasks.
-Clinicians reported lower demands with higher perceived efficiency and performance, indicating that the \ac{AI} assistance system alleviated cognitive load and enhanced their efficiency in radiology workflows.
+\textcolor{revised}{The \ac{NASA-TLX} questionnaire was utilized to assess perceived workload, enabling an analysis of cognitive load changes across different conditions.
+A one-way \ac{ANOVA} test was conducted for this purpose, revealing significant differences in workload between the Clinician-AI and Clinician-Only conditions.
+The test yielded an F(3, 41) = 3.274, indicating statistical significance (p = 0.03 $<$ 0.05).
+These results highlight the Clinician-AI condition's effectiveness in reducing perceived workload compared to the Clinician-Only condition ($\sim$48\%).
+Regarding specific values, the Clinician-AI condition resulted in a lower perceived workload (M = 5.729, SD = 0.819) than the Clinician-Only condition (M = 11.99, SD = 5.556).
+Cohen's effect size was calculated with {\it f} = 0.081, suggesting a small effect, while $\eta^{2}$ = 0.0066, explaining approximately 0.7\% of the variance in workload between conditions.}
 
-To understand the perceived usefulness of the \ac{AI} assistance, we conducted qualitative {\it post-task} interviews and {\it open-ended} questions (Section~\ref{sec:app003005002} of Appendix~\ref{chap:app003}) to gather clinicians' perspectives on the system's value and practicality in their daily practice.
-Qualitative analysis indicated clinicians' high acceptance of the \ac{AI} assistant.
-Most clinicians (41/45) accepted the \ac{AI} algorithm in their daily work.
-They recognized the potential of \ac{AI} to improve their performance and workflow (28/45).
-Comments highlighted the valuable role of the assistant in enhancing diagnostic accuracy, reducing workload, and enabling new quantitative information to be added to reports: ``The system [{\it BreastScreening-AI}] will be a great asset for us'' (C6).
+\textcolor{revised}{The Clinician-AI condition resulted in lower perceived mental and physical demands (Section~\ref{sec:app003004003} of Appendix~\ref{chap:app003}).
+However, its performance was perceived less favorably (Section~\ref{sec:app003004004} of Appendix~\ref{chap:app003}), possibly due to more visualization modalities and a larger amount of information, including explanations.
+Nonetheless, these results show the \ac{AI} assistant's role in reducing cognitive and physiological strains in medical decision-making.
+Clinicians noted enhanced efficiency and performance, highlighting the \ac{AI} system's effectiveness in easing cognitive burden and improving workflow productivity.}
+
+In assessing the usefulness of the \ac{AI} assistance, structured {\it post-task} interviews and comprehensive {\it open-ended} queries were conducted, as referenced in Section~\ref{sec:app003005002} of Appendix~\ref{chap:app003}.
+This approach was specifically chosen to objectively capture clinicians' insights regarding the system's efficacy and integration into their regular practice.
+Analysis of these qualitative inputs revealed that the majority of clinicians (41/45) have actively incorporated the \ac{AI} algorithm into their daily clinical routines.
+Moreover, clinicians reported noticeable enhancements in their operational efficiency and workflow optimization (28/45), attributable to the \ac{AI} tool.
+These results not only demonstrate a robust adoption of the \ac{AI} assistant but also suggest its significant impact in augmenting clinical performance and workflow management.
+
+\vspace{2.50mm}
+
+\noindent
+Comments highlighted the valuable role of the assistant in enhancing diagnostic accuracy, reducing workload, and enabling new quantitative information to be added to reports:
+
+\vspace{2.50mm}
+
+\noindent
+``The system [{\it BreastScreening-AI} assistant] will be a great asset for us.'' (C6)
+
+\vspace{2.50mm}
+
+
 Indeed, clinicians (33/45) expressed positive views on the system's ability to improve diagnostic accuracy, provide timely and relevant information, and facilitate more informed decision-making.
 The results indicated that design interventions played a crucial role in enhancing the perceived usefulness of the system.
 Integrating \ac{AI} technologies in radiology was seen as a promising approach to augment clinical practices and enable better patient care.
@@ -857,6 +1008,7 @@ This success is due to strategic design interventions, informed by a human-cente
 The \ac{AI} assistant received favorable feedback from clinicians, resulting in higher levels of acceptance, satisfaction, and usability when compared to the Clinician-Only scenario.
 Notably, the \ac{AI} assistant effectively reduced workload, while also being perceived as valuable in enhancing diagnostic accuracy and improving overall clinical practices.
 These findings underscore the potential of \ac{AI}-assisted techniques in optimizing the radiology workflow and empowering clinicians to make well-informed decisions.
+
 The positive reception and acceptance of the \ac{AI} assistant by clinicians highlight the importance of integrating intelligent agents into medical practices, paving the way for continued advancements in healthcare delivery.
 As \ac{AI} technologies continue to evolve and improve, it is crucial to foster ongoing collaboration between clinicians, researchers, and technology developers to ensure the responsible and ethical integration of \ac{AI} in radiology and beyond.
 By harnessing the full potential of \ac{AI}-assisted techniques, we can aspire to achieve higher levels of precision, productivity, and quality in healthcare, ultimately benefitting both medical professionals and the patients they serve.
@@ -877,12 +1029,14 @@ In addition, we collected feedback (Section~\ref{sec:app003005002} of Appendix~\
 \end{figure}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-In this study, we employed a visual information technique utilizing heatmaps to highlight regions of severity in the recommendations of the \ac{AI} system.
+In this study, we employed a visual technique utilizing heatmaps to highlight regions of severity in the recommendations of the \ac{AI} system.
 The heatmap information visualization effectively conveyed the severity of lesions, with hotter colors (Figure~\ref{fig:fig032}) indicating higher severity.
-The results from the \ac{DOTS} questionnaire (Figure~\ref{fig:fig111}) indicated that 98\% of the clinicians comprehended the reasoning behind the system, demonstrating a high level of understanding.
+Results from the \ac{DOTS} questionnaire (Figure~\ref{fig:fig111}) indicated that 98\% of the clinicians comprehended the reasoning behind the system, demonstrating a high level of understanding.
 Specifically, clinicians exhibited greater levels of perceived understanding when actively engaging with the assistant by pressing the {\it Explain} button (M = 19.7, SD = 2.92) compared to refraining from pressing it (M = 10, SD = 7).
-Furthermore, 93\% of the clinicians expressed trust in the system's capabilities, providing evidence of their confidence in the \ac{AI} recommendations for accurate patient diagnosis.
-Through the introduction of {\it 6.1. Accept}, {\it 6.3. Reject}, and {\it 6.2. Explain} buttons (Figure~\ref{fig:fig040}), perceived benevolence (M = 14.67, SD = 5.24) was increased while providing control and flexibility of the final diagnosis.
+This highlights the role of more granular explanations~\cite{10.1145/3544548.3580945}, enhancing clinicians' understanding of \ac{AI}-assisted diagnostics.
+
+A notable 93\% of clinicians conveyed confidence in the system's abilities, underscoring their trust in the \ac{AI} system's recommendations for precise patient diagnosis.
+Through the introduction of {\it Accept} ({\it Re-6.1.}), {\it Reject} ({\it Re-6.3.}), and {\it Explain} ({\it Re-6.2.}) buttons (Figure~\ref{fig:fig040}), perceived benevolence (M = 14.67, SD = 5.24) was increased while providing control and flexibility of the final diagnosis.
 After asking for an explanation, 76\% of the clinicians increased their agreement ({\it i.e.}, pressing the {\it Accept} button) with the final diagnostic.
 
 Finally, 91\% accept and prefer the \ac{AI} setup (Figure~\ref{fig:fig111}).
@@ -894,6 +1048,7 @@ In conclusion, our study addressed the research question {\bf RQ5.2} by investig
 We employed various metrics and questionnaires to assess clinicians' understanding and trust.
 Using heatmaps as a visual information technique effectively conveyed the severity of lesions, and clinicians exhibited a high level of understanding, comprehending the reasoning behind the system.
 This resulted in higher levels of perceived understanding, where clinicians expressed increased trust in the system's capabilities.
+
 The inclusion of control functionalities further increased perceived benevolence.
 Moreover, clinicians preferred the \ac{AI} setup, indicating a positive acceptance of the \ac{AI} recommendations.
 Our findings demonstrate that the explainability functionalities achieved through our design process enhance clinicians' understanding and trust in autonomous recommendations, promoting their acceptance and preference for the \ac{AI} setup.
@@ -909,14 +1064,13 @@ Lastly, we discuss the alterations in clinical workflows resulting from integrat
 By presenting these results, we aim to provide a comprehensive understanding of the \ac{AI} assistance impact on the medical workflow.
 The findings shed light on the benefits of \ac{AI} in healthcare settings, including enhanced accuracy, reduced diagnostic time, and improved consistency in patient classification.
 
-The rates of \acp{FP} and \acp{FN} (Table~\ref{tab:tab017}) were compared between the Clinician-Only and the Clinician-AI conditions (Section~\ref{sec:app003004009001} of Appendix~\ref{chap:app003}).
-The results demonstrated a reduction in \acp{FP} with \ac{AI} assistance, resulting in fewer cases where radiologists provided a higher severity classification than the actual severity.
-Specifically, the \ac{FP} rates decreased from 39\% in the Clinician-Only to 15\% in the Clinician-AI conditions.
-This indicates a significant reduction in situations where radiologists provided a higher severity classification (\ac{BI-RADS}) than the actual severity.
-The reduction in \acp{FP} by 24\% highlights the effectiveness of \ac{AI} assistance in improving the accuracy of the patient classification and reducing the occurrence of unnecessary procedures or treatments~\cite{10.1001/jamainternmed.2014.981}.
-Additionally, the rates of \acp{FN} were reduced by 19\% change when \ac{AI} assistance was utilized.
-This indicates that \ac{AI} assistance improved the detection and classification of breast abnormalities, leading to a more accurate diagnosis and reducing the chances of missing critical cases.
-These findings highlight the potential of AI assistance in improving patient classification accuracy and reducing \acp{FP} and \acp{FN}.
+\textcolor{revised}{In Table~\ref{tab:tab017}, a comparison of \ac{FP} and \ac{FN} rates was conducted between scenarios where clinicians worked alone and those where they were assisted by \ac{AI} (Section~\ref{sec:app003004009001} of Appendix~\ref{chap:app003}).
+The findings revealed a notable decline in \acp{FP} when \ac{AI} was utilized, signifying an adaptation in the risk tolerance of radiologists.
+In particular, the incidence of \acp{FP} fell from 39\% to 15\% \textcolor{revised}{{\it compound reduction}} with the aid of our intelligent agents, demonstrating a decreased tendency towards overestimating diagnoses.
+This substantial 24\% \textcolor{revised}{{\it compound reduction}} in \acp{FP} underscores the effectiveness of \ac{AI} in refining the accuracy of patient classification and curtailing superfluous treatments~\cite{10.1001/jamainternmed.2014.981}.
+Furthermore, there was a 19\% \textcolor{revised}{{\it compound reduction}} in \acp{FN} with \ac{AI} assistance, indicating a more measured approach to risk.
+This suggests that \ac{AI}'s application mitigates the issue of overdiagnosis and bolsters the identification and categorization of breast anomalies, thereby ensuring more precise diagnoses and minimizing the likelihood of overlooking critical conditions.
+These insights highlight the significant role of \ac{AI} in augmenting the precision of patient classification and judicious risk management in clinical decision-making processes.}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \input{tables/tab017}
@@ -927,9 +1081,9 @@ Our findings revealed notable differences in diagnostic time across different se
 For patients with low severity ({\bf P1}), the average diagnostic time in the Clinician-Only condition was 146 seconds (SD = 86.17), whereas the Clinician-AI condition showed a shorter average of 89 seconds (SD = 74.13).
 Similarly, for patients with medium severity ({\bf P2}), the Clinician-Only condition had an average diagnostic time of 78 seconds (SD = 48.05), while the Clinician-AI condition exhibited a slightly lower average of 77 seconds (SD = 96.80).
 Notably, patients with high severity ({\bf P3}) experienced a longer average diagnostic time of 116 seconds (SD = 65.70) in the Clinician-Only condition compared to the Clinician-AI condition, which had an average of 64 seconds (SD = 86.94).
-Furthermore, the \ac{ANOVA} statistical test revealed a significant effect of clinical experience groups on diagnostic time for severity cases between conditions (F = 3.25, p = 0.03 $<$ 0.05).
-These findings demonstrate that \ac{AI} assistance significantly reduces diagnostic time across different severity levels.
-Moreover, the analysis highlights the influence of clinicians' time performance with different medical professional experiences in the decision-making process of diagnosing patients.
+\textcolor{revised}{Moreover, the one-way \ac{ANOVA} test, resulting in F(1, 44) = 11.31 with a p-value of 0.005 (p $<$ 0.05), indicates a significant influence of clinical experience on the time taken to diagnose cases of varying severity.
+This result underscores that \ac{AI} assistance notably decreases diagnostic time across different severity levels.
+The analysis further reveals that the clinicians' level of medical experience affects the time efficiency in decision-making.}
 
 The introduction of \ac{AI} assistance positively influenced both inter-variability and intra-variability agreement (Section~\ref{sec:app003004008} of Appendix~\ref{chap:app003}) among clinicians during patient classification.
 With \ac{AI} assistance, there were significant reductions in variability.
@@ -937,10 +1091,10 @@ Regarding inter-variability, the \ac{CV} decreased from 57.69\% to 46.69\% for p
 For patients with a medium severity, inter-variability improved by 3.28\%, while the most notable improvement of 34.10\% was observed for patients with high severity.
 Intra-variability also decreased within specific clinician groups, including interns, juniors, middles, and seniors, with reductions ranging from 6.65\% to 23.66\%.
 These findings indicate that \ac{AI} assistance enhances inter-variability agreement and reduces variability within clinician groups based on their medical professional experience.
+
 Overall, \ac{AI} assistance promotes more reliable and consistent patient classification outcomes, improving diagnostic decisions.
 Therefore, clinicians benefit from improved agreement and enhanced diagnosis consistency, improving patient care.
-
-In summary, the results of this study demonstrate the positive impact of \ac{AI} assistance on the medical workflow.
+The results of this study demonstrate the positive impact of \ac{AI} assistance on the medical workflow.
 The utilization of \ac{AI} assistance significantly improves accuracy in patient classification, reduces the time required for various tasks, and enhances inter-rater agreement.
 These findings support the integration of \ac{AI} technologies in healthcare settings, emphasizing their potential to enhance efficiency, accuracy, and consistency in decision-making during breast cancer diagnosis.
 
@@ -953,10 +1107,12 @@ By analyzing these crucial aspects, we aim to elucidate the effects of design in
 The analysis of satisfaction and acceptance encompasses usability, workload, and usefulness, while understanding and trust enhancement focuses on clinicians' comprehension and confidence in \ac{AI} recommendations.
 Finally, the investigation of workflow impact delves into accuracy, diagnostic time, and variability in patient classification.
 
-In terms of satisfaction and acceptance ({\bf RQ5.1}), our results showed that the introduction of \ac{AI} assistance through design interventions significantly improved clinicians' satisfaction and acceptance of \ac{AI} assistance in radiology.
-The \ac{SUS} questionnaire results indicated that the \ac{AI}-assisted condition received 69\% higher agreement, demonstrating a 91\% higher usefulness of the \ac{AI}-assisted techniques compared to the Clinician-Only.
-In fact, 82\% of clinicians reported positive perceptions of the system's usability, ease of use, and integration with workflow.
-These findings highlight the effectiveness of design interventions in enhancing clinicians' satisfaction and acceptance of \ac{AI} assistance in radiology.
+\textcolor{revised}{In addressing satisfaction and acceptance ({\bf RQ5.1}), our study found that implementing \ac{AI} assistance with targeted design interventions markedly enhanced clinicians' satisfaction and acceptance in radiology settings.
+According to the \ac{SUS} questionnaire, the \ac{AI}-assisted condition achieved a 69\% higher agreement rate, reflecting a 91\% increase in perceived usefulness of \ac{AI}-assisted techniques over the Clinician-Only approach.
+Notably, 82\% of clinicians affirmed the system's usability, ease of use, and effective integration into their workflow.
+The \ac{NASA-TLX} scores confirm a notable decrease in cognitive workload ($\sim$48\%) with \ac{AI} assistance.
+Post-task feedback indicates clinicians appreciate the \ac{AI} system's clear insights for better diagnostics.
+These findings emphasize user-centered design's importance in improving clinician satisfaction with \ac{AI} tools in radiology, leading to more efficient, effective care.}
 
 Regarding understanding and trust enhancement ({\bf RQ5.2}), our study revealed that design techniques could improve clinicians' understanding and trust in \ac{AI} recommendations.
 About 85\% of clinicians exhibited a high level of understanding and trust in the system's capabilities.
@@ -970,10 +1126,9 @@ Diagnostic time was significantly reduced by an average of 50 seconds per patien
 Furthermore, \ac{AI} assistance improved clinician agreement and consistency, reducing inter-variability and intra-variability.
 These findings highlight the potential of \ac{AI} assistance to optimize the medical workflow, leading to better patient care and treatment decisions.
 
-In conclusion, our work explored several aspects of clinician interactions with \ac{AI} assistance in radiology, including satisfaction, acceptance, understanding, trust, and workflow transformation.
-By employing a human-centered approach and design interventions, our findings underscore the success of integrating intelligent agents into real-world clinical settings.
-These interventions have boosted user satisfaction and trust in \ac{AI} recommendations, enhancing clinicians' understanding.
-Including intelligent agents has optimized the medical workflow, enhancing diagnostic accuracy, reducing diagnostic time, and improving consistency, thereby strengthening decision-making reliability and clinicians' efficiency.
+\textcolor{revised}{In conclusion, our research explored clinician interactions with \ac{AI} assistance in radiology, focusing on satisfaction, acceptance, understanding, trust, and workflow enhancement.
+A human-centered approach facilitated the effective integration of intelligent agents into clinical practice, enhancing user satisfaction and trust in \ac{AI} recommendations.
+This integration optimized the medical workflow, improving diagnostic accuracy, reducing time, and increasing consistency, thereby enhancing decision-making reliability and clinician efficiency.}
 
 \section{Discussion}
 \label{sec:chap005007}
@@ -989,15 +1144,16 @@ Further discussion are provided in Section~\ref{sec:app003005} of Appendix~\ref{
 Interpreting the results in light of existing literature~\cite{10.1145/3411764.3445432} and theoretical frameworks~\cite{10.1145/3311957.3361858} allows us to contextualize our findings within the broader research landscape and theoretical understanding of the topic.
 It provides an opportunity to compare and contrast our results with previous studies~\cite{CALISTO2022102285, CALISTO2021102607}, identify areas of alignment or divergence, and discuss the practical significance of our findings.
 Additionally, addressing the study's limitations and suggesting areas for further investigation helps to acknowledge the scope of our work and identify avenues for future research (Section~\ref{sec:app003005004}).
+
 Our study examined various elements of clinician interactions with \ac{AI} assistance in radiology.
 Using a human-centered approach and design interventions, we successfully integrated intelligent agents into clinical settings.
 The research revealed significant results and new insights into the practical advantages of medical \ac{AI} assistance.
 
 Starting with satisfaction and acceptance ({\bf RQ5.1}), our findings highlight the crucial role of integrating \ac{HCI} principles into the design process of \ac{AI} systems.
-Through these design interventions, we were able to notably enhance the levels of satisfaction and acceptance among clinicians toward the final solution.
+Through these design interventions, we notably enhanced clinicians' satisfaction and acceptance of the final solution.
 Our results align with prior studies~\cite{10.1145/3411764.3445432}, emphasizing the benefits of design interventions and reinforcing the essential role of \ac{HCI} principles in promoting positive \ac{AI} system engagement.
 The higher agreement percentages and positive perceptions of usability, ease of use, and workflow integration highlight the effectiveness of design interventions in enhancing clinicians' satisfaction and acceptance of \ac{AI} assistance (Section~\ref{sec:app003005002} of Appendix~\ref{chap:app003}).
-By considering \ac{HCI} principles, such as \ac{UCD} and usability testing, in the development of \ac{AI} systems, we can ensure that the design interventions effectively address clinicians' needs and preferences, leading to improved user satisfaction and acceptance.
+By incorporating \ac{HCI} principles like \ac{UCD} and usability testing in \ac{AI} system development, we ensure design interventions align with clinicians' needs, enhancing user satisfaction and acceptance.
 
 In terms of understanding and trust enhancement ({\bf RQ5.2}), our study demonstrated the effectiveness of design techniques in improving clinicians' understanding and trust in \ac{AI} recommendations.
 The results align with theoretical frameworks~\cite{10.1145/3311957.3361858} that emphasize the significance of explainability and transparency in fostering trust in \ac{AI} systems.
@@ -1025,6 +1181,8 @@ Enhancing clinicians' satisfaction and acceptance enables more effective utiliza
 Design techniques that promote understanding and trust in \ac{AI} recommendations empower clinicians to make informed decisions, leading to better patient care outcomes.
 Workflow improvements, including reduced diagnostic time, increased accuracy, and enhanced consistency, have significant implications for clinical practice, potentially improving the efficiency and effectiveness of diagnoses.
 Optimizing the medical workflow through \ac{AI} assistance ultimately improves patient outcomes and enhances the overall quality of healthcare delivery.
+
+\vspace{1.00mm}
 
 \noindent
 Based on our findings, we propose the following design implications:
@@ -1056,51 +1214,69 @@ This approach ensures clinicians know potential misunderstandings and can make i
 
 \end{itemize}
 
-\vspace{0.05mm}
+% \vspace{0.05mm}
 
-These design implications underscore the importance of incorporating principles from the \ac{HCI} community when designing \ac{AI} systems for clinical settings.
-Researchers can develop \ac{AI} systems that align with clinicians' needs and preferences by considering the clinical workflow, providing concrete evidence and insights, as well as optimizing precision and recall with uncertainty and explanations.
-These implications contribute to the effective integration of \ac{AI} technologies in clinical settings and enhance the overall quality of patient care.
-They highlight the valuable contributions of the \ac{HCI} community in guiding the design of \ac{AI} systems that are transparent and supportive of clinicians' decision-making processes.
+\textcolor{revised}{These design implications emphasize \ac{HCI} principles in developing \ac{AI} systems for radiology.
+By deepening the understanding of clinical workflows, providing tangible evidence, and fine-tuning key metrics like precision and recall, they guide tailored \ac{AI} tool creation.
+This is pivotal for successful \ac{AI} integration in clinical settings, as following discussed in our design recommendations (Section~\ref{sec:chap005007003}).
+They highlight the significant contributions of the \ac{HCI} community in shaping transparent, user-friendly \ac{AI} systems supportive of clinicians' decision-making, promoting a collaborative human-\acs{AI} relationship.}
 
 \subsection{Design Recommendations}
 \label{sec:chap005007003}
 
-We provide the following design recommendations to optimize workflow integration, ensuring effective development and implementation of \ac{AI} systems in clinical settings.
-These recommendations foster continuous evaluation and improvement by using \ac{HCI} principles.
-By following these recommendations, designers can create user-centric \ac{AI} systems that enhance the overall quality of healthcare delivery.
+\textcolor{revised}{In the context of optimizing workflow integration for \ac{AI} systems in clinical radiology, we propose targeted design recommendations.
+These are grounded in \ac{HCI} principles and aim at fostering a cycle of continuous evaluation and improvement.
+The focus is developing user-centric \ac{AI} systems tailored for radiology practice, enhancing healthcare quality and efficiency.}
+
+\vspace{1.00mm}
 
 \noindent
-Based on our findings, we propose the following design recommendations for incorporating \ac{AI} assistance into radiology practice:
+\textcolor{revised}{Reflecting on our research findings, we present the following specialized design recommendations for the integration of \ac{AI} assistance in radiology:}
 
 \vspace{0.025mm}
 
 \begin{enumerate}
 
-\item \textbf{Usability}:
-Apply user-centered design principles and conduct extensive usability testing involving clinicians to ensure intuitive and seamlessly integrated \ac{AI} systems that enhance user satisfaction and acceptance.
+\item \textcolor{revised}{\textbf{Healthcare Professional-Oriented Usability}:
+Prioritize user-centered design principles by involving clinicians in all stages of usability testing.
+Include iterative sessions where radiologists interact with \ac{AI} prototypes, giving feedback on interface, responsiveness, and tool integration.
+The aim is to develop \ac{AI} systems that seamlessly fit into radiology workflows, addressing clinician needs and boosting satisfaction and acceptance.}
 
 \vspace{0.025mm}
 
-\item \textbf{Explainability and Transparency}:
-Incorporate explainability functionalities, such as visualizations and control functionalities, to enhance clinicians' understanding and trust in \ac{AI} recommendations, fostering transparency and interpretability.
+\item \textcolor{revised}{\textbf{Targeted Explainability and Transparency}:
+Develop and integrate explainability features for radiological applications, including advanced visualization tools mapping \ac{AI} decisions onto images, and interactive controls for clinicians to query \ac{AI} outputs.
+These features aim to enhance clinicians' understanding of \ac{AI} recommendations, fostering transparency and interpretability crucial for informed decision-making.}
 
 \vspace{0.025mm}
 
-\item \textbf{Integration and Workflow Optimization}:
-Seamlessly integrate \ac{AI} systems into the clinical workflow, optimizing compatibility, performance, and efficiency to reduce diagnostic time and improve productivity.
+\item \textcolor{revised}{\textbf{Workflow-Specific Integration and Enhancement}:
+Design \ac{AI} systems attuned to radiology workflows, customizing tools to match typical diagnostic processes.
+Optimize compatibility with existing solutions, enhance image processing speed, and improve efficiency to reduce diagnostic time, boosting clinical productivity and patient throughput.}
 
 \vspace{0.05mm}
 
-\item \textbf{Longitudinal Studies and Continuous Evaluation}:
-Conduct longitudinal studies, gather feedback, and iterate on the design based on evolving needs and challenges, ensuring the long-term effectiveness and alignment of \ac{AI} systems with clinical practice.
+\item \textcolor{revised}{\textbf{Adaptive Design through Longitudinal Studies}:
+Conduct longitudinal studies that involve continuous engagement with radiologists to gather in-depth feedback on the \ac{AI} system's performance in real-world clinical settings.
+Use this feedback for iterative design adjustments, allowing the \ac{AI} system to evolve with changing clinical practices and user needs.
+This approach guarantees the long-term effectiveness and clinical relevance of \ac{AI} systems in the ever-evolving field of radiology.}
 
 \end{enumerate}
 
-\vspace{0.05mm}
+% \vspace{0.05mm}
 
-By incorporating these design recommendations into the development and implementation of \ac{AI} assistance systems, we can enhance user satisfaction, acceptance, understanding, trust, and workflow optimization in radiology practice.
-These recommendations promote the effective integration of \ac{AI} technologies into clinical workflows (Section~\ref{sec:app003005003}), ultimately improving patient care and outcomes.
+\textcolor{revised}{Central to these design recommendations is the concept of \textit{healthcare professional-oriented usability}.
+This involves designing \ac{AI} systems that are inherently user-friendly for radiologists, facilitating smoother technology interactions.
+Additionally, \textit{targeted explainability and transparency} in \ac{AI} decision-making processes are crucial.
+This aspect is further explored in Chapter~\ref{chap:chap006}, emphasizing the importance of clear and transparent \ac{AI}-clinician communication.
+Moreover, \textit{workflow-specific integration and enhancement} are key, advocating for the seamless incorporation of \ac{AI} into existing clinical workflows, thus augmenting rather than disrupting medical practices.
+Lastly, the principle of \textit{adaptive design through longitudinal studies} underscores the necessity of continually evolving \ac{AI} systems to align with the dynamic needs of radiology, informed by ongoing research and clinician feedback.
+These guidelines collectively advocate for \ac{AI} tools that are technologically advanced but also relevant and user-friendly, aiming to transform healthcare into a more efficient, precise, and collaborative field.}
+
+\textcolor{revised}{Our design recommendations are key to successfully integrating \ac{AI} in radiology, as detailed in Section~\ref{sec:app003005003} of Chapter~\ref{chap:app003}.
+These guidelines aim to enhance user satisfaction, acceptance, understanding, trust, and workflow efficiency, making \ac{AI} intuitive and effective for healthcare professionals.
+This approach not only improves \ac{AI}'s reliability in clinical settings but also ensures alignment with healthcare professionals' specific needs and workflows.
+By focusing on patient care, these design recommendations aid in accurate diagnoses with personalized strategies and foster collaboration between \ac{AI} systems and medical practitioners (Chapter~\ref{chap:chap006}), addressing the unique challenges of radiology.}
 
 \subsection{Limitations}
 \label{sec:chap005007004}

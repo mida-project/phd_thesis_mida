@@ -119,29 +119,27 @@ The above modalities result from a selection provided by the radiologists' team 
 Notice that in (i) a large number of \ac{MG} views are available.
 Concerning (iii), the acquisition allows to obtain a large set of \ac{MRI} data ({\it e.g.}, T1, T2, \ac{DCE})~\cite{seifabadi2019correlation}.
 
-Initial design choices resulted in a consensus that allowed the selection of \ac{CC} and \ac{MLO} views, in the case of \ac{MG}, 
-and \ac{DCE} for the case or \ac{MRI}.
-From the above, it is vital to have the \textit{5.1.~Viewports} management feature (Figure~\ref{fig:fig040}), providing the users with the opportunity to arrange the viewport depending on the available modalities and views.
-Furthermore, the thesis choose to implement the \textit{5.2.~Toolbars} with a quick and configurable \textit{5.1.~Viewports} management button, to support this use case.
+\textcolor{revised}{Initial design choices led to a consensus, allowing the selection of \ac{CC} and \ac{MLO} views in the case of \ac{MG}, and \ac{DCE} for \ac{MRI}.
+It is essential to have the {\it Viewports} ({\it Re-5.1.}) management feature \textcolor{revised}{(Figure~\ref{fig:fig040}, Section~\ref{sec:chap005004001} of Chapter~\ref{chap:chap005})}, providing users with the opportunity to arrange the viewport based on available modalities and views.
+Additionally, the thesis implements the {\it Toolbars} ({\it Re-5.2.}) with a quick and configurable {\it Viewports} ({\it Re-5.1.}) management button to support this use case.}
 
 For breast cancer, the user evaluation validated design choices (Section~\ref{sec:app003003001}) and revealed clinician strategies for using the intelligent agent as a medical assistant.
 The learned design lessons should, in principle, generalize to other healthcare-assisted systems.
 Design lessons are further discussed (Section~\ref{sec:app003005}) to understand how patterns of user interactions with {\it BreastScreening-AI} helped to highlight some of the more common clinician groups ({\it i.e.}, Interns, Juniors, Middles, and Seniors) and behaviors.
-Ultimately, these patterns are also discussed and mapped to other healthcare-assisted systems.
 
 \subsection{User Interface Elements}
 \label{sec:app003003002}
 
 Based on the user needs, {\it BreastScreening-AI} was designed and implemented.
 Specifically, the tool is including a set of refinement mechanisms to guide radiologists during the diagnostic process.
-The designed \ac{UI} of {\it BreastScreening-AI} consists of one main component, comprising the medical imaging views (Figure~\ref{fig:fig040}).
-The {\it 4.5. Study List Tabs} (Figure~\ref{fig:fig040}) gives radiologists the opportunity to switch between the patient who is being diagnosed and a full list of patients.
-Using the {\it 5.2.~Toolbars} on the {\it 5.1.~Viewports}, the clinician can locate the lesions and classify its severity (via \ac{BI-RADS}), choosing the {\it 6.1.~Accept} or {\it 6.3.~Reject} options for the given severity of the {\it 6.~Assistant}.
+The designed \ac{UI} of {\it BreastScreening-AI} consists of one main component, comprising the medical imaging views.
+\textcolor{revised}{In Figure~\ref{fig:fig040}, Section~\ref{sec:chap005004001} of Chapter~\ref{chap:chap005}}, the {\it Study List Tabs} ({\it Re-4.5.}) functionality gives radiologists the opportunity to switch between the patient who is being diagnosed and a full list of patients.
+Using the {\it Toolbars} ({\it Re-5.2.}) on the {\it Viewports} ({\it Re-5.1.}), the clinician can locate the lesions and classify its severity (via \ac{BI-RADS}), choosing the {\it Accept} ({\it Re-6.1.}) or {\it Reject} ({\it Re-6.3.}) options for the given severity of the {\it Assistant} ({\it Re-6.}).
 
-When the several modalities are correctly used (regarding the {\it 5.3.~Modality~Selection} on a multimodality view), the clinician can find more accurately the right severity classification.
-For the {\it 6.3.~Reject} option, the clinician will have to insert the proposed \ac{BI-RADS} on a drag-and-drop menu ({\it 6.3.1.~Physician Severity}) of severity options.
-Finally, the clinician may look for the {\it 6.2.~Explain} feature (Figure~\ref{fig:fig040}) showing the model explainability regarding the {\it Lesion Circularity} values.
-In the following sections, the sections will be explaining how to measure the {\it Lesion Circularity}.
+\textcolor{revised}{When multiple modalities are used correctly ({\it Modality Selection} ({\it Re-5.3.}), clinicians can more accurately determine the severity classification.
+In cases where the {\it Reject} ({\it Re-6.3.}) option is selected, clinicians need to input the proposed \ac{BI-RADS} score through the {\it Physician Severity} ({\it Re-6.3.1.}) functionality, which provides a drag-and-drop menu of severity options.
+Clinicians may also utilize the {\it Explain} ({\it Re-6.2.}) functionality (Figure~\ref{fig:fig040}) to access model explainability related to {\it Lesion Circularity} values.
+Subsequent sections will elaborate on {\it Lesion Circularity} measurement.}
 
 \subsection{BreastScreening-AI Implementation}
 \label{sec:app003003003}
@@ -151,7 +149,7 @@ To supply the system for user evaluation, sets of images are selected from \ac{H
 Patient data was collected from this institution.
 Then, a user evaluation method was followed and applied~\cite{CALISTO2021102607} to the remaining nine clinical institutions.
 Three imaging modalities (\ac{MG}, \ac{US} and \ac{MRI}) were provided for each patient.
-The images were pre-processed and anonymized on the Orthanc server and then consumed by the system.
+The images were pre-processed and anonymized on the Orthanc server, and then consumed by the system.
 This system is efficiently designed as a set of modules (Figure~\ref{fig:fig041}) that can be reused in other imaging applications.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -511,11 +509,11 @@ It is known that mass morphology is a relevant feature for lesion classification
 The more irregular the lesion is, the more severe its classification will be.
 Thus, hot colors are associated with more irregular morphology, improving the user's expectation regarding the final result of the \ac{DL} model.
 Concerning the \ac{BI-RADS}, we also assign hot colors for increasing values of the \ac{BI-RADS}. 
-This can be easily accomplished by pressing the {\it 6.2. Explain} button.
+This can be easily accomplished by pressing the {\it Explain} ({\it Re-6.2.}) button.
 
 From the \ac{DOTS} questionnaire, the following scores for {\bf Understanding} were obtained.
 Concretely, (M = 19.7, SD = 2.92) and (M = 10, SD = 7) when clinicians {\it press} or {\it do not press} the  {\it Explain} button, respectively.
-Furthermore, the values of trust in the assistant were also much higher (M = 18.81, SD = 2.96) than those of clinicians who did not press the {\it 6.2. Explain} button (M = 12.43, SD = 3.21).
+Furthermore, the values of trust in the assistant were also much higher (M = 18.81, SD = 2.96) than those of clinicians who did not press the {\it Explain} ({\it Re-6.2.}) button (M = 12.43, SD = 3.21).
 Similarly, no significant imbalance was present in prior frequency for using {\it BreastScreening-AI}.
 That said, these results support our claim on {\it how do precision and recall affect clinicians' receptiveness and expectations}, changing their capability perceptions on what the \ac{AI} system can do.
 
@@ -722,15 +720,15 @@ Directly from medical data, \ac{AI} can advert clinical errors due to cognitive 
 In this study, the achieved results are showing that, despite several achieved tasks in which the \ac{AI} functionalities are supposed to assist, clinicians should circumspect result decisions for the impact of various types on assistant flaws.
 Particularly, a number of aspects should be considered, such as {\it workload}, {\it usability} and {\it usefulness}.
 
-For {\it workload}, both {\it mental} and {\it physical} demands were measured.
-First of all, {\it mental} measurements are bringing to this work information regarding how do clinicians perceive while ignoring incorrect suggestions and scanning multiple suggestions.
-Second, {\it physical} measurements provide information regarding how do clinicians perceive while having to execute a new task manually or reverse an incorrect assistant action.
-In this study, the document focus on the {\it Precision} and {\it Recall} problem, since the thesis want to measure the perception differences of a decision-making system for medical purposes.
+\textcolor{revised}{We measured both {\it mental} and {\it physical} demands, with our \ac{AI} assistant reducing the {\it workload} by 47.78\% (Section~\ref{sec:chap005006001} and Section~\ref{sec:chap005006004} of Chapter~\ref{chap:chap005}).
+The {\it mental} measurements shed light on how clinicians perceive the system, especially when dealing with erroneous suggestions and evaluating multiple recommendations.
+The {\it physical} measurements provided insights into clinicians' experiences when manually executing new tasks or correcting assistant actions.}
+In this study, the document focuses on the {\it Precision} and {\it Recall} problem, since the thesis wants to measure the perception differences of a decision-making system for medical purposes.
 Although we summarized the {\it workload} results in Section~\ref{sec:chap005006001} of Chapter~\ref{chap:chap005}, they are detailed and further discussed in this appendix.
 
 To measure {\it workload}, the well known \ac{NASA-TLX} scale was used.
 For the statistical significance, the \ac{ANOVA} statistical tests were used in this thesis.
-Briefly, both {\it mental} and {\it physical} measurements perceived lower (which is better) with our assistant (F = 2.85) in comparison to the condition without the AI technique (F = 7.86).
+Briefly, both {\it mental} and {\it physical} measurements perceived lower (which is better) with our assistant (F = 2.85) in comparison to the condition without the \ac{AI} technique (F = 7.86).
 Both results showed to have a significant impact (p $<$ 0.05) for the two ({\it i.e.}, {\it mental} and {\it physical}) {\it workload} measurements.
 
 For {\it usability}, it was measured in terms of performance and learnability, as well as satisfaction.

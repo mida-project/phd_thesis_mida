@@ -3,24 +3,22 @@
 % !TEX root = main.tex
 % #############################################################################
 % Change the Name of the Chapter i the following line
-\fancychapter{Background}
+\fancychapter{\textcolor{revised}{Problem Context}}
 \clearpage
 % The following line allows to ref this chapter
 \label{chap:chap002}
 
 Chapter~\ref{chap:chap002} provides valuable background information about the breast cancer domain in the context of this thesis.
-While it does not present any original contributions, it can be omitted by readers already familiar with the subject matter.
+While it does not present any original contributions, it can be omitted by readers already familiar with the subject matter~\cite{doi:10.1148/ryai.2020190208}.
 For more comprehensive details, including additional background information and medical specifications, please refer to Appendix~\ref{chap:app001}.
 
 \section{Medical Imaging Diagnosis}
 \label{sec:chap002001}
 
-Screening aims to identify cancer at earlier stages of several diseases when treatment can be more successful~\cite{McKinney2020}.
-However, two main difficulties arise.
-First, the amount of data to be processed has been increasing significantly and dramatically surpasses the throughput capabilities of radiologists~\cite{HANNA20181709}.
-Second, processing such an amount of data in a timely fashion without compromising the reliability of the diagnosis is very challenging~\cite{McKinney2020}.
-These difficulties have been the driving force behind the recent trend in radiomics\footnotemark[4] (Section~\ref{sec:chap002006}) and the integration of \ac{AI} techniques into medical imaging~\cite{doi:10.1148/radiol.2015151169}.
-For a more detailed exploration of these challenges, please refer to Section~\ref{sec:app001001} in Appendix~\ref{chap:app001}.
+\textcolor{revised}{Screening for early detection of breast cancer, while crucial, faces challenges due to the increasing volume of data\footnotemark[4] and the limited throughput capabilities of radiologists~\cite{McKinney2020}.
+The processing of this data, essential for timely and reliable diagnosis, is becoming increasingly demanding, leading to a significant workload on clinicians~\cite{HANNA20181709}.
+These difficulties have been the driving force behind the recent trend in {\it radiomics} (Section~\ref{sec:chap002006}) and the integration of \ac{AI} techniques into medical imaging~\cite{doi:10.1148/radiol.2015151169}.
+For a more detailed exploration of these challenges, please refer to Section~\ref{sec:app001001} in Appendix~\ref{chap:app001}.}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \footnotetext[4]{Involving the high-throughput extraction of quantitative imaging features, {\it radiomics} intent of creating mining information from radiological images. Large-scale data sharing is necessary for the validation and full potential that {\it radiomics} represents.}
@@ -29,11 +27,12 @@ For a more detailed exploration of these challenges, please refer to Section~\re
 \section{Breast Cancer Domain}
 \label{sec:chap002002}
 
-Multi-modal data is crucial in breast cancer diagnosis (Figure~\ref{fig:fig005} on Section~\ref{sec:app001002} of Appendix~\ref{chap:app001}), impacting the clinical workflow~\cite{10.1117/1.JBO.22.4.046008}.
-While \ac{MG} is the primary screening modality, it may not suffice for accurate diagnoses, particularly in dense breasts where lesion detection is challenging~\cite{10.1093/jbi/wbaa010}.
-Conversely, adipose breasts allow precise lesion visualization, necessitating additional modalities for complementing the diagnosis.
-\ac{US} and \acs{DCE-MRI} modalities provide valuable information, facilitating lesion visualization.
-Ultimately, the primary objective in breast cancer diagnosis is to classify tumors based on severity into benign or malign categories~\cite{SHAN2016980}.
+\textcolor{revised}{During breast cancer diagnosis (Figure~\ref{fig:fig005} on Section~\ref{sec:app001002} of Appendix~\ref{chap:app001}), the use of multi-modal data is critical~\cite{10.1117/1.JBO.22.4.046008}.
+\ac{MG}, the primary screening modality, is less effective in dense breasts, posing diagnostic challenges~\cite{10.1093/jbi/wbaa010}, where \ac{US} and \ac{MRI} are used to complement diagnosis~\cite{SHAN2016980}.
+However, the variance in diagnostic accuracy across modalities and the demand for combined use significantly increases clinicians' workload, highlighting the need for more efficient and precise diagnostic methods.
+This leads to 48\% of radiologists experiencing significant {\it frustration}~\cite{CALISTO2021102607}.
+Using \ac{MG}~\cite{10.1001/jamaoncol.2023.4519}, \ac{US}~\cite{doi:10.1200/JGO.19.00127}, and \ac{MRI}~\cite{doi:10.1148/radiol.2021210325} together, elevates the risk of medical errors to as high as 40\% during diagnosis.
+Thus, advanced technology integration is vital to enhance diagnostic accuracy and reduce healthcare professional burden.}
 
 \section{Severity Classification}
 \label{sec:chap002003}

@@ -57,7 +57,7 @@ That said, a use case for patient classification is of chief importance for the 
 
 In this thesis, the segmentation will support the process of making an intelligent agent more explainable (\ac{XAI}) and interpretable~\cite{8622433}.
 For instance, the segmentation can inform the clinician where the lesions are and why ({\it e.g.}, with colors and heatmaps) is the \ac{BI-RADS} so high.
-However, segmentation models are more challenging to train~\cite{hesamian2019deep}.
+However, segmentation models are more challenging to train~\cite{TAJBAKHSH2020101693}.
 Due to a lack of available data~\cite{ahmed2020images}, segmentation models are hard to implement accurately compared to classification models for the medical imaging domain~\cite{murtaza2019deep}.
 One crucial fact is that image-level labels (weak annotations)~\cite{10.1145/3373017.3373051}, cumming from the classification process, are easier to get for the training set~\cite{TAJBAKHSH2020101693}.
 To train a model, the segmentation process is more time-consuming, and manual lesion annotations are harder to get from clinicians~\cite{10.1007/978-3-030-59719-1_44}.
@@ -283,7 +283,8 @@ In the experiments, we have compared two situations:
 
 \vspace{1.50mm}
 
-The best results were achieved for situation (1), and this was adopted for our \ac{UI}.
+\noindent
+{\bf Note:} the best results were achieved for situation (1), and this was adopted for our \ac{UI}.
 
 \section{Additional Description of the System}
 \label{sec:app004007}
@@ -302,7 +303,7 @@ Here the new (unseen) images are presented to the DenseNet, and a \ac{BI-RADS} c
 \item To evaluate the system's accuracy, the precision, and recall are computed.
 \end{enumerate}
 
-\vspace{2mm}
+% \vspace{2mm}
 
 \noindent
 The following link is available that illustrates eases the description of the proposed system, as well as its workflow:
