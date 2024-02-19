@@ -1,0 +1,261 @@
+% #############################################################################
+% This is Chapter 7
+% !TEX root = main.tex
+% #############################################################################
+% Change the Name of the Chapter i the following line
+\fancychapter{Discussion}
+\clearpage
+% The following line allows to ref this chapter
+\label{chap:chap007}
+
+\textcolor{revised}{In this dissertation, we investigate the integration of intelligent agents in healthcare, focusing on three key areas.
+Chapter~\ref{chap:chap004} delves into clinicians' receptiveness towards intelligent agents, applying the \ac{UTAUT} model to contextualize technology adoption, specifically in medical imaging.
+Moving to a human-centered perspective, Chapter~\ref{chap:chap005} explores clinicians' experiences with \ac{AI} in radiology, pinpointing essential design interventions for seamless \ac{AI} integration.
+Further, Chapter~\ref{chap:chap006} focuses on customizing agent communication, aligning it with clinician characteristics to enhance decision-making.
+These investigations merge \ac{HCI} and \ac{AI} in healthcare, contributing to the discussion on \ac{AI} in this field.
+They highlight the importance of a \ac{UCD} approach and tailored \ac{AI} engagements in enhancing clinical decision-making.}
+
+\textcolor{revised}{This chapter synthesizes our research contributions (Section~\ref{sec:chap007001}), aligns them with our thesis statement (Section~\ref{sec:chap007002}), and offers design recommendations for integrating intelligent agents in medical imaging (Section~\ref{sec:chap007003}).
+Our findings highlight the importance of agents providing tailored explanations, which is crucial for future advancements (Section~\ref{sec:chap007004}).
+Situated within \ac{HCI} and \ac{AI} literature, particularly in decision support systems and \ac{AI} communication, our work reinforces healthcare research and sets the stage for future explorations.
+It broadens understanding in these areas, providing insights into \ac{AI} integration in clinical settings and its potential to transform healthcare practices.}
+
+\section{Contributions and Impact}
+\label{sec:chap007001}
+
+\textcolor{revised}{This dissertation enhances healthcare outcomes by integrating \ac{HCI} and \ac{AI}, with a focus on how clinicians adopt and effectively use intelligent agents in medical imaging.
+It delves into the factors like security, risk, and trust driving clinician acceptance of these agents.
+The study forges a link between \ac{HCI} and \ac{AI}, enriching our comprehension of their joint influence on medical decision-making.
+Employing \ac{AI} methods within \ac{HCI} principles~\cite{10.1145/3290605.3300233}, it innovates in clinical workflow enhancement and decision-making, primarily through assertiveness-based \ac{AI} communication design and evaluation.
+This method expands \ac{AI}'s role in high-stakes domains and furthers personalized~\cite{OPRESCU202253}, clinician-centered medical diagnostics.}
+
+\textcolor{revised}{Our initial contribution focuses on integrating intelligent agents into medical imaging workflows.
+Utilizing the \ac{UTAUT} model (Chapter~\ref{chap:chap004}), our research dissects the influence of critical determinants and moderator variables on the acceptance of \ac{AI} recommendations.
+This detailed analysis provides new insights into factors affecting clinicians' willingness to adopt \ac{AI} systems in their daily practice.
+Our findings deepen the theoretical understanding of \ac{AI} system integration in healthcare and provide practical design and implementation strategies.
+A significant aspect of our study is highlighting the role of trust in clinician interactions with intelligent agents, and how variations in behavior among diverse clinicians impact belief in \ac{AI} recommendations.
+Emphasizing \ac{HCI} principles~\cite{10.1145/3479587}, this research highlights the importance of trust in \ac{AI} design and deployment in clinical workflows.
+It informs our design approach, enhancing clinician interaction and understanding human factors of \ac{AI} adoption in critical medical settings.}
+
+\textcolor{revised}{The second significant contribution of this dissertation involves applying a human-centered design approach to seamlessly integrate \ac{DL} methods into medical imaging workflows (Chapter~\ref{chap:chap005}).
+Our approach yields design interventions for developing a robust medical assistant tool, addressing user requirements for control and comprehension of \ac{DL} methods~\cite{10.1145/3538882.3542790}, ultimately enhancing clinicians' decision-making.
+This research comprehensively analyzes these interventions, emphasizing the importance of transparency, explainability, and usability in establishing trust.
+From this study, we derive crucial design recommendations that stress the importance of conducting task-specific evaluations related to explicitly delivering \ac{DL} predictions, focusing on enhancing the calibration of precision and recall metrics.
+These findings underscore the pivotal role of \ac{HCI} principles in developing efficient~\cite{10.1145/3290605.3300233}, user-centric \ac{AI} systems for the clinical workflow, thereby strengthening the collaboration between clinicians and \ac{DL} predictions.}
+
+\textcolor{revised}{Our third significant contribution focuses on providing personalized explanations by intelligent agents, enhancing communication with clinicians in medical imaging diagnosis (Chapter~\ref{chap:chap006}).
+We conducted an experimental study comparing a conventional agent with an assertiveness-based agent.
+The latter proved significantly more effective in delivering detailed explanations and tailoring communication to clinicians' expertise levels.
+Clinicians preferred the assertiveness-based agent, finding it more reliable and proficient due to its improved understandability and competence.
+This preference led to substantial reductions in diagnosis time, nearly four times faster than before, signifying increased efficiency.
+With that, clinicians can diagnose almost four times as many patients during the same medical shift, while diagnosis accuracy rates improved for novice and expert clinicians.
+These findings have broader implications for the design of \ac{AI} systems in medical and other fields requiring personalized \ac{HAII}~\cite{PELAU2021106855, 10.1145/3555171}, highlighting the wide applicability of this human-centered approach.}
+
+\textcolor{revised}{In summary, our research significantly contributes to the intersection of \ac{HCI} and \ac{AI}, particularly, within healthcare.
+Our investigations encompass clinician acceptance of \ac{AI} systems~\cite{HUA2024102698}, human-centered design~\cite{10.1145/3313831.3376718}, and personalized explanations by intelligent agents~\cite{OPRESCU202253, 10.1145/3449190}.
+These findings offer insights to improve healthcare decision-making and advance user-centric \ac{AI} technologies across critical domains~\cite{10.1145/3274463}, marking substantial progress in \ac{HAII}.}
+
+\section{Thesis Statement Support}
+\label{sec:chap007002}
+
+\textcolor{revised}{This section reinforces the assertions in this dissertation (Section~\ref{sec:chap001003} of Chapter~\ref{chap:chap001}), aiming to significantly enhance diagnostic efficiency for cancer patients through a human-centered design approach.
+The initial assertion aligns with the core tenets of \ac{HCI}~\cite{PELAU2021106855}, emphasizing the importance of reducing waiting times and easing clinical workloads in medical systems.
+\ac{HCI} principles serve as guiding paradigms~\cite{10.1145/3290605.3300233}, emphasizing the utilization of \ac{UCD} methodologies to ensure the seamless integration of intelligent agents in medical imaging~\cite{10.1145/3290605.3300234, 10.1145/3313831.3376718}, making them intuitive for clinicians.}
+
+\textcolor{revised}{While recognizing the potential of such methodologies to address clinicians' experiences and perceptions, this thesis aims to develop intuitive and seamlessly integrated anthropomorphic intelligent agents that enhance the diagnostic process.
+Another assertion aligns with \ac{HCI} principles related to personalizing \ac{AI} outcomes, emphasizing the significance of explainability and interpretability to build trust and facilitate informed decision-making~\cite{SHIN2021102551}.
+Research in \ac{HCI} underscores the importance of designing \ac{AI} systems that offer clear explanations and insights~\cite{10.1145/3313831.3376590}, empowering clinicians to comprehend and trust the \ac{AI}-generated outcomes.
+These \ac{HCI} principles reinforce the transformative potential of a \ac{UCD} approach~\cite{10.1145/3313831.3376718}, substantiating claims to improve the efficiency of the diagnostic process and enhance the overall healthcare experience.
+Next, we provide a detailed description for each assertion, furnishing fundamental evidence to support these claims within the context of this thesis.}
+
+\vspace{1.00mm}
+
+\begin{displayquote}
+{\bf Claim 1:}
+{\it
+\textcolor{revised}{Guided by the \ac{UTAUT} model, this dissertation initially examines the factors influencing system adoption among medical professionals, focusing on enhancing clinician workflows for improved diagnostic efficiency and accuracy.
+It explores a user-centric approach to augment clinicians' diagnostic capabilities and emphasizes human-centered design in \ac{AI} system development to manage radiologists' workload and boost diagnostic confidence.
+The study then investigates assertiveness-based strategies in adapting the communication of these agents for personalized medicine, tailoring \ac{AI} recommendations and explanations to align with radiologists' demographic characteristics, a fundamental factor in achieving effective, customized communication.}
+}
+\end{displayquote}
+
+\vspace{1.00mm}
+
+\textcolor{revised}{Our thorough human-centered design approach is directed at substantially improving the efficiency of the diagnostic process for cancer patients.
+In Chapter~\ref{chap:chap004}, we delve into the integration of intelligent agents into medical imaging workflows, shedding light on pivotal factors that impact clinicians' acceptance and adoption of \acs{AI}-enabled systems in radiology~\cite{HUA2024102698}.
+Our findings contribute to theoretical underpinnings and provide pragmatic \ac{HAII} guidelines for effective technology design and implementation~\cite{10.1145/3313831.3376301}, ensuring alignment with clinicians' needs, expectations, and adoption behaviors.}
+
+\textcolor{revised}{In Chapter~\ref{chap:chap005}, we take our first claim a step further by concentrating on the practical implementation of human-centered design principles in the context of \ac{AI} assistance for medical imaging diagnosis.
+Our careful design interventions have deepened our understanding of clinicians' experiences and gleaned valuable insights that significantly enhance their decision-making abilities and overall satisfaction.
+These insights highlight the importance of transparency, explainability, and usability in designing effective \ac{AI} systems~\cite{10.1145/3544548.3580945}.
+Prioritizing these elements, our approach streamlines patient waiting times and lightens the workload of radiologists in their daily routines.
+Consequently, this human-centered design methodology has significant potential to profoundly influence the diagnosis process by effectively addressing data volume challenges~\cite{doi:10.1148/radiol.210948}, thereby alleviating the burden on radiologists.}
+
+\textcolor{revised}{Chapter~\ref{chap:chap006} strongly supports our second claim by highlighting the significance of personalizing and customizing intelligent agents' explanations within our human-centered design strategy.
+Clinicians prefer the assertiveness-based agent, thanks to its superior understandability and competence, which reinforces our argument for adapting and customizing \ac{AI} outputs to enhance the comprehension of \ac{DL} predictions and explanations~\cite{Cai:2019:EEE:3301275.3302289}, as discussed in Section~\ref{sec:app005008} of Appendix~\ref{chap:app005}.
+This personalized approach can revolutionize the effectiveness of intelligent agents across various domains by tailoring interactions to individual clinicians~\cite{10.1145/3544548.3581393}, enhancing \ac{UX} and diagnostic performance.}
+
+\vspace{1.00mm}
+
+\begin{displayquote}
+{\bf Claim 2:}
+{\it
+\textcolor{revised}{Anticipated outcomes include a fourfold increase in diagnostic speed, a 26\% reduction in medical errors, and a notable improvement in cancer detection rates, up to 95\% of accuracy, advancing healthcare efficiency.
+The thesis posits that \acs{AI}'s successful adoption and integration in medical imaging depends on technological refinement and synergizing with user elements of medical practice.}
+}
+\end{displayquote}
+
+\vspace{1.00mm}
+
+\textcolor{revised}{These compelling findings furnish substantial evidence that this innovative approach holds the potential to enhance the diagnostic process significantly.
+The anticipated outcomes, including a remarkable fourfold increase in diagnostic speed, a substantial 26\% reduction in medical errors, and a noteworthy enhancement in cancer detection rates with an impressive accuracy rate of up to 95\%, underscore the transformative impact on healthcare efficiency.
+Furthermore, our research indicates that the effective incorporation of \ac{AI} into medical imaging relies on refining the technology and achieving a seamless integration with medical practice elements.
+This involves tailoring \ac{AI} systems to clinicians' unique needs and preferences~\cite{10.1145/3411764.3445385}, ensuring they seamlessly fit into the clinical workflow.
+It is worth noting that the implications of our research extend beyond healthcare~\cite{PELAU2021106855}.
+Our research highlights the adaptability and effectiveness of personalized \ac{HAII} principles~\cite{10.1145/3290605.3300233}, paving the way for their application across diverse fields and marking a paradigm shift in intelligent system interactions.}
+
+\section{Design Recommendations}
+\label{sec:chap007003}
+
+\textcolor{revised}{Our design recommendations advance \ac{AI} in healthcare by integrating intelligent agents into clinical workflows.
+In Section~\ref{sec:chap004006002}, we examine clinicians' perceptions within the \ac{UTAUT} model, contributing to \ac{AI} adoption research in medical settings.
+Embracing a \ac{UCD} approach~\cite{10.1145/3313831.3376718}, Section~\ref{sec:chap005007003} focuses on enhancing \ac{DL} integration and clinical efficiency.
+Personalizing \ac{AI} systems, as discussed in Section~\ref{sec:chap006007001}, tailors \ac{AI} explanations to clinician needs, boosting acceptance.
+This strategy, grounded in empirical evidence and \ac{HCI} principles~\cite{PELAU2021106855, 10.1145/3290605.3300233}, enriches clinicians' understanding of \ac{DL} predictions in healthcare.
+Prioritizing \ac{UCD} and workflow optimization, we further \ac{AI}'s practical application in clinical settings, meeting healthcare professionals' needs.}
+
+% \vspace{2.00mm}
+
+\noindent
+\textcolor{revised}{{\bf Guidance Control and Clinician Agency}:
+In healthcare \ac{AI}, especially with \ac{DL} predictions, clinician control is crucial.
+Our system design emphasizes clear explanations of \ac{DL} reasoning and statistical confidence, aligning with \ac{XAI} principles for user trust and decision-making effectiveness~\cite{EVANS2022281}.
+This approach, supporting clinician flexibility to adjust or override \ac{AI} diagnostics, aligns with \ac{XAI} literature and respects clinician judgment in critical decisions~\cite{10.1145/3313831.3376290}.}
+
+\vspace{2.00mm}
+
+\textcolor{revised}{Regarding decision-making control, \ac{AI} systems should be designed to augment human decision-making, rather than trying to replace it~\cite{SchaekermannMike2020, 10.1145/3308560.3317085}.
+For better acceptance and adoption, clinicians should always have the final decision and be able to override the recommendations of \ac{DL} predictions if necessary.
+This approach reinforces clinician agency, fosters trust, and ensures clinicians stay in charge of patient diagnosis.
+In essence, the role of the \ac{AI} guidance should be viewed as a `decision-support' tool rather than a `decision-maker' tool, emphasizing the importance of human judgment in critical domains.}
+
+\vspace{2.00mm}
+
+\noindent
+\textcolor{revised}{{\bf Variability and Usability}:
+Addressing variability in clinicians' decision-making behaviors is crucial for adapting \ac{AI} techniques in healthcare~\cite{GIBSON2018113}.
+Enhancing \ac{AI} system usability and understanding is key to building clinician trust, aligning with studies on \ac{AI} adoption in healthcare~\cite{Topol2019}.}
+
+\vspace{2.00mm}
+
+\textcolor{revised}{Our human-centered design approach, applied in various clinical settings, focuses on clinician variability in decision-making.
+This aligns with personalized medicine principles, advocating for healthcare tools tailored to individual needs~\cite{Tschandl2020}.
+Customizing \ac{AI} techniques to match clinicians' specific contexts and terminologies enhances usability, understanding, and trust.
+This approach not only improves \ac{AI} effectiveness and efficiency, but also supports collaborative decision-making among diverse clinicians, resonating with trends in \ac{HCI} research emphasizing context-aware and personalized system design~\cite{10.1145/3173574.3174156}.}
+
+\vspace{2.00mm}
+
+\noindent
+\textcolor{revised}{{\bf Explainability and Transparency}:
+Integrating explainability functionalities like feature importance and the visualization of granular clinical arguments is key to enhancing clinicians' trust in \ac{AI} recommendations~\cite{10.1007/978-3-030-50334-5_4}.
+This aligns with the \ac{XAI} focus in healthcare~\cite{EVANS2022281}, addressing the challenge of building clinician confidence in AI-driven decisions.}
+
+\vspace{2.00mm}
+
+\textcolor{revised}{Prioritizing explainability in \ac{DL} model design fosters collaboration between clinicians and \ac{AI}.
+Features elucidating severity importance offer insights into \ac{AI} decision-making, resonating with the need for understandable \ac{AI} explanations~\cite{10.1145/2939672.2939778}.
+Making complex \ac{DL} algorithms interpretable enhances transparency and deepens clinicians' understanding.
+Additionally, interactive functionalities are enabling clinicians to explore variables impacting \ac{DL} predictions to align with \ac{HAII} principles~\cite{10.1145/3290605.3300233}, bridging the gap between \ac{AI} capabilities and clinical usability~\cite{Tyllinen:2016:WNN:2858036.2858570}.}
+
+\vspace{2.00mm}
+
+\noindent
+\textcolor{revised}{{\bf Workflow Integration and Optimization}:
+Seamless integration of \ac{AI} systems into clinical workflows is essential for optimizing performance and efficiency.
+This strategy, aligning with context-awareness \ac{AI} design studies~\cite{10.1145/3173574.3174156}, ensures \ac{DL} methods are attuned to the unique aspects of each clinical setting.}
+
+% \vspace{2.00mm}
+
+\textcolor{revised}{Designing \ac{AI} systems to accommodate clinical workflows involves mapping these processes and identifying clinician needs.
+This human-centered approach~\cite{10.1145/3313831.3376718} ensures \ac{DL} predictions evolve with user feedback and changing clinical requirements.
+Continuous design improvement mechanisms maintain \ac{AI} system relevance, enhancing productivity and diagnostic performance.
+This dynamic, responsive design approach aligns with current trends and the need for adaptable \ac{AI} tools in medical settings~\cite{10.1145/3290605.3300233}.}
+
+\vspace{2.00mm}
+
+\noindent
+\textcolor{revised}{{\bf Longitudinal Studies and Continuous Evaluation}:
+Longitudinal studies and continuous evaluation are crucial for adapting \ac{AI} systems to healthcare's evolving needs~\cite{STADIN2021106486}, aligning with iterative design and user feedback trends in medical solutions.
+This approach allows for monitoring and analyzing clinicians' changing interactions with the \ac{AI} system, identifying challenges and enhancement opportunities.}
+
+\vspace{2.00mm}
+
+\textcolor{revised}{Collecting user feedback through surveys, interviews, and usage data analysis is essential for refining the \ac{AI} system's design and functionality, adhering to \ac{UCD} fundamentals~\cite{10.1145/3313831.3376718}.
+Including clinical outcomes and efficiency measures in evaluations assesses the system's impact on medical workflows.
+Adapting the \ac{AI} system to changes in the clinical landscape, such as new guidelines or technologies~\cite{10.1145/3397481.3450668}, is vital to its long-term success.
+This flexible and responsive approach to \ac{AI} system development aligns with the need for adaptable \ac{DL} predictions in healthcare~\cite{10.1145/3563657.3596058}.}
+
+\vspace{2.00mm}
+
+\noindent
+\textcolor{revised}{{\bf Combination of Classifiers and Enriched Training Models}:
+Developing \ac{AI} systems that align with clinicians' mental models is crucial for personalized guidance, resonating with recent \ac{AI} research~\cite{10.1145/3359206}.
+Mixed information in training models is essential for integrating \ac{DL} into clinical workflows~\cite{doi:10.1148/radiol.2018181371}, reflecting trends in comprehensive \ac{AI} healthcare applications~\cite{CORONATO2020101964}.}
+
+\vspace{2.00mm}
+
+\textcolor{revised}{Designing \ac{AI} systems with classifiers considering patient history~\cite{10.1145/3538882.3542790}, demographic data~\cite{Sollini2020}, and clinical observations ensures holistic predictions~\cite{10.1145/3079765}, addressing clinical complexities~\cite{Uddin2019}.
+Training with granular information~\cite{Park:2015:TOA:2737795.2656213}, like clinical notes and imaging data, enhances adaptability and effectiveness.
+Linking recommendations to relevant data or guidelines boosts transparency and clinician trust, crucial for \ac{AI} acceptance in healthcare~\cite{10.1145/3411764.3445432}.
+These approaches enhance \ac{AI}'s utility and acceptability in clinical decision-making, aligning with the trend towards contextually relevant~\cite{10.1145/3397481.3450668}, transparent \ac{AI}.}
+
+\vspace{2.00mm}
+
+\noindent
+\textcolor{revised}{{\bf Personalization of Communication}:
+Developing \ac{DL} methods that adapt communication to clinicians' experience and demographics is crucial for the design of intelligent agents.
+This approach, in line with personalized medicine and \ac{AI} trends~\cite{jpm10040211}, enhances clinician engagement and trust in \ac{DL} methods.}
+
+\vspace{2.00mm}
+
+\textcolor{revised}{Effective \ac{AI} personalization considers clinicians' experiences, specialties, and demographics, aligning with satisfaction and effectiveness studies~\cite{LIN2021e486}.
+Concise communication benefits experienced clinicians, while explanatory tone aids less experienced ones.
+Tailoring communication to specialties enhances \ac{AI} recommendation relevance, usability, and trust~\cite{EVANS2022281}.
+Adapting communication to clinician characteristics matches the dynamic clinical environment, essential for user-friendly intelligent agents.}
+
+% \vspace{2.00mm}
+
+\noindent
+\textcolor{revised}{{\bf Adapting Communication Tone for Generalizability}:
+Addressing the generalizability problem involves adjusting communication tones based on \ac{DL} confidence and case similarity~\cite{10.1145/3290605.3300234}.
+This ensures \ac{DL} methods align with medical workflows, especially when intelligent agents assist in decision-making.}
+
+\vspace{2.00mm}
+
+\textcolor{revised}{Effective generalizability involves:
+(1) the {\it patients' dissimilarity problem} to the training set, and
+(2) the {\it potential inaccuracies} in model confidence.
+Case similarity evaluations, important for aligning patient characteristics with training data, are supported by \ac{AI} interpretability advancements~\cite{10.1145/3544548.3581075}.
+Informing clinicians about limitations when \ac{DL} methods encounter atypical cases aids informed decision-making.
+Contextual explanations about training data and its impact on predictions enhance clinicians' understanding~\cite{10.1145/3290605.3300468}.
+Considering case-specific factors and \ac{DL} confidence, this communication approach is crucial for reliable, trustworthy \ac{AI} in the clinical practice, aligning with personalized medicine needs~\cite{LIN2021e486}.}
+
+\textcolor{revised}{Our design recommendations position \ac{AI} systems as augmentative tools in healthcare, focusing on flexibility, transparency, and clinician diversity.
+We emphasize continuous evaluation and adaptation to align \ac{AI} with clinicians' mental models and practices.
+Critical elements like explainability and tailored communication address generalizability issues, enhancing \ac{AI} integration and acceptance in clinical settings.
+Ultimately, these efforts aim to integrate \ac{AI} effectively in clinical institutions, improving medical outcomes and aligning with personalized medicine and patient-centered care trends.}
+
+\section{Future Work Opportunities}
+\label{sec:chap007004}
+
+\textcolor{revised}{Our research extends assertiveness-based agent insights from healthcare to areas like airport security and supermarket surveillance, assessing their broader applicability.
+This could aid fields requiring diverse expertise, such as helping researchers choose appropriate publication venues, thereby testing our findings in various professional settings.
+Exploring different communication tones and refining explanations in healthcare, especially for other imaging modalities, could enhance communication effectiveness and understanding.
+Developing \ac{AI} tools with accurate, context-specific explanations has the potential to significantly improve breast cancer diagnostics, boosting confidence in clinical decision-making.}
+
+\textcolor{revised}{The endeavor to train \ac{DL} methods for delivering personalized, interpretable insights opens avenues to reinforce clinicians' trust in \ac{AI} recommendations.
+Examining key functionalities like explanations and tone variation in different scenarios is crucial (Section~\ref{sec:app005015} of Appendix~\ref{chap:app005}), requiring technical adjustments in the \ac{DL} field and a focus on transparency in the \ac{HCI} domain.
+Prospective research avenues include probing clinicians' receptiveness to \acs{AI}-driven follow-up suggestions and evaluating the impact of explanations in \acp{CDSSe}.
+Analyzing intelligent agents thematically and creating ambiguity-aware \ac{AI} assistants are promising areas for exploration.
+Advancements in these fields can enhance our understanding of \ac{HCI}/\ac{AI} intersections in healthcare, resulting in user-friendly tools for medical professionals and improved clinical outcomes.
+Additional future directions are available in Section~\ref{sec:app005019} of Appendix~\ref{chap:app005}.}

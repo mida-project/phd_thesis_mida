@@ -1,0 +1,82 @@
+% Please add the following required packages to your document preamble:
+% \usepackage{multirow}
+% \usepackage{graphicx}
+\begin{table}[htbp]
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{|c|cc|cccc|cccc|}
+\hline
+\multirow{3}{*}{Groups} &
+  \multicolumn{2}{c|}{Low} &
+  \multicolumn{4}{c|}{Medium} &
+  \multicolumn{4}{c|}{High} \\ \cline{2-11} 
+ &
+  \multicolumn{1}{c|}{Cli.-Only} &
+  Cli.-AI &
+  \multicolumn{1}{c|}{Cli.-Only} &
+  \multicolumn{1}{c|}{Cli.-AI} &
+  \multicolumn{1}{c|}{Cli.-Only} &
+  Cli.-AI &
+  \multicolumn{1}{c|}{Cli.-Only} &
+  \multicolumn{1}{c|}{Cli.-AI} &
+  \multicolumn{1}{c|}{Cli.-Only} &
+  Cli.-AI \\ \cline{2-11} 
+ &
+  \multicolumn{1}{c|}{FPs} &
+  FPs &
+  \multicolumn{1}{c|}{FPs} &
+  \multicolumn{1}{c|}{FPs} &
+  \multicolumn{1}{c|}{FNs} &
+  FNs &
+  \multicolumn{1}{c|}{FPs} &
+  \multicolumn{1}{c|}{FPs} &
+  \multicolumn{1}{c|}{FNs} &
+  FNs \\ \hline
+Intern &
+  \multicolumn{1}{c|}{0.58} &
+  0.42 &
+  \multicolumn{1}{c|}{0.75} &
+  \multicolumn{1}{c|}{0.08} &
+  \multicolumn{1}{c|}{0.08} &
+  0.08 &
+  \multicolumn{1}{c|}{0.33} &
+  \multicolumn{1}{c|}{0.08} &
+  \multicolumn{1}{c|}{0.17} &
+  0.08 \\ \hline
+Junior &
+  \multicolumn{1}{c|}{0.63} &
+  0.13 &
+  \multicolumn{1}{c|}{0.38} &
+  \multicolumn{1}{c|}{0.13} &
+  \multicolumn{1}{c|}{0.13} &
+  0.13 &
+  \multicolumn{1}{c|}{0.50} &
+  \multicolumn{1}{c|}{0.25} &
+  \multicolumn{1}{c|}{0.13} &
+  0.13 \\ \hline
+Middle &
+  \multicolumn{1}{c|}{0.43} &
+  0.21 &
+  \multicolumn{1}{c|}{0.79} &
+  \multicolumn{1}{c|}{0.21} &
+  \multicolumn{1}{c|}{0.07} &
+  0.07 &
+  \multicolumn{1}{c|}{0.21} &
+  \multicolumn{1}{c|}{0.07} &
+  \multicolumn{1}{c|}{0.14} &
+  0.07 \\ \hline
+Senior &
+  \multicolumn{1}{c|}{0.45} &
+  0.36 &
+  \multicolumn{1}{c|}{0.73} &
+  \multicolumn{1}{c|}{0.09} &
+  \multicolumn{1}{c|}{0.09} &
+  0.18 &
+  \multicolumn{1}{c|}{0.09} &
+  \multicolumn{1}{c|}{0.09} &
+  \multicolumn{1}{c|}{0.09} &
+  0.09 \\ \hline
+\end{tabular}%
+}
+\caption{Comparison of FP and FN \textcolor{revised}{{\it compound}} rates between the Clinician-Only ({\it Cli.-Only}) setup and the Clinician-AI ({\it Cli-AI}) setup, categorized by severity levels ({\it i.e.}, {\it Low}, {\it Medium}, and {\it High}), across different levels of medical professional experience ({\it i.e.}, {\it Inter}, {\it Junior}, {\it Middle}, and {\it Senior} levels) of clinicians. The table presents the rates of FPs and FNs, providing insights into the performance of the two setups across severity categories and clinician experience levels. For {\it Low} severities (BI-RADS = 1), we only provide FPs rates since we did not consider lower (BI-RADS = 0) rates.}
+\label{tab:tab017}
+\end{table}

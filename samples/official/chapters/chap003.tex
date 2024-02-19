@@ -1,0 +1,211 @@
+% #############################################################################
+% This is Chapter 3
+% !TEX root = main.tex
+% #############################################################################
+% Change the Name of the Chapter i the following line
+\fancychapter{State-Of-The-Art}
+\clearpage
+% The following line allows to ref this chapter
+\label{chap:chap003}
+
+In this chapter, the document provides an overview of relevant literature works to the content of this thesis.
+The document outlines the role of intelligent agents and how other authors are handling their work in various steps of the clinical workflow, including novel interactive systems in medical imaging, application of \ac{HCI} techniques in the domain, and \acp{UI} with \ac{AI} methods behind.
+To substantiate this thesis, the following sections will summarize essential contributions in the particular medical imaging domain and the role that \ac{HCI} and \ac{AI} topics are playing in this context.
+
+\section{Literature Challenges}
+\label{sec:chap003001}
+
+\textcolor{revised}{Integrating \ac{AI} and diverse medical imaging modalities into healthcare workflows offers opportunities for precise diagnosis (Section~\ref{sec:chap002002} of Chapter~\ref{chap:chap002}), but requires specialized data handling and innovative visualization~\cite{Igarashi:2016:IVS:2984511.2984537}.
+However, the complexity of this integration is amplified by the challenges in achieving acceptance of \ac{AI} systems (Chapter~\ref{chap:chap004}).
+While \ac{AI} can enhance clinical workflows and reduce errors~\cite{Cai:2019:EEE:3301275.3302289}, its adoption faces issues of user acceptance and trust~\cite{https://doi.org/10.1002/mp.13562}.
+In medical imaging, \ac{DL} has advanced significantly, yet its `black box' nature raises concerns about interpretability and transparency, crucial for clinician trust and broader healthcare adoption~\cite{10.1145/3306618.3314293, gunning2017explainable, 10.1145/3290605.3300233}.
+Despite \ac{AI}'s potential to surpass human performance in some tasks~\cite{McKinney2020}, the lack of trust and understanding in \ac{AI} restricts its clinical integration.}
+
+\textcolor{revised}{Several studies have investigated \ac{AI} in healthcare~\cite{LANGER2021106878, PELAU2021106855, STADIN2021106486}, emphasizing its role in decision-making and highlighting ethical concerns, including data privacy and algorithm biases~\cite{PARK2021106795}.
+Perceptions of \ac{AI} range from enthusiasm to skepticism, focusing on reliability and professional impact~\cite{10.1145/3311957.3361858}.
+Yet, \ac{DL} models in healthcare face challenges in interpretability and data handling~\cite{McKinney2020}.
+Addressing these, especially the opacity nature of \ac{DL} models, is crucial for trust in \ac{AI}-enhanced healthcare.
+This thesis proposes a human-centric approach (Chapter~\ref{chap:chap005}), involving healthcare professionals in the design and development of \ac{AI} systems~\cite{CALISTO2021102607}, as a response to these challenges.}
+
+Despite the efforts to enhance diagnostic utility and user trust in \ac{DL} models, the heterogeneous behavioral nature of decision-making among clinicians is often overlooked~\cite{10.1145/3290605.3300234, 10.1145/3359206}.
+Trust issues and the effects of \ac{AI} communication on novice and expert clinicians remain significant challenges~\cite{10.1145/3544548.3580682, 10.1145/3491102.3502104}.
+This thesis aims to fill these gaps by focusing on personalized and customized algorithmic suggestions based on varying levels of medical expertise (Chapter~\ref{chap:chap006}), incorporating assertive communication theories into a \ac{DL} system and clinical scenario, thereby enhancing clinicians' understanding of the \ac{AI} outcomes.
+
+In this section, the document focuses on understanding different aspects and challenges that other authors surpassed in integrating their systems into the medical workflow.
+In particular, their work demonstrates how an interactive system can directly address the abovementioned issues during medical imaging diagnosis.
+The following section, introduces the topic of \ac{HAII}, as well as several related works, explaining the importance of the subject to this thesis work.
+
+\section{Human-AI Interaction}
+\label{sec:chap003002}
+
+\textcolor{revised}{Affecting acceptance (Chapter~\ref{chap:chap004})}, applications of \ac{HAII} collaboration in complex domains face two primary challenges:
+(1) trust, transparency, and accountability of the involved \ac{AI} agent~\cite{10.1145/3290605.3300233}; and
+(2) user's ability to understand and predict agent behavior, {\it i.e.}, explainability and intelligibility~\cite{Cai:2019:EEE:3301275.3302289}.
+Forming accurate mental models of the \ac{AI}-assisted is useful for:
+(i) representing the clinician's belief about what the system can do, acquired via interviews and observations, instruction, or inference;
+(ii) mapping between the observable features of the developed framework and the functionality perceived by the user; and
+(iii) the prediction for anticipating the \ac{AI} output in a given scenario.
+
+In that context, several studies on user expectations are postulating that user satisfaction and acceptance of a system are directly related to the difference between initial expectations and their actual experience~\cite{Kocielnik:2019:YAI:3290605.3300641}.
+Precisely, expecting more than the system can deliver will decrease user satisfaction and lead to the system's rejection.
+Hence, in the proposed work of this thesis, a technique was created, based on the following contributions:
+(a) providing users a new control functionality on the introduction of \ac{AI} methods among medical imaging diagnosis~\cite{pesapane2018artificial}; and
+(b) the impact of the clinicians' {\it behavior}, as well as the impact in professional practice~\cite{CALISTO2021102607}.
+Ultimately, the final goal was to achieve more reliable expectations of each intelligent agent's capabilities (Chapter~\ref{chap:chap005}), addressing these potential gaps.
+
+\textcolor{revised}{The growing prevalence of \ac{DL} models in decision-making has escalated demand for transparent, explainable results~\cite{10.5555/3305381.3305576}.
+Interpreting these models is challenging due to their complexity and opacity. The \ac{ML} community has developed methods to demystify its mechanics~\cite{10.1145/2939672.2939778, pmlr-v80-kim18d}, aiming to explain predictions for:
+(1) a single input data point~\cite{10.1145/2939672.2939778}; and
+(2) a set of data points in a predicted class~\cite{pmlr-v80-kim18d}, by perturbing inputs and observing responses.
+This exploration ensures usability and efficacy for users~\cite{10.1145/3173574.3174156}.
+Recent \ac{HCI} research has explored end-user requirements for \ac{ML} results and how transparency influences attitudes and behaviors~\cite{10.1145/3313831.3376301}.
+However, a significant gap remains in aligning \ac{AI} explanations with diverse user expertise levels in healthcare.
+Our research addresses this gap by developing personalized (Chapter~\ref{chap:chap006}), context-aware \ac{AI} explanations tailored to different medical expertise levels, enhancing interpretability for healthcare professionals, and bridging the gap between \ac{AI} capabilities and user needs, contributing a novel perspective to \ac{HCI} in medical \ac{AI} applications.}
+
+\textcolor{revised}{Recent progress in \ac{ML} regarding accountability and fairness has prompted keeping detailed records for trained models~\cite{10.1145/3351095.3375709, 10.1145/3287560.3287596}.
+These records detail the intended use, performance evaluation procedures, and potential biases inherent in the models.
+Furthermore, research has delved into how trust in \ac{ML} models is influenced by the disparity between their stated accuracy and actual performance in real-world scenarios~\cite{10.1145/3290605.3300509}.
+This thesis extends such discussions by focusing on the broader implications of model transparency in medical imaging decision-making (Section~\ref{sec:app005003001} of Appendix~\ref{chap:app005}).
+Exploring this topic is essential to grasp how to improve transparency and trust in clinical settings, thereby bridging a research gap.
+The following section delves into \acp{CDSSe} in workflows and their importance in healthcare.}
+
+\section{Clinical Decision Support}
+\label{sec:chap003003}
+
+\textcolor{revised}{Powered by \ac{ML} and \ac{DL} algorithms, \acp{CDSSe}\footnotemark[5] have significantly advanced image analysis tasks like classification, detection, and segmentation~\cite{lecun2015deep, 10.1007/978-3-030-22871-2_67}.
+Despite these advancements, integrating these systems into clinical workflows remains challenging due to the complexity of medical data and the need for reliable decision-making in healthcare.
+This thesis identifies a fundamental research gap: the application of \ac{DL} in hospitals, where balancing algorithmic sophistication with practical usability is crucial.}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\footnotetext[5]{The term was designated for computer applications designed to aid clinicians in making diagnostic and therapeutic decisions for patient care. In this thesis, we use this definition to define it as active knowledge systems for clinical advice.}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\textcolor{revised}{\ac{DL} models, significantly employed in \ac{CDSSe}, need extensive annotated datasets for feature learning, often surpassing human performance~\cite{McKinney2020}.
+These methods have revolutionized diagnostics in areas like skin cancer~\cite{Esteva2017}, cardiac \ac{MRI} segmentation~\cite{medley2019segmenting}, and breast cancer detection~\cite{MAICAS2019101562}.
+\ac{DL} models' ability to identify complex patterns has led to new disease biomarkers, enhancing diagnostics beyond traditional methods~\cite{McKinney2020}.
+Yet, challenges in interpretability and dataset reliance remain~\cite{8884671}.
+This thesis addresses the above issues by integrating \ac{DL} into clinical workflows, improving interpretability, reducing dataset dependence, and aligning advanced algorithms with clinical needs.}
+
+\section{Medical Intelligent Agents}
+\label{sec:chap003004}
+
+Despite their success, the integration complexity of \ac{DL} methods with medical intelligent agents poses challenges due to their incomprehensibility to users~\cite{holzinger2019causability}.
+This is particularly crucial for medical applications where \ac{AI} doesn't explain its decisions~\cite{shah2019artificial}.
+To tackle this, two approaches, \ac{XAI} and intelligibility, have been proposed~\cite{gunning2017explainable}, both recognizing the diverse data in clinical contexts~\cite{Bharadhwaj:2019:ERS:3308557.3308699}.
+Holzinger et al.~\cite{holzinger2018current} emphasize that clinicians must understand the \ac{AI} decision process.
+Furthermore, transparent algorithms could enhance trust in the future \ac{HAII}\cite{Dominguez:2019:EEA:3301275.3302274, Weisz:2019:BTS:3301275.3302290}.
+
+\textcolor{revised}{The work developed by Cai et al.~\cite{10.1145/3290605.3300234} identifies the needs of clinicians when searching for similar images using a \ac{DL} algorithm.
+Their findings inform this thesis by highlighting the importance of communicating the relevance of different types of image similarities at various decision-making stages.
+This approach addresses essential user acceptance and trust issues in medical image analysis.
+Further, Cai et al.~\cite{10.1145/3359206} explore clinicians' need for clear information on the fundamental attributes of \ac{DL} models, including their strengths, limitations, and design objectives.
+This insight is crucial for clinicians to understand the model's optimization focus and align their expectations accordingly.
+Their work enhances our understanding of \ac{AI} transparency in clinical decision-making, offering valuable insights for successfully integrating intelligent agents into medical practice.
+The research underscores the necessity of bridging the gap between technical capabilities and clinical usability, a gap this thesis aims to narrow by enhancing the intelligibility and applicability of \ac{AI} in real-world healthcare settings.}
+
+Finally, the work investigated by Yang et al.~\cite{10.1145/3290605.3300468} describes the design and field evaluation of a radically new medical tool.
+\textcolor{revised}{In this work, the authors developed a system that generates information for clinicians' decision-making with embedded machine prognostics.}
+Their design took inspiration from the notion of Unremarkable Computing~\cite{Crabtree2020}, augmenting the clinicians' workflow can have significant importance yet remain unobtrusive.
+The work evaluation suggests clinicians are more likely to encounter and embrace such a tool.
+In the end, the authors discuss the importance and intricacies of finding the right level in the design, sharing lessons learned so crucial to this thesis work in prototyping critical \ac{AI} systems as a situated experience.
+However, the addressed works in this section do not inspect the problem that medical assessments can be contentious, leading to expert disagreement.
+This raises the question of how assistive technologies and \ac{AI} systems should be designed to handle a better diagnostic of ambiguous \ac{AI} results.
+\textcolor{revised}{In the following sections, the document will explain how studies address diagnosing ambiguity through assistive technology design and informing clinical uncertainty estimates.}
+
+\section{Medical Image Assessment}
+\label{sec:chap003005}
+
+A strong need for large amounts of annotated medical data has been created by the rise of \ac{DL} methods and \ac{AI}-assisted medical decision-making tools~\cite{10.1145/3313831.3376290}.
+In most cases, the \ac{GT} annotations required to develop supervised \ac{ML} algorithms ({\it e.g.}, diagnostic corrections) are not given in the raw data.
+These settings require the expertise of medical professionals for manual data annotations.
+
+\textcolor{revised}{Like any form of human interpretation, medical data analysis by clinical experts is subjective and can lead to conflicting medical image assessments among independent clinicians~\cite{NIAZI2019e253}.
+The issues of inter-variability and intra-variability disagreement are particularly critical within medicine~\cite{schaekermann2018expert}, where unreliable clinical decisions can impact patients' lives adversely.
+Hence, classification and segmentation discrepancies of medical images represent a substantial clinical challenge in the medical imaging domain, which is a key focus of this thesis.}
+
+Prior work in \ac{HCI} for medical relation extraction~\cite{10.1145/3152889} substantiate the disagreement relations between inter-variability and intra-variability.
+However, they are not accounting user's different behaviors during decision-making.
+Actually, one of the most notorious cognitive differences of variability is seen between people with different levels of expertise and knowledge~\cite{Seidel2021}, \textcolor{revised}{like interns and specialists}.
+In this thesis, the disagreement relations are addressed as a function of three phenomena:
+(1) differences among clinical professionals, such as the medical background of each clinical institution and bias;
+(2) heterogeneous characteristics of the dataset to be analyzed, such as noisy and heterogeneous modalities; and
+(3) the quality of the diagnostic guidelines, such as the subjective and ambiguous classification of the \ac{BI-RADS}.
+In fact, clinical experts often rely on complex viewing technology to inspect medical data, making it vital to find additional sources.
+
+Discrepancies in viewer settings ({\it e.g.}, pan, zoom-in, zoom-out or brightness)~\cite{10.1145/3359178} and sequential dependencies~\cite{schaekermann2018expert} were found to be additional sources of variability for assessments in medical image analysis.
+The work developed by Schaekermann et al.~\cite{10.1145/3313831.3376290} fulfills these concerns.
+In that work, the authors presented the results of clinical professionals with either individual performance alone (intra-variability), or a group of specialists (inter-variability).
+From here, this thesis follows the authors' suggestions that image adjudication may provide benefits beyond developing trusted consensus with \ac{AI}, and that exposure can be an effective intervention for medical imaging diagnosis.
+
+\section{Structured Adjudication}
+\label{sec:chap003006}
+
+As previously stated, this section addresses several literature works that study the problem of expert disagreement to ambiguous \ac{AI} results for solving divergent medical imaging assessments.
+Specifically, expert disagreement is pervasive in clinical decision-making, while medical adjudication is a valuable approach for divergent assessments~\cite{10.1145/3359178}.
+Moreover, prior work shows that expert disagreement can arise due to diverse factors~\cite{NIAZI2019e253}, including expert background, the quality, and presentation of data, and guidelines clarity.
+
+In the work developed by Schaekermann et al.~\cite{10.1145/3359178}, the authors studied how these factors predict initial discrepancies in the context of medical time series analysis, examining why inevitable disagreements persist after adjudication.
+Also, the authors studied how adjudication impacts clinical decisions, which is essential to this thesis work.
+Having this idea in mind, Schaekermann et al.~\cite{10.1145/3359178} findings suggest that structured adjudication can lead to significant revisions in treatment-relevant clinical parameters such as the generated annotations.
+Their work demonstrates how structured adjudication can support consensus and facilitate a deep understanding of experts during medical data analysis.
+
+The process of breast severity classification (Section~\ref{sec:chap002003}) and lesion typification (Section~\ref{sec:chap002004}) involves examination and adjudication~\cite{10.1145/3359178} of several modalities ({\it e.g.}, \ac{MG}, \ac{US} and \ac{MRI}), as well as the assessment of several features (Section~\ref{sec:chap002006}).
+Such features can be, for instance, extracting texture, shape, and margin (Section~\ref{sec:chap002004001}).
+In a medical setting for remote screening, experts examine breast images to determine the presence and severity of the disease~\cite{10.1145/3399715.3399744}.
+
+Prior work~\cite{MIRANDA2015334} has shown that the process of medical interpretation is subject to individual expert bias, as demonstrated (Chapter~\ref{chap:chap006}) by inter-variability in relation to intra-variability~\cite{NIAZI2019e253}.
+This poor agreement between medical experts has led to difficulties in reliable evaluation of both individual experts, as well as assistive technologies.
+Yet, due to the lack of medical professionals threatens the adequacy and availability of clinical services, there continues to be a surge in interest for the development of assistive technologies.
+These assistive technologies, such as \ac{DL} systems and intelligent agents, are resulting in the sharp increase within the demand for high-quality of annotated-image data.
+
+\textcolor{revised}{In another work~\cite{10.1167/tvst.8.6.40}, the authors present and evaluate a remote, image-based system for structured classification and annotation in medical adjudication.
+Their results show that a remote, tool-based adjudication, can help organize the data generation process (Section~\ref{sec:app005003002} of Appendix~\ref{chap:app005}) and to further disambiguate (Section~\ref{sec:chap003007}) the \ac{AI} results (Chapter~\ref{chap:chap005} and Chapter~\ref{chap:chap006}) of this thesis.
+Specifically, for those cases that can be solved with fewer uncertainties.
+However, their solution is inadequate for complex cases, presenting opportunities to explore new methods in this thesis to expedite case resolution.}
+
+\section{Disambiguate Artificial Intelligence}
+\label{sec:chap003007}
+
+Among clinical experts, medical discussion can be helpful to capture sources of disagreement in ambiguous classification and segmentation of complex cases, as well as adjudicate any resolvable disagreement~\cite{10.1145/3308560.3317085}.
+In supervised \ac{ML}, a common requirement is that objects can be unambiguously classified into categories~\cite{10.1145/3287560.3287596}.
+However, many classification tasks are inherently ambiguous.
+Over the correct way to classify an object, the reasons why clinical experts may be in disagreement with the \ac{AI} results may vary from task to task and from data object to data object.
+In this section, the thesis address several researchers who have recognized this problem and come up with different solutions to handle it~\cite{10.1145/3313831.3376506, 10.1145/3313831.3376590, Tschandl2020}.
+Between these addressed works, one main distinction can be made around whether expert disagreement with the \ac{AI} results is a problem to be solved or whether disagreements are treated as a signal that leverage in some helpful way.
+
+The work developed by Schaekermann et al.~\cite{10.1145/3308560.3317085} is situated along the later line of research.
+In that work, the authors propose a key component to trusted and \ac{XAI} systems used to capture and understand the logic arguments, as well as the various pieces of evidence that lead to divergent interpretations.
+Their goal is to get one step closer to endowing \ac{AI} systems with the ability of providing argument-based explanations about potentially ambiguous classification during clinicians' decision-making.
+Thus, their work was extended to the work developed under this thesis so that it is possible to follow their approach for capturing clinicians' rationale for decision-making in a structured and guided manner.
+
+Other works have suggested ways to make productive use of disagreement information in medical data~\cite{10.1001/jamanetworkopen.2019.0096, pmlr-v97-raghu19a, 10.1145/3313831.3376506}.
+In the work developed by Dumitrache et al.~\cite{10.1145/3152889}, the authors introduced several domain-independent quality measures, task instructions, and data, based on information disagreement in medical relation extraction.
+Raghu et al.~\cite{pmlr-v97-raghu19a} developed \ac{AI} models to predict the likelihood that a given patient case will cause expert disagreement.
+Similarly, Barnett et al.~\cite{10.1001/jamanetworkopen.2019.0096} evaluated different ways of aggregating discordant medical assessments from clinicians with varying training background to harness collective intelligence for medical diagnosis.
+Finally, Schaekermann et al.~\cite{10.1145/3313831.3376506, SchaekermannMike2020} studied the conflicting expert assessments that can motivate detailed adjudication discussions about complex cases, and test whether such discussions can improve training for medical experts at a scale.
+
+In conclusion, ambiguous \ac{AI} results are a challenge to be surpassed and must be addressed in this thesis.
+However, to close the gap between \ac{AI} algorithms and clinician's needs for adequate transparency, the \ac{HCI} community has called for interdisciplinary collaboration~\cite{10.1145/3173574.3174156, Tschandl2020} and user-centered approaches to explainability~\cite{10.1145/3290605.3300831, 10.1145/3313831.3376590}.
+In this section, not only the goal is to address the literature solutions to disambiguate \ac{AI} methods, but also the opportunities and insights into the design of transparent and explainable (\acs{XAI}) techniques for \ac{AI} systems.
+Although the audience of this thesis is focused on \ac{HCI}, the dissertation must address \ac{DL} and data science literature to cover the thesis contributions fully.
+
+\section{Effects of AI Communication}
+\label{sec:chap003008}
+
+The communication nature between humans and \ac{AI} is highly influential in the decision-making process, especially in high-stakes domains~\cite{10.1145/3544548.3580682}.
+From the \ac{HCI} literature~\cite{10.1145/3479587}, we know that the positive motivational attribution between the communication entity and the user influences the development of trust.
+The work of Hohenstein et al.~\cite{HOHENSTEIN2020106190} is showing that a successful collaboration between humans and \ac{AI} occurs when ambiguity and uncertainty in terms of perceptions are reduced through trust.
+While communicating \ac{AI} predictions and explanations is shaping the design of recent works~\cite{CALISTO2021102607}, we do not know how more assertive or suggestive \ac{AI} mediation is affecting novice or expert clinicians.
+
+To avoid unexpected clinical consequences, we need to understand the effects of \ac{AI} communication on human interactions.
+In fact, the direct effects of communication are suggesting that clinicians' level of trust in an \ac{AI} system directly affects their perception of the outcomes~\cite{HOHENSTEIN2020106190}.
+Panigutti et al.~\cite{10.1145/3491102.3502104} are arguing that higher levels of trust will cause the clinician to have a positive attitude, resulting in high satisfaction and positive perceptions of performance with respect to the interaction outcome.
+Moderation via adapting the communication suggests that trust will influence how a clinician interprets and evaluates information relevant to attitude and behavior.
+
+\textcolor{revised}{Attribution theory denotes that when behavior is consistent with explanations, humans will attribute causality to self characteristics and needs~\cite{CALISTO2021102607}.
+When external cues are present, they will determine the behavior, especially when there is missing information or ambiguity.~\cite{HOHENSTEIN2020106190}.
+For example, a novice clinician asking for help and receiving a suggestive, {\it i.e.}, non-assertive communication.
+Contrastingly, novice clinicians would receive an assertive recommendation from an expert advisor in a real human-human interaction.
+The novelty of our work is in the application of assertive communication theories in a \ac{DL} system and clinical scenario that considers its use (Section~\ref{sec:app005003004} of Appendix~\ref{chap:app005}).
+In this thesis, not only do we study \ac{AI} adoption (Chapter~\ref{chap:chap004}) and the human-centered approach (Chapter~\ref{chap:chap005}), involving clinicians during the design of intelligent agents, but we also explore how to adapt the communication tone (Chapter~\ref{chap:chap006}) depending on the medical experience ({\it i.e.}, novice or expert) of the clinician.}
