@@ -221,6 +221,15 @@
 % Vogal 3
 \newcommand*{\vogalthree}[1]{\th@StoreIn{\th@vogalthree}{#1}}
 \newcommand*{\th@vogalthree}{\relax} % command is optional
+% Vogal 4
+\newcommand*{\vogalfour}[1]{\th@StoreIn{\th@vogalfour}{#1}}
+\newcommand*{\th@vogalfour}{\relax} % command is optional
+% Vogal 5
+\newcommand*{\vogalfifth}[1]{\th@StoreIn{\th@vogalfifth}{#1}}
+\newcommand*{\th@vogalfifth}{\relax} % command is optional
+% Vogal 6
+\newcommand*{\vogalsixth}[1]{\th@StoreIn{\th@vogalsixth}{#1}}
+\newcommand*{\th@vogalsixth}{\relax} % command is optional
 %
 % DEFINE COMMAND FOR: finalthesis --> value 'true' prints
 % the full commiteee list
@@ -229,8 +238,15 @@
 %
 % DEFINE COMMAND FOR: Thesis type, depending on language
 \newcommand{\thesistypelang}{\IfLanguageName{english}
-		{Thesis specifically prepared to obtain the PhD Degree in}
-		{Tese especialmente elaborada para obten\c{c}\~{a}o do Grau de Doutor em}}
+		{Thesis approved in public session to obtain the PhD Degree in}
+		{Tese aprovada em provas p\'{u}blicas para obten\c{c}\~{a}o do Grau de Doutor em}}
+%
+% DEFINE COMMAND FOR: Thesis classification, depending on language
+\newcommand{\thesisclassification}{\IfLanguageName{english}
+		{Jury final classification: {\bf Pass with Distinction and Honour}}
+            % {Jury final classification: {\bf Pass with Distinction}}
+		{Qualifica\c{c}\~{a}o atribu\'{i}da pelo J\'{u}ri: {\bf Aprovado com Distin\c{c}\~{a}o}}
+}
 %
 % DEFINE COMMAND FOR: subtitle (optional)
 \newcommand*{\subtitle}[1]{\th@StoreIn{\th@subtitle}{#1}}
@@ -254,7 +270,7 @@
 \newcommand{\tlangOtherSupervisors}{\IfLanguageName{english}{Co-Supervisor: }{Co-Orientador: }}
 %
 % DEFINE COMMAND FOR: Examination Committee, depending on language
-\newcommand{\tlangCommittee}{\IfLanguageName{english}{Examination Committee}{J\'uri}}
+\newcommand{\tlangCommittee}{\IfLanguageName{english}{Jury}{J\'uri}}
 %
 % DEFINE COMMAND FOR: Chairperson prefix depending on language
 \newcommand{\tlangChairperson}{\IfLanguageName{english}{Chairperson: }{Presidente: }}
@@ -279,7 +295,10 @@
 \setlength\oddsidemargin{2.5 cm}
 \setlength\evensidemargin{2.5 cm}
 %
-\renewcommand\maketitle{
+% Begin the titlepage environment for the first title page
+%
+\newcommand{\makefirsttitle}{
+    % Begin the titlepage environment for the first title page
 	\begin{titlepage}
 		\baselineskip=24pt 
     % printing UNIVERSITY LOGO
@@ -308,8 +327,8 @@
 	% printing thesis INSTITUTION (if any)
 		\ifthenelse{\equal{\th@institution}{\relax}}{\relax}{
 			\centering
-			\begin{setfont}{18}
-				\th@institution
+			\begin{setfont}{22}
+				\bfseries\th@institution
 			\end{setfont}
                 \vspace*{2cm}
 		}
@@ -344,8 +363,8 @@
 			\ifthenelse{\equal{\th@othersupervisor}{\relax}}{
                \tlangComSupervisor \th@supervisor\\
                }{
-                 \tlangSupervisors \th@supervisor\\
-                 \tlangOtherSupervisors \th@othersupervisor\\
+                 {\bf \tlangSupervisors} \th@supervisor\\
+                 {\bf \tlangOtherSupervisors} \th@othersupervisor\\
                }
 		\end{setfont}
 	% insert vertical spacing for the APPLYING DEGREE
@@ -353,34 +372,47 @@
 	% printing THESISTYPE and applying DEGREE
 		\centering
 		\begin{setfont}{12}
-	%	\th@thesistype\\
+	        % \th@thesistype\\
 			\thesistypelang\\
-			\end{setfont}
+		\end{setfont}
 		\begin{setfont}{16}
+                \vfill
 			\bfseries\th@degree
+		\end{setfont}
+            \begin{setfont}{14}
+	        % \th@thesistype\\
+                % insert vertical spacing
+		      \vfill
+			\thesisclassification\\
 		\end{setfont}
 	% insert vertical spacing for the Examination Committee
 		\vfill
 	% printing JURI/Committee if FINAL THESIS = true
 	\ifthenelse{\boolean{\th@finalthesis}{\relax}}{
-		\centering
+		% \centering
 		\begin{setfont}{14}
-			\bfseries\textbf{\tlangCommittee}
+			% \bfseries\textbf{\tlangCommittee}
 		\end{setfont}
 	% insert vertical spacing for the COMMITTEE
 		\vfill
 	% printing the COMMITEE members
-		\centering
+		% \centering
 		\begin{setfont}{12}
-			\begin{tabular}{c}
-				\tlangChairperson \th@chairperson\\
-            	\tlangComSupervisor \th@supervisor\\
+			\begin{tabular}{p{1.00\textwidth}}
+				% \bfseries\tlangChairperson
+                        % \th@chairperson\\
+            	% \tlangComSupervisor \th@supervisor\\
                 \ifthenelse{\equal{\th@vogaltwo}{\relax}}{
-                   \tlangMember \th@vogalone\\
+                   \tlangMember\\
+                        \th@vogalone\\
                    }{
-					\tlangMembers  \th@vogalone\\
-                                   \th@vogaltwo\\
-							       \th@vogalthree\\
+					% {\bf \tlangMembers}\\
+                        % \th@vogalone\\
+                        % \th@vogaltwo\\
+                        % \th@vogalthree\\
+                        % \th@vogalfour\\
+                        % \th@vogalfifth\\
+                        % \th@vogalsixth\\
                     }
 			\end{tabular}
 		\end{setfont}
@@ -391,9 +423,172 @@
 	% printing the Draft/Final word
 		\centering
 		\begin{setfont}{14}
-			\bfseries
+			% \bfseries
             \ifthenelse{\equal{\th@finalthesis}{true}}{
-                {\it Final}
+                % {Funding Institutions}\\
+                % insert vertical spacing
+		      \vfill
+                % {Fundação para a Ciência e a Tecnologia}\\
+                % {(PD/BD/150629/2020)}
+            }{
+                {\it Draft}
+            }
+		\end{setfont}
+	% insert vertical spacing for the DATE
+		\vfill
+	% printing the DATE
+		\centering
+		\begin{setfont}{14}
+			\bfseries\@date\\
+		\end{setfont}
+	}
+\end{titlepage}
+
+  \clearpage
+  \thispagestyle{empty}
+  \cleardoublepage % End the first title page and start a new one
+
+}
+%
+% Begin the titlepage environment for the second title page
+%
+\renewcommand\maketitle{
+    % Begin the titlepage environment for the first title page
+	\begin{titlepage}
+		\baselineskip=24pt 
+    % printing UNIVERSITY LOGO
+		\textblockorigin{-18pt}{-2pt}
+		\begin{textblock*}{10cm}(\th@univlogopsx,\th@univlogopsy)
+			\includegraphics[width=5cm]{\th@univlogo}
+		\end{textblock*}
+    % printing THESIS LOGO
+	\ifthenelse{\equal{\th@thesislogo}{\relax}}{\relax}{
+		\textblockorigin{-18pt}{-2pt}
+		\begin{textblock*}{17cm}(\th@thesislogopsx,\th@thesislogopsy)
+			\centering
+			\includegraphics{\th@thesislogo}
+		\end{textblock*}
+	}
+	% insert vertical spacing for the TITLES
+	\vspace*{1cm}
+	{
+    % printing thesis UNIVERSITY
+		\centering
+		\begin{setfont}{22}
+			\bfseries\th@university
+		\end{setfont}
+	% insert vertical spacing for the INSTITUTION
+		\vfill 
+	% printing thesis INSTITUTION (if any)
+		\ifthenelse{\equal{\th@institution}{\relax}}{\relax}{
+			\centering
+			\begin{setfont}{22}
+				\bfseries\th@institution
+			\end{setfont}
+                \vspace*{2cm}
+		}
+        % insert vertical spacing for the TITLE
+		\vfill
+    % printing thesis TITLE
+		\centering
+		\begin{setfont}{16}
+			\bfseries\@title
+		\end{setfont}
+	% insert vertical spacing for the SUB-TITLE
+		\vfill 
+	% printing thesis SUB-TITLE (if any)
+		\ifthenelse{\equal{\th@subtitle}{\relax}}{\relax}{
+			\centering
+			\begin{setfont}{14}
+				\th@subtitle
+			\end{setfont}
+		}
+	% insert vertical spacing for the AUTHOR NAME
+		\vfill
+	% printing AUTHOR NAME AND CURRENT DEGREE (IF ANY)
+        \centering
+        \begin{setfont}{14}
+        \bfseries\@author
+        \end{setfont}
+	% insert vertical spacing for the SUPERVISORS
+		\vfill
+	% printing SUPERVISORS
+		\centering
+		\begin{setfont}{12}
+			\ifthenelse{\equal{\th@othersupervisor}{\relax}}{
+                \vfill
+               \tlangComSupervisor \th@supervisor\\
+               }{
+                 \vfill
+                 {\bf \tlangSupervisors} \th@supervisor\\
+                 {\bf \tlangOtherSupervisors} \th@othersupervisor\\
+               }
+		\end{setfont}
+	% insert vertical spacing for the APPLYING DEGREE
+		\vfill
+	% printing THESISTYPE and applying DEGREE
+		\centering
+		\begin{setfont}{12}
+                \vfill
+	        % \th@thesistype\\
+			\thesistypelang\\
+		\end{setfont}
+		\begin{setfont}{16}
+                \vfill
+			\bfseries\th@degree
+		\end{setfont}
+            \begin{setfont}{14}
+	        % \th@thesistype\\
+                % insert vertical spacing
+		      \vfill
+			\thesisclassification\\
+		\end{setfont}
+	% insert vertical spacing for the Examination Committee
+		\vfill
+	% printing JURI/Committee if FINAL THESIS = true
+	\ifthenelse{\boolean{\th@finalthesis}{\relax}}{
+		% \centering
+		\begin{setfont}{14}
+			\bfseries\textbf{\tlangCommittee}
+		\end{setfont}
+	% insert vertical spacing for the COMMITTEE
+		\vfill
+	% printing the COMMITEE members
+		% \centering
+		\begin{setfont}{12}
+			\begin{tabular}{p{1.00\textwidth}}
+				{\bf \tlangChairperson}
+                        \th@chairperson\\
+            	% \tlangComSupervisor \th@supervisor\\
+                \ifthenelse{\equal{\th@vogaltwo}{\relax}}{
+                   \tlangMember\\
+                        \th@vogalone\\
+                   }{
+					{\bf \tlangMembers}\\
+                        \th@vogalone\\
+                        \th@vogaltwo\\
+                        \th@vogalthree\\
+                        \th@vogalfour\\
+                        \th@vogalfifth\\
+                        \th@vogalsixth\\
+                    }
+			\end{tabular}
+		\end{setfont}
+		% else not print the Examination Committee, just a fill
+		}{\vfill}
+        % insert vertical spacing for the Draft/Final word
+		\vfill
+	% printing the Draft/Final word
+		\centering
+		\begin{setfont}{14}
+			% \bfseries
+            \ifthenelse{\equal{\th@finalthesis}{true}}{
+                \vfill
+                {Funding Institution}\\
+                % insert vertical spacing
+		      \vfill
+                {FCT: Fundação para a Ciência e a Tecnologia}\\
+                % {(PD/BD/150629/2020)}
             }{
                 {\it Draft}
             }
