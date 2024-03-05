@@ -5,11 +5,9 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg?style=flat-square)](https://github.com/mida-project/report_tgc_template/blob/master/LICENSE)
 [![Last commit](https://img.shields.io/github/last-commit/mida-project/report_tgc_template?style=flat-square)](https://github.com/mida-project/report_tgc_template/commits/master)
-[![HitCount](http://hits.dwyl.io/mida-project/report_tgc_template.svg)](http://hits.dwyl.io/mida-project/report_tgc_template)
 [![OpenCollective](https://opencollective.com/oppr/backers/badge.svg?style=flat-square)](#backers)
 [![OpenCollective](https://opencollective.com/oppr/sponsors/badge.svg?style=flat-square)](#sponsors)
 [![Gitter](https://img.shields.io/gitter/room/gitterHQ/gitter.svg?style=flat-square)](https://gitter.im/opprTeam)
-[![Twitter](https://flat.badgen.net/twitter/follow/opprGroup)](https://twitter.com/opprGroup)
 
 This repository contains the template for a **Thesis Guidance Committee Reports** sample. The general template can be found on the [`src/`](src/) directory. A version of the template can also be found on the [Overleaf](https://www.overleaf.com/read/nfgdskjbnvpy) platform. We used the [LaTeX](https://www.latex-project.org/) format, a typesetting system that includes features designed for the production of technical and scientific documentation. [LaTeX](https://www.latex-project.org/) is available as [free software](https://www.latex-project.org/lppl/). For more detailed information regarding this repository please follow our [wiki](https://github.com/mida-project/report_tgc_template/wiki).
 
