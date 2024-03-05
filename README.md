@@ -3,8 +3,8 @@
 
 <img src="https://github.com/mida-project/report_tgc_template/blob/main/assets/banner_1000x200.png?raw=true" width="100%" />
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg?style=flat-square)](https://github.com/mida-project/report_tgc_template/blob/master/LICENSE)
-[![Last commit](https://img.shields.io/github/last-commit/mida-project/report_tgc_template?style=flat-square)](https://github.com/mida-project/report_tgc_template/commits/master)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg?style=flat-square)](https://github.com/mida-project/phd_thesis_mida/blob/master/LICENSE)
+[![Last commit](https://img.shields.io/github/last-commit/mida-project/phd_thesis_mida?style=flat-square)](https://github.com/mida-project/phd_thesis_mida/commits/master)
 [![OpenCollective](https://opencollective.com/oppr/backers/badge.svg?style=flat-square)](#backers)
 [![OpenCollective](https://opencollective.com/oppr/sponsors/badge.svg?style=flat-square)](#sponsors)
 [![Gitter](https://img.shields.io/gitter/room/gitterHQ/gitter.svg?style=flat-square)](https://gitter.im/opprTeam)
