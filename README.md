@@ -32,7 +32,6 @@ You can cite our work using the following BibTeX entry:
   school       = {Instituto Superior T\'{e}cnico},
   type         = {PhD thesis}
 }
-}
 ```
 
 ## Instructions
