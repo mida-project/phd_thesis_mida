@@ -11,6 +11,30 @@
 
 This repository contains the template for a **Thesis Guidance Committee Reports** sample. The general template can be found on the [`src/`](src/) directory. A version of the template can also be found on the [Overleaf](https://www.overleaf.com/read/nfgdskjbnvpy) platform. We used the [LaTeX](https://www.latex-project.org/) format, a typesetting system that includes features designed for the production of technical and scientific documentation. [LaTeX](https://www.latex-project.org/) is available as [free software](https://www.latex-project.org/lppl/). For more detailed information regarding this repository please follow our [wiki](https://github.com/mida-project/report_tgc_template/wiki).
 
+<a href="https://www.patreon.com/oppr" target="_blank">
+<img src="https://c5.patreon.com/external/logo/become_a_patron_button@2x.png" width="160">
+</a>
+
+## Citing
+
+We'd like to ask **scientific works and studies** that use the repository to cite it in their associated publications. Similarly, we ask **open-source** and **closed-source** works that use the repository to warn us about this use.
+
+You can cite our work using the following BibTeX entry:
+
+```
+@phdthesis{HCDPIAMID2024,
+  title        = {Human-Centered Design of Personalized Intelligent Agents in Medical Imaging Diagnosis},
+  author       = {Francisco Maria Calisto},
+  year         = 2024,
+  month        = {February},
+  address      = {Avenida Rovisco Pais 1, Lisbon, Portugal, European Union},
+  note         = {Available at \url{http://dx.doi.org/10.13140/RG.2.2.28353.33126}},
+  school       = {Instituto Superior T\'{e}cnico},
+  type         = {PhD thesis}
+}
+}
+```
+
 ## Instructions
 
 The [`report_tgc_template`](https://github.com/mida-project/report_tgc_template) repository can be used for the Thesis Guidance Committee Reports at [Instituto Superior Técnico](http://tecnico.ulisboa.pt/) (IST) of [PDEI](https://fenix.tecnico.ulisboa.pt/cursos/deic) (or other Doctoral Programs), as it follows the regulations published by the Scientific Council of IST. The all source of the template is available inside the `src/` folder, so please open it first. To start using, just open and modify your data as follows.
